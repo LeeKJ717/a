@@ -50,23 +50,19 @@ cd ~/highsci_src/highsci
 # 3) holymind → 각 서버 ssh 키 접속 확인
 for h in 192.168.0.84 192.168.0.6 192.168.0.20; do ssh -o BatchMode=yes $h true && echo "$h OK"; done
 
-# 4) GPU 서버 준비 (Ollama 외부 접속·동시 처리·모델 pull·방화벽) — 서버마다 sudo 비밀번호를 물을 수 있음
-sudo ./setup_node.sh --parallel 3      # holymind 자신 (slots 3과 맞춤)
-./deploy_nodes.sh                       # nodes.json의 enabled 원격 서버 (z840, z440, soul3)
-MODEL=gemma4:27b ./deploy_nodes.sh z840 # 특정 서버만, 모델 지정
-
-# 5) 서버 상태 확인 → 생성 시작
-./run_holymind.sh check
-./run_holymind.sh                       # 백그라운드 시작 (중단 후 재실행하면 이어서 생성)
+# 4) 시작 — 이것 하나면 됩니다. 준비 안 된 서버(holymind·z840·z440·soul3)는 자동으로 설정한 뒤
+#    4대에 작업을 나눠 백그라운드로 생성합니다 (처음 1회는 서버마다 sudo 비밀번호를 물을 수 있음)
+./run_holymind.sh
+./run_holymind.sh check                 # 서버 점검만
 ./run_holymind.sh status                # 중단원별 진행 + 서버별 배치·채택·거부·속도
 ./run_holymind.sh log
 ./run_holymind.sh stop
 ```
 
-`setup_node.sh`가 각 서버에서 하는 일은 다음과 같습니다.
+자동 설정은 `deploy_nodes.sh`가 `setup_node.sh`를 각 서버에 ssh로 보내 실행하는 방식입니다. holymind 자신은 바로 실행합니다. 수동으로 하려면 `./deploy_nodes.sh [서버명…]`를 쓰고, 자동 설정을 끄려면 `HIGHSCI_AUTO_SETUP=0 ./run_holymind.sh`를 씁니다. `setup_node.sh`가 각 서버에서 하는 일은 다음과 같습니다.
 - Ollama를 `0.0.0.0:11434`로 열고, `OLLAMA_NUM_PARALLEL`을 slots 값으로 맞춥니다. 모델은 24시간 메모리에 상주시킵니다.
 - 11434 포트는 **코디네이터(holymind)에서만 접속을 허용**하도록 ufw, firewalld, iptables 중 사용 중인 방화벽에 규칙을 추가합니다.
-- Ollama가 없는 서버에서는 `--install` 옵션으로 설치할 수 있습니다. 직접 실행할 때는 `sudo ./setup_node.sh --install --model gemma4:e4b --parallel 2`처럼 씁니다.
+- Ollama가 없는 서버가 있으면 `INSTALL=1 ./run_holymind.sh`로 실행하세요. 설치까지 자동으로 합니다.
 
 단일 서버로만 돌리려면 `./run_holymind.sh --ollama http://localhost:11434 --workers 2`를 쓰세요.
 

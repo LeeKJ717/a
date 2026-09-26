@@ -499,13 +499,14 @@ def load_nodes(args, prompts):
         cfgs = [n for n in json.loads(args.nodes.read_text(encoding="utf-8"))["nodes"] if n.get("enabled", True)]
         if args.only_nodes:
             cfgs = [n for n in json.loads(args.nodes.read_text(encoding="utf-8"))["nodes"] if n["name"] in args.only_nodes]
-    nodes = []
+    nodes, unready = [], []
     for cfg in cfgs:
         node = Node(cfg, prompts, args.model)
         ok, msg = node.health()
         log("서버 %-9s %-28s %s" % (node.name, node.url, msg))
-        if ok:
-            nodes.append(node)
+        (nodes if ok else unready).append(node)
+    if args.unready_file:  # run_holymind.sh가 이 목록의 서버를 자동 준비(deploy_nodes.sh)한다
+        Path(args.unready_file).write_text("".join(n.name + "\n" for n in unready), encoding="utf-8")
     return nodes
 
 
@@ -590,6 +591,7 @@ def main(argv=None):
     ap.add_argument("--status", action="store_true")
     ap.add_argument("--export", action="store_true", help="생성 없이 내보내기만")
     ap.add_argument("--check-nodes", action="store_true", help="서버 접속·모델 확인만")
+    ap.add_argument("--unready-file", help="준비 안 된 서버 이름을 이 파일에 기록 (자동 준비용)")
     args = ap.parse_args(argv)
 
     cur = json.loads(CURRICULUM.read_text(encoding="utf-8"))

@@ -100,6 +100,9 @@ def main():
             {"stem": "예시 문항", "choices": list("ABCDE"), "answer": 2, "explanation": "e", "difficulty": 3},
             ensure_ascii=False) + "\n", encoding="utf-8")
         args = ["--out", d, "--target", "30", "--subunits", "3-3", "4-4", "5-1", "--nodes", str(nodes_file)]
+        unready = Path(d) / "unready.txt"
+        assert generate.main(args + ["--check-nodes", "--unready-file", str(unready)]) == 0
+        assert unready.read_text().split() == ["nomodel"], unready.read_text()  # 자동 준비 대상
         generate.main(args)
         generate.main(args)  # 재실행 시 이미 채워졌으므로 추가 생성 없어야 함
         conn = sqlite3.connect(Path(d) / "highsci.db")
