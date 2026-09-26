@@ -94,6 +94,9 @@ class Site(BaseHTTPRequestHandler):
 
 
 def main():
+    urls = fetch_refs.expand_templates({"seed_templates": [
+        {"template": "https://x/{year}/{level}/{vak}", "vars": {"year": "2024-2026", "level": ["vwo", "havo"], "vak": ["nk"]}}]})
+    assert len(urls) == 6 and urls[0] == "https://x/2024/vwo/nk" and urls[-1] == "https://x/2026/havo/nk", urls
     srv = ThreadingHTTPServer(("127.0.0.1", 0), Site)
     threading.Thread(target=srv.serve_forever, daemon=True).start()
     host = "127.0.0.1:%d" % srv.server_port

@@ -118,11 +118,18 @@ sudo apt install poppler-utils      # PDF 본문 추출용 (최초 1회)
 | 인도 | NCERT 교과서 9~12학년 / NCERT Exemplar / NTA JEE Main·NEET 기출 |
 | 프랑스 | 에듀스콜 Physique-chimie / 전국 문제은행(BNS)의 Enseignement scientifique·SVT |
 | 영국 | AQA GCSE Combined·A-level / OCR Gateway / Pearson Edexcel / Cambridge IGCSE |
+| 네덜란드 | Examenblad 중앙시험 VWO·HAVO 물리·화학·생물·지리 (2016~2026, 채점기준 포함) |
+| 스웨덴 | Skolverket 9학년 국가시험 (생물·물리·화학) / 고등학교 평가 지원 자료 (naturkunskap 포함) / 예테보리대학 예시 과제 |
+| 대만 | 대학입시센터 학측 자연과 기출·정답과 신교육과정 예시 시험지 |
+| 국제 | OECD PISA 과학 공개 문항 / IEA TIMSS·TIMSS Advanced 공개 문항 |
+| 캐나다·호주·뉴질랜드 | 앨버타 졸업시험 공개 문항 (Science 30 등) / NSW HSC / VCE / NCEA |
+| 싱가포르 | SEAB 교육과정 문서·예시 시험지 (역대 기출은 판매용이라 제외) |
 
 - **저장 위치**: 원본은 `highsci_db/references/<나라>/<출처>/`에 둡니다. 목록, 쪽별 본문, 전문 검색 색인은 `highsci.db`에 넣습니다. 테이블은 `ref_sources`, `ref_docs`, `ref_pages`, `ref_fts`입니다.
 - **파일 처리**: 같은 내용의 파일은 하나만 보관합니다. ZIP(NCERT 교과서)은 안의 PDF까지 풉니다. 로그인 페이지나 차단 페이지는 걸러냅니다.
 - **문서와 중단원 연결**: `ref_doc_subunits`에 참고 문서의 쪽과 우리 중단원(3-3 등)을 연결해 기록합니다.
 - **한국 자료 범위**: 과학탐구, 통합과학(옛 공통과학 포함), 정답·해설만 받습니다. 다른 과목은 파일명을 보고 걸러냅니다. 전 과목이 필요하면 해당 출처의 `include`와 `exclude`를 빈 문자열로 바꾸세요. 2028학년도 수능부터 탐구 영역이 통합과학으로 바뀌므로 예시문항은 문제은행과 책의 1순위 기준 자료입니다.
+- **시작 URL 템플릿**: 네덜란드처럼 `연도/레벨/과목` 규칙이 있는 사이트는 `seed_templates`로 시작 URL을 한꺼번에 만듭니다. 예를 들어 `"year": "2016-2026"`처럼 범위로 적을 수 있습니다.
 - **게시판 처리**: 여러 쪽으로 나뉜 목록은 끝까지 따라갑니다(`paginate`). `fileDown.do`처럼 확장자가 없는 링크(`doc_url`)와 자바스크립트 다운로드(`js_links`)도 받습니다. 한글 파일명은 UTF-8, CP949, RFC 5987 방식을 모두 해석합니다.
 - **robots.txt**: 공공기관 사이트 중에는 robots.txt로 자동 수집을 전부 막아 둔 곳이 있습니다. `status`에서 건너뜀이 많은 출처는 공개 파일을 개인 참고용으로 받는 경우에 한해 `./refs/run_refs.sh --sources <출처id> --ignore-robots`로 받을 수 있습니다. 요청 간격 1.5초는 그대로 유지됩니다.
 - **사이트 구조가 바뀌어 못 찾을 때**: 그 출처의 `seeds`, `include`, `follow`만 고치면 됩니다. 로그인이 필요하거나 자바스크립트로만 그려지는 사이트(NAEP 문항 도구 등)는 일부만 수집될 수 있습니다.

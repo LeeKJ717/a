@@ -156,6 +156,25 @@ def add_found(conn, src, url, found_on, text):
 
 # ---------------------------------------------------------------- discover
 
+def expand_templates(src):
+    """seed_templates: {"template": ".../{year}/{level}/...", "vars": {"year": [2019, 2020], "level": ["vwo"]}}
+    → 모든 조합의 시작 URL. vars 값에 "2015-2026" 같은 범위 문자열도 가능."""
+    import itertools
+    urls = []
+    for t in src.get("seed_templates", []):
+        keys = list(t["vars"])
+        values = []
+        for k in keys:
+            v = t["vars"][k]
+            if isinstance(v, str) and re.fullmatch(r"\d+-\d+", v):
+                a, b = map(int, v.split("-"))
+                v = list(range(a, b + 1))
+            values.append(v)
+        for combo in itertools.product(*values):
+            urls.append(t["template"].format(**dict(zip(keys, combo))))
+    return urls
+
+
 def discover(conn, http, src):
     found_before = db(conn, "SELECT COUNT(*) FROM ref_docs WHERE source_id=?", (src["id"],), fetch=True)[0][0]
     for url in src.get("direct", []):
@@ -168,7 +187,7 @@ def discover(conn, http, src):
     doc_url = re.compile(src["doc_url"], re.I) if src.get("doc_url") else None      # 확장자 없는 다운로드 링크
     paginate = re.compile(src["paginate"], re.I) if src.get("paginate") else None   # 게시판 다음 쪽(깊이 증가 없음)
     domains = set(src.get("allow_domains", []))
-    queue = [(u, 0) for u in src.get("seeds", [])]
+    queue = [(u, 0) for u in src.get("seeds", []) + expand_templates(src)]
     seen, pages = set(), 0
     while queue and pages < src.get("max_pages", MAX_PAGES_PER_SOURCE):
         url, depth = queue.pop(0)
