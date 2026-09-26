@@ -3,7 +3,7 @@
   "nodes": [
     {"name": "holymind", "url": "http://localhost:11434", "ssh": "", "slots": 3, "timeout": 600, "model": null, "enabled": true, "gpu": "16GB × 1", "note": "코디네이터 겸 주력 GPU. sudo ./setup_node.sh --parallel 3 로 직접 준비"},
     {"name": "z840", "url": "http://192.168.0.84:11434", "ssh": "192.168.0.84", "slots": 2, "timeout": 600, "model": null, "enabled": true, "gpu": "12GB × 1"},
-    {"name": "z440", "url": "http://192.168.0.6:11434", "ssh": "192.168.0.6", "slots": 2, "timeout": 600, "model": null, "enabled": true, "gpu": "VRAM 확인 필요", "note": "공개 웹 운영 서버 — 사이트가 느려지면 slots 1로"},
-    {"name": "soul3", "url": "http://192.168.0.20:11434", "ssh": "192.168.0.20", "slots": 2, "timeout": 600, "model": null, "enabled": true, "gpu": "VRAM 확인 필요"}
+    {"name": "z440", "url": "http://192.168.0.6:11434", "ssh": "192.168.0.6", "slots": 2, "timeout": 600, "model": null, "enabled": true, "gpu": "12GB × 1", "note": "공개 웹 운영 서버 — 사이트가 느려지면 slots 1로"},
+    {"name": "soul3", "url": "http://192.168.0.20:11434", "ssh": "192.168.0.20", "slots": 2, "timeout": 600, "model": null, "enabled": true, "gpu": "12GB × 1"}
   ]
 }
