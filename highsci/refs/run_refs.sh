@@ -4,7 +4,7 @@
 #   ./refs/run_refs.sh --discover      # 링크만 찾아 목록화
 #   ./refs/run_refs.sh status | log | stop
 #   ./refs/run_refs.sh search 自由落下
-#   NEIS_API_KEY=... ./refs/run_refs.sh --schools   # 서울 중·고 학교별 기출
+#   NEIS_API_KEY=... ./refs/run_refs.sh --schools [--region 서울 경기]   # 중·고 학교별 기출
 set -euo pipefail
 cd "$(dirname "$0")"
 OUT="${HIGHSCI_OUT:-$(cd .. && python3 -c 'import generate; print(generate.default_out_dir())')}"

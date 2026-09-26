@@ -324,6 +324,8 @@ def download(conn, http, src, out, retry_errors):
                 continue
             path, sha, size, mime = fetch_file(http, url, folder)
             finish_file(conn, out, doc_id, path, sha, size, mime)
+            # 링크 글자에 연도가 없으면 서버가 준 파일명에서 추정
+            db(conn, "UPDATE ref_docs SET year=COALESCE(year, ?) WHERE id=?", (guess_year(path.name), doc_id))
             ok += 1
             if path.suffix.lower() == ".zip":
                 unpack_zip(conn, out, src, doc_id, url, path)
@@ -488,42 +490,66 @@ def extract(conn, out, src):
 NEIS_URL = "https://open.neis.go.kr/hub/schoolInfo"
 
 
-def load_schools(tpl, csv_path=None, kinds=None):
-    """학교 목록 [{code,name,kind,office,homepage}]. CSV가 있으면 CSV, 없으면 나이스 교육정보 개방 포털 API(NEIS_API_KEY)."""
+def neis_offices(tpl, regions=None):
+    """{지역명: 교육청코드}. 템플릿 neis.offices에서 regions(예: ["서울", "경기"])만 고른다."""
+    offices = tpl["neis"].get("offices") or {"서울": tpl["neis"]["office"]}
+    if regions:
+        unknown = [r for r in regions if r not in offices]
+        if unknown:
+            raise SystemExit("알 수 없는 지역 %s — sources.json 학교 템플릿의 neis.offices에 추가하세요 (가능: %s)"
+                             % (unknown, ", ".join(offices)))
+        offices = {r: offices[r] for r in regions}
+    return offices
+
+
+def load_schools(tpl, csv_path=None, kinds=None, regions=None):
+    """학교 목록 [{code,name,kind,office,region,homepage}].
+    CSV가 있으면 CSV, 없으면 나이스 교육정보 개방 포털 API(NEIS_API_KEY)로 지역(교육청)별로 받는다."""
     kinds = kinds or tpl["neis"]["kinds"]
-    office = tpl["neis"]["office"]
+    offices = neis_offices(tpl, regions)
+    region_of = {code: name for name, code in offices.items()}
     if csv_path:
         pick = lambda row, *keys: next((row[k].strip() for k in keys if row.get(k)), "")
+        all_offices = neis_offices(tpl)  # 지역명→코드 조회는 필터 전 전체 표로
+        default_office = next(iter(all_offices.values()))
         with open(csv_path, encoding="utf-8-sig") as f:
-            rows = [{"code": pick(r, "code", "SD_SCHUL_CODE", "표준학교코드", "학교코드"),
-                     "name": pick(r, "name", "SCHUL_NM", "학교명"),
-                     "kind": pick(r, "kind", "SCHUL_KND_SC_NM", "학교종류명", "학교급"),
-                     "office": office,
-                     "homepage": pick(r, "homepage", "HMPG_ADRES", "홈페이지주소", "홈페이지")} for r in csv.DictReader(f)]
-        return [r for r in rows if r["code"] and r["kind"] in kinds]
+            rows = []
+            for r in csv.DictReader(f):
+                off = pick(r, "office", "ATPT_OFCDC_SC_CODE", "시도교육청코드")
+                reg = pick(r, "region", "시도", "지역")
+                off = off or all_offices.get(reg) or (None if reg else default_office)
+                rows.append({"code": pick(r, "code", "SD_SCHUL_CODE", "표준학교코드", "학교코드"),
+                             "name": pick(r, "name", "SCHUL_NM", "학교명"),
+                             "kind": pick(r, "kind", "SCHUL_KND_SC_NM", "학교종류명", "학교급"),
+                             "office": off, "region": region_of.get(off, reg),
+                             "homepage": pick(r, "homepage", "HMPG_ADRES", "홈페이지주소", "홈페이지")})
+        return [r for r in rows if r["code"] and r["kind"] in kinds and r["office"] in region_of]
     key = os.environ.get("NEIS_API_KEY")
     if not key:
         raise SystemExit("NEIS_API_KEY가 없습니다. https://open.neis.go.kr 에서 무료 인증키를 받아 "
                          "export NEIS_API_KEY=... 후 다시 실행하거나 --school-csv로 학교 목록을 주세요.")
     rows = []
-    for kind in kinds:
-        page = 1
-        while True:
-            q = urllib.parse.urlencode({"KEY": key, "Type": "json", "pIndex": page, "pSize": 1000,
-                                        "ATPT_OFCDC_SC_CODE": office, "SCHUL_KND_SC_NM": kind})
-            with urllib.request.urlopen(NEIS_URL + "?" + q, timeout=30) as r:
-                data = json.loads(r.read().decode("utf-8"))
-            if "schoolInfo" not in data:  # 결과 없음/오류는 {"RESULT": {...}}
-                msg = data.get("RESULT", {}).get("MESSAGE", "")
-                if page == 1 and msg and "데이터가 없습니다" not in msg:
-                    raise SystemExit("나이스 API 오류: %s" % msg)
-                break
-            chunk = data["schoolInfo"][1]["row"]
-            rows += [{"code": x["SD_SCHUL_CODE"], "name": x["SCHUL_NM"], "kind": x["SCHUL_KND_SC_NM"],
-                      "office": x["ATPT_OFCDC_SC_CODE"], "homepage": (x.get("HMPG_ADRES") or "").strip()} for x in chunk]
-            if len(chunk) < 1000:
-                break
-            page += 1
+    for region, office in offices.items():
+        for kind in kinds:
+            page = 1
+            while True:
+                q = urllib.parse.urlencode({"KEY": key, "Type": "json", "pIndex": page, "pSize": 1000,
+                                            "ATPT_OFCDC_SC_CODE": office, "SCHUL_KND_SC_NM": kind})
+                with urllib.request.urlopen(NEIS_URL + "?" + q, timeout=30) as r:
+                    data = json.loads(r.read().decode("utf-8"))
+                if "schoolInfo" not in data:  # 결과 없음/오류는 {"RESULT": {...}}
+                    msg = data.get("RESULT", {}).get("MESSAGE", "")
+                    if page == 1 and msg and "데이터가 없습니다" not in msg:
+                        raise SystemExit("나이스 API 오류: %s" % msg)
+                    break
+                chunk = data["schoolInfo"][1]["row"]
+                rows += [{"code": x["SD_SCHUL_CODE"], "name": x["SCHUL_NM"], "kind": x["SCHUL_KND_SC_NM"],
+                          "office": x["ATPT_OFCDC_SC_CODE"], "region": region,
+                          "homepage": (x.get("HMPG_ADRES") or "").strip()} for x in chunk]
+                if len(chunk) < 1000:
+                    break
+                page += 1
+        log("학교 목록: %s(%s) %d곳" % (region, office, sum(1 for r in rows if r["office"] == office)))
     return rows
 
 
@@ -547,7 +573,7 @@ def school_sources(tpl, schools):
         bare = host[4:] if host.startswith("www.") else host
         src = {k: v for k, v in tpl.items() if k not in ("type", "neis", "_comment")}
         src.update({"id": "kr_school_%s" % s["code"], "org": s["name"],
-                    "exam": "%s 정기고사(중간·기말) 기출" % s["kind"], "seeds": [home],
+                    "exam": "%s %s 정기고사(중간·기말) 기출" % (s.get("region", ""), s["kind"]), "seeds": [home],
                     "allow_domains": sorted({host, bare, "www." + bare} | set(tpl.get("extra_domains", [])))})
         s["homepage"] = home
         s["source_id"] = src["id"]
@@ -577,11 +603,11 @@ def status(conn):
 
 def schools_detail(conn):
     rows = conn.execute(
-        "SELECT sc.kind, sc.name, COUNT(d.id), SUM(d.status='ok'), SUM(d.status='error'), sc.homepage FROM ref_schools sc "
-        "LEFT JOIN ref_docs d ON d.source_id=sc.source_id GROUP BY sc.code ORDER BY SUM(d.status='ok') DESC, sc.kind, sc.name"
-    ).fetchall()
-    for kind, name, found, ok, err, home in rows:
-        print("%-5s %-20s 발견 %4d  완료 %4s  오류 %4s  %s" % (kind, name, found, ok or 0, err or 0, home))
+        "SELECT sc.office, sc.kind, sc.name, COUNT(d.id), SUM(d.status='ok'), SUM(d.status='error'), sc.homepage "
+        "FROM ref_schools sc LEFT JOIN ref_docs d ON d.source_id=sc.source_id GROUP BY sc.code "
+        "ORDER BY SUM(d.status='ok') DESC, sc.office, sc.kind, sc.name").fetchall()
+    for office, kind, name, found, ok, err, home in rows:
+        print("%-4s %-5s %-20s 발견 %4d  완료 %4s  오류 %4s  %s" % (office, kind, name, found, ok or 0, err or 0, home))
 
 
 def search(conn, q, limit=20):
@@ -608,8 +634,9 @@ def main(argv=None):
     ap.add_argument("--workers", type=int, default=4, help="동시에 처리할 출처 수 (같은 사이트는 항상 순차)")
     ap.add_argument("--ignore-robots", action="store_true",
                     help="robots.txt 무시 (공개 파일을 사람 속도로 개인 참고용으로 받을 때만)")
-    ap.add_argument("--schools", action="store_true", help="서울 중·고등학교 홈페이지별 정기고사 기출 수집 모드")
+    ap.add_argument("--schools", action="store_true", help="중·고등학교 홈페이지별 정기고사 기출 수집 모드 (서울·경기)")
     ap.add_argument("--school-csv", help="학교 목록 CSV (code,name,kind,homepage 또는 나이스 컬럼명). 없으면 나이스 API")
+    ap.add_argument("--region", nargs="+", help="학교 지역 (서울 경기 …, 기본: 학교 템플릿의 전체 지역)")
     ap.add_argument("--school-kind", nargs="+", help="중학교 / 고등학교 중 일부만")
     ap.add_argument("--school-name", nargs="+", help="학교 이름에 이 글자가 들어간 곳만 (시험 삼아 몇 곳만 돌릴 때)")
     ap.add_argument("--limit-schools", type=int, help="앞에서부터 N개 학교만")
@@ -627,7 +654,7 @@ def main(argv=None):
 
     if args.schools:
         tpl = next(s for s in cfg["sources"] if s.get("type") == "school_template")
-        schools = load_schools(tpl, args.school_csv, args.school_kind)
+        schools = load_schools(tpl, args.school_csv, args.school_kind, args.region)
         if args.school_name:
             schools = [s for s in schools if any(n in s["name"] for n in args.school_name)]
         schools = schools[:args.limit_schools] if args.limit_schools else schools
@@ -635,7 +662,8 @@ def main(argv=None):
         for s in schools:
             db(conn, "INSERT OR REPLACE INTO ref_schools(code,name,kind,office,homepage,source_id) VALUES (?,?,?,?,?,?)",
                (s["code"], s["name"], s["kind"], s["office"], s["homepage"], s.get("source_id")))
-        log("학교 %d곳 (홈페이지 있는 곳 %d)" % (len(schools), len(srcs)))
+        log("학교 %d곳 (홈페이지 있는 곳 %d) — 지역 %s" % (len(schools), len(srcs),
+            ", ".join(sorted({s.get("region") or s["office"] for s in schools}))))
     else:
         srcs = [s for s in cfg["sources"] if s.get("type") != "school_template" and
                 (args.all or s.get("enabled", True) or (args.sources and s["id"] in args.sources))]
