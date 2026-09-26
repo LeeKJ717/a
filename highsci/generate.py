@@ -216,6 +216,7 @@ class Node:
         self.name = cfg["name"]
         self.url = cfg["url"].rstrip("/")
         self.slots = int(cfg.get("slots", 1))
+        self.timeout = int(cfg.get("timeout", 600))  # 요청당 제한 시간(초). CPU 전용 서버는 크게
         self.gemma = Gemma(prompts, self.url, model_override or cfg.get("model"))
         self.fails = 0
         self.down_until = 0.0
@@ -431,7 +432,7 @@ class Scheduler:
     def verified(self, item, node, code):
         text = item["stem"] + "\n" + "\n".join("%d) %s" % (i, c) for i, c in enumerate(item["choices"], 1))
         try:
-            v = node.gemma.call_json(VERIFY_KEY, text, timeout=300)
+            v = node.gemma.call_json(VERIFY_KEY, text, timeout=node.timeout)
             return bool(v.get("valid")) and int(v.get("answer", 0)) == item["answer"]
         except Exception as e:
             log("[%s@%s] 검증 오류: %s" % (code, node.name, e))
@@ -454,7 +455,7 @@ def node_worker(node, sched):
             continue
         code, t0, accepted, rejected = task.su["code"], time.time(), 0, task.n
         try:
-            data = node.gemma.call_json(GEN_KEY, json.dumps(task.spec, ensure_ascii=False, indent=1))
+            data = node.gemma.call_json(GEN_KEY, json.dumps(task.spec, ensure_ascii=False, indent=1), timeout=node.timeout)
             raw = data.get("items", []) if isinstance(data, dict) else data
             accepted, rejected = sched.store(task, raw, node)
             node.ok()
