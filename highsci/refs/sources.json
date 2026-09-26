@@ -279,6 +279,46 @@
      "seeds": ["https://www.seab.gov.sg/gce-o-level/o-level-syllabuses-examined-for-school-candidates-2026/",
                "https://www.seab.gov.sg/gce-a-level/a-level-syllabuses-examined-for-school-candidates-2026/"],
      "allow_domains": ["www.seab.gov.sg", "seab.gov.sg"], "max_depth": 0, "max_pages": 20,
-     "include": "scien|physics|chemistry|biology|5086|5087|5088|6091|6092|6093|9749|9729|9744", "exclude": ""}
+     "include": "scien|physics|chemistry|biology|5086|5087|5088|6091|6092|6093|9749|9729|9744", "exclude": ""},
+    {"id": "de_iqb_abiturpool", "country": "독일", "org": "IQB (주 공동 아비투어 문제 풀)", "exam": "아비투어 공동 문제 풀 Biologie·Chemie·Physik (2025/26부터) + 예시 과제·채점 기준", "level": "고2~고3",
+     "subjects": ["물리", "화학", "생물"], "license": "저작권 IQB · 교육용 공개", "enabled": true,
+     "seeds": ["https://www.iqb.hu-berlin.de/de/schule/aufgaben/sekii/",
+               "https://www.iqb.hu-berlin.de/de/schule/sekundarstufe-ii/begleitendedokumente/",
+               "https://www.iqb.hu-berlin.de/de/bista/implementation-und-ueberpruefung/abituraufgabenpools/"],
+     "allow_domains": ["www.iqb.hu-berlin.de", "iqb.hu-berlin.de"], "max_depth": 2, "max_pages": 400,
+     "follow": "aufgaben|sekii|sekundarstufe-ii|abitur|biologie|chemie|physik|naturwiss", "doc_url": "/fileadmin/|/download",
+     "include": "biolog|chemie|physik|naturwiss|operator|erwartungshorizont", "exclude": "deutsch|mathematik|englisch|franz"},
+
+    {"id": "de_iqb_seki_ns", "country": "독일", "org": "IQB", "exam": "중등 I 교육표준(Bildungsstandards) 자연과학 예시 과제 (Mittlerer Schulabschluss)", "level": "중3~고1",
+     "subjects": ["물리", "화학", "생물"], "license": "저작권 IQB · 교육용 공개", "enabled": true,
+     "seeds": ["https://www.iqb.hu-berlin.de/de/schule/aufgaben/"],
+     "allow_domains": ["www.iqb.hu-berlin.de", "iqb.hu-berlin.de"], "max_depth": 2, "max_pages": 300,
+     "follow": "aufgaben|seki|sekundarstufe-i|naturwiss|biologie|chemie|physik", "doc_url": "/fileadmin/|/download",
+     "include": "biolog|chemie|physik|naturwiss", "exclude": "deutsch|mathematik|englisch|franz"},
+
+    {"id": "de_berlin_brandenburg", "country": "독일", "org": "Bildungsserver Berlin-Brandenburg (LISUM/ISQ)", "exam": "베를린·브란덴부르크 중앙 아비투어 Physik·Chemie·Biologie 기출·풀이", "level": "고2~고3",
+     "subjects": ["물리", "화학", "생물"], "license": "최근 베를린 과제는 CC BY(저작자 LISUM) — 출처 표기 시 재사용 가능, 나머지는 주 저작권", "enabled": true,
+     "seed_templates": [{"template": "https://bildungsserver.berlin-brandenburg.de/unterricht/faecher/mathematik-naturwissenschaften/{fach}/zentrale-pruefungen-und-leistungsbewertung/zentrale-pruefungen/abituraufgaben-{fach}",
+                         "vars": {"fach": ["physik", "chemie", "biologie"]}}],
+     "seeds": ["https://bildungsserver.berlin-brandenburg.de/unterricht/pruefungen/abitur-brandenburg/begriff/iqb"],
+     "allow_domains": ["bildungsserver.berlin-brandenburg.de", "www.isq-bb.de", "isq-bb.de"], "max_depth": 2, "max_pages": 400,
+     "follow": "physik|chemie|biologie|abitur|zentrale-pruefungen", "doc_url": "/fileadmin/|/download",
+     "include": "physik|chemie|biolog|abitur|aufgabe|loesung|lösung|erwartungshorizont", "exclude": "mathematik|deutsch|englisch"},
+
+    {"id": "de_bremen", "country": "독일", "org": "브레멘 주", "exam": "브레멘 아비투어 Biologie·Chemie·Physik 지난 시험 (저작권 처리 후 순차 공개)", "level": "고2~고3",
+     "subjects": ["물리", "화학", "생물"], "license": "브레멘 주 저작권", "enabled": true,
+     "seeds": ["https://www.bildungsserver.de/onlineressource.html?onlineressourcen_id=60213"],
+     "allow_domains": ["www.bildungsserver.de", "www.lis.bremen.de", "lis.bremen.de", "www.bildung.bremen.de", "bildung.bremen.de"],
+     "max_depth": 2, "max_pages": 300,
+     "follow": "bremen|abitur|pruefung|prüfung|onlineressource", "doc_url": "/sixcms/|/fileadmin/|/download",
+     "include": "biolog|chemie|physik", "exclude": "mathematik|deutsch|englisch|franz|spanisch|türkisch|geschichte|politik"},
+
+    {"id": "de_isb_bayern", "country": "독일", "org": "바이에른 ISB", "exam": "바이에른 아비투어 Physik·Chemie·Biologie 안내·예시 과제", "level": "고2~고3",
+     "subjects": ["물리", "화학", "생물"], "license": "바이에른 주 저작권 · 역대 기출 전체는 출판사 판매", "enabled": true,
+     "seed_templates": [{"template": "https://www.isb.bayern.de/schularten/gymnasium/leistungserhebungen/abiturpruefung/{fach}/",
+                         "vars": {"fach": ["physik", "chemie", "biologie"]}}],
+     "allow_domains": ["www.isb.bayern.de", "isb.bayern.de"], "max_depth": 1, "max_pages": 150,
+     "follow": "abiturpruefung", "doc_url": "/download",
+     "include": "physik|chemie|biolog|abitur|aufgabe|beispiel", "exclude": ""}
   ]
 }

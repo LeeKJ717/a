@@ -120,6 +120,7 @@ sudo apt install poppler-utils      # PDF 본문 추출용 (최초 1회)
 | 영국 | AQA GCSE Combined·A-level / OCR Gateway / Pearson Edexcel / Cambridge IGCSE |
 | 네덜란드 | Examenblad 중앙시험 VWO·HAVO 물리·화학·생물·지리 (2016~2026, 채점기준 포함) |
 | 스웨덴 | Skolverket 9학년 국가시험 (생물·물리·화학) / 고등학교 평가 지원 자료 (naturkunskap 포함) / 예테보리대학 예시 과제 |
+| 독일 | IQB 주 공동 아비투어 문제 풀 (2025/26부터 생물·화학·물리) / IQB 중등 교육표준 자연과학 예시 과제 / 베를린·브란덴부르크 아비투어 (최근 베를린 과제는 CC BY) / 브레멘 / 바이에른 ISB |
 | 대만 | 대학입시센터 학측 자연과 기출·정답과 신교육과정 예시 시험지 |
 | 국제 | OECD PISA 과학 공개 문항 / IEA TIMSS·TIMSS Advanced 공개 문항 |
 | 캐나다·호주·뉴질랜드 | 앨버타 졸업시험 공개 문항 (Science 30 등) / NSW HSC / VCE / NCEA |
