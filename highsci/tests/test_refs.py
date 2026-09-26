@@ -46,7 +46,32 @@ PAGES = {
     "/files/r7_seibutsu_kaitou.pdf": ("application/pdf", b"%PDF-1.4 bio answers"),
     "/files/login.pdf": ("text/html", b"<html>please log in</html>"),
     "/files/keph1dd.zip": ("application/zip", make_zip()),
+    # 한국형 게시판: 목록 여러 쪽 → 글 보기 → fileDown.do (확장자 없음, 파일명은 헤더로)
+    "/board/list.do?boardID=1500235&page=1": ("text/html; charset=utf-8", """<title>기출문제</title>
+        <a href="/board/view.do?boardID=1500235&seq=1">2025학년도 수능</a>
+        <a href="/board/list.do?boardID=1500235&page=2">2</a>""".encode()),
+    "/board/list.do?boardID=1500235&page=2": ("text/html; charset=utf-8", """
+        <a href="/board/view.do?boardID=1500235&seq=2">2024학년도 수능</a>
+        <a href="/board/list.do?boardID=1500235&page=3">3</a>""".encode()),
+    "/board/list.do?boardID=1500235&page=3": ("text/html; charset=utf-8", """
+        <a href="/board/view.do?boardID=1500235&seq=3">2023학년도 6월 모의평가 과학탐구</a>""".encode()),
+    "/board/view.do?boardID=1500235&seq=1": ("text/html; charset=utf-8", """<title>2025학년도 수능 문제 및 정답</title>
+        <a href="/board/fileDown.do?f=11">2025 과학탐구영역 문제</a>
+        <a href="/board/fileDown.do?f=12">2025 국어영역 문제</a>
+        <span onclick="fn_down('13')">정답표</span>""".encode()),
+    "/board/view.do?boardID=1500235&seq=2": ("text/html; charset=utf-8", """<title>2024학년도 수능</title>
+        <a href="/board/fileDown.do?f=21">물리학Ⅰ 문제</a>""".encode()),
+    "/board/view.do?boardID=1500235&seq=3": ("text/html; charset=utf-8", """<title>2023학년도 6월 모의평가 과학탐구영역</title>
+        <a href="/board/fileDown.do?f=31">문제지</a>""".encode()),
 }
+DISPO = {
+    "/board/fileDown.do?f=11": "attachment; filename=\"2025_수능_과학탐구.pdf\"".encode("utf-8").decode("latin-1"),
+    "/board/fileDown.do?f=13": "attachment; filename*=UTF-8''2025_%EC%A0%95%EB%8B%B5.pdf",
+    "/board/fileDown.do?f=21": "attachment; filename=\"2024_물리학I.pdf\"".encode("cp949").decode("latin-1"),
+    "/board/fileDown.do?f=31": "attachment; filename=\"mock_2306.pdf\"",
+}
+for k in DISPO:
+    PAGES[k] = ("application/octet-stream", ("%PDF-1.4 " + k).encode())
 
 
 class Site(BaseHTTPRequestHandler):
@@ -59,6 +84,8 @@ class Site(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(body)))
+        if self.path in DISPO:
+            self.send_header("Content-Disposition", DISPO[self.path])
         self.end_headers()
         self.wfile.write(body)
 
@@ -77,7 +104,12 @@ def main():
         "id": "jp_test", "country": "일본", "org": "t", "exam": "t", "subjects": ["물리"], "license": "t",
         "seeds": [base + "/kakomondai/"], "allow_domains": [host], "max_depth": 2,
         "follow": "/kakomondai/", "include": "物理|生物|化学|butsuri|seibutsu", "exclude": "正解(再)",
-        "direct": [base + "/files/missing.pdf"]}]}
+        "direct": [base + "/files/missing.pdf"]}, {
+        "id": "kr_test", "country": "한국", "org": "t", "exam": "t", "subjects": ["물리"], "license": "t",
+        "seeds": [base + "/board/list.do?boardID=1500235&page=1"], "allow_domains": [host], "max_depth": 1,
+        "follow": "board/(list|view)\\.do.*boardID=15002", "paginate": "board/list\\.do.*page=\\d+",
+        "doc_url": "fileDown", "js_links": [{"match": "fn_down\\('(\\d+)'\\)", "url": "/board/fileDown.do?f={0}"}],
+        "include": "과학|물리|정답", "exclude": "국어|수학|영어"}]}
     with tempfile.TemporaryDirectory() as d:
         fetch_refs.SOURCES = Path(d) / "sources.json"
         fetch_refs.SOURCES.write_text(json.dumps(cfg, ensure_ascii=False), encoding="utf-8")
@@ -99,12 +131,21 @@ def main():
         assert docs["keph1dd.zip#keph1dd/keph101.pdf"][0] == "ok" and docs["keph1dd.zip#keph1dd/keph102.pdf"][0] == "ok"
         assert not any("readme" in k for k in docs)
         files = sorted(str(p.relative_to(d)) for p in (Path(d) / "references").rglob("*") if p.is_file())
+        files = [f for f in files if "/jp_test/" in f]
         assert len(files) == 5, files                            # kiso, seibutsu, zip, zip 안 pdf 2개
         assert conn.execute("SELECT year FROM ref_docs WHERE url LIKE '%r7_seibutsu%'").fetchone()[0] == 2025
         n_text = conn.execute("SELECT COUNT(*) FROM ref_docs WHERE text_status='ok'").fetchone()[0]
-        assert n_text == 4, n_text                               # 중복·zip 원본 제외 PDF 4개
+        assert n_text == 8, n_text                               # 일본 4 (중복·zip 원본 제외) + 한국 4
         hits = conn.execute("SELECT COUNT(*) FROM ref_fts WHERE ref_fts MATCH '\"自由落下\"'").fetchone()[0]
-        assert hits == 4, hits
+        assert hits == 8, hits
+        kr = {r[0].split("f=")[1]: r[1:] for r in conn.execute(
+            "SELECT url,status,path,year FROM ref_docs WHERE source_id='kr_test'")}
+        print(kr)
+        assert set(kr) == {"11", "13", "21", "31"}, kr             # 국어(12) 제외, 3쪽까지 따라감, JS 링크 포함
+        assert kr["11"][1].endswith("2025_수능_과학탐구.pdf")        # UTF-8 원문 바이트 파일명
+        assert kr["13"][1].endswith("2025_정답.pdf")                 # RFC 5987
+        assert kr["21"][1].endswith("2024_물리학I.pdf")              # CP949 파일명
+        assert kr["31"][2] == 2023 and kr["31"][0] == "ok"          # 글 제목으로 과학 판별 + 연도
         fetch_refs.main(["--out", d, "--search", "運動量"])
         print("OK files:", files)
 

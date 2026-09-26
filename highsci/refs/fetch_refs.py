@@ -55,8 +55,9 @@ def log(msg):
 # ---------------------------------------------------------------- HTTP
 
 class Http:
-    def __init__(self, user_agent):
+    def __init__(self, user_agent, ignore_robots=False):
         self.ua = user_agent
+        self.ignore_robots = ignore_robots
 
     def _wait(self, url):
         host = urllib.parse.urlsplit(url).netloc
@@ -67,7 +68,9 @@ class Http:
         if wait > 0:
             time.sleep(wait)
 
-    def allowed(self, url):
+    def allowed(self, url, src=None):
+        if self.ignore_robots or (src and src.get("ignore_robots")):
+            return True
         parts = urllib.parse.urlsplit(url)
         base = "%s://%s" % (parts.scheme, parts.netloc)
         if base not in _robots:
@@ -162,15 +165,17 @@ def discover(conn, http, src):
     include = re.compile(src.get("include") or ".", re.I)
     exclude = re.compile(src["exclude"], re.I) if src.get("exclude") else None
     follow = re.compile(src.get("follow") or ".", re.I)
+    doc_url = re.compile(src["doc_url"], re.I) if src.get("doc_url") else None      # 확장자 없는 다운로드 링크
+    paginate = re.compile(src["paginate"], re.I) if src.get("paginate") else None   # 게시판 다음 쪽(깊이 증가 없음)
     domains = set(src.get("allow_domains", []))
     queue = [(u, 0) for u in src.get("seeds", [])]
     seen, pages = set(), 0
-    while queue and pages < MAX_PAGES_PER_SOURCE:
+    while queue and pages < src.get("max_pages", MAX_PAGES_PER_SOURCE):
         url, depth = queue.pop(0)
         if url in seen:
             continue
         seen.add(url)
-        if not http.allowed(url):
+        if not http.allowed(url, src):
             log("[%s] robots.txt 불허: %s" % (src["id"], url))
             continue
         try:
@@ -186,18 +191,30 @@ def discover(conn, http, src):
             p.feed(html)
         except Exception:
             pass
-        for href, text in p.links:
+        m = re.search(r"<title[^>]*>(.*?)</title>", html, re.I | re.S)
+        page_title = " ".join(m.group(1).split())[:200] if m else ""  # 게시글 제목(과목명이 여기만 있을 때)
+        links = list(p.links)
+        # 자바스크립트 다운로드(onclick="fileDown('123')" 등)를 실제 URL로 바꾸는 규칙
+        for rule in src.get("js_links", []):
+            for m in re.finditer(rule["match"], html):
+                links.append((rule["url"].format(*m.groups()), m.group(0)[:200]))
+        for href, text in links:
             if not href or href.startswith(("mailto:", "javascript:", "#")):
                 continue
             absu = urllib.parse.urljoin(final, href).split("#")[0]
             host = urllib.parse.urlsplit(absu).netloc
             if host not in domains:
                 continue
-            probe = urllib.parse.unquote(absu) + " " + text
-            if is_doc(absu):
-                if include.search(probe) and not (exclude and exclude.search(probe)):
-                    add_found(conn, src, absu, final, text)
-            elif depth < src.get("max_depth", 1) and follow.search(absu) and absu not in seen:
+            link_probe = urllib.parse.unquote(absu) + " " + text
+            probe = link_probe + " " + page_title  # 포함 판단은 글 제목까지, 제외 판단은 링크 자체만
+            if is_doc(absu) or (doc_url and doc_url.search(absu)):
+                if include.search(probe) and not (exclude and exclude.search(link_probe)):
+                    add_found(conn, src, absu, final, (text + " | " + page_title).strip(" |"))
+            elif absu in seen:
+                continue
+            elif paginate and paginate.search(absu) and follow.search(absu):
+                queue.append((absu, depth))
+            elif depth < src.get("max_depth", 1) and follow.search(absu):
                 queue.append((absu, depth + 1))
     n = db(conn, "SELECT COUNT(*) FROM ref_docs WHERE source_id=?", (src["id"],), fetch=True)[0][0]
     log("[%s] 페이지 %d개 탐색 → 문서 %d개 (신규 %d)" % (src["id"], pages, n, n - found_before))
@@ -225,6 +242,33 @@ def discover_openstax(conn, http, src):
 
 # ---------------------------------------------------------------- download
 
+def header_filename(resp):
+    """Content-Disposition의 파일명 (RFC 5987, 퍼센트 인코딩, UTF-8/CP949 원문 바이트 모두 처리)."""
+    raw = resp.headers.get("Content-Disposition", "")
+    m = re.search(r"filename\*\s*=\s*([\w-]*)''([^;]+)", raw, re.I)
+    if m:
+        name = urllib.parse.unquote(m.group(2).strip().strip('"'), encoding=m.group(1) or "utf-8", errors="replace")
+    else:
+        m = re.search(r'filename\s*=\s*"?([^";]+)"?', raw, re.I)
+        if not m:
+            return None
+        name = m.group(1).strip()
+        try:  # http.client는 헤더를 latin-1로 읽으므로 원래 바이트로 되돌려 다시 디코딩
+            b = name.encode("latin-1")
+            for enc in ("utf-8", "cp949"):
+                try:
+                    name = b.decode(enc)
+                    break
+                except UnicodeDecodeError:
+                    pass
+        except UnicodeEncodeError:
+            pass
+        if "%" in name:
+            name = urllib.parse.unquote(name)
+    name = re.sub(r"[^\w.\-()]+", "_", Path(name.replace("\\", "/")).name)[:150]
+    return name or None
+
+
 def safe_name(url):
     name = urllib.parse.unquote(Path(urllib.parse.urlsplit(url).path).name) or "index"
     name = re.sub(r"[^\w.\-가-힣ぁ-んァ-ン一-龥]+", "_", name)[:120]
@@ -240,7 +284,7 @@ def download(conn, http, src, out, retry_errors):
     ok = 0
     for doc_id, url in rows:
         try:
-            if not http.allowed(url):
+            if not http.allowed(url, src):
                 db(conn, "UPDATE ref_docs SET status='skipped', error='robots.txt' WHERE id=?", (doc_id,))
                 continue
             path, sha, size, mime = fetch_file(http, url, folder)
@@ -261,7 +305,7 @@ def fetch_file(http, url, folder):
         if size > MAX_BYTES:
             raise ValueError("파일이 너무 큼 (%d MB)" % (size >> 20))
         mime = r.headers.get("Content-Type", "")
-        name = safe_name(r.geturl() or url)
+        name = header_filename(r) or safe_name(r.geturl() or url)
         tmp = folder / (".part-" + hashlib.sha1(url.encode()).hexdigest()[:12])
         h, total, head = hashlib.sha256(), 0, b""
         with open(tmp, "wb") as f:
@@ -410,6 +454,8 @@ def main(argv=None):
     ap.add_argument("--extract", action="store_true", help="본문 추출만")
     ap.add_argument("--retry-errors", action="store_true", help="실패했던 파일도 다시 받기")
     ap.add_argument("--workers", type=int, default=4, help="동시에 처리할 출처 수 (같은 사이트는 항상 순차)")
+    ap.add_argument("--ignore-robots", action="store_true",
+                    help="robots.txt 무시 (공개 파일을 사람 속도로 개인 참고용으로 받을 때만)")
     ap.add_argument("--status", action="store_true")
     ap.add_argument("--search")
     args = ap.parse_args(argv)
@@ -432,7 +478,7 @@ def main(argv=None):
            (s["id"], s["country"], s["org"], s["exam"], s.get("level"), json.dumps(s.get("subjects", []), ensure_ascii=False),
             s.get("license"), json.dumps(s, ensure_ascii=False)))
     steps = [n for n in ("discover", "download", "extract") if getattr(args, n)] or ["discover", "download", "extract"]
-    http = Http(cfg["user_agent"])
+    http = Http(cfg["user_agent"], args.ignore_robots)
     log("출처 %d개 | 단계 %s | 저장 %s" % (len(srcs), "→".join(steps), args.out / "references"))
 
     def run(src):
