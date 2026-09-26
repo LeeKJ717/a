@@ -1,2 +1,9 @@
 __pycache__/
 *.pyc
+# 참고 자료 원본·DB는 저작권 자료이므로 저장소에 올리지 않는다 (holymind highsci_db에만 보관)
+references/
+*.pdf
+*.zip
+*.db
+*.db-wal
+*.db-shm

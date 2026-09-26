@@ -98,8 +98,35 @@ logs/generate.log
 | `responses` | 웹 단계의 학생 응답 로그 → IRT 보정(`irt_calibrated`, `irt_n`) |
 | `user_concept_mastery` | 학생별 개념 능력치 θ → 그래프 기반 다음 문항·선수 개념 추천 |
 
+## 해외 참고 자료 수집 (`refs/`)
+
+일본·미국·인도·프랑스·영국의 입시 기출과 교과 자료를 **참고용으로** holymind에 내려받아 DB에 저장합니다. 문항 유형 분석, 책 목차 설계, 생성 프롬프트 개선에 씁니다.
+
+```bash
+sudo apt install poppler-utils      # PDF 본문 추출용 (최초 1회)
+./refs/run_refs.sh                  # 백그라운드 수집 (이어하기 가능, 사이트당 1.5초 간격, robots.txt 준수)
+./refs/run_refs.sh status           # 출처별 대기·완료·중복·오류·용량·본문 추출 수
+./refs/run_refs.sh search 運動量     # 모든 자료 본문 검색 (한·일·영·불)
+./refs/run_refs.sh --discover       # 내려받지 않고 링크만 찾아 목록 확인
+```
+
+| 나라 | 출처 (`refs/sources.json`) |
+|---|---|
+| 일본 | 대학입시센터 공통테스트 이과 (최근 3년) |
+| 미국 | AP 물리1·2, 화학, 생물, 환경과학 서술형 기출과 채점기준 / OpenStax 교과서 (CC BY) / NAEP 과학 / NGSS 과제 |
+| 인도 | NCERT 교과서 9~12학년 / NCERT Exemplar / NTA JEE Main·NEET 기출 |
+| 프랑스 | 에듀스콜 Physique-chimie / 전국 문제은행(BNS)의 Enseignement scientifique·SVT |
+| 영국 | AQA GCSE Combined·A-level / OCR Gateway / Pearson Edexcel / Cambridge IGCSE |
+
+- **저장 위치**: 원본은 `highsci_db/references/<나라>/<출처>/`에 둡니다. 목록, 쪽별 본문, 전문 검색 색인은 `highsci.db`에 넣습니다. 테이블은 `ref_sources`, `ref_docs`, `ref_pages`, `ref_fts`입니다.
+- **파일 처리**: 같은 내용의 파일은 하나만 보관합니다. ZIP(NCERT 교과서)은 안의 PDF까지 풉니다. 로그인 페이지나 차단 페이지는 걸러냅니다.
+- **문서와 중단원 연결**: `ref_doc_subunits`에 참고 문서의 쪽과 우리 중단원(3-3 등)을 연결해 기록합니다.
+- **사이트 구조가 바뀌어 못 찾을 때**: 그 출처의 `seeds`, `include`, `follow`만 고치면 됩니다. 로그인이 필요하거나 자바스크립트로만 그려지는 사이트(NAEP 문항 도구 등)는 일부만 수집될 수 있습니다.
+- **저작권**: 수집한 자료는 개인 참고용입니다. 저장소 커밋, 웹 공개, 책 전재는 하지 않습니다. `.gitignore`가 PDF, ZIP, DB 파일을 막습니다. 책이나 문제에 그대로 쓸 수 있는 것은 OpenStax(CC BY 4.0, 출처 표기)뿐입니다.
+
 ## 테스트 (GPU 없이)
 
 ```bash
 python3 highsci/tests/test_pipeline.py   # 가짜 Ollama 서버 4대로 분산·장애 전환·중복 제거·이어하기·내보내기 확인
+python3 highsci/tests/test_refs.py       # 가짜 사이트로 수집·robots·ZIP·중복·차단 페이지·본문 검색 확인
 ```
