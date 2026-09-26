@@ -65,6 +65,7 @@ CREATE TABLE IF NOT EXISTS items (
   status        TEXT NOT NULL DEFAULT 'draft', -- draft / reviewed / active / retired
   stem_hash     TEXT NOT NULL UNIQUE,    -- 중복 방지
   model         TEXT,
+  node          TEXT,                    -- 생성한 GPU 서버 (z840/z440/soul3 …)
   created_at    TEXT NOT NULL DEFAULT (datetime('now','localtime'))
 );
 CREATE INDEX IF NOT EXISTS idx_items_subunit ON items(subunit_code, difficulty);
@@ -110,6 +111,7 @@ CREATE TABLE IF NOT EXISTS gen_log (
   accepted   INTEGER,
   rejected   INTEGER,
   seconds    REAL,
+  node       TEXT,
   note       TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now','localtime'))
 );

@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""통합과학1·2 문제은행 생성기 (holymind GPU / Ollama).
+"""통합과학1·2 문제은행 생성기 — 분산 코디네이터 (Ollama/gemma).
+
+- holymind에서 코디네이터 1개가 실행되고, nodes.json에 적힌 GPU 서버(z840·z440·soul3 …)의
+  Ollama API로 생성·검증 요청을 나눠 보낸다. 빠른 서버가 더 많은 배치를 가져간다(작업 풀 방식).
+  DB는 코디네이터 한 곳(holymind ~/Downloads/highsci_db)에만 쓰므로 병합이 필요 없다.
 
 - 프롬프트는 soul3 prompt_db.prompts 에서 prompt_key로 조회한다 (하드코딩 금지 표준).
     highsci_item_gen    : 문항 일괄 생성
@@ -8,7 +12,10 @@
 - 중단원(물리/화학/생물/지구과학)마다 --target 개(기본 1000)를 채운다.
 
 사용 예:
-    python3 generate.py                     # 전체 생성 (이어하기)
+    python3 generate.py                     # nodes.json의 서버들로 전체 생성 (이어하기)
+    python3 generate.py --check-nodes       # 서버 상태·모델 확인만
+    python3 generate.py --only-nodes z840 soul3
+    python3 generate.py --ollama http://localhost:11434 --workers 2   # 단일 서버 모드
     python3 generate.py --subunits 3-3 4-4  # 특정 중단원만
     python3 generate.py --status            # 진행 현황
     python3 generate.py --export            # JSONL/그래프 내보내기만
@@ -26,12 +33,13 @@ import sys
 import threading
 import time
 import urllib.request
-from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 CURRICULUM = HERE / "curriculum.json"
 SCHEMA = HERE / "sql" / "schema.sql"
+NODES = HERE / "nodes.json"
+SEEDS = HERE / "seeds"
 
 GEN_KEY = "highsci_item_gen"
 VERIFY_KEY = "highsci_item_verify"
@@ -158,6 +166,10 @@ def open_db(path):
     path.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(str(path), check_same_thread=False, timeout=60)
     conn.executescript(SCHEMA.read_text(encoding="utf-8"))
+    for table in ("items", "gen_log"):  # 단일 서버 버전에서 만든 DB 이전
+        cols = [r[1] for r in conn.execute("PRAGMA table_info(%s)" % table)]
+        if "node" not in cols:
+            conn.execute("ALTER TABLE %s ADD COLUMN node TEXT" % table)
     return conn
 
 
@@ -197,91 +209,162 @@ def stem_hash(stem):
 
 # ---------------------------------------------------------------- generation
 
-class SubunitWorker:
-    def __init__(self, conn, gemma, su, target, batch, verify):
-        self.conn, self.gemma, self.su = conn, gemma, su
-        self.target, self.batch, self.verify = target, batch, verify
-        self.concepts = {name: concept_id(su["code"], i) for i, name in enumerate(su["concepts"], 1)}
+class Node:
+    """Ollama가 돌고 있는 GPU 서버 1대. slots = 동시에 보낼 요청 수 (서버의 OLLAMA_NUM_PARALLEL 이하)."""
+
+    def __init__(self, cfg, prompts, model_override=None):
+        self.name = cfg["name"]
+        self.url = cfg["url"].rstrip("/")
+        self.slots = int(cfg.get("slots", 1))
+        self.gemma = Gemma(prompts, self.url, model_override or cfg.get("model"))
+        self.fails = 0
+        self.down_until = 0.0
+        self.dead = False
+        self.lock = threading.Lock()
+
+    def health(self):
+        """(ok, 메시지). 서버 응답과 필요한 모델 설치 여부를 확인한다."""
+        try:
+            with urllib.request.urlopen(self.url + "/api/tags", timeout=8) as r:
+                names = {m["name"] for m in json.loads(r.read().decode()).get("models", [])}
+        except Exception as e:
+            return False, "접속 실패 (%s)" % e
+        need = {self.gemma.model_for(k) for k in (GEN_KEY, VERIFY_KEY)}
+        missing = [m for m in need if m not in names and m + ":latest" not in names]
+        if missing:
+            return False, "모델 없음 %s → 해당 서버에서 ollama pull %s" % (missing, " ".join(missing))
+        return True, "OK (%s, 슬롯 %d)" % (", ".join(sorted(need)), self.slots)
+
+    def ok(self):
+        with self.lock:
+            self.fails = 0
+
+    def failed(self, err):
+        with self.lock:
+            self.fails += 1
+            if self.fails % 5 == 0:
+                self.down_until = time.time() + min(1800, 60 * self.fails)
+                log("[%s] 연속 실패 %d회 — %d초 쉬었다 재시도 (%s)" % (
+                    self.name, self.fails, self.down_until - time.time(), err))
+            if self.fails >= 50:
+                self.dead = True
+                log("[%s] 연속 실패 50회 — 이 서버는 이번 실행에서 제외합니다." % self.name)
+
+
+class Task:
+    def __init__(self, su, diff, n, std, focus, spec):
+        self.su, self.diff, self.n, self.std, self.focus, self.spec = su, diff, n, std, focus, spec
+
+
+class Scheduler:
+    """모든 서버의 워커가 공유하는 작업 풀. 진행 중(inflight) 예약분까지 계산해 목표·난이도 비율을 넘기지 않는다."""
+
+    def __init__(self, conn, subunits, target, batch, verify):
+        self.conn, self.target, self.batch, self.verify = conn, target, batch, verify
+        self.subunits = subunits
+        self.concepts = {su["code"]: {n: concept_id(su["code"], i) for i, n in enumerate(su["concepts"], 1)}
+                         for su in subunits}
+        self.quota = quotas(target)
+        self.inflight = {su["code"]: {d: 0 for d in DIFFICULTY_MIX} for su in subunits}
+        self.active = {su["code"]: 0 for su in subunits}
+        self.zero_streak = {su["code"]: 0 for su in subunits}
+        self.skipped = set()
+        self.seeds = load_seeds()
+        self.lock = threading.Lock()
 
     def q(self, sql, args=()):
         with db_lock:
             return self.conn.execute(sql, args).fetchall()
 
-    def counts(self):
-        rows = self.q("SELECT difficulty, COUNT(*) FROM items WHERE subunit_code=? GROUP BY difficulty", (self.su["code"],))
+    def counts(self, code):
         c = {d: 0 for d in DIFFICULTY_MIX}
-        c.update(dict(rows))
+        c.update(dict(self.q("SELECT difficulty, COUNT(*) FROM items WHERE subunit_code=? GROUP BY difficulty", (code,))))
         return c
 
-    def pick_difficulty(self, counts):
-        # 목표 대비 부족 비율이 가장 큰 난이도
-        return max(DIFFICULTY_MIX, key=lambda d: DIFFICULTY_MIX[d] * self.target - counts[d])
+    def busy(self):
+        with self.lock:
+            return any(self.active.values())
 
-    def pick_standard(self):
-        rows = dict(self.q("SELECT standard_id, COUNT(*) FROM items WHERE subunit_code=? GROUP BY standard_id",
-                           (self.su["code"],)))
-        return min(self.su["standards"], key=lambda s: (rows.get(s["id"], 0), random.random()))
+    def unassigned(self):
+        """아직 어느 서버에도 배정되지 않은 문항 수."""
+        with self.lock:
+            return sum(max(0, self.target - sum(self.counts(c).values()) - sum(self.inflight[c].values()))
+                       for c in self.inflight if c not in self.skipped)
 
-    def pick_focus(self):
-        rows = dict(self.q("SELECT concept_id, COUNT(*) FROM item_concepts WHERE concept_id LIKE ? GROUP BY concept_id",
-                           (self.su["code"] + ":%",)))
-        ranked = sorted(self.su["concepts"], key=lambda n: (rows.get(self.concepts[n], 0), random.random()))
-        return ranked[:2]
-
-    def recent_stems(self, focus):
-        cid = self.concepts[focus[0]]
-        rows = self.q("SELECT i.stem FROM items i JOIN item_concepts ic ON ic.item_id=i.id "
-                      "WHERE ic.concept_id=? ORDER BY i.created_at DESC LIMIT 12", (cid,))
-        return [r[0][:90] for r in rows]
-
-    def run(self):
-        code = self.su["code"]
-        fails = 0
-        while not stop_event.is_set():
-            counts = self.counts()
-            have = sum(counts.values())
-            if have >= self.target:
-                log("[%s %s] 완료 %d/%d" % (code, self.su["subject"], have, self.target))
-                return
-            diff = self.pick_difficulty(counts)
-            std = self.pick_standard()
-            focus = self.pick_focus()
-            deficit = round(DIFFICULTY_MIX[diff] * self.target) - counts[diff]
-            n = max(1, min(self.batch, self.target - have, deficit))
+    def next_task(self):
+        with self.lock:
+            cands = []
+            for su in self.subunits:
+                code = su["code"]
+                if code in self.skipped:
+                    continue
+                counts = self.counts(code)
+                inf = self.inflight[code]
+                rem = self.target - sum(counts.values()) - sum(inf.values())
+                if rem > 0:
+                    cands.append((self.active[code], -rem, random.random(), su, counts))
+            if not cands:
+                return None
+            # 동시에 같은 중단원을 여러 서버가 붙잡지 않도록 작업 중인 워커가 적은 중단원 우선
+            _, neg_rem, _, su, counts = min(cands, key=lambda x: x[:3])
+            code, inf = su["code"], self.inflight[su["code"]]
+            deficit = {d: self.quota[d] - counts[d] - inf[d] for d in DIFFICULTY_MIX}
+            diff = max(deficit, key=lambda d: (deficit[d], random.random()))
+            n = max(1, min(self.batch, -neg_rem, deficit[diff]))
+            std = self.pick_standard(su)
+            focus = self.pick_focus(su)
             spec = {
-                "course": self.su["course"], "unit": self.su["unit"], "subunit": self.su["name"],
-                "subject": self.su["subject"], "achievement_standard": std["text"],
-                "concept_list": self.su["concepts"], "focus_concepts": focus,
+                "course": su["course"], "unit": su["unit"], "subunit": su["name"],
+                "subject": su["subject"], "achievement_standard": std["text"],
+                "concept_list": su["concepts"], "focus_concepts": focus,
                 "count": n, "difficulty": diff, "cognitive_level": COGNITIVE[diff],
                 "item_style": random.choice(ITEM_STYLES),
-                "avoid_stems": self.recent_stems(focus),
+                "avoid_stems": self.recent_stems(code, focus),
             }
-            t0 = time.time()
-            try:
-                data = self.gemma.call_json(GEN_KEY, json.dumps(spec, ensure_ascii=False, indent=1))
-                raw = data.get("items", []) if isinstance(data, dict) else data
-                accepted, rejected = self.store(raw, std, diff, focus)
-                fails = 0 if accepted else fails + 1
-            except Exception as e:  # 네트워크/파싱 오류는 재시도
-                accepted, rejected = 0, n
-                fails += 1
-                log("[%s] 오류: %s" % (code, e))
-                time.sleep(min(60, 2 ** min(fails, 6)))
-            dt = time.time() - t0
-            with db_lock:
-                self.conn.execute("INSERT INTO gen_log(subunit_code,requested,accepted,rejected,seconds) VALUES (?,?,?,?,?)",
-                                  (code, n, accepted, rejected, dt))
-                self.conn.commit()
-            log("[%s %s] 난이도%d +%d (거부 %d) %.0fs → %d/%d" % (code, self.su["subject"], diff, accepted, rejected,
-                                                          dt, have + accepted, self.target))
-            if fails >= 25:
-                log("[%s] 연속 실패 25회 — 이 중단원은 건너뜁니다." % code)
-                return
+            examples = self.pick_examples(code, diff)
+            if examples:
+                spec["examples"] = examples
+            inf[diff] += n
+            self.active[code] += 1
+            return Task(su, diff, n, std, focus, spec)
 
-    def store(self, raw, std, diff, focus):
+    def done(self, task, accepted):
+        with self.lock:
+            code = task.su["code"]
+            self.inflight[code][task.diff] -= task.n
+            self.active[code] -= 1
+            self.zero_streak[code] = 0 if accepted else self.zero_streak[code] + 1
+            if self.zero_streak[code] >= 40 and code not in self.skipped:
+                self.skipped.add(code)
+                log("[%s] 40배치 연속 채택 0 — 이 중단원은 건너뜁니다 (프롬프트/모델 점검 필요)." % code)
+
+    def pick_standard(self, su):
+        rows = dict(self.q("SELECT standard_id, COUNT(*) FROM items WHERE subunit_code=? GROUP BY standard_id", (su["code"],)))
+        return min(su["standards"], key=lambda s: (rows.get(s["id"], 0), random.random()))
+
+    def pick_focus(self, su):
+        rows = dict(self.q("SELECT concept_id, COUNT(*) FROM item_concepts WHERE concept_id LIKE ? GROUP BY concept_id",
+                           (su["code"] + ":%",)))
+        ids = self.concepts[su["code"]]
+        return sorted(su["concepts"], key=lambda n: (rows.get(ids[n], 0), random.random()))[:2]
+
+    def recent_stems(self, code, focus):
+        rows = self.q("SELECT i.stem FROM items i JOIN item_concepts ic ON ic.item_id=i.id "
+                      "WHERE ic.concept_id=? ORDER BY i.created_at DESC LIMIT 12", (self.concepts[code][focus[0]],))
+        return [r[0][:90] for r in rows]
+
+    def pick_examples(self, code, diff):
+        pool = self.seeds.get(code, [])
+        same = [s for s in pool if s.get("difficulty") == diff] or pool
+        return [{k: s[k] for k in ("stem", "choices", "answer", "explanation") if k in s}
+                for s in random.sample(same, min(2, len(same)))]
+
+    # ------------------------------------------------------------ 저장
+
+    def store(self, task, raw, node):
         accepted = rejected = 0
         for it in raw if isinstance(raw, list) else []:
-            item = self.clean(it, focus)
+            item = self.clean(task, it)
             if not item:
                 rejected += 1
                 continue
@@ -289,35 +372,42 @@ class SubunitWorker:
             if self.q("SELECT 1 FROM items WHERE stem_hash=?", (h,)):
                 rejected += 1
                 continue
-            if self.verify and not self.verified(item):
+            if self.verify and not self.verified(item, node, task.su["code"]):
                 rejected += 1
                 continue
-            with db_lock:
-                try:
-                    seq = self.conn.execute("SELECT COUNT(*) FROM items WHERE subunit_code=?",
-                                            (self.su["code"],)).fetchone()[0] + 1
-                    iid = "HS-%s-%06d" % (self.su["code"], seq)
-                    while self.conn.execute("SELECT 1 FROM items WHERE id=?", (iid,)).fetchone():
-                        seq += 1
-                        iid = "HS-%s-%06d" % (self.su["code"], seq)
-                    self.conn.execute(
-                        "INSERT INTO items(id,subunit_code,subject,standard_id,stem,choices_json,answer,explanation,"
-                        "difficulty,cognitive,irt_a,irt_b,irt_c,verified,stem_hash,model) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
-                        (iid, self.su["code"], self.su["subject"], std["id"], item["stem"],
-                         json.dumps(item["choices"], ensure_ascii=False), item["answer"], item["explanation"],
-                         diff, COGNITIVE[diff], 1.0, IRT_B_PRIOR[diff], 0.2, 1 if self.verify else 0, h,
-                         self.gemma.model_for(GEN_KEY)))
-                    for name in item["concepts"]:
-                        self.conn.execute("INSERT OR IGNORE INTO item_concepts(item_id,concept_id) VALUES (?,?)",
-                                          (iid, self.concepts[name]))
-                    self.conn.commit()
-                    accepted += 1
-                except sqlite3.IntegrityError:
-                    self.conn.rollback()
-                    rejected += 1
+            if self.insert(task, item, h, node):
+                accepted += 1
+            else:
+                rejected += 1
         return accepted, rejected
 
-    def clean(self, it, focus):
+    def insert(self, task, item, h, node):
+        code = task.su["code"]
+        with db_lock:
+            try:
+                seq = self.conn.execute("SELECT COUNT(*) FROM items WHERE subunit_code=?", (code,)).fetchone()[0] + 1
+                iid = "HS-%s-%06d" % (code, seq)
+                while self.conn.execute("SELECT 1 FROM items WHERE id=?", (iid,)).fetchone():
+                    seq += 1
+                    iid = "HS-%s-%06d" % (code, seq)
+                self.conn.execute(
+                    "INSERT INTO items(id,subunit_code,subject,standard_id,stem,choices_json,answer,explanation,"
+                    "difficulty,cognitive,irt_a,irt_b,irt_c,verified,stem_hash,model,node) "
+                    "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                    (iid, code, task.su["subject"], task.std["id"], item["stem"],
+                     json.dumps(item["choices"], ensure_ascii=False), item["answer"], item["explanation"],
+                     task.diff, COGNITIVE[task.diff], 1.0, IRT_B_PRIOR[task.diff], 0.2, 1 if self.verify else 0, h,
+                     node.gemma.model_for(GEN_KEY), node.name))
+                for name in item["concepts"]:
+                    self.conn.execute("INSERT OR IGNORE INTO item_concepts(item_id,concept_id) VALUES (?,?)",
+                                      (iid, self.concepts[code][name]))
+                self.conn.commit()
+                return True
+            except sqlite3.IntegrityError:
+                self.conn.rollback()
+                return False
+
+    def clean(self, task, it):
         if not isinstance(it, dict):
             return None
         stem = str(it.get("stem", "")).strip()
@@ -333,18 +423,98 @@ class SubunitWorker:
             return None
         if not 1 <= answer <= 5:
             return None
-        concepts = [c for c in (it.get("concepts") or []) if c in self.concepts] or focus[:1]
+        ids = self.concepts[task.su["code"]]
+        concepts = [c for c in (it.get("concepts") or []) if c in ids] or task.focus[:1]
         return {"stem": stem, "choices": choices, "answer": answer,
                 "explanation": str(it.get("explanation", "")).strip(), "concepts": list(dict.fromkeys(concepts))}
 
-    def verified(self, item):
+    def verified(self, item, node, code):
         text = item["stem"] + "\n" + "\n".join("%d) %s" % (i, c) for i, c in enumerate(item["choices"], 1))
         try:
-            v = self.gemma.call_json(VERIFY_KEY, text, timeout=300)
+            v = node.gemma.call_json(VERIFY_KEY, text, timeout=300)
             return bool(v.get("valid")) and int(v.get("answer", 0)) == item["answer"]
         except Exception as e:
-            log("[%s] 검증 오류: %s" % (self.su["code"], e))
+            log("[%s@%s] 검증 오류: %s" % (code, node.name, e))
             return False
+
+
+def node_worker(node, sched):
+    while not stop_event.is_set() and not node.dead:
+        wait = node.down_until - time.time()
+        if wait > 0:
+            if not sched.unassigned():  # 쉬는 동안 다른 서버가 남은 일을 다 가져갔으면 종료
+                return
+            stop_event.wait(min(wait, 10))
+            continue
+        task = sched.next_task()
+        if task is None:
+            if not sched.busy():
+                return
+            stop_event.wait(5)  # 다른 서버의 진행 중 배치가 실패하면 다시 받아간다
+            continue
+        code, t0, accepted, rejected = task.su["code"], time.time(), 0, task.n
+        try:
+            data = node.gemma.call_json(GEN_KEY, json.dumps(task.spec, ensure_ascii=False, indent=1))
+            raw = data.get("items", []) if isinstance(data, dict) else data
+            accepted, rejected = sched.store(task, raw, node)
+            node.ok()
+        except Exception as e:
+            log("[%s@%s] 오류: %s" % (code, node.name, e))
+            node.failed(e)
+        finally:
+            sched.done(task, accepted)
+        dt = time.time() - t0
+        with db_lock:
+            sched.conn.execute("INSERT INTO gen_log(subunit_code,requested,accepted,rejected,seconds,node) "
+                               "VALUES (?,?,?,?,?,?)", (code, task.n, accepted, rejected, dt, node.name))
+            sched.conn.commit()
+        have = sum(sched.counts(code).values())
+        log("[%s %s@%s] 난이도%d +%d (거부 %d) %.0fs → %d/%d" % (
+            code, task.su["subject"], node.name, task.diff, accepted, rejected, dt, have, sched.target))
+
+
+def quotas(target):
+    """난이도별 목표 문항 수 (최대 잉여 방식으로 합계가 정확히 target)."""
+    raw = {d: DIFFICULTY_MIX[d] * target for d in DIFFICULTY_MIX}
+    q = {d: int(v) for d, v in raw.items()}
+    for d in sorted(raw, key=lambda d: (-(raw[d] - q[d]), d))[:target - sum(q.values())]:
+        q[d] += 1
+    return q
+
+
+def load_seeds():
+    """seeds/<중단원코드>.jsonl — 예시 문항(few-shot). 있으면 SPEC.examples로 2개씩 제공."""
+    seeds = {}
+    if SEEDS.is_dir():
+        for p in SEEDS.glob("*.jsonl"):
+            seeds[p.stem] = [json.loads(l) for l in p.read_text(encoding="utf-8").splitlines() if l.strip()]
+    return seeds
+
+
+def load_nodes(args, prompts):
+    if args.ollama:
+        cfgs = [{"name": "local", "url": args.ollama, "slots": args.workers}]
+    else:
+        cfgs = [n for n in json.loads(args.nodes.read_text(encoding="utf-8"))["nodes"] if n.get("enabled", True)]
+        if args.only_nodes:
+            cfgs = [n for n in json.loads(args.nodes.read_text(encoding="utf-8"))["nodes"] if n["name"] in args.only_nodes]
+    nodes = []
+    for cfg in cfgs:
+        node = Node(cfg, prompts, args.model)
+        ok, msg = node.health()
+        log("서버 %-9s %-28s %s" % (node.name, node.url, msg))
+        if ok:
+            nodes.append(node)
+    return nodes
+
+
+def node_report(conn):
+    rows = conn.execute("SELECT node, COUNT(*), SUM(accepted), SUM(rejected), ROUND(AVG(seconds),1) "
+                        "FROM gen_log WHERE node IS NOT NULL GROUP BY node ORDER BY node").fetchall()
+    if rows:
+        print("\n%-10s %8s %8s %8s %8s" % ("서버", "배치", "채택", "거부", "초/배치"))
+        for r in rows:
+            print("%-10s %8d %8d %8d %8s" % r)
 
 
 # ---------------------------------------------------------------- status / export
@@ -402,20 +572,23 @@ def export(conn, out_dir):
 # ---------------------------------------------------------------- main
 
 def main(argv=None):
-    ap = argparse.ArgumentParser(description="통합과학1·2 문제은행 생성기 (Ollama/gemma)")
+    ap = argparse.ArgumentParser(description="통합과학1·2 문제은행 분산 생성기 (Ollama/gemma)")
     ap.add_argument("--out", type=Path, default=default_out_dir(), help="저장 폴더 (기본 ~/Downloads/highsci_db)")
     ap.add_argument("--target", type=int, default=1000, help="중단원당 목표 문항 수")
     ap.add_argument("--batch", type=int, default=5, help="1회 호출당 생성 문항 수")
-    ap.add_argument("--workers", type=int, default=2, help="동시 처리 중단원 수 (OLLAMA_NUM_PARALLEL과 맞출 것)")
+    ap.add_argument("--nodes", type=Path, default=NODES, help="GPU 서버 목록 (기본 nodes.json)")
+    ap.add_argument("--only-nodes", nargs="+", help="nodes.json 중 이 서버들만 사용 (enabled 무시)")
+    ap.add_argument("--ollama", help="단일 서버 모드: 이 Ollama URL 하나만 사용")
+    ap.add_argument("--workers", type=int, default=2, help="단일 서버 모드의 동시 요청 수")
     ap.add_argument("--subjects", nargs="+", default=DEFAULT_SUBJECTS)
     ap.add_argument("--subunits", nargs="+", help="특정 중단원 코드만 (예: 3-3 4-4)")
     ap.add_argument("--no-verify", action="store_true", help="독립 풀이 검증 생략 (빠르지만 품질 저하)")
-    ap.add_argument("--model", help="prompt_db의 model 대신 사용할 Ollama 모델")
-    ap.add_argument("--ollama", default=os.environ.get("OLLAMA_URL", "http://localhost:11434"))
+    ap.add_argument("--model", help="prompt_db·nodes.json의 모델 대신 모든 서버에 쓸 Ollama 모델")
     ap.add_argument("--prompt-source", choices=["ssh", "local"], default=os.environ.get("PROMPT_SOURCE", "ssh"))
     ap.add_argument("--soul3", default=os.environ.get("SOUL3_SSH", "192.168.0.20"), help="soul3 ssh 대상")
     ap.add_argument("--status", action="store_true")
     ap.add_argument("--export", action="store_true", help="생성 없이 내보내기만")
+    ap.add_argument("--check-nodes", action="store_true", help="서버 접속·모델 확인만")
     args = ap.parse_args(argv)
 
     cur = json.loads(CURRICULUM.read_text(encoding="utf-8"))
@@ -426,27 +599,39 @@ def main(argv=None):
     seed_curriculum(conn, cur)
 
     if args.status:
-        return status(conn, subunits, args.target)
+        status(conn, subunits, args.target)
+        return node_report(conn)
     if args.export:
         return export(conn, args.out)
 
     prompts = load_prompts([GEN_KEY, VERIFY_KEY], args.prompt_source, args.soul3)
-    gemma = Gemma(prompts, args.ollama, args.model)
-    log("저장 위치: %s | 모델: %s | 중단원 %d개 × %d문항 | 검증 %s" % (
-        args.out, gemma.model_for(GEN_KEY), len(subunits), args.target, "끔" if args.no_verify else "켬"))
+    nodes = load_nodes(args, prompts)
+    if args.check_nodes:
+        return 0 if nodes else 1
+    if not nodes:
+        log("사용 가능한 서버가 없습니다. nodes.json과 각 서버의 Ollama(setup_node.sh)를 확인하세요.")
+        return 1
+    sched = Scheduler(conn, subunits, args.target, args.batch, not args.no_verify)
+    log("저장 위치: %s | 서버 %s | 중단원 %d개 × %d문항 | 검증 %s | 예시문항 %d개 중단원" % (
+        args.out, ", ".join("%s×%d" % (n.name, n.slots) for n in nodes), len(subunits), args.target,
+        "끔" if args.no_verify else "켬", len(sched.seeds)))
 
     def on_signal(*_):
-        log("중지 요청 — 현재 호출이 끝나면 멈춥니다 (다시 실행하면 이어서 생성).")
+        log("중지 요청 — 진행 중인 호출이 끝나면 멈춥니다 (다시 실행하면 이어서 생성).")
         stop_event.set()
     signal.signal(signal.SIGINT, on_signal)
     signal.signal(signal.SIGTERM, on_signal)
 
-    workers = [SubunitWorker(conn, gemma, su, args.target, args.batch, not args.no_verify) for su in subunits]
-    with ThreadPoolExecutor(max_workers=max(1, args.workers)) as pool:
-        for f in [pool.submit(w.run) for w in workers]:
-            f.result()
+    threads = [threading.Thread(target=node_worker, args=(n, sched), name="%s-%d" % (n.name, i), daemon=True)
+               for n in nodes for i in range(n.slots)]
+    for t in threads:
+        t.start()
+    while any(t.is_alive() for t in threads):
+        for t in threads:
+            t.join(timeout=1)
     export(conn, args.out)
     status(conn, subunits, args.target)
+    node_report(conn)
 
 
 if __name__ == "__main__":

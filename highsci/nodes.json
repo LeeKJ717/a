@@ -1,0 +1,9 @@
+{
+  "_comment": "코디네이터(holymind)가 생성 요청을 보낼 GPU 서버 목록. slots는 동시 요청 수로, 각 서버 OLLAMA_NUM_PARALLEL 이하로 둔다. model을 비우면(null) prompt_db의 model을 쓴다. 각 서버는 setup_node.sh로 준비한다. ssh는 deploy_nodes.sh가 서버 준비에 쓰는 접속 대상.",
+  "nodes": [
+    {"name": "z840", "url": "http://192.168.0.84:11434", "ssh": "192.168.0.84", "slots": 2, "model": null, "enabled": true},
+    {"name": "z440", "url": "http://192.168.0.6:11434", "ssh": "192.168.0.6", "slots": 1, "model": null, "enabled": true, "note": "공개 웹 운영 서버 — 사이트 응답에 영향이 없도록 슬롯 1"},
+    {"name": "soul3", "url": "http://192.168.0.20:11434", "ssh": "192.168.0.20", "slots": 2, "model": null, "enabled": true},
+    {"name": "holymind", "url": "http://localhost:11434", "ssh": "", "slots": 2, "model": null, "enabled": false, "note": "코디네이터 자신. true로 바꾸면 holymind GPU도 생성에 참여"}
+  ]
+}

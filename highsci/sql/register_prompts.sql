@@ -19,7 +19,8 @@ RULES:
 7. Do NOT reference figures or images that are not given. If data is needed, write it as a text table inside the stem.
 8. Every item must be clearly different from the items listed in avoid_stems.
 9. concepts must be chosen ONLY from the concept list in the SPEC.
-10. Output ONLY valid JSON, no markdown, no comments.
+10. If the SPEC contains examples, match their quality, tone, and format, but NEVER copy or paraphrase them.
+11. Output ONLY valid JSON, no markdown, no comments.
 
 OUTPUT FORMAT:
 {{"items": [{{"stem": "문제 본문", "choices": ["①의 내용", "②의 내용", "③의 내용", "④의 내용", "⑤의 내용"], "answer": 3, "explanation": "정답 해설과 오답 이유", "concepts": ["개념명"], "difficulty": 3, "cognitive": "적용"}}]}}
