@@ -319,6 +319,7 @@
                          "vars": {"fach": ["physik", "chemie", "biologie"]}}],
      "allow_domains": ["www.isb.bayern.de", "isb.bayern.de"], "max_depth": 1, "max_pages": 150,
      "follow": "abiturpruefung", "doc_url": "/download",
-     "include": "physik|chemie|biolog|abitur|aufgabe|beispiel", "exclude": ""}
+     "include": "physik|chemie|biolog|abitur|aufgabe|beispiel", "exclude": ""},
+    {"id": "kr_seoul_school_template", "type": "school_template", "country": "한국", "org": "서울 중·고등학교 (학교 홈페이지별)", "exam": "정기고사(중간·기말) 기출", "level": "중1~고3", "subjects": ["물리", "화학", "생물", "지구과학"], "license": "저작권 각 학교·출제 교사 · 학교가 홈페이지에 공개한 것만 개인 참고용 (로그인 필요 자료는 받지 않음)", "enabled": false, "_comment": "--schools 모드에서만 사용. 나이스 API(서울 B10)로 학교 목록·홈페이지를 받아 학교마다 이 규칙으로 탐색. 학교 홈페이지는 URL 규칙이 제각각이라 링크 글자(follow_text)로 기출 게시판을 찾는다. 기출 관련 페이지 HTML은 logs/snapshots/에 학교당 5개까지 저장되니 못 찾는 학교는 그걸 보고 규칙을 고친다.", "neis": {"office": "B10", "kinds": ["중학교", "고등학교"]}, "max_depth": 3, "max_pages": 150, "follow_text": "기출|정기\\s*고사|지필|중간\\s*고사|기말\\s*고사|시험\\s*문제|평가\\s*(문항|자료|계획)|학업\\s*성적|자료실|학습\\s*자료|교과\\s*자료|학사\\s*(안내|자료)|과학", "paginate": "(page|pageIndex|currPage|nowPage|pageNo|cpage)=\\d+", "doc_url": "downFile|fileDown|FileDown|download|atchFile|boardFile|/files?/", "include": "과학|과탐|물리|화학|생물|생명|지구|통합과학|공통과학|science|sci|정답|해설|답안|answer|과학", "exclude": "국어|수학|영어|한국사|사회탐구|사탐|직업탐구|제2외국어|한문|독서|(?<!천)문학|화법|언어와|확률|미적분|기하|윤리|지리|세계사|동아시아|경제|정치|사회[·ㆍ]?문화|통합사회|/(kor|mat|eng|his|soc|lang)[_a-z]*_", "snapshot": "기출|정기\\s*고사|지필\\s*평가", "extra_domains": []}
   ]
 }

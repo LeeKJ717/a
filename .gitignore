@@ -7,3 +7,5 @@ references/
 *.db
 *.db-wal
 *.db-shm
+*.hwp
+*.hwpx

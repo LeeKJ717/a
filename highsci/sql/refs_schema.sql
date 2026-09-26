@@ -55,3 +55,14 @@ CREATE TABLE IF NOT EXISTS ref_doc_subunits (
   note         TEXT,
   PRIMARY KEY (doc_id, subunit_code, page_from)
 );
+
+-- 학교별 기출 수집 대상 (나이스 학교기본정보 또는 CSV에서 적재)
+CREATE TABLE IF NOT EXISTS ref_schools (
+  code      TEXT PRIMARY KEY,           -- 표준학교코드 SD_SCHUL_CODE
+  name      TEXT NOT NULL,
+  kind      TEXT,                       -- 중학교 / 고등학교
+  office    TEXT,                       -- 시도교육청 코드 (서울 B10)
+  homepage  TEXT,
+  source_id TEXT,                       -- ref_sources.id (kr_school_<code>)
+  updated_at TEXT NOT NULL DEFAULT (datetime('now','localtime'))
+);

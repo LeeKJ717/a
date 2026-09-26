@@ -136,9 +136,29 @@ sudo apt install poppler-utils      # PDF 본문 추출용 (최초 1회)
 - **사이트 구조가 바뀌어 못 찾을 때**: 그 출처의 `seeds`, `include`, `follow`만 고치면 됩니다. 로그인이 필요하거나 자바스크립트로만 그려지는 사이트(NAEP 문항 도구 등)는 일부만 수집될 수 있습니다.
 - **저작권**: 수집한 자료는 개인 참고용입니다. 저장소 커밋, 웹 공개, 책 전재는 하지 않습니다. `.gitignore`가 PDF, ZIP, DB 파일을 막습니다. 책이나 문제에 그대로 쓸 수 있는 것은 OpenStax(CC BY 4.0, 출처 표기)뿐입니다.
 
+### 서울 중·고등학교 학교별 기출 (`--schools`)
+
+나이스 교육정보 개방 포털 API로 서울(B10) 중학교와 고등학교 목록, 홈페이지 주소를 받습니다. 그다음 학교마다 홈페이지에서 정기고사 기출 게시판을 찾아 과학 기출을 내려받습니다.
+
+```bash
+export NEIS_API_KEY=발급받은키          # https://open.neis.go.kr 무료 인증키
+./refs/run_refs.sh --schools --school-name 경기고 서울과학고 --discover   # 몇 곳만 먼저 시험
+./refs/run_refs.sh --schools                                             # 서울 전체 (백그라운드)
+./refs/run_refs.sh status                                                # 학교별 기출 합계 한 줄
+python3 refs/fetch_refs.py --status --schools-detail                     # 학교별 현황 (자료 많은 순)
+pip install pyhwp                                                        # HWP 본문 추출 (HWPX는 도구 없이 됨)
+```
+
+- **게시판 찾기**: 학교 홈페이지는 주소 규칙이 제각각입니다. 그래서 "기출, 정기고사, 지필, 중간고사, 기말고사, 평가 자료, 자료실" 같은 **메뉴 글자**로 게시판을 찾아가고, 같은 게시판의 다음 쪽까지 따라갑니다.
+- **받는 범위**: 과학(통합과학, 물리, 화학, 생명과학, 지구과학)과 정답만 받습니다. 한글 파일(HWP, HWPX)과 PDF를 받습니다.
+- **공개되지 않은 학교**: 교육부 지침상 기출 공개 방법은 학교가 정합니다. 홈페이지 게시, 교내 비치, 출력물 제공 중 하나를 고를 수 있습니다. 그래서 **홈페이지에 공개하지 않거나 로그인이 필요한 학교는 받을 수 없고, 받지도 않습니다.**
+- **못 찾는 학교 점검**: 기출 관련 페이지 HTML을 `logs/snapshots/kr_school_<코드>/`에 학교당 5개까지 저장합니다. 이것을 보고 `refs/sources.json`의 `kr_seoul_school_template` 규칙을 고칩니다.
+- **나이스 키가 없을 때**: `--school-csv 파일`로 학교 목록을 줄 수 있습니다. 필요한 열은 학교명, 학교종류명, 표준학교코드, 홈페이지주소입니다.
+
 ## 테스트 (GPU 없이)
 
 ```bash
 python3 highsci/tests/test_pipeline.py   # 가짜 Ollama 서버 4대로 분산·장애 전환·중복 제거·이어하기·내보내기 확인
 python3 highsci/tests/test_refs.py       # 가짜 사이트로 수집·robots·ZIP·중복·차단 페이지·본문 검색 확인
+python3 highsci/tests/test_schools.py    # 가짜 나이스 API·학교 홈페이지로 학교별 기출(HWP/HWPX) 수집 확인
 ```

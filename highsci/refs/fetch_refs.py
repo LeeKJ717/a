@@ -12,8 +12,10 @@ refs/sources.json의 공식 페이지에서 출발해 PDF/ZIP을 찾아 내려�
     python3 refs/fetch_refs.py --search "自由落下"   # 본문 검색
 """
 import argparse
+import csv
 import hashlib
 import json
+import os
 import re
 import shutil
 import sqlite3
@@ -37,7 +39,9 @@ from generate import default_out_dir  # noqa: E402  (저장 폴더 규칙 공유
 
 SOURCES = HERE / "sources.json"
 SCHEMA = ROOT / "sql" / "refs_schema.sql"
-DOC_EXT = (".pdf", ".zip")
+DOC_EXT = (".pdf", ".zip", ".hwp", ".hwpx")  # 학교 시험지는 한글(HWP/HWPX) 파일이 많다
+OLE_MAGIC = b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1"  # HWP 5.x(복합 문서)
+TEXT_EXT = (".pdf", ".hwp", ".hwpx")
 MAX_PAGES_PER_SOURCE = 400
 MAX_BYTES = 400 * 1024 * 1024
 DELAY = 1.5  # 같은 도메인 요청 간격(초)
@@ -175,7 +179,7 @@ def expand_templates(src):
     return urls
 
 
-def discover(conn, http, src):
+def discover(conn, http, src, out=None):
     found_before = db(conn, "SELECT COUNT(*) FROM ref_docs WHERE source_id=?", (src["id"],), fetch=True)[0][0]
     for url in src.get("direct", []):
         add_found(conn, src, url, "direct", "")
@@ -183,8 +187,12 @@ def discover(conn, http, src):
         discover_openstax(conn, http, src)
     include = re.compile(src.get("include") or ".", re.I)
     exclude = re.compile(src["exclude"], re.I) if src.get("exclude") else None
-    follow = re.compile(src.get("follow") or ".", re.I)
+    # follow=URL 정규식, follow_text=링크 글자 정규식(학교 홈페이지처럼 URL에 규칙이 없을 때). 둘 중 하나라도 맞으면 따라간다.
+    follow_text = re.compile(src["follow_text"], re.I) if src.get("follow_text") else None
+    follow_re = re.compile(src.get("follow") or ("(?!)" if follow_text else "."), re.I)
     doc_url = re.compile(src["doc_url"], re.I) if src.get("doc_url") else None      # 확장자 없는 다운로드 링크
+    snap = re.compile(src["snapshot"], re.I) if src.get("snapshot") and out else None  # 구조 확인용 HTML 저장
+    snaps = 0
     paginate = re.compile(src["paginate"], re.I) if src.get("paginate") else None   # 게시판 다음 쪽(깊이 증가 없음)
     domains = set(src.get("allow_domains", []))
     queue = [(u, 0) for u in src.get("seeds", []) + expand_templates(src)]
@@ -212,6 +220,11 @@ def discover(conn, http, src):
             pass
         m = re.search(r"<title[^>]*>(.*?)</title>", html, re.I | re.S)
         page_title = " ".join(m.group(1).split())[:200] if m else ""  # 게시글 제목(과목명이 여기만 있을 때)
+        if snap and snaps < 5 and snap.search(html):
+            d = out / "logs" / "snapshots" / src["id"]
+            d.mkdir(parents=True, exist_ok=True)
+            snaps += 1
+            (d / ("%02d.html" % snaps)).write_text("<!-- %s -->\n%s" % (final, html), encoding="utf-8")
         links = list(p.links)
         # 자바스크립트 다운로드(onclick="fileDown('123')" 등)를 실제 URL로 바꾸는 규칙
         for rule in src.get("js_links", []):
@@ -231,10 +244,13 @@ def discover(conn, http, src):
                     add_found(conn, src, absu, final, (text + " | " + page_title).strip(" |"))
             elif absu in seen:
                 continue
-            elif paginate and paginate.search(absu) and follow.search(absu):
-                queue.append((absu, depth))
-            elif depth < src.get("max_depth", 1) and follow.search(absu):
-                queue.append((absu, depth + 1))
+            else:
+                follow = follow_re.search(absu) or (follow_text and follow_text.search(text))
+                same_board = urllib.parse.urlsplit(absu).path == urllib.parse.urlsplit(final).path
+                if paginate and paginate.search(absu) and (follow or same_board):  # 같은 게시판의 다음 쪽
+                    queue.append((absu, depth))
+                elif depth < src.get("max_depth", 1) and follow:
+                    queue.append((absu, depth + 1))
     n = db(conn, "SELECT COUNT(*) FROM ref_docs WHERE source_id=?", (src["id"],), fetch=True)[0][0]
     log("[%s] 페이지 %d개 탐색 → 문서 %d개 (신규 %d)" % (src["id"], pages, n, n - found_before))
 
@@ -341,12 +357,18 @@ def fetch_file(http, url, folder):
                     head = chunk[:8]
                 h.update(chunk)
                 f.write(chunk)
-    kind = ".pdf" if head.startswith(b"%PDF") else ".zip" if head.startswith(b"PK") else None
-    if kind is None:  # 확장자만 .pdf인 로그인·차단·오류 페이지 등
+    low = name.lower()
+    if head.startswith(b"%PDF"):
+        kind = ".pdf"
+    elif head.startswith(b"PK"):  # ZIP 계열: .zip / .hwpx
+        kind = ".hwpx" if low.endswith(".hwpx") else ".zip"
+    elif head.startswith(OLE_MAGIC) or head.startswith(b"HWP Doc"):  # HWP 5.x / HWP 3.0
+        kind = ".hwp"
+    else:  # 확장자만 문서인 로그인·차단·오류 페이지 등
         tmp.unlink()
-        raise ValueError("PDF/ZIP이 아닌 응답 (%s) — 로그인·차단 페이지일 수 있음" % (mime or "형식 불명"))
-    if not name.lower().endswith(DOC_EXT):
-        name += kind
+        raise ValueError("PDF/ZIP/HWP가 아닌 응답 (%s) — 로그인·차단 페이지일 수 있음" % (mime or "형식 불명"))
+    if not low.endswith(kind):
+        name = (name[:-len(Path(name).suffix)] if Path(name).suffix.lower() in DOC_EXT else name) + kind
     dest = folder / name
     if dest.exists() and file_sha(dest) != h.hexdigest():
         dest = folder / ("%s_%s%s" % (dest.stem, h.hexdigest()[:8], dest.suffix))
@@ -395,7 +417,25 @@ def unpack_zip(conn, out, src, doc_id, url, path):
 # ---------------------------------------------------------------- text
 
 def extract_pages(pdf):
-    """[(page, text)] 또는 None(추출 도구 없음)."""
+    """[(page, text)] 또는 None(추출 도구 없음). PDF는 쪽 단위, HWPX는 구역(section) 단위, HWP는 전체 1쪽."""
+    suffix = pdf.suffix.lower()
+    if suffix == ".hwpx":
+        with zipfile.ZipFile(pdf) as z:
+            names = sorted((n for n in z.namelist() if re.match(r"Contents/section\d+\.xml$", n)),
+                           key=lambda n: int(re.search(r"\d+", n).group()))
+            out = []
+            for i, n in enumerate(names, 1):
+                xml = z.read(n).decode("utf-8", "replace")
+                xml = re.sub(r"</hp:p>|<hp:lineBreak/>", "\n", xml)
+                out.append((i, re.sub(r"<[^>]+>", "", xml)))
+            return out
+    if suffix == ".hwp":
+        if not shutil.which("hwp5txt"):  # pip install pyhwp
+            return None
+        r = subprocess.run(["hwp5txt", str(pdf)], capture_output=True, timeout=300)
+        if r.returncode != 0:
+            raise RuntimeError(r.stderr.decode("utf-8", "replace")[:200])
+        return [(1, r.stdout.decode("utf-8", "replace"))]
     if shutil.which("pdftotext"):
         r = subprocess.run(["pdftotext", "-layout", "-enc", "UTF-8", str(pdf), "-"], capture_output=True, timeout=600)
         if r.returncode != 0:
@@ -411,18 +451,20 @@ def extract_pages(pdf):
 
 
 def extract(conn, out, src):
-    rows = db(conn, "SELECT id,path FROM ref_docs WHERE source_id=? AND status='ok' AND text_status IS NULL "
-                    "AND lower(path) LIKE '%.pdf'", (src["id"],), fetch=True)
-    done = 0
+    rows = db(conn, "SELECT id,path FROM ref_docs WHERE source_id=? AND status='ok' "
+                    "AND (text_status IS NULL OR text_status='no_extractor')", (src["id"],), fetch=True)
+    rows = [r for r in rows if r[1] and r[1].lower().endswith(TEXT_EXT)]
+    done, missing = 0, set()
     for doc_id, rel in rows:
         try:
             pages = extract_pages(out / rel)
         except Exception as e:
             db(conn, "UPDATE ref_docs SET text_status='error', error=? WHERE id=?", (str(e)[:300], doc_id))
             continue
-        if pages is None:
-            log("본문 추출 도구가 없습니다: sudo apt install poppler-utils  (추출은 나중에 --extract로 다시)")
-            return
+        if pages is None:  # 이 형식의 추출 도구가 없음 → 표시만 하고 계속 (도구 설치 후 --extract로 다시)
+            missing.add(Path(rel).suffix.lower())
+            db(conn, "UPDATE ref_docs SET text_status='no_extractor' WHERE id=?", (doc_id,))
+            continue
         with db_lock:
             conn.execute("DELETE FROM ref_pages WHERE doc_id=?", (doc_id,))
             conn.execute("DELETE FROM ref_fts WHERE doc_id=?", (doc_id,))
@@ -436,6 +478,81 @@ def extract(conn, out, src):
             conn.commit()
         done += 1
     log("[%s] 본문 추출 %d/%d" % (src["id"], done, len(rows)))
+    hints = {".pdf": "sudo apt install poppler-utils", ".hwp": "pip install pyhwp"}
+    for ext in sorted(missing):
+        log("[%s] %s 본문 추출 도구 없음 → %s 후 --extract" % (src["id"], ext, hints.get(ext, "")))
+
+
+# ---------------------------------------------------------------- schools
+
+NEIS_URL = "https://open.neis.go.kr/hub/schoolInfo"
+
+
+def load_schools(tpl, csv_path=None, kinds=None):
+    """학교 목록 [{code,name,kind,office,homepage}]. CSV가 있으면 CSV, 없으면 나이스 교육정보 개방 포털 API(NEIS_API_KEY)."""
+    kinds = kinds or tpl["neis"]["kinds"]
+    office = tpl["neis"]["office"]
+    if csv_path:
+        pick = lambda row, *keys: next((row[k].strip() for k in keys if row.get(k)), "")
+        with open(csv_path, encoding="utf-8-sig") as f:
+            rows = [{"code": pick(r, "code", "SD_SCHUL_CODE", "표준학교코드", "학교코드"),
+                     "name": pick(r, "name", "SCHUL_NM", "학교명"),
+                     "kind": pick(r, "kind", "SCHUL_KND_SC_NM", "학교종류명", "학교급"),
+                     "office": office,
+                     "homepage": pick(r, "homepage", "HMPG_ADRES", "홈페이지주소", "홈페이지")} for r in csv.DictReader(f)]
+        return [r for r in rows if r["code"] and r["kind"] in kinds]
+    key = os.environ.get("NEIS_API_KEY")
+    if not key:
+        raise SystemExit("NEIS_API_KEY가 없습니다. https://open.neis.go.kr 에서 무료 인증키를 받아 "
+                         "export NEIS_API_KEY=... 후 다시 실행하거나 --school-csv로 학교 목록을 주세요.")
+    rows = []
+    for kind in kinds:
+        page = 1
+        while True:
+            q = urllib.parse.urlencode({"KEY": key, "Type": "json", "pIndex": page, "pSize": 1000,
+                                        "ATPT_OFCDC_SC_CODE": office, "SCHUL_KND_SC_NM": kind})
+            with urllib.request.urlopen(NEIS_URL + "?" + q, timeout=30) as r:
+                data = json.loads(r.read().decode("utf-8"))
+            if "schoolInfo" not in data:  # 결과 없음/오류는 {"RESULT": {...}}
+                msg = data.get("RESULT", {}).get("MESSAGE", "")
+                if page == 1 and msg and "데이터가 없습니다" not in msg:
+                    raise SystemExit("나이스 API 오류: %s" % msg)
+                break
+            chunk = data["schoolInfo"][1]["row"]
+            rows += [{"code": x["SD_SCHUL_CODE"], "name": x["SCHUL_NM"], "kind": x["SCHUL_KND_SC_NM"],
+                      "office": x["ATPT_OFCDC_SC_CODE"], "homepage": (x.get("HMPG_ADRES") or "").strip()} for x in chunk]
+            if len(chunk) < 1000:
+                break
+            page += 1
+    return rows
+
+
+def normalize_homepage(url):
+    url = (url or "").strip()
+    if not url or url in ("-", "없음"):
+        return None
+    if not re.match(r"https?://", url, re.I):
+        url = "http://" + url
+    return url if urllib.parse.urlsplit(url).netloc else None
+
+
+def school_sources(tpl, schools):
+    """학교마다 출처 설정 하나씩 만든다 (템플릿의 탐색 규칙 + 학교 홈페이지)."""
+    srcs = []
+    for s in schools:
+        home = normalize_homepage(s["homepage"])
+        if not home:
+            continue
+        host = urllib.parse.urlsplit(home).netloc.lower()
+        bare = host[4:] if host.startswith("www.") else host
+        src = {k: v for k, v in tpl.items() if k not in ("type", "neis", "_comment")}
+        src.update({"id": "kr_school_%s" % s["code"], "org": s["name"],
+                    "exam": "%s 정기고사(중간·기말) 기출" % s["kind"], "seeds": [home],
+                    "allow_domains": sorted({host, bare, "www." + bare} | set(tpl.get("extra_domains", [])))})
+        s["homepage"] = home
+        s["source_id"] = src["id"]
+        srcs.append(src)
+    return srcs
 
 
 # ---------------------------------------------------------------- report
@@ -448,7 +565,23 @@ def status(conn):
         "FROM ref_sources s LEFT JOIN ref_docs d ON d.source_id=s.id GROUP BY s.id ORDER BY s.country, s.id").fetchall()
     print("%-5s %-34s %6s %6s %5s %6s %6s %9s %6s" % ("나라", "출처", "대기", "완료", "중복", "오류", "건너뜀", "MB", "본문"))
     for r in rows:
-        print("%-5s %-34s %6s %6s %5s %6s %6s %9s %6s" % tuple("-" if v is None else v for v in r))
+        if not r[1].startswith("kr_school_"):
+            print("%-5s %-34s %6s %6s %5s %6s %6s %9s %6s" % tuple("-" if v is None else v for v in r))
+    sch = [r for r in rows if r[1].startswith("kr_school_")]
+    if sch:
+        tot = [sum(r[i] or 0 for r in sch) for i in range(2, 9)]
+        print("%-5s %-34s %6s %6s %5s %6s %6s %9.1f %6s" % (("한국", "학교별 기출 (%d개교, 자료 있는 곳 %d)"
+              % (len(sch), sum(1 for r in sch if (r[3] or 0) > 0))) + tuple(tot)))
+        print("  학교별 상세: --status --schools-detail")
+
+
+def schools_detail(conn):
+    rows = conn.execute(
+        "SELECT sc.kind, sc.name, COUNT(d.id), SUM(d.status='ok'), SUM(d.status='error'), sc.homepage FROM ref_schools sc "
+        "LEFT JOIN ref_docs d ON d.source_id=sc.source_id GROUP BY sc.code ORDER BY SUM(d.status='ok') DESC, sc.kind, sc.name"
+    ).fetchall()
+    for kind, name, found, ok, err, home in rows:
+        print("%-5s %-20s 발견 %4d  완료 %4s  오류 %4s  %s" % (kind, name, found, ok or 0, err or 0, home))
 
 
 def search(conn, q, limit=20):
@@ -475,18 +608,37 @@ def main(argv=None):
     ap.add_argument("--workers", type=int, default=4, help="동시에 처리할 출처 수 (같은 사이트는 항상 순차)")
     ap.add_argument("--ignore-robots", action="store_true",
                     help="robots.txt 무시 (공개 파일을 사람 속도로 개인 참고용으로 받을 때만)")
+    ap.add_argument("--schools", action="store_true", help="서울 중·고등학교 홈페이지별 정기고사 기출 수집 모드")
+    ap.add_argument("--school-csv", help="학교 목록 CSV (code,name,kind,homepage 또는 나이스 컬럼명). 없으면 나이스 API")
+    ap.add_argument("--school-kind", nargs="+", help="중학교 / 고등학교 중 일부만")
+    ap.add_argument("--school-name", nargs="+", help="학교 이름에 이 글자가 들어간 곳만 (시험 삼아 몇 곳만 돌릴 때)")
+    ap.add_argument("--limit-schools", type=int, help="앞에서부터 N개 학교만")
     ap.add_argument("--status", action="store_true")
+    ap.add_argument("--schools-detail", action="store_true", help="--status와 함께: 학교별 현황")
     ap.add_argument("--search")
     args = ap.parse_args(argv)
 
     cfg = json.loads(SOURCES.read_text(encoding="utf-8"))
     conn = open_db(args.out)
     if args.status:
-        return status(conn)
+        return schools_detail(conn) if args.schools_detail else status(conn)
     if args.search:
         return search(conn, args.search)
 
-    srcs = [s for s in cfg["sources"] if args.all or s.get("enabled", True) or (args.sources and s["id"] in args.sources)]
+    if args.schools:
+        tpl = next(s for s in cfg["sources"] if s.get("type") == "school_template")
+        schools = load_schools(tpl, args.school_csv, args.school_kind)
+        if args.school_name:
+            schools = [s for s in schools if any(n in s["name"] for n in args.school_name)]
+        schools = schools[:args.limit_schools] if args.limit_schools else schools
+        srcs = school_sources(tpl, schools)
+        for s in schools:
+            db(conn, "INSERT OR REPLACE INTO ref_schools(code,name,kind,office,homepage,source_id) VALUES (?,?,?,?,?,?)",
+               (s["code"], s["name"], s["kind"], s["office"], s["homepage"], s.get("source_id")))
+        log("학교 %d곳 (홈페이지 있는 곳 %d)" % (len(schools), len(srcs)))
+    else:
+        srcs = [s for s in cfg["sources"] if s.get("type") != "school_template" and
+                (args.all or s.get("enabled", True) or (args.sources and s["id"] in args.sources))]
     if args.sources:
         srcs = [s for s in srcs if s["id"] in args.sources]
     if args.country:
@@ -503,7 +655,7 @@ def main(argv=None):
     def run(src):
         try:
             if "discover" in steps:
-                discover(conn, http, src)
+                discover(conn, http, src, args.out)
             if "download" in steps:
                 download(conn, http, src, args.out, args.retry_errors)
             if "extract" in steps:
