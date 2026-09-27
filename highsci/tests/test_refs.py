@@ -149,6 +149,18 @@ def main():
         assert kr["13"][1].endswith("2025_정답.pdf")                 # RFC 5987
         assert kr["21"][1].endswith("2024_물리학I.pdf")              # CP949 파일명
         assert kr["31"][2] == 2023 and kr["31"][0] == "ok"          # 글 제목으로 과학 판별 + 연도
+        # 폴더가 통째로 지워진 상황: --recheck-files 후 다시 실행하면 원본이 돌아오고 본문 텍스트는 그대로
+        import shutil
+        ok_before = conn.execute("SELECT COUNT(*) FROM ref_docs WHERE status IN ('ok','dup')").fetchone()[0]
+        pages_before = conn.execute("SELECT COUNT(*) FROM ref_pages").fetchone()[0]
+        shutil.rmtree(Path(d) / "references")
+        fetch_refs.main(["--out", d, "--recheck-files", "--status"])
+        assert conn.execute("SELECT COUNT(*) FROM ref_docs WHERE status IN ('ok','dup')").fetchone()[0] < ok_before
+        fetch_refs.main(["--out", d])
+        assert conn.execute("SELECT COUNT(*) FROM ref_docs WHERE status IN ('ok','dup')").fetchone()[0] == ok_before
+        assert conn.execute("SELECT COUNT(*) FROM ref_pages").fetchone()[0] == pages_before
+        missing = [r for (r,) in conn.execute("SELECT path FROM ref_docs WHERE status='ok'") if not (Path(d) / r).exists()]
+        assert not missing, missing
         fetch_refs.main(["--out", d, "--search", "運動量"])
         print("OK files:", files)
 

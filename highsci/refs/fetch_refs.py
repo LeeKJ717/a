@@ -310,6 +310,22 @@ def safe_name(url):
     return name
 
 
+def recheck_files(conn, out):
+    """DB에는 받은 것(ok/dup)으로 기록돼 있지만 디스크에서 파일이 사라진 문서를 다시 받을 대상(found)으로 되돌린다.
+    이미 뽑아 둔 본문 텍스트(ref_pages·ref_fts)는 그대로 둔다. ZIP 안의 파일이 없어지면 부모 ZIP을 다시 받는다."""
+    rows = db(conn, "SELECT id, parent_id, path FROM ref_docs WHERE status IN ('ok','dup') AND path IS NOT NULL", fetch=True)
+    missing = [(i, p) for i, p, rel in rows if not (out / rel).exists()]
+    targets = {p if p else i for i, p in missing}
+    with db_lock:
+        for i, p in missing:
+            conn.execute("UPDATE ref_docs SET status='found', path=NULL, sha256=NULL, bytes=NULL WHERE id=?", (i,))
+        for t in targets:
+            conn.execute("UPDATE ref_docs SET status='found', path=NULL, sha256=NULL, bytes=NULL WHERE id=?", (t,))
+        conn.commit()
+    log("파일이 사라진 문서 %d건 (다시 받을 원본 %d건) → 다시 받기 대기로 변경. 본문 텍스트는 유지" % (len(missing), len(targets)))
+    return len(targets)
+
+
 def download(conn, http, src, out, retry_errors):
     states = ("found", "error") if retry_errors else ("found",)
     rows = db(conn, "SELECT id,url FROM ref_docs WHERE source_id=? AND parent_id IS NULL AND status IN (%s)"
@@ -631,6 +647,8 @@ def main(argv=None):
     ap.add_argument("--download", action="store_true", help="내려받기만")
     ap.add_argument("--extract", action="store_true", help="본문 추출만")
     ap.add_argument("--retry-errors", action="store_true", help="실패했던 파일도 다시 받기")
+    ap.add_argument("--recheck-files", action="store_true",
+                    help="기록은 있는데 디스크에 파일이 없는 문서를 다시 받기 대상으로 되돌림 (폴더가 지워졌을 때)")
     ap.add_argument("--workers", type=int, default=4, help="동시에 처리할 출처 수 (같은 사이트는 항상 순차)")
     ap.add_argument("--ignore-robots", action="store_true",
                     help="robots.txt 무시 (공개 파일을 사람 속도로 개인 참고용으로 받을 때만)")
@@ -647,6 +665,8 @@ def main(argv=None):
 
     cfg = json.loads(SOURCES.read_text(encoding="utf-8"))
     conn = open_db(args.out)
+    if args.recheck_files:
+        recheck_files(conn, args.out)
     if args.status:
         return schools_detail(conn) if args.schools_detail else status(conn)
     if args.search:
