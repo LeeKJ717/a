@@ -61,8 +61,21 @@ class FakeOllama(BaseHTTPRequestHandler):
             out = {"items": items}
         else:
             n = int(re.search(r"가상 문항 (\d+)번", prompt).group(1))
-            out = {"answer": 1 + n % 5, "valid": n % 10 != 0, "reason": "ok"}
+            ans = 1 + n % 5
+            if n % 10 == 3:   # 따옴표가 안 닫힌 깨진 JSON이지만 answer/valid는 맞음 → 살려서 채택돼야 함
+                return self.reply_text('{"answer": %d, "valid": true, "reason": "끊긴 설명' % ans)
+            if n % 10 == 7:   # 전혀 읽을 수 없는 응답 → 검증응답불량
+                return self.reply_text("모르겠습니다")
+            out = {"answer": ans if n % 10 != 5 else ans % 5 + 1,   # 5 → 정답불일치
+                   "valid": n % 10 != 0, "reason": "ok"}           # 0 → 오류판정
         self.reply(out)
+
+    def reply_text(self, text):
+        data = json.dumps({"response": text}).encode()
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.end_headers()
+        self.wfile.write(data)
 
     def reply(self, out, raw=False):
         data = json.dumps(out if raw else {"response": json.dumps(out, ensure_ascii=False)}).encode()
@@ -120,9 +133,31 @@ def main():
         assert tried.get("broken", 0) > 0 and "nomodel" not in tried and "off" not in tried, tried
         assert FakeOllama.examples_seen > 0
         assert conn.execute("SELECT COUNT(*) FROM concept_edges WHERE kind='inter'").fetchone()[0] > 0
-        files = sorted(p.name for p in (Path(d) / "exports").iterdir())
+        files = sorted(p.name for p in (Path(d) / "exports").iterdir() if not p.name.startswith("review_"))
         assert "concept_graph.json" in files and "manifest.json" in files and len(files) == 5, files
-        print("OK", per, "items by node:", by_node, "batches by node:", tried)
+        reasons = {}
+        for (rj,) in conn.execute("SELECT reasons_json FROM gen_log WHERE reasons_json IS NOT NULL"):
+            for k, v in json.loads(rj).items():
+                reasons[k] = reasons.get(k, 0) + v
+        rej_rows = dict(conn.execute("SELECT reason, COUNT(*) FROM rejected_items GROUP BY reason"))
+        assert {"format", "mismatch", "invalid", "verify_error"} <= set(reasons), reasons
+        assert rej_rows == reasons, (rej_rows, reasons)   # 거부 문항이 사유별로 빠짐없이 남음
+        assert conn.execute("SELECT SUM(rejected) FROM gen_log WHERE node IN ('good1','good2')").fetchone()[0] \
+            == sum(reasons.values())
+        stems = [r[0] for r in conn.execute("SELECT stem FROM items")]
+        rescued = [t for t in stems if int(re.search(r"(\d+)번", t).group(1)) % 10 == 3]
+        assert rescued, "깨진 검증 응답이어도 answer/valid가 맞으면 채택돼야 함"
+        assert not [t for t in stems if int(re.search(r"(\d+)번", t).group(1)) % 10 in (0, 5, 7)]
+        mm = conn.execute("SELECT answer, verifier_answer, verifier_valid FROM rejected_items WHERE reason='mismatch'").fetchone()
+        assert mm[0] != str(mm[1]) and mm[2] == 1, mm
+        generate.main(args + ["--sample", "2"])
+        md = sorted((Path(d) / "exports").glob("review_*.md"))
+        assert md, "검수 표본 파일"
+        text = md[-1].read_text(encoding="utf-8")
+        assert text.count("\n### HS-") == 6 and "정답불일치" in text and "오류판정" in text, text[:500]
+        generate.main(args + ["--status"])
+        print("OK", per, "items by node:", by_node, "batches by node:", tried, "reject reasons:", reasons,
+              "rescued:", len(rescued))
 
 
 if __name__ == "__main__":

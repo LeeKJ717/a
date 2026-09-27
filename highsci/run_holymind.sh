@@ -3,7 +3,8 @@
 #   ./run_holymind.sh              # 시작: 준비 안 된 GPU 서버(holymind·z840·z440·soul3)는 자동으로 설정한 뒤
 #                                  #       4대에 작업을 나눠 생성 (이미 만든 문항은 건너뛰고 이어서)
 #   ./run_holymind.sh check        # z840·z440·soul3 Ollama 접속·모델 확인
-#   ./run_holymind.sh status       # 진행 현황
+#   ./run_holymind.sh status       # 진행 현황 + 서버별 거부 사유
+#   ./run_holymind.sh sample 5     # 검수 표본 (중단원별 채택 5 + 거부 사유별 5) → exports/review_*.md
 #   ./run_holymind.sh stop         # 중지 (다시 시작하면 이어서 생성)
 #   ./run_holymind.sh log          # 실시간 로그
 # 추가 옵션은 generate.py로 그대로 전달된다. 예) ./run_holymind.sh --only-nodes z840 soul3
@@ -17,6 +18,7 @@ LOG="$OUT/logs/generate.log"
 
 case "${1:-start}" in
   status) exec python3 generate.py --out "$OUT" --status ;;
+  sample) exec python3 generate.py --out "$OUT" --sample "${2:-5}" ;;
   check)  shift; exec python3 generate.py --out "$OUT" --check-nodes "$@" ;;
   log)    exec tail -f "$LOG" ;;
   stop)
@@ -28,7 +30,7 @@ case "${1:-start}" in
     exit 0 ;;
   start) shift || true ;;
   -*) ;;  # 옵션만 주면 start
-  *) echo "사용법: $0 [start|check|status|stop|log] [generate.py 옵션]"; exit 1 ;;
+  *) echo "사용법: $0 [start|check|status|sample N|stop|log] [generate.py 옵션]"; exit 1 ;;
 esac
 
 if [[ -f "$PIDFILE" ]] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then

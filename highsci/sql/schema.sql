@@ -112,6 +112,25 @@ CREATE TABLE IF NOT EXISTS gen_log (
   rejected   INTEGER,
   seconds    REAL,
   node       TEXT,
+  reasons_json TEXT,                     -- 거부 사유별 수 {"mismatch":2,"invalid":1,...}
   note       TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now','localtime'))
 );
+
+-- 거부된 문항 (사유 분석·검증기 오판 점검용)
+CREATE TABLE IF NOT EXISTS rejected_items (
+  id              INTEGER PRIMARY KEY AUTOINCREMENT,
+  subunit_code    TEXT,
+  node            TEXT,
+  difficulty      INTEGER,
+  reason          TEXT NOT NULL,         -- format / dup / mismatch / invalid / verify_error / db
+  stem            TEXT,
+  choices_json    TEXT,
+  answer          TEXT,                  -- 문항에 표시된 정답
+  verifier_answer INTEGER,               -- 검증 풀이 답
+  verifier_valid  INTEGER,               -- 1=문제없음 0=오류 판정
+  verifier_reason TEXT,
+  raw             TEXT,                  -- 깨진 검증 응답 원문 등
+  created_at      TEXT NOT NULL DEFAULT (datetime('now','localtime'))
+);
+CREATE INDEX IF NOT EXISTS idx_rejected_reason ON rejected_items(reason, subunit_code);

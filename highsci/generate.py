@@ -19,6 +19,7 @@
     python3 generate.py --subunits 3-3 4-4  # 특정 중단원만
     python3 generate.py --status            # 진행 현황
     python3 generate.py --export            # JSONL/그래프 내보내기만
+    python3 generate.py --sample 5          # 검수 표본 (중단원별 채택 5 + 거부 사유별 5) → exports/review_*.md
 """
 import argparse
 import hashlib
@@ -129,6 +130,9 @@ class Gemma:
         return self.model_override or self.prompts[key]["model"]
 
     def call_json(self, key, text, timeout=600):
+        return parse_json(self.call_text(key, text, timeout))
+
+    def call_text(self, key, text, timeout=600):
         p = self.prompts[key]
         opts = dict(p["options"])
         body = {
@@ -144,8 +148,7 @@ class Gemma:
         body["options"] = opts
         req = urllib.request.Request(self.url, data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
         with urllib.request.urlopen(req, timeout=timeout) as resp:
-            out = json.loads(resp.read().decode()).get("response", "")
-        return parse_json(out)
+            return json.loads(resp.read().decode()).get("response", "")
 
 
 def parse_json(s):
@@ -160,16 +163,32 @@ def parse_json(s):
         raise
 
 
+def lenient_verdict(s):
+    """검증 응답 JSON이 깨졌을 때(따옴표 미종결·잘림 등) answer/valid만 골라 읽는다. 둘 다 없으면 ValueError."""
+    a = re.search(r'"answer"\s*:\s*"?([1-5])', s)
+    v = re.search(r'"valid"\s*:\s*"?(true|false)', s, re.I)
+    if not (a and v):
+        raise ValueError("검증 응답에서 answer/valid를 찾지 못함: %r" % s[:120])
+    r = re.search(r'"reason"\s*:\s*"([^"\n]*)', s)
+    return {"answer": int(a.group(1)), "valid": v.group(1).lower() == "true", "reason": r.group(1) if r else "",
+            "lenient": True}
+
+
+# 거부 사유: 형식 불량 / 중복 / 검증 풀이 답 불일치 / 검증이 오류 판정 / 검증 응답 자체를 못 읽음 / DB 저장 충돌
+REJECT_LABELS = {"format": "형식", "dup": "중복", "mismatch": "정답불일치", "invalid": "오류판정",
+                 "verify_error": "검증응답불량", "db": "저장충돌"}
+
+
 # ---------------------------------------------------------------- DB
 
 def open_db(path):
     path.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(str(path), check_same_thread=False, timeout=60)
     conn.executescript(SCHEMA.read_text(encoding="utf-8"))
-    for table in ("items", "gen_log"):  # 단일 서버 버전에서 만든 DB 이전
+    for table, col in (("items", "node"), ("gen_log", "node"), ("gen_log", "reasons_json")):  # 이전 버전 DB 이전
         cols = [r[1] for r in conn.execute("PRAGMA table_info(%s)" % table)]
-        if "node" not in cols:
-            conn.execute("ALTER TABLE %s ADD COLUMN node TEXT" % table)
+        if col not in cols:
+            conn.execute("ALTER TABLE %s ADD COLUMN %s TEXT" % (table, col))
     return conn
 
 
@@ -363,24 +382,42 @@ class Scheduler:
     # ------------------------------------------------------------ 저장
 
     def store(self, task, raw, node):
-        accepted = rejected = 0
+        """(채택 수, {거부사유: 수}). 거부된 문항은 rejected_items에 사유와 함께 남긴다."""
+        accepted, reasons = 0, {}
+
+        def reject(reason, it, verdict=None):
+            reasons[reason] = reasons.get(reason, 0) + 1
+            it = it if isinstance(it, dict) else {"raw": it}
+            verdict = verdict or {}
+            with db_lock:
+                self.conn.execute(
+                    "INSERT INTO rejected_items(subunit_code,node,difficulty,reason,stem,choices_json,answer,"
+                    "verifier_answer,verifier_valid,verifier_reason,raw) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+                    (task.su["code"], node.name, task.diff, reason, str(it.get("stem", ""))[:4000],
+                     json.dumps(it.get("choices"), ensure_ascii=False)[:4000], str(it.get("answer", ""))[:20],
+                     verdict.get("answer"), None if verdict.get("valid") is None else int(bool(verdict["valid"])),
+                     str(verdict.get("reason", ""))[:1000], str(verdict.get("raw", ""))[:2000] or None))
+                self.conn.commit()
+
         for it in raw if isinstance(raw, list) else []:
             item = self.clean(task, it)
             if not item:
-                rejected += 1
+                reject("format", it)
                 continue
             h = stem_hash(item["stem"])
             if self.q("SELECT 1 FROM items WHERE stem_hash=?", (h,)):
-                rejected += 1
+                reject("dup", item)
                 continue
-            if self.verify and not self.verified(item, node, task.su["code"]):
-                rejected += 1
-                continue
+            if self.verify:
+                outcome, verdict = self.verified(item, node, task.su["code"])
+                if outcome != "ok":
+                    reject(outcome, item, verdict)
+                    continue
             if self.insert(task, item, h, node):
                 accepted += 1
             else:
-                rejected += 1
-        return accepted, rejected
+                reject("db", item)
+        return accepted, reasons
 
     def insert(self, task, item, h, node):
         code = task.su["code"]
@@ -430,13 +467,29 @@ class Scheduler:
                 "explanation": str(it.get("explanation", "")).strip(), "concepts": list(dict.fromkeys(concepts))}
 
     def verified(self, item, node, code):
+        """("ok"|"mismatch"|"invalid"|"verify_error", 검증 응답 dict)."""
         text = item["stem"] + "\n" + "\n".join("%d) %s" % (i, c) for i, c in enumerate(item["choices"], 1))
+        raw = ""
         try:
-            v = node.gemma.call_json(VERIFY_KEY, text, timeout=node.timeout)
-            return bool(v.get("valid")) and int(v.get("answer", 0)) == item["answer"]
+            raw = node.gemma.call_text(VERIFY_KEY, text, timeout=node.timeout)
+            try:
+                v = parse_json(raw)
+                if not isinstance(v, dict):
+                    raise ValueError("dict 아님")
+            except ValueError:  # json.JSONDecodeError 포함: 깨진 응답에서도 answer/valid는 건진다
+                v = lenient_verdict(raw)
+            answer = int(str(v.get("answer", 0)).strip()[:1] or 0)
         except Exception as e:
-            log("[%s@%s] 검증 오류: %s" % (code, node.name, e))
-            return False
+            log("[%s@%s] 검증 응답 불량: %s" % (code, node.name, e))
+            return "verify_error", {"reason": str(e)[:300], "raw": raw}
+        valid = v.get("valid")
+        valid = valid.strip().lower() == "true" if isinstance(valid, str) else bool(valid)
+        verdict = {"answer": answer, "valid": valid, "reason": v.get("reason", ""), "raw": raw if v.get("lenient") else ""}
+        if not valid:
+            return "invalid", verdict
+        if answer != item["answer"]:
+            return "mismatch", verdict
+        return "ok", verdict
 
 
 def node_worker(node, sched):
@@ -453,11 +506,11 @@ def node_worker(node, sched):
                 return
             stop_event.wait(5)  # 다른 서버의 진행 중 배치가 실패하면 다시 받아간다
             continue
-        code, t0, accepted, rejected = task.su["code"], time.time(), 0, task.n
+        code, t0, accepted, reasons = task.su["code"], time.time(), 0, {}
         try:
             data = node.gemma.call_json(GEN_KEY, json.dumps(task.spec, ensure_ascii=False, indent=1), timeout=node.timeout)
             raw = data.get("items", []) if isinstance(data, dict) else data
-            accepted, rejected = sched.store(task, raw, node)
+            accepted, reasons = sched.store(task, raw, node)
             node.ok()
         except Exception as e:
             log("[%s@%s] 오류: %s" % (code, node.name, e))
@@ -465,13 +518,17 @@ def node_worker(node, sched):
         finally:
             sched.done(task, accepted)
         dt = time.time() - t0
+        rejected = sum(reasons.values())
         with db_lock:
-            sched.conn.execute("INSERT INTO gen_log(subunit_code,requested,accepted,rejected,seconds,node) "
-                               "VALUES (?,?,?,?,?,?)", (code, task.n, accepted, rejected, dt, node.name))
+            sched.conn.execute("INSERT INTO gen_log(subunit_code,requested,accepted,rejected,seconds,node,reasons_json) "
+                               "VALUES (?,?,?,?,?,?,?)", (code, task.n, accepted, rejected, dt, node.name,
+                                                          json.dumps(reasons) if reasons else None))
             sched.conn.commit()
         have = sum(sched.counts(code).values())
-        log("[%s %s@%s] 난이도%d +%d (거부 %d) %.0fs → %d/%d" % (
-            code, task.su["subject"], node.name, task.diff, accepted, rejected, dt, have, sched.target))
+        why = " ".join("%s%d" % (REJECT_LABELS[k], v) for k, v in sorted(reasons.items()))
+        log("[%s %s@%s] 난이도%d +%d (거부 %d%s) %.0fs → %d/%d" % (
+            code, task.su["subject"], node.name, task.diff, accepted, rejected, (": " + why) if why else "",
+            dt, have, sched.target))
 
 
 def quotas(target):
@@ -517,6 +574,63 @@ def node_report(conn):
         print("\n%-10s %8s %8s %8s %8s" % ("서버", "배치", "채택", "거부", "초/배치"))
         for r in rows:
             print("%-10s %8d %8d %8d %8s" % r)
+    # 거부 사유 (사유 기록 기능이 생긴 뒤의 배치만 집계)
+    agg = {}
+    for node, rj in conn.execute("SELECT node, reasons_json FROM gen_log WHERE reasons_json IS NOT NULL"):
+        for k, v in json.loads(rj).items():
+            agg.setdefault(node, {}).setdefault(k, 0)
+            agg[node][k] += v
+    if agg:
+        keys = list(REJECT_LABELS)
+        print("\n거부 사유 (사유 기록 시작 이후)")
+        print("%-10s " % "서버" + " ".join("%8s" % REJECT_LABELS[k] for k in keys))
+        for node in sorted(agg):
+            print("%-10s " % node + " ".join("%8d" % agg[node].get(k, 0) for k in keys))
+        tot = {k: sum(a.get(k, 0) for a in agg.values()) for k in keys}
+        print("%-10s " % "합계" + " ".join("%8d" % tot[k] for k in keys))
+
+
+def sample(conn, out_dir, n, subunits):
+    """검수용 표본: 중단원마다 채택 문항 n개 + 거부 사유마다 거부 문항 n개 → exports/review_*.jsonl/.md"""
+    ex = out_dir / "exports"
+    ex.mkdir(parents=True, exist_ok=True)
+    stamp = time.strftime("%Y%m%d_%H%M")
+    names = {su["code"]: "%s %s (%s)" % (su["code"], su["name"], su["subject"]) for su in subunits}
+    acc = []
+    for su in subunits:
+        acc += conn.execute("SELECT id, subunit_code, difficulty, stem, choices_json, answer, explanation, node FROM items "
+                            "WHERE subunit_code=? ORDER BY random() LIMIT ?", (su["code"], n)).fetchall()
+    rej = []
+    for reason in REJECT_LABELS:
+        rej += conn.execute("SELECT id, subunit_code, difficulty, stem, choices_json, answer, reason, verifier_answer, "
+                            "verifier_valid, verifier_reason, node FROM rejected_items WHERE reason=? "
+                            "ORDER BY random() LIMIT ?", (reason, n)).fetchall()
+    jl, md = ex / ("review_%s.jsonl" % stamp), ex / ("review_%s.md" % stamp)
+    with open(jl, "w", encoding="utf-8") as fj, open(md, "w", encoding="utf-8") as fm:
+        fm.write("# 문제은행 검수 표본 (%s)\n\n채택 %d문항, 거부 %d문항\n\n## 채택 문항\n" % (stamp, len(acc), len(rej)))
+        for iid, code, diff, stem, cj, ans, expl, node in acc:
+            ch = json.loads(cj)
+            fj.write(json.dumps({"kind": "accepted", "id": iid, "subunit": code, "difficulty": diff, "stem": stem,
+                                 "choices": ch, "answer": ans, "explanation": expl, "node": node},
+                                ensure_ascii=False) + "\n")
+            fm.write("\n### %s · %s · 난이도 %d · %s\n\n%s\n\n%s\n\n**정답 %d** — %s\n" % (
+                iid, names.get(code, code), diff, node, stem,
+                "\n".join("%s %s" % ("①②③④⑤"[i], c) for i, c in enumerate(ch)), ans, expl))
+        fm.write("\n## 거부 문항\n")
+        for rid, code, diff, stem, cj, ans, reason, va, vv, vr, node in rej:
+            try:
+                ch = json.loads(cj) or []
+            except ValueError:
+                ch = []
+            fj.write(json.dumps({"kind": "rejected", "rid": rid, "subunit": code, "difficulty": diff, "reason": reason,
+                                 "stem": stem, "choices": ch, "answer": ans, "verifier_answer": va,
+                                 "verifier_valid": vv, "verifier_reason": vr, "node": node}, ensure_ascii=False) + "\n")
+            fm.write("\n### 거부#%d · %s · %s · 난이도 %s · %s\n\n%s\n\n%s\n\n표시 정답 %s / 검증 답 %s / 검증 판정 %s — %s\n" % (
+                rid, REJECT_LABELS.get(reason, reason), names.get(code, code), diff, node, stem,
+                "\n".join("%s %s" % ("①②③④⑤"[i], c) for i, c in enumerate(ch[:5])) if isinstance(ch, list) else ch,
+                ans, va, {1: "문제없음", 0: "오류"}.get(vv, "-"), vr))
+    log("검수 표본: %s (채택 %d, 거부 %d)  ·  %s" % (md, len(acc), len(rej), jl))
+    return md
 
 
 # ---------------------------------------------------------------- status / export
@@ -591,6 +705,8 @@ def main(argv=None):
     ap.add_argument("--status", action="store_true")
     ap.add_argument("--export", action="store_true", help="생성 없이 내보내기만")
     ap.add_argument("--check-nodes", action="store_true", help="서버 접속·모델 확인만")
+    ap.add_argument("--sample", type=int, metavar="N",
+                    help="검수 표본 내보내기: 중단원마다 채택 N개 + 거부 사유마다 N개 (생성하지 않음)")
     ap.add_argument("--unready-file", help="준비 안 된 서버 이름을 이 파일에 기록 (자동 준비용)")
     args = ap.parse_args(argv)
 
@@ -606,6 +722,9 @@ def main(argv=None):
         return node_report(conn)
     if args.export:
         return export(conn, args.out)
+    if args.sample:
+        sample(conn, args.out, args.sample, subunits)
+        return 0
 
     prompts = load_prompts([GEN_KEY, VERIFY_KEY], args.prompt_source, args.soul3)
     nodes = load_nodes(args, prompts)
