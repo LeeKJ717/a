@@ -116,6 +116,12 @@ def main():
         unready = Path(d) / "unready.txt"
         assert generate.main(args + ["--check-nodes", "--unready-file", str(unready)]) == 0
         assert unready.read_text().split() == ["nomodel"], unready.read_text()  # 자동 준비 대상
+        # 중간에 멈춰도 난이도 1~5가 비율대로 섞여 있어야 함 (목표 30 중 15만 만든 상태)
+        generate.main(args[:3] + ["15"] + args[4:])
+        with sqlite3.connect(Path(d) / "highsci.db") as c0:
+            for code in ("3-3", "4-4", "5-1"):
+                half = dict(c0.execute("SELECT difficulty, COUNT(*) FROM items WHERE subunit_code=? GROUP BY 1", (code,)))
+                assert set(half) == {1, 2, 3, 4, 5}, (code, half)
         generate.main(args)
         generate.main(args)  # 재실행 시 이미 채워졌으므로 추가 생성 없어야 함
         conn = sqlite3.connect(Path(d) / "highsci.db")
@@ -156,6 +162,22 @@ def main():
         text = md[-1].read_text(encoding="utf-8")
         assert text.count("\n### HS-") == 6 and "정답불일치" in text and "오류판정" in text, text[:500]
         generate.main(args + ["--status"])
+        # prompt_db 조회가 실패해도 마지막 사본으로 진행되는지
+        orig = generate.load_prompts
+        generate.load_prompts = lambda *a: (_ for _ in ()).throw(RuntimeError("Too many authentication failures"))
+        try:
+            cache = Path(d) / "prompt_cache.json"
+            cache.write_text(json.dumps(prompts_from_sql(), ensure_ascii=False), encoding="utf-8")
+            got = generate.load_prompts_cached(["highsci_item_gen", "highsci_item_verify"], "ssh", "x", cache)
+            assert set(got) == {"highsci_item_gen", "highsci_item_verify"}
+            cache.unlink()
+            try:
+                generate.load_prompts_cached(["highsci_item_gen"], "ssh", "x", cache)
+                raise AssertionError("사본도 없으면 오류여야 함")
+            except RuntimeError as e:
+                assert "SOUL3_SSH_KEY" in str(e)
+        finally:
+            generate.load_prompts = orig
         print("OK", per, "items by node:", by_node, "batches by node:", tried, "reject reasons:", reasons,
               "rescued:", len(rescued))
 

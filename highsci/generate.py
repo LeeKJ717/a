@@ -99,7 +99,11 @@ def load_prompts(keys, source, ssh_host):
     mysql = ["mysql", "-u", user, "-p" + pw, "--socket=" + sock, "prompt_db", "-N", "-B", "--raw", "-e", sql]
     if source == "ssh":
         import shlex
-        cmd = ["ssh", "-o", "BatchMode=yes", "-o", "ConnectTimeout=10", ssh_host, " ".join(shlex.quote(a) for a in mysql)]
+        cmd = ["ssh", "-o", "BatchMode=yes", "-o", "ConnectTimeout=10"]
+        key = os.environ.get("SOUL3_SSH_KEY")  # 키가 많아 'Too many authentication failures'가 날 때 이 키만 사용
+        if key:
+            cmd += ["-o", "IdentitiesOnly=yes", "-i", os.path.expanduser(key)]
+        cmd += [ssh_host, " ".join(shlex.quote(a) for a in mysql)]
     else:
         cmd = mysql
     r = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
@@ -116,6 +120,23 @@ def load_prompts(keys, source, ssh_host):
     if missing:
         raise RuntimeError("prompt_db에 없는 prompt_key: %s (sql/register_prompts.sql 을 soul3에서 실행하세요)" % missing)
     return prompts
+
+
+def load_prompts_cached(keys, source, ssh_host, cache):
+    """prompt_db에서 읽고 성공하면 cache에 저장. soul3에 못 붙으면 마지막으로 읽은 사본으로 진행 (원본은 계속 prompt_db)."""
+    try:
+        prompts = load_prompts(keys, source, ssh_host)
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        cache.write_text(json.dumps(prompts, ensure_ascii=False, indent=1), encoding="utf-8")
+        return prompts
+    except Exception as e:
+        if cache.exists():
+            prompts = json.loads(cache.read_text(encoding="utf-8"))
+            if all(k in prompts for k in keys):
+                log("경고: prompt_db 조회 실패 (%s) → 마지막 사본 사용: %s (%s)" % (
+                    str(e).splitlines()[0][:120], cache, time.strftime("%m-%d %H:%M", time.localtime(cache.stat().st_mtime))))
+                return prompts
+        raise RuntimeError("%s\n  ssh 키 문제면: export SOUL3_SSH_KEY=~/.ssh/id_ed25519 (사용할 키) 후 다시 실행" % e)
 
 
 # ---------------------------------------------------------------- Ollama
@@ -329,7 +350,8 @@ class Scheduler:
             _, neg_rem, _, su, counts = min(cands, key=lambda x: x[:3])
             code, inf = su["code"], self.inflight[su["code"]]
             deficit = {d: self.quota[d] - counts[d] - inf[d] for d in DIFFICULTY_MIX}
-            diff = max(deficit, key=lambda d: (deficit[d], random.random()))
+            # 남은 개수가 아니라 '목표 대비 남은 비율'이 가장 큰 난이도 → 어느 시점에 멈춰도 1~5 비율이 유지된다
+            diff = max(deficit, key=lambda d: (deficit[d] / max(1, self.quota[d]), random.random()))
             n = max(1, min(self.batch, -neg_rem, deficit[diff]))
             std = self.pick_standard(su)
             focus = self.pick_focus(su)
@@ -726,7 +748,7 @@ def main(argv=None):
         sample(conn, args.out, args.sample, subunits)
         return 0
 
-    prompts = load_prompts([GEN_KEY, VERIFY_KEY], args.prompt_source, args.soul3)
+    prompts = load_prompts_cached([GEN_KEY, VERIFY_KEY], args.prompt_source, args.soul3, args.out / "prompt_cache.json")
     nodes = load_nodes(args, prompts)
     if args.check_nodes:
         return 0 if nodes else 1
