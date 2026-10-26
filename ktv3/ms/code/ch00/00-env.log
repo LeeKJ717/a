@@ -1,0 +1,7 @@
+python 3.13.16 Linux-6.18.44-fc-v153-x86_64-with-glibc2.39
+numpy 2.5.3
+shapely 2.2.0
+geopandas 1.2.0
+pyproj 3.8.0
+matplotlib 3.11.2
+PROJ 9.8.1

@@ -1,0 +1,88 @@
+=== 계산 4-5 (1) 코딩 표(칸: 0~1, 1~2, ..., 11~12 ka) ===
+기록                                  1  2  3  4  5  6  7  8  9 10 11 12
+Hoton-Nur(Rudaya 2009)              -  -  -  -  -  +  +  +  +  +  -  -
+Ugii Nuur(Wang 2009)                .  .  +  -  -  -  -  -  +  .  .  .
+Hulun(Wen 2010)                     .  -  +  -  -  -  +  +  -  -  -  .
+Bayan Nuur(Tian 2014)               -  -  -  +  +  +  +  +  .  -  -  -
+Minusinsk(Dirksen 2007)             -  -  .  .  .  +  +  +  -  -  -  -
+Kotokel(Tarasov 2009)               .  .  .  .  .  .  .  +  +  +  +  .
+Teletskoye(Rudaya 2016)             .  .  +  +  .  .  .  .  .  .  .  .
+Ulaan(Mischke 2020)                 -  -  -  -  -  -  -  .  .  +  +  +
+Ulagan(Blyakharchuk 2004)           .  .  .  .  .  .  .  .  .  +  +  +
+Altai 상부숲(Huang 2018)               .  .  .  .  .  .  .  +  +  +  .  .
+Hovsgol(Prokopenko 2007)            .  .  .  -  -  -  .  +  +  +  +  .
+Kulunda 꽃가루(Rudaya 2012)            +  +  +  +  .  .  .  .  .  .  .  .
+Kulunda 규조(Rudaya 2012)             .  .  -  -  .  .  .  .  .  .  .  .
+건조 중앙아시아 종합(Chen 2008)              +  +  +  +  +  +  +  +  -  -  -  -
+
+=== 계산 4-5 (2) 칸마다 + 기록 수, - 기록 수 ===
+칸(ka)       +    -    서술수    다수 비율 판정
+ 0~1         2    4      6     0.67 서로 다름
+ 1~2         2    5      7     0.71 서로 다름
+ 2~3         5    4      9     0.56 서로 다름
+ 3~4         4    6     10     0.60 서로 다름
+ 4~5         2    5      7     0.71 서로 다름
+ 5~6         4    4      8     0.50 서로 다름
+ 6~7         5    2      7     0.71 서로 다름
+ 7~8         8    1      9     0.89 서로 다름
+ 8~9         5    3      8     0.62 서로 다름
+ 9~10        6    4     10     0.60 서로 다름
+10~11        4    5      9     0.56 서로 다름
+11~12        2    4      6     0.67 서로 다름
+양쪽 부호가 모두 나온 칸: 12 / 12 → ['0~1', '1~2', '2~3', '3~4', '4~5', '5~6', '6~7', '7~8', '8~9', '9~10', '10~11', '11~12'] ka
+
+=== 계산 4-5 (3) 두 기록이 함께 서술한 칸에서의 일치율 (공통 칸 3개 이상인 쌍) ===
+  1.00 (8칸)  Bayan Nuur(Tian 2014)  |  Minusinsk(Dirksen 2007)
+  1.00 (5칸)  Ulaan(Mischke 2020)  |  Hovsgol(Prokopenko 2007)
+  1.00 (4칸)  Kulunda 꽃가루(Rudaya 2012)  |  건조 중앙아시아 종합(Chen 2008)
+  1.00 (4칸)  Kotokel(Tarasov 2009)  |  Hovsgol(Prokopenko 2007)
+  1.00 (3칸)  Ulaan(Mischke 2020)  |  Ulagan(Blyakharchuk 2004)
+  1.00 (3칸)  Kotokel(Tarasov 2009)  |  Altai 상부숲(Huang 2018)
+  1.00 (3칸)  Hoton-Nur(Rudaya 2009)  |  Altai 상부숲(Huang 2018)
+  1.00 (3칸)  Altai 상부숲(Huang 2018)  |  Hovsgol(Prokopenko 2007)
+  0.86 (7칸)  Hulun(Wen 2010)  |  Minusinsk(Dirksen 2007)
+  0.80 (5칸)  Ugii Nuur(Wang 2009)  |  Ulaan(Mischke 2020)
+  0.80 (5칸)  Ugii Nuur(Wang 2009)  |  Hovsgol(Prokopenko 2007)
+  0.78 (9칸)  Minusinsk(Dirksen 2007)  |  건조 중앙아시아 종합(Chen 2008)
+  0.78 (9칸)  Hoton-Nur(Rudaya 2009)  |  Minusinsk(Dirksen 2007)
+  0.75 (4칸)  Hoton-Nur(Rudaya 2009)  |  Kotokel(Tarasov 2009)
+  0.73 (11칸)  Hoton-Nur(Rudaya 2009)  |  Bayan Nuur(Tian 2014)
+  0.73 (11칸)  Bayan Nuur(Tian 2014)  |  건조 중앙아시아 종합(Chen 2008)
+  0.71 (7칸)  Hoton-Nur(Rudaya 2009)  |  Hovsgol(Prokopenko 2007)
+  0.60 (10칸)  Hulun(Wen 2010)  |  건조 중앙아시아 종합(Chen 2008)
+  0.60 (10칸)  Hoton-Nur(Rudaya 2009)  |  Ulaan(Mischke 2020)
+  0.60 (10칸)  Hoton-Nur(Rudaya 2009)  |  Hulun(Wen 2010)
+  0.57 (7칸)  Ugii Nuur(Wang 2009)  |  Hulun(Wen 2010)
+  0.57 (7칸)  Hulun(Wen 2010)  |  Hovsgol(Prokopenko 2007)
+  0.56 (9칸)  Hulun(Wen 2010)  |  Bayan Nuur(Tian 2014)
+  0.50 (8칸)  Hulun(Wen 2010)  |  Ulaan(Mischke 2020)
+  0.43 (7칸)  Hoton-Nur(Rudaya 2009)  |  Ugii Nuur(Wang 2009)
+  0.42 (12칸)  Hoton-Nur(Rudaya 2009)  |  건조 중앙아시아 종합(Chen 2008)
+  0.33 (3칸)  Minusinsk(Dirksen 2007)  |  Altai 상부숲(Huang 2018)
+  0.33 (3칸)  Hulun(Wen 2010)  |  Kulunda 꽃가루(Rudaya 2012)
+  0.33 (3칸)  Hulun(Wen 2010)  |  Altai 상부숲(Huang 2018)
+  0.33 (3칸)  Hoton-Nur(Rudaya 2009)  |  Ulagan(Blyakharchuk 2004)
+  0.33 (3칸)  Bayan Nuur(Tian 2014)  |  Kotokel(Tarasov 2009)
+  0.33 (3칸)  Altai 상부숲(Huang 2018)  |  건조 중앙아시아 종합(Chen 2008)
+  0.30 (10칸)  Bayan Nuur(Tian 2014)  |  Ulaan(Mischke 2020)
+  0.29 (7칸)  Minusinsk(Dirksen 2007)  |  Ulaan(Mischke 2020)
+  0.25 (4칸)  Minusinsk(Dirksen 2007)  |  Kotokel(Tarasov 2009)
+  0.25 (4칸)  Kotokel(Tarasov 2009)  |  건조 중앙아시아 종합(Chen 2008)
+  0.25 (4칸)  Hulun(Wen 2010)  |  Kotokel(Tarasov 2009)
+  0.25 (4칸)  Bayan Nuur(Tian 2014)  |  Kulunda 꽃가루(Rudaya 2012)
+  0.20 (5칸)  Minusinsk(Dirksen 2007)  |  Hovsgol(Prokopenko 2007)
+  0.17 (6칸)  Bayan Nuur(Tian 2014)  |  Hovsgol(Prokopenko 2007)
+  0.14 (7칸)  Ugii Nuur(Wang 2009)  |  건조 중앙아시아 종합(Chen 2008)
+  0.14 (7칸)  Hovsgol(Prokopenko 2007)  |  건조 중앙아시아 종합(Chen 2008)
+  0.00 (10칸)  Ulaan(Mischke 2020)  |  건조 중앙아시아 종합(Chen 2008)
+  0.00 (6칸)  Ugii Nuur(Wang 2009)  |  Bayan Nuur(Tian 2014)
+  0.00 (4칸)  Ulaan(Mischke 2020)  |  Kulunda 꽃가루(Rudaya 2012)
+  0.00 (4칸)  Ugii Nuur(Wang 2009)  |  Minusinsk(Dirksen 2007)
+  0.00 (4칸)  Hoton-Nur(Rudaya 2009)  |  Kulunda 꽃가루(Rudaya 2012)
+  0.00 (3칸)  Ulagan(Blyakharchuk 2004)  |  건조 중앙아시아 종합(Chen 2008)
+  0.00 (3칸)  Minusinsk(Dirksen 2007)  |  Ulagan(Blyakharchuk 2004)
+  0.00 (3칸)  Bayan Nuur(Tian 2014)  |  Ulagan(Blyakharchuk 2004)
+쌍 50 개, 공통 칸 합 294, 일치 칸 합 147: 합친 일치율 0.500 ; 쌍마다 일치율의 평균 0.480
+
+이 책의 순열형 점검: 서술이 있는 칸의 위치는 그대로 두고 부호만 임의(±1 같은 확률)로 5000번 바꾸면 평균 일치율은 중앙 0.50 (95%: 0.44~0.57). 관측(쌍마다 평균) 0.48 는 위 분포의 28.7% 위치.
+주의: 부호를 칸마다 독립으로 섞으면 시간적으로 이어진 구간이라는 구조를 무시한다. 기준선이 지나치게 느슨하다. 이 값은 "논문들이 서로 같은 쪽을 말하는 정도"의 대략 감각이다.

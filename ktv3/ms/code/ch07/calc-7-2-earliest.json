@@ -1,0 +1,354 @@
+{
+ "북서인도": {
+  "n": 15,
+  "earliest_median_BC": -2618.0,
+  "earliest_lo_BC": -2838.0,
+  "earliest_hi_BC": -2551.0,
+  "oldest_single": "GdA-4806 4-MSR",
+  "single_range_BC": [
+   -2844.0,
+   -2475.0
+  ],
+  "top_oldest": [
+   [
+    "GdA-4806 4-MSR",
+    0.517395
+   ],
+   [
+    "GdA-4807 4-MSR",
+    0.217085
+   ],
+   [
+    "Beta-427238 Masudspur VII",
+    0.17472
+   ]
+  ]
+ },
+ "갠지스": {
+  "n": 6,
+  "earliest_median_BC": -2521.0,
+  "earliest_lo_BC": -2818.0,
+  "earliest_hi_BC": -2343.0,
+  "oldest_single": "DAMMESO-1 Damdama",
+  "single_range_BC": [
+   -2828.0,
+   -2298.0
+  ],
+  "top_oldest": [
+   [
+    "DAMMESO-1 Damdama",
+    0.841475
+   ],
+   [
+    "Erl-6903 Lahuredewa",
+    0.158525
+   ],
+   [
+    "D-AMS018161 Agaibir",
+    0.0
+   ]
+  ]
+ },
+ "남인도": {
+  "n": 5,
+  "earliest_median_BC": -1866.0,
+  "earliest_lo_BC": -1957.0,
+  "earliest_hi_BC": -1767.0,
+  "oldest_single": "R 28680/3 (이름 없음)",
+  "single_range_BC": [
+   -1952.0,
+   -1750.0
+  ],
+  "top_oldest": [
+   [
+    "R 28680/3 (이름 없음)",
+    0.983485
+   ],
+   [
+    "R 28680/17 Hiregudda",
+    0.010845
+   ],
+   [
+    "R 28680/6 (이름 없음)",
+    0.00567
+   ]
+  ]
+ },
+ "티베트": {
+  "n": 5,
+  "earliest_median_BC": -1299.0,
+  "earliest_lo_BC": -1390.0,
+  "earliest_hi_BC": -1225.0,
+  "oldest_single": "BA140578 Khog Gzung",
+  "single_range_BC": [
+   -1395.0,
+   -1219.0
+  ],
+  "top_oldest": [
+   [
+    "BA140578 Khog Gzung",
+    0.94064
+   ],
+   [
+    "Beta-450799 Bangtangbu",
+    0.029025
+   ],
+   [
+    "BA140576 Khog Gzung",
+    0.02887
+   ]
+  ]
+ },
+ "청해": {
+  "n": 33,
+  "earliest_median_BC": -2056.0,
+  "earliest_lo_BC": -2133.0,
+  "earliest_hi_BC": -1975.0,
+  "oldest_single": "BA120205 Xiasunjiazhai",
+  "single_range_BC": [
+   -2136.0,
+   -1956.0
+  ],
+  "top_oldest": [
+   [
+    "BA120205 Xiasunjiazhai",
+    0.78554
+   ],
+   [
+    "Beta-303689 Gongshijia",
+    0.169255
+   ],
+   [
+    "QAS1318 Changning",
+    0.03494
+   ]
+  ]
+ },
+ "감숙": {
+  "n": 11,
+  "earliest_median_BC": -1783.0,
+  "earliest_lo_BC": -1874.0,
+  "earliest_hi_BC": -1700.0,
+  "oldest_single": "QAS1312 Heishuiguo",
+  "single_range_BC": [
+   -1880.0,
+   -1692.0
+  ],
+  "top_oldest": [
+   [
+    "QAS1312 Heishuiguo",
+    0.89227
+   ],
+   [
+    "QAS1317 Heishuiguo",
+    0.073425
+   ],
+   [
+    "QAS1313 Heishuiguo",
+    0.01538
+   ]
+  ]
+ },
+ "중앙아시아": {
+  "n": 4,
+  "earliest_median_BC": -1570.0,
+  "earliest_lo_BC": -1615.0,
+  "earliest_hi_BC": -1511.0,
+  "oldest_single": "Beta-435511 Aigyrzhal-2",
+  "single_range_BC": [
+   -1618.0,
+   -1463.0
+  ],
+  "top_oldest": [
+   [
+    "Beta-435511 Aigyrzhal-2",
+    0.59428
+   ],
+   [
+    "OS92543 Ojakly",
+    0.4057
+   ],
+   [
+    "OS92277 Tasbas 2a",
+    2e-05
+   ]
+  ]
+ },
+ "신강": {
+  "n": 7,
+  "earliest_median_BC": -890.0,
+  "earliest_lo_BC": -979.0,
+  "earliest_hi_BC": -833.0,
+  "oldest_single": "BA111398 Sidaogou",
+  "single_range_BC": [
+   -980.0,
+   -828.0
+  ],
+  "top_oldest": [
+   [
+    "BA111398 Sidaogou",
+    1.0
+   ],
+   [
+    "BA111399 Sidaogou",
+    0.0
+   ],
+   [
+    "BA111401 Sidaogou",
+    0.0
+   ]
+  ]
+ },
+ "중·동부 중국": {
+  "n": 2,
+  "earliest_median_BC": -811.0,
+  "earliest_lo_BC": -891.0,
+  "earliest_hi_BC": -789.0,
+  "oldest_single": "Beta-427237 Zhaogezhuang",
+  "single_range_BC": [
+   -897.0,
+   -780.0
+  ],
+  "top_oldest": [
+   [
+    "Beta-427237 Zhaogezhuang",
+    0.999925
+   ],
+   [
+    "QAS1306 Wangchenggang",
+    7.5e-05
+   ]
+  ]
+ },
+ "matrix": {
+  "order": [
+   "북서인도",
+   "갠지스",
+   "남인도",
+   "티베트",
+   "청해",
+   "감숙",
+   "중앙아시아",
+   "신강",
+   "중·동부 중국"
+  ],
+  "P": [
+   [
+    null,
+    0.8854,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   [
+    0.11269,
+    null,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   [
+    0.0,
+    0.0,
+    null,
+    1.0,
+    0.002275,
+    0.80041,
+    1.0,
+    1.0,
+    1.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0,
+    null,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    1.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.99764,
+    1.0,
+    null,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.197125,
+    1.0,
+    0.0,
+    null,
+    0.9999,
+    1.0,
+    1.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0001,
+    null,
+    1.0,
+    1.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    null,
+    0.934725
+   ],
+   [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.06384,
+    null
+   ]
+  ]
+ },
+ "diffs": {
+  "qinghai_minus_gansu": [
+   268.0,
+   131.0,
+   405.0
+  ],
+  "nwindia_minus_qinghai": [
+   570.0,
+   445.0,
+   821.0
+  ],
+  "qinghai_minus_centralasia": [
+   498.0,
+   384.0,
+   602.0
+  ]
+ }
+}
