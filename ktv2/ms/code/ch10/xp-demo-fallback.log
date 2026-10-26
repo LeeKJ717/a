@@ -1,0 +1,17 @@
+$ python xp-demo-v1.py --xp cupy   (시스템 파이썬: cupy 미설치)
+cupy 경로를 쓸 수 없다: ModuleNotFoundError: No module named 'cupy'
+exit 1
+
+$ python xp-demo-v1.py --xp cupy   (cupy-cuda12x 설치, GPU 없음)
+cupy 경로를 쓸 수 없다: CUDARuntimeError: cudaErrorInsufficientDriver: CUDA driver version is insufficient for CUDA runtime version
+exit 1
+
+$ python xp-demo-v1.py --xp auto   (cupy-cuda12x 설치, GPU 없음)
+[알림] cupy를 쓸 수 없어 numpy로 내려간다 (CUDARuntimeError)
+백엔드: numpy | numpy 2.5.4 | python 3.13.16
+(가) 대산전 H 부트스트랩 B=200000 chunk=200000: 2.5% 0.556 중앙 0.778 97.5% 0.889  (제1권 0.556 0.778 0.889)
+    H 평균 0.7656, 표본의 H(관측) = 0.8611
+(나) 노백산-돈화 기상대 거리 = 82.43 km  (제1권 82.43 km)
+제1권 값과 일치: 예
+총 걸린 시간 0.095 s
+exit 0

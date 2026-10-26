@@ -1,0 +1,32 @@
+$ python3 -I llm-client-v1.py --model MODEL-NAME --source input/vol1-ch11-sec3-v1.md --dry-run
+{
+ "meta": {
+  "model": "MODEL-NAME",
+  "host": "http://127.0.0.1:11434",
+  "temperature": 0.0,
+  "seed": 1,
+  "num_ctx": 8192,
+  "source_sha256": "2258a5f2c8dce553dd4ccef1f13f74decc994053f11065331f7809e60e959791",
+  "payload_sha256": "3723c0274442ef8317e65d2bf92cf104baf0cd55840a8c4a4077751b7891fbab"
+ },
+ "payload(축약)": {
+  "model": "MODEL-NAME",
+  "stream": false,
+  "messages": [
+   {
+    "role": "system",
+    "content": "너는 논문 원문에서 주장과 숫자를 옮겨 적는 도구이다. 원문에 없는 내용을 더하지 않는다. 규칙: (1) 한 줄에 주장 하나만 쓴다. (2) 원문 문장을 그대로 옮길 때는 큰따옴표 안에 한 글자도 바꾸지 말고 쓴다. (3) 숫자는 원문에 적힌 그대로 쓰고 단위를 붙인다. (4) 원문에 없는 값을 계산해 쓸 때는 줄 끝에 [계산] 을 붙이고 식을 함께 쓴다.…(265자 중 앞 200자)"
+   },
+   {
+    "role": "user",
+    "content": "다음 원문에서 시료 수의 흐름, 표, 그리고 본문이 직접 쓴 주장을 규칙에 맞게 옮겨 써라.\n\n--- 원문 시작 ---\n## 11.3 서요하 사람들의 아버지 계통 (Cui 등, 2013)\n\n**왜 이 논문인가.** 서요하 유역은 문화가 홍산(紅山), 소하연(小河沿), 하가점하층(夏家店下層), 하가점상층(夏家店上層)의 순으로 바뀐 곳이다. 생업은 사냥·채집과…(12008자 중 앞 200자)"
+   }
+  ],
+  "options": {
+   "temperature": 0.0,
+   "seed": 1,
+   "num_ctx": 8192
+  }
+ }
+}
+종료 코드 0

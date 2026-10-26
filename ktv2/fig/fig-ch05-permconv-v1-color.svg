@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1130" viewBox="0 0 1300 1130">
+<rect x="0" y="0" width="1300" height="1130" fill="#FFFFFF" stroke="none" stroke-width="1.0" />
+<rect x="190" y="90" width="1050" height="610" fill="none" stroke="#6B7A82" stroke-width="2.4" />
+<line x1="190" y1="700" x2="1240" y2="700" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="182" y1="700" x2="190" y2="700" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="176" y="710" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">1e-4</text>
+<line x1="190" y1="456" x2="1240" y2="456" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="182" y1="456" x2="190" y2="456" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="176" y="466" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">1e-3</text>
+<line x1="190" y1="212" x2="1240" y2="212" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="182" y1="212" x2="190" y2="212" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="176" y="222" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">1e-2</text>
+<text x="40" y="60" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">추정한 한쪽 p (로그 눈금)</text>
+<line x1="190" y1="492.6" x2="1240" y2="492.6" stroke="#3A7CA5" stroke-width="3.0" stroke-dasharray="14 8"/>
+<text x="1220" y="478.6" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#3A7CA5">정확한 값 7.08e-4</text>
+<line x1="295" y1="213.1" x2="295" y2="139.6" stroke="#1B2A33" stroke-width="3.0"/>
+<line x1="275" y1="213.1" x2="315" y2="213.1" stroke="#1B2A33" stroke-width="3.0"/>
+<line x1="275" y1="139.6" x2="315" y2="139.6" stroke="#1B2A33" stroke-width="3.0"/>
+<circle cx="295" cy="207.9" r="11" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="2.0"/>
+<line x1="295" y1="700" x2="295" y2="710" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="295" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">100</text>
+<line x1="505" y1="456.1" x2="505" y2="339.7" stroke="#1B2A33" stroke-width="3.0"/>
+<line x1="485" y1="456.1" x2="525" y2="456.1" stroke="#1B2A33" stroke-width="3.0"/>
+<line x1="485" y1="339.7" x2="525" y2="339.7" stroke="#1B2A33" stroke-width="3.0"/>
+<circle cx="505" cy="390.9" r="11" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="2.0"/>
+<line x1="505" y1="700" x2="505" y2="710" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="505" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">1,000</text>
+<line x1="715" y1="529.5" x2="715" y2="399.8" stroke="#1B2A33" stroke-width="3.0"/>
+<line x1="695" y1="529.5" x2="735" y2="529.5" stroke="#1B2A33" stroke-width="3.0"/>
+<line x1="695" y1="399.8" x2="735" y2="399.8" stroke="#1B2A33" stroke-width="3.0"/>
+<circle cx="715" cy="460.9" r="11" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="2.0"/>
+<line x1="715" y1="700" x2="715" y2="710" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="715" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">10,000</text>
+<line x1="925" y1="510.1" x2="925" y2="467.2" stroke="#1B2A33" stroke-width="3.0"/>
+<line x1="905" y1="510.1" x2="945" y2="510.1" stroke="#1B2A33" stroke-width="3.0"/>
+<line x1="905" y1="467.2" x2="945" y2="467.2" stroke="#1B2A33" stroke-width="3.0"/>
+<circle cx="925" cy="489.6" r="11" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="2.0"/>
+<line x1="925" y1="700" x2="925" y2="710" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="925" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">100,000</text>
+<line x1="1135" y1="497.3" x2="1135" y2="485.9" stroke="#1B2A33" stroke-width="3.0"/>
+<line x1="1115" y1="497.3" x2="1155" y2="497.3" stroke="#1B2A33" stroke-width="3.0"/>
+<line x1="1115" y1="485.9" x2="1155" y2="485.9" stroke="#1B2A33" stroke-width="3.0"/>
+<circle cx="1135" cy="491.1" r="11" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="2.0"/>
+<line x1="1135" y1="700" x2="1135" y2="710" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="1135" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">1,000,000</text>
+<text x="715" y="792" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">이름표를 섞은 횟수 B</text>
+<circle cx="165" cy="842" r="10" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="2.0"/>
+<text x="202" y="850" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">시드마다 구한 p의 평균</text>
+<line x1="543.7" y1="842" x2="583.7" y2="842" stroke="#1B2A33" stroke-width="4.0"/>
+<text x="595.7" y="850" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">시드 사이의 최소~최대</text>
+<line x1="928" y1="842" x2="968" y2="842" stroke="#3A7CA5" stroke-width="3.0" stroke-dasharray="12 8"/>
+<text x="980" y="850" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">정확한 p</text>
+<text x="150" y="906" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">표 [[16,2],[4,10]]의 이름표를 섞어 구한 p = (b+1)/(B+1). B가 1000 이하이면 가능한 </text>
+<text x="150" y="944" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">가장 작은 p(1/(B+1))가 정확한 값보다 크다. 되풀이는 B 10만까지 20번, 100만은 5번.</text>
+<text x="150" y="982" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">값은 permutation-basic.json(실습 5-2).</text>
+</svg>

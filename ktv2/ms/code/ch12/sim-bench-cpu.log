@@ -1,0 +1,9 @@
+환경: {"python": "3.13.16", "platform": "Linux-6.18.44-fc-v153-x86_64-with-glibc2.39", "numpy": "2.5.3", "backend": "numpy", "cpu_count": 2, "ram_total_kib": 8220244, "nvidia_smi": "없음(명령을 찾지 못함)"}
+항목                     warmup s 중앙값 s      최솟값 s      결과                         메모리
+shore P=2460           0.041    0.0163     0.0139     162.259                    {'peak_rss_mib': 73.6}
+shore P=24600          0.317    0.2063     0.1945     165.739                    {'peak_rss_mib': 438.0}
+shore P=246000         3.814    2.6516     2.3396     166.144                    {'peak_rss_mib': 3820.3}
+diff P=500             2.848    3.1084     2.4975     [1.0, 25.6542]             {'peak_rss_mib': 3820.3}
+diff P=2091            11.241   13.4078    11.0455    [1.0, 25.4563]             {'peak_rss_mib': 3820.3}
+diff P=8000            114.986  118.7610   87.2531    [1.0, 25.487]              {'peak_rss_mib': 3820.3}
+로그 파일: /home/claude/book2/ms/code/ch12/sim-bench-cpu.jsonl

@@ -1,0 +1,626 @@
+# -*- coding: utf-8 -*-
+"""환각 점검기 v1 (제2권 13장). 표준 라이브러리만 쓴다. 모델이 없어도 실행된다.
+
+두 가지 방식으로 쓴다.
+  verify  모델 출력 문서와 원문을 견준다.
+          Q 인용이 원문에 글자 그대로 있는가
+          N 숫자가 원문에 있는가(없으면 자리 바꿈, 10배, 한 자리 차이 같은 변환 오류 의심을 붙인다)
+          U 숫자 뒤의 단위가 원문과 같은가
+          그리고 아래 self 의 점검(A, G, T, R)을 모델 출력에도 적용한다.
+  self    한 문서만 보고 문서 안의 모순을 찾는다.
+          A 산술식(a + b = c, 4/6 = 66.7% 등)이 맞는가
+          G 백분율이 표본 수 n 에서 가능한 값인가(GRIM 방식)
+          T 표의 행 합, 열 합이 맞는가
+          R 범위와 단위(백분율 0~100, p 값 0~1, 상관 -1~1, 연대 구간의 순서, 좌표)
+  diffruns  같은 입력에 대한 모델 출력 두 개의 숫자와 인용을 견준다.
+
+이 점검기는 글자와 산술만 본다. 뜻(누가 무엇을 했는가, 부정문이 뒤집혔는가, 같은 숫자를 다른 항목에 붙였는가)은 보지 못한다.
+사용:
+  python halluccheck-v1.py verify 모델출력.md 원문.md [--json 결과.json]
+  python halluccheck-v1.py self 문서.md [--json 결과.json]
+  python halluccheck-v1.py diffruns 출력1.md 출력2.md
+"""
+import argparse, ast, difflib, json, math, re, sys, unicodedata
+from decimal import Decimal, InvalidOperation
+
+SUP = {'⁻': '-', '⁺': '', '⁰': '0', '¹': '1', '²': '2', '³': '3', '⁴': '4', '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9'}
+UNITS = ['%', 'bp', 'BP', 'kb', 'km', 'mm', 'm', '°C', '명', '년', '개', '그루', '건', '일', '회', '곳']
+UNIT_RE = '|'.join(sorted((re.escape(u) for u in UNITS), key=len, reverse=True))
+EPS = 1e-9
+
+
+class Finding(dict):
+    pass
+
+
+def F(code, sev, line, msg, ctx=''):
+    return Finding(code=code, sev=sev, line=line, msg=msg, ctx=ctx.strip()[:160])
+
+
+# ---------------------------------------------------------------- 공통 전처리
+def nfc(s):
+    return unicodedata.normalize('NFC', s)
+
+
+def sci_convert(s):
+    """6.78 × 10⁻⁴ -> 6.78@-4 (과학 표기를 하나의 글자열 토큰으로)."""
+    def rep(m):
+        exp = ''.join(SUP.get(c, c) for c in m.group(2))
+        return '%s@%s' % (m.group(1), exp)
+    return re.sub(r'(\d+(?:\.\d+)?)\s*[×x]\s*10([⁻⁺]?[⁰¹²³⁴⁵⁶⁷⁸⁹]+)', rep, s)
+
+
+def read_lines(path):
+    return [nfc(l.rstrip('\n')) for l in open(path, encoding='utf-8')]
+
+
+def lit_value(tok):
+    """리터럴 -> (값 float, 허용오차 float, 소수 자릿수 int)."""
+    tok = tok.replace(',', '')
+    if '@' in tok:
+        m, e = tok.split('@')
+        e = int(e)
+    else:
+        m, e = tok, 0
+    d = len(m.split('.')[1]) if '.' in m else 0
+    v = float(m) * (10.0 ** e)
+    tol = 0.5 * 10.0 ** (e - d) if d > 0 or '@' in tok else 0.0
+    return v, tol, d
+
+
+# ---------------------------------------------------------------- 구간 산술
+class Iv:
+    def __init__(self, lo, hi):
+        self.lo, self.hi = min(lo, hi), max(lo, hi)
+
+    def __add__(s, o): return Iv(s.lo + o.lo, s.hi + o.hi)
+    def __sub__(s, o): return Iv(s.lo - o.hi, s.hi - o.lo)
+    def __neg__(s): return Iv(-s.hi, -s.lo)
+
+    def __mul__(s, o):
+        p = [s.lo * o.lo, s.lo * o.hi, s.hi * o.lo, s.hi * o.hi]
+        return Iv(min(p), max(p))
+
+    def __truediv__(s, o):
+        if o.lo <= 0 <= o.hi:
+            raise ZeroDivisionError
+        p = [s.lo / o.lo, s.lo / o.hi, s.hi / o.lo, s.hi / o.hi]
+        return Iv(min(p), max(p))
+
+    def overlaps(s, o, slack=EPS):
+        return s.lo <= o.hi + slack and o.lo <= s.hi + slack
+
+
+def balance_strip(e):
+    """'=' 로 잘라낸 조각에 남은 짝 없는 바깥 괄호를 벗긴다. 예: '(87 − 8' , '70).'"""
+    e = e.strip().rstrip('.').strip()
+    while e.startswith('(') and e.count('(') > e.count(')'):
+        e = e[1:].strip()
+    while e.endswith(')') and e.count(')') > e.count('('):
+        e = e[:-1].strip().rstrip('.').strip()
+    return e
+
+
+def eval_expr(expr):
+    """산술식 문자열 -> (구간, 나눗셈 또는 소수가 있는가). 해석 못 하면 None."""
+    expr = balance_strip(expr)
+    if not expr or not re.search(r'\d', expr):
+        return None
+    if expr.count('(') != expr.count(')'):
+        return None
+    pct = expr.endswith('%')
+    e = expr.rstrip('%').strip()
+    e = e.replace('×', '*').replace('÷', '/').replace('−', '-')
+    lits = {}
+
+    def rep(m):
+        k = '_k%d' % len(lits)
+        lits[k] = lit_value(m.group(0))
+        return k
+    e2 = re.sub(r'\d+(?:\.\d+)?(?:@-?\d+)?', rep, e)
+    try:
+        tree = ast.parse(e2.strip(), mode='eval')
+    except SyntaxError:
+        return None
+
+    def ev(n):
+        if isinstance(n, ast.Expression):
+            return ev(n.body)
+        if isinstance(n, ast.Name):
+            v, t, _ = lits[n.id]
+            return Iv(v - t, v + t)
+        if isinstance(n, ast.UnaryOp) and isinstance(n.op, ast.USub):
+            return -ev(n.operand)
+        if isinstance(n, ast.UnaryOp) and isinstance(n.op, ast.UAdd):
+            return ev(n.operand)
+        if isinstance(n, ast.BinOp):
+            a, b = ev(n.left), ev(n.right)
+            if isinstance(n.op, ast.Add): return a + b
+            if isinstance(n.op, ast.Sub): return a - b
+            if isinstance(n.op, ast.Mult): return a * b
+            if isinstance(n.op, ast.Div): return a / b
+        raise ValueError('지원하지 않는 식')
+    try:
+        iv = ev(tree)
+    except (ValueError, ZeroDivisionError, KeyError):
+        return None
+    decimals = max([d for (_, _, d) in lits.values()] + [0])
+    inexact = ('/' in e) or decimals > 0
+    return iv, pct, inexact, decimals
+
+
+def strip_units(s):
+    return re.sub(r'(\d)\s*(?:%s)(?![가-힣A-Za-z])' % '|'.join(re.escape(u) for u in UNITS if u != '%'), r'\1', s)
+
+
+# ---------------------------------------------------------------- A 산술식
+RUN_RE = re.compile(r'[0-9.\s+\-−×÷/()%@=]+')
+
+
+def check_arith(lines, stats):
+    out = []
+    for i, raw in enumerate(lines, 1):
+        if raw.lstrip().startswith('|---') or raw.startswith('#'):
+            continue
+        s = sci_convert(raw)
+        s = re.sub(r'(?<=\d),(?=\d{3}(?!\d))', '', s)          # 천 단위 쉼표 제거
+        s = strip_units(s)
+        for m in RUN_RE.finditer(s):
+            run = m.group(0)
+            if '=' not in run:
+                continue
+            segs = [x.strip() for x in run.split('=')]
+            for a, b in zip(segs, segs[1:]):
+                if not a or not b:
+                    continue
+                a = balance_strip(a.strip(' +×÷/-−'))
+                b = balance_strip(b.strip(' +×÷/-−.'))
+                if not a or not b or not re.search(r'\d', a) or not re.search(r'\d', b):
+                    continue
+                ea, eb = eval_expr(a), eval_expr(b)
+                if ea is None or eb is None:
+                    continue
+                if re.fullmatch(r'[\d.@]+%?', a) and re.fullmatch(r'[\d.@]+%?', b):
+                    continue                                   # '12 = 12' 같은 단일 값끼리
+                (ia, pa, xa, da), (ib, pb, xb, db) = ea, eb
+                # 오른쪽(결과)의 반올림 허용: 소수 자릿수가 있으면 이미 구간에 들어 있다.
+                # 정수 결과인데 왼쪽에 나눗셈이나 소수가 있으면 정수로 반올림했다고 본다.
+                if xa and not xb and db == 0:
+                    half = 0.5 if not pb else 0.5
+                    ib = Iv(ib.lo - half, ib.hi + half)
+                ok = False
+                cand = []
+                if pb and not pa:
+                    cand = [(ia, Iv(ib.lo / 100.0, ib.hi / 100.0)), (ia, ib)]
+                elif pa and not pb:
+                    cand = [(Iv(ia.lo / 100.0, ia.hi / 100.0), ib), (ia, ib)]
+                else:
+                    cand = [(ia, ib)]
+                for x, y in cand:
+                    if x.overlaps(y):
+                        ok = True
+                stats['arith_checked'] = stats.get('arith_checked', 0) + 1
+                if not ok:
+                    ma, mb = (ia.lo + ia.hi) / 2, (ib.lo + ib.hi) / 2
+                    out.append(F('A1', 'FAIL', i, '등식 [%s = %s] 이 맞지 않다: 왼쪽은 약 %s, 오른쪽은 약 %s' % (a, b, fmtnum(ma), fmtnum(mb)), raw))
+    return out
+
+
+def fmtnum(v):
+    if abs(v) >= 1000 or (abs(v) < 0.001 and v != 0):
+        return '%.4g' % v
+    return ('%.6f' % v).rstrip('0').rstrip('.')
+
+
+# ---------------------------------------------------------------- G 백분율과 표본 수
+GRIM_RE = re.compile(r'(?<![\d.])(\d+(?:\.\d+)?)\s*%[^\d\n]{0,6}?\(?\s*n\s*=\s*(\d+)')
+
+
+def check_grim(lines, stats):
+    out = []
+    for i, raw in enumerate(lines, 1):
+        for m in GRIM_RE.finditer(raw):
+            p, n = m.group(1), int(m.group(2))
+            d = len(p.split('.')[1]) if '.' in p else 0
+            pv = float(p)
+            if n <= 0:
+                continue
+            tol = 0.5 * 10 ** (-d) + 1e-9
+            ks = [k for k in range(0, n + 1) if abs(k * 100.0 / n - pv) <= tol]
+            stats['grim_checked'] = stats.get('grim_checked', 0) + 1
+            if not ks:
+                k0 = int(round(pv * n / 100.0))
+                near = ', '.join('%d/%d = %.4f%%' % (k, n, k * 100.0 / n) for k in (k0 - 1, k0, k0 + 1) if 0 <= k <= n)
+                out.append(F('G1', 'FAIL', i, '%s%% 는 n = %d 에서 만들어질 수 없다(가까운 값: %s). 분모가 다르거나 n 이 틀렸을 수 있다' % (p, n, near), raw))
+    return out
+
+
+# ---------------------------------------------------------------- T 표
+def cell_num(c):
+    c = c.strip().replace(',', '').replace('−', '-')
+    c = re.sub(r'\*+', '', c)
+    c = c.rstrip('%').strip()
+    if re.fullmatch(r'-?\d+(?:\.\d+)?', c):
+        d = len(c.split('.')[1]) if '.' in c else 0
+        return float(c), d
+    return None
+
+
+def parse_tables(lines):
+    tabs, cur = [], []
+    for i, l in enumerate(lines, 1):
+        if l.lstrip().startswith('|'):
+            cur.append((i, l))
+        else:
+            if cur:
+                tabs.append(cur)
+            cur = []
+    if cur:
+        tabs.append(cur)
+    res = []
+    for t in tabs:
+        rows = []
+        for i, l in t:
+            cells = [c for c in l.strip().strip('|').split('|')]
+            cells = [c.strip() for c in cells]
+            if all(re.fullmatch(r':?-{3,}:?', c) for c in cells if c):
+                continue
+            rows.append((i, cells))
+        if len(rows) >= 3:
+            res.append(rows)
+    return res
+
+
+def check_tables(lines, stats):
+    out = []
+    for rows in parse_tables(lines):
+        header, data = rows[0], rows[1:]
+        ncol = len(header[1])
+        # 합계 줄: 첫 칸이 합, 합계, 전체, 총
+        total_row = None
+        body = data
+        if re.match(r'\s*(합계|합|전체|총계|총)\s*(\[계산\])?\s*$', data[-1][1][0]):
+            total_row, body = data[-1], data[:-1]
+        nums = [[cell_num(c) if j < len(r) else None for j, c in enumerate(r)] for (_, r) in body]
+        # 행 합: 한 열이 오른쪽의 연속한 수 칸들의 합인가
+        cands = []
+        for j in range(ncol):
+            right = [k for k in range(j + 1, ncol)]
+            def rowinfo(ri):
+                r = nums[ri]
+                if len(r) <= j or r[j] is None:
+                    return None
+                rr = []
+                for k in right:
+                    if k < len(r) and r[k] is not None:
+                        rr.append(r[k])
+                    else:
+                        return None
+                return rr
+            infos = [rowinfo(ri) for ri in range(len(body))]
+            usable = [ri for ri, x in enumerate(infos) if x is not None and len(x) >= 2]
+            if len(usable) < 2:
+                continue
+            match = []
+            for ri in usable:
+                dec = max([nums[ri][j][1]] + [x[1] for x in infos[ri]])
+                tol = (0.5 * 10 ** (-dec) * len(infos[ri]) if dec > 0 else 0.0) + 1e-9
+                s = sum(x[0] for x in infos[ri])
+                match.append(abs(s - nums[ri][j][0]) <= tol)
+            if sum(match) >= max(2, math.ceil(2.0 * len(usable) / 3.0)):
+                cands.append((sum(match), j, usable, match, infos))
+        if cands:
+            best = max(cands, key=lambda c: (c[0], -c[1]))      # 가장 많이 맞는 열, 같으면 왼쪽
+            _, j, usable, match, infos = best
+            stats['table_rowsum_cols'] = stats.get('table_rowsum_cols', 0) + 1
+            for ri, ok in zip(usable, match):
+                stats['table_rows_checked'] = stats.get('table_rows_checked', 0) + 1
+                if not ok:
+                    s = sum(x[0] for x in infos[ri])
+                    out.append(F('T1', 'FAIL', body[ri][0], '표 행 합 불일치: 열 [%s] 의 값 %s 이 오른쪽 칸들의 합 %s 과 다르다(행 [%s])' % (header[1][j], fmtnum(nums[ri][j][0]), fmtnum(s), body[ri][1][0]), lines[body[ri][0] - 1]))
+        # 열 합
+        if total_row is not None:
+            tn = [cell_num(c) for c in total_row[1]]
+            for j in range(1, ncol):
+                if j >= len(tn) or tn[j] is None:
+                    continue
+                col = [nums[ri][j] if j < len(nums[ri]) else None for ri in range(len(body))]
+                if any(c is None for c in col):
+                    continue
+                dec = max([c[1] for c in col] + [tn[j][1]])
+                tol = (0.5 * 10 ** (-dec) * len(col) if dec > 0 else 0.0) + 1e-9
+                s = sum(c[0] for c in col)
+                stats['table_cols_checked'] = stats.get('table_cols_checked', 0) + 1
+                if abs(s - tn[j][0]) > tol:
+                    out.append(F('T2', 'FAIL', total_row[0], '표 열 합 불일치: 열 [%s] 의 위쪽 합은 %s 인데 합계 줄에는 %s' % (header[1][j], fmtnum(s), fmtnum(tn[j][0])), lines[total_row[0] - 1]))
+    return out
+
+
+# ---------------------------------------------------------------- R 범위와 단위
+def check_ranges(lines, stats):
+    out = []
+    for i, raw in enumerate(lines, 1):
+        s = sci_convert(raw)
+        if raw.lstrip().startswith('|---'):
+            continue
+        for m in re.finditer(r'(?<![\d.@])(-?\d+(?:\.\d+)?)\s*%', s):
+            v = float(m.group(1))
+            ctx = s[max(0, m.start() - 8):m.start()]
+            if (v > 100 or v < 0) and not re.search(r'증가|감소|상승|하락|[+×]|배', ctx):
+                out.append(F('R1', 'WARN', i, '백분율 %s%% 가 0~100 범위 밖이다(증감률이면 무시)' % m.group(1), raw))
+        for m in re.finditer(r'(?<![A-Za-z가-힣])[pP]\s*(?:=|<|>|≤|≥)\s*(\d+(?:\.\d+)?(?:@-?\d+)?)', s):
+            v = lit_value(m.group(1))[0]
+            stats['p_checked'] = stats.get('p_checked', 0) + 1
+            if v > 1:
+                out.append(F('R1', 'FAIL', i, 'p 값 %s 가 1을 넘는다' % m.group(1), raw))
+        for m in re.finditer(r'(?<![A-Za-z가-힣²])r\s*=\s*([−-]?\d*\.\d+)', s):
+            v = float(m.group(1).replace('−', '-'))
+            if abs(v) > 1:
+                out.append(F('R1', 'FAIL', i, '상관계수 r = %s 의 절댓값이 1을 넘는다' % m.group(1), raw))
+        for m in re.finditer(r'R²\s*=\s*(\d*\.\d+)', s):
+            if float(m.group(1)) > 1:
+                out.append(F('R1', 'FAIL', i, 'R² = %s 가 1을 넘는다' % m.group(1), raw))
+        for m in re.finditer(r'(\d[\d,]*)\s*[~∼]\s*(\d[\d,]*)\s*BP', s):
+            a, b = int(m.group(1).replace(',', '')), int(m.group(2).replace(',', ''))
+            stats['range_checked'] = stats.get('range_checked', 0) + 1
+            if a < b:
+                out.append(F('R2', 'FAIL', i, 'BP 구간 %s~%s: BP 는 현재에서 거슬러 센 해이므로 앞 수가 더 커야 한다(앞 수가 더 작음)' % (a, b), raw))
+        for m in re.finditer(r'(?<![\d,])(\d{3,4})\s*[~∼]\s*(\d{3,4})\s*년(?!\s*BP)', s):
+            a, b = int(m.group(1)), int(m.group(2))
+            stats['range_checked'] = stats.get('range_checked', 0) + 1
+            if a > b and not re.search(r'BP|기원전|BC', s[max(0, m.start() - 12):m.end() + 6]):
+                out.append(F('R2', 'WARN', i, '연도 구간 %d~%d년: 앞 수가 더 크다(기원전·BP 가 아니면 순서 오류)' % (a, b), raw))
+        for m in re.finditer(r'(\d{1,3})°\s*(\d{1,3})′?\s*([NSEW])', s):
+            deg, minute, h = int(m.group(1)), int(m.group(2)), m.group(3)
+            if minute > 59 or (h in 'NS' and deg > 90) or (h in 'EW' and deg > 180):
+                out.append(F('R3', 'FAIL', i, '좌표 %d°%d′%s 가 범위 밖이다' % (deg, minute, h), raw))
+        for m in re.finditer(r'(?<![\d.])−\s*(\d+)\s*(명|그루|건|개)', s):
+            out.append(F('R1', 'FAIL', i, '개수가 음수다: −%s%s' % (m.group(1), m.group(2)), raw))
+    return out
+
+
+# ---------------------------------------------------------------- 숫자 추출
+NUM_RE = re.compile(r'(?<![\w.@])(-?)(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?(?:@-?\d+)?)(?:\s*(%s))?' % UNIT_RE)
+
+
+def extract_numbers(lines, skip_meta=True):
+    """[(줄, 값Decimal, 원문표기, 단위, 소수자릿수)]"""
+    res = []
+    for i, raw in enumerate(lines, 1):
+        if skip_meta and raw.lstrip().startswith('>'):
+            continue
+        if re.fullmatch(r'\s*\|?[\s:\-|]+\|?\s*', raw):
+            continue
+        s = sci_convert(raw)
+        s = re.sub(r'^\s*\d+\.\s', '', s)                      # 목록 번호
+        s = re.sub(r'^#+\s*', '', s)
+        for m in NUM_RE.finditer(s):
+            sign, body, unit = m.group(1), m.group(2), m.group(3) or ''
+            # 앞이 영문자나 숫자와 붙은 경우(예: ch11, N1)는 건너뜀
+            st = m.start()
+            if st > 0 and (s[st - 1].isalpha() and s[st - 1].isascii() or s[st - 1] in '_-' and st > 1 and s[st - 2].isalnum()):
+                continue
+            if sign and st > 0 and s[st - 1].isalnum():
+                sign = ''
+            try:
+                if '@' in body:
+                    mant, e = body.split('@')
+                    val = Decimal(mant.replace(',', '')).scaleb(int(e))
+                    dec = len(mant.split('.')[1]) if '.' in mant else 0
+                else:
+                    val = Decimal(body.replace(',', ''))
+                    dec = len(body.split('.')[1]) if '.' in body else 0
+            except InvalidOperation:
+                continue
+            if sign:
+                val = -val
+            res.append((i, val, m.group(0).strip(), unit, dec))
+    return res
+
+
+def suspects(val, src_vals):
+    """val 이 원문 숫자들 중 무엇의 변환 오류로 보이는가. [(종류, 원문값, 줄)]"""
+    out = []
+    sv = str(abs(val).normalize()) if val != 0 else '0'
+    def digits(x):
+        t = format(abs(x).normalize(), 'f').replace('.', '')
+        return t.lstrip('0') or '0'
+    dv = digits(val)
+    for (v, line, unit, dec) in src_vals:
+        if v == val:
+            continue
+        if v == 0 or val == 0:
+            continue
+        if -v == val:
+            out.append(('부호가 뒤집힘', v, line, unit)); continue
+        ratio = None
+        for k in (1, 2, 3, -1, -2, -3):
+            if abs(val) == abs(v) * (Decimal(10) ** k):
+                ratio = k
+        if ratio is not None:
+            lab = '10^%d배(소수점 자리 또는 %% 와 비율의 혼동)' % ratio
+            out.append((lab, v, line, unit)); continue
+        dd = digits(v)
+        if len(dd) == len(dv) and dd != dv and len(dv) >= 2:
+            diff = [k for k in range(len(dd)) if dd[k] != dv[k]]
+            if len(diff) == 2 and diff[1] == diff[0] + 1 and dd[diff[0]] == dv[diff[1]] and dd[diff[1]] == dv[diff[0]]:
+                out.append(('이웃한 두 자리의 바뀜', v, line, unit))
+            elif len(diff) == 1 and len(dv) >= 3:
+                out.append(('한 자리만 다름', v, line, unit))
+    # 중복 제거, 우선순위 정렬
+    pri = {'이웃한': 0, '10^': 1, '부호': 2, '한 자리': 3}
+    seen, res = set(), []
+    for k, v, line, unit in sorted(out, key=lambda t: min(pri[p] for p in pri if t[0].startswith(p))):
+        key = (k, v)
+        if key not in seen:
+            seen.add(key); res.append((k, v, line, unit))
+    if any(not r[0].startswith('한 자리') for r in res):
+        res = [r for r in res if not r[0].startswith('한 자리')]      # 강한 의심이 있으면 약한 의심은 뺀다
+    return res[:3]
+
+
+# ---------------------------------------------------------------- N, U 숫자와 단위
+def check_numbers(mlines, slines, stats):
+    out = []
+    src = extract_numbers(slines, skip_meta=False)
+    sset = {}
+    for (ln, v, raw, unit, dec) in src:
+        sset.setdefault(v, []).append((ln, unit, raw))
+    src_vals = [(v, ln, unit, dec) for (ln, v, raw, unit, dec) in src]
+    seen_lv = set()
+    for (ln, v, raw, unit, dec) in extract_numbers(mlines):
+        line_text = mlines[ln - 1]
+        if (ln, v) in seen_lv:
+            continue
+        seen_lv.add((ln, v))
+        if '[계산]' in line_text:
+            stats['num_exempt_calc'] = stats.get('num_exempt_calc', 0) + 1
+            continue
+        stats['num_checked'] = stats.get('num_checked', 0) + 1
+        if v in sset:
+            units_src = {u for (_, u, _) in sset[v]}
+            if unit and unit not in units_src and any(units_src - {''}):
+                out.append(F('U1', 'FAIL', ln, '단위 불일치: %s%s — 원문에는 같은 값이 %s 로만 있다' % (format(v.normalize(), 'f'), unit, '/'.join(sorted(u for u in units_src if u)) or '단위 없이'), line_text))
+            continue
+        sg = suspects(v, src_vals)
+        if sg:
+            det = '; '.join('원문 %s (%d줄)%s: %s' % (format(sv.normalize(), 'f'), sl, '' if not su else ' ' + su, k) for (k, sv, sl, su) in sg)
+            out.append(F('N1', 'FAIL', ln, '원문에 없는 숫자 %s — 변환 오류 의심: %s' % (raw, det), line_text))
+        else:
+            out.append(F('N1', 'FAIL', ln, '원문에 없는 숫자 %s (원문 어느 숫자와도 변환 관계가 없음; 파생값이면 줄에 [계산] 을 적는다)' % raw, line_text))
+    return out
+
+
+# ---------------------------------------------------------------- Q 인용
+QUOTE_RE = re.compile(r'“([^”]{5,}?)”|"([^"\n]{5,}?)"|「([^」]{5,}?)」')
+
+
+def squash(s):
+    return re.sub(r'\s+', ' ', nfc(s)).strip()
+
+
+def loose(s):
+    return re.sub(r'[\s\.,;:!?\'"“”‘’「」()\[\]·\-–—~]', '', nfc(s))
+
+
+def split_sentences(slines):
+    items = []
+    for i, l in enumerate(slines, 1):
+        if re.fullmatch(r'\s*\|?[\s:\-|]+\|?\s*', l):
+            continue
+        cells = [c.strip() for c in l.split('|')] if l.lstrip().startswith('|') else [l]
+        for c in cells:
+            for sent in re.split(r'(?<=[.!?。])\s+|\n', c):
+                if len(sent.strip()) >= 5:
+                    items.append((i, sent.strip()))
+    return items
+
+
+def check_quotes(mlines, slines, stats):
+    out = []
+    ssq = squash('\n'.join(slines))
+    sloose = loose('\n'.join(slines))
+    sents = None
+    for i, raw in enumerate(mlines, 1):
+        if raw.lstrip().startswith('>'):
+            continue
+        for m in QUOTE_RE.finditer(raw):
+            q = next(g for g in m.groups() if g)
+            stats['quotes_checked'] = stats.get('quotes_checked', 0) + 1
+            if squash(q) in ssq:
+                stats['quotes_exact'] = stats.get('quotes_exact', 0) + 1
+                continue
+            if loose(q) and loose(q) in sloose:
+                out.append(F('Q3', 'WARN', i, '인용이 공백·부호만 다르게 원문에 있다: “%s”' % q, raw))
+                continue
+            if sents is None:
+                sents = split_sentences(slines)
+            best = (0.0, 0, '')
+            lq = loose(q)
+            for ln, st in sents:
+                ls = loose(st)
+                if not ls:
+                    continue
+                if len(ls) >= len(lq):
+                    # 긴 문장 안의 가장 비슷한 창을 본다
+                    r = max(difflib.SequenceMatcher(None, lq, ls[k:k + len(lq) + 2], autojunk=False).ratio() for k in range(0, len(ls) - len(lq) + 1, max(1, len(lq) // 4)))
+                else:
+                    r = difflib.SequenceMatcher(None, lq, ls, autojunk=False).ratio()
+                if r > best[0]:
+                    best = (r, ln, st)
+            if best[0] >= 0.70:
+                out.append(F('Q2', 'FAIL', i, '따옴표 안 문장이 원문에 글자 그대로 없다. 가장 비슷한 원문(%d줄, 유사도 %.2f): %s' % (best[1], best[0], best[2][:70]), raw))
+            else:
+                out.append(F('Q1', 'FAIL', i, '따옴표 안 문장이 원문에 없다(가장 비슷한 문장의 유사도 %.2f)' % best[0], raw))
+    return out
+
+
+# ---------------------------------------------------------------- 실행
+def run_self(lines, stats):
+    f = []
+    f += check_arith(lines, stats)
+    f += check_grim(lines, stats)
+    f += check_tables(lines, stats)
+    f += check_ranges(lines, stats)
+    return f
+
+
+def run_verify(mlines, slines, stats):
+    f = run_self(mlines, stats)
+    f += check_quotes(mlines, slines, stats)
+    f += check_numbers(mlines, slines, stats)
+    return f
+
+
+def report(findings, stats, title):
+    findings = sorted(findings, key=lambda x: (x['line'], x['code']))
+    print('== %s' % title)
+    for x in findings:
+        print('[%s %s] %d줄: %s' % (x['code'], x['sev'], x['line'], x['msg']))
+    by = {}
+    for x in findings:
+        by[x['code']] = by.get(x['code'], 0) + 1
+    print('-- 지적 %d건 %s' % (len(findings), dict(sorted(by.items()))))
+    print('-- 검사한 항목 %s' % dict(sorted(stats.items())))
+
+
+def cmd_diff(a, b):
+    na = [(v, raw) for (_, v, raw, _, _) in extract_numbers(read_lines(a))]
+    nb = [(v, raw) for (_, v, raw, _, _) in extract_numbers(read_lines(b))]
+    from collections import Counter
+    ca, cb = Counter(v for v, _ in na), Counter(v for v, _ in nb)
+    onlya, onlyb = ca - cb, cb - ca
+    qa = Counter(squash(next(g for g in m.groups() if g)) for l in read_lines(a) for m in QUOTE_RE.finditer(l))
+    qb = Counter(squash(next(g for g in m.groups() if g)) for l in read_lines(b) for m in QUOTE_RE.finditer(l))
+    print('== 두 출력의 비교')
+    print('숫자: 첫째에만 %s' % sorted(format(v.normalize(), 'f') for v in onlya.elements()))
+    print('숫자: 둘째에만 %s' % sorted(format(v.normalize(), 'f') for v in onlyb.elements()))
+    print('인용: 첫째에만 %s' % list((qa - qb).elements()))
+    print('인용: 둘째에만 %s' % list((qb - qa).elements()))
+    return len(list(onlya.elements())) + len(list(onlyb.elements())) + len(list((qa - qb).elements())) + len(list((qb - qa).elements()))
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser(description='환각 점검기 v1')
+    sub = ap.add_subparsers(dest='cmd', required=True)
+    v = sub.add_parser('verify'); v.add_argument('model'); v.add_argument('source'); v.add_argument('--json')
+    s = sub.add_parser('self'); s.add_argument('doc'); s.add_argument('--json')
+    d = sub.add_parser('diffruns'); d.add_argument('a'); d.add_argument('b')
+    a = ap.parse_args(argv)
+    stats = {}
+    if a.cmd == 'verify':
+        f = run_verify(read_lines(a.model), read_lines(a.source), stats)
+        report(f, stats, 'verify %s <- %s' % (a.model, a.source))
+    elif a.cmd == 'self':
+        f = run_self(read_lines(a.doc), stats)
+        report(f, stats, 'self %s' % a.doc)
+    else:
+        n = cmd_diff(a.a, a.b)
+        return 1 if n else 0
+    if a.json:
+        json.dump({'findings': f, 'stats': stats}, open(a.json, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    return 1 if f else 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())

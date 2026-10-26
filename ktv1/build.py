@@ -3,7 +3,7 @@
 import sys,re,glob,html,os,markdown
 from weasyprint import HTML
 mode=sys.argv[1] if len(sys.argv)>1 else 'color'
-VER='v20'
+VER='v21'
 CSS='''
 @page{size:182mm 257mm;margin:20mm 16mm 22mm 36.4mm;
  @bottom-center{content:counter(page);font:9pt "Noto Serif CJK KR",serif}}
@@ -92,7 +92,7 @@ for p in sorted(latest('ms/front/front-*-v*.md').values()):
     h=re.sub(r'<h1>(.*?)</h1>',idh,h)
     front_html+=h
 back_html='';back_toc=[]
-for p in sorted(latest('ms/front/back-*-v*.md').values()):
+for p in sorted(latest('ms/front/back-*v*.md').values()):
     t=open(p,encoding='utf-8').read()
     h=render_plain(t,'맺')
     def idb(m):

@@ -1,0 +1,10 @@
+gpt4all-2.8.2-py3-none-manylinux1_x86_64.whl 파일 수 147
+     104657616  gpt4all/llmodel_DO_NOT_MODIFY/build/libllamamodel-mainline-cuda.so
+     104495672  gpt4all/llmodel_DO_NOT_MODIFY/build/libllamamodel-mainline-cuda-avxonly.so
+       3530400  gpt4all/llmodel_DO_NOT_MODIFY/build/libllamamodel-mainline-kompute.so
+       3405320  gpt4all/llmodel_DO_NOT_MODIFY/build/libllamamodel-mainline-kompute-avxonly.so
+        851863  gpt4all/llmodel_DO_NOT_MODIFY/vulkan_core.h
+        474089  gpt4all/llmodel_DO_NOT_MODIFY/gtest.h
+        454528  gpt4all/llmodel_DO_NOT_MODIFY/gmock.h
+        349232  gpt4all/llmodel_DO_NOT_MODIFY/build/libllmodel.so
+확장자 gguf/bin/safetensors 파일: []

@@ -1,0 +1,47 @@
+== 1. matplotlib 기본 글꼴로 한글을 그리면 (이 컨테이너의 기본 후보는 Inter, DejaVu Sans) ==
+기본 font.family = ['Inter', 'sans-serif', 'DejaVu Sans']  sans-serif 후보 앞부분 = ['DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif']
+"서울 부산 제주 평양"을 그리자 나온 경고 8개. 처음 2개:
+   Glyph 49436 (\N{HANGUL SYLLABLE SEO}) missing from font(s) DejaVu Sans, DejaVu Sans, Inter.
+   Glyph 50872 (\N{HANGUL SYLLABLE UL}) missing from font(s) DejaVu Sans, DejaVu Sans, Inter.
+
+== 2. Noto Sans CJK KR 로 바꾸기 ==
+fm.findfont("Noto Sans CJK KR") → /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc
+이 파일(ttc)에는 얼굴(face)이 10개 들어 있고, matplotlib 이 연 얼굴의 이름은 "Noto Sans CJK JP"이다.
+같은 글을 다시 그리자 나온 글꼴 경고 0개
+
+== 3. 글꼴 파일 안에 글자가 있는가 + 얼굴 0(JP)과 얼굴 1(KR)의 한글 모양이 같은가 ==
+얼굴 0 = Noto Sans CJK JP, 얼굴 1 = Noto Sans CJK KR
+검사한 글자 16개, 두 얼굴 모두에 있음, 윤곽선이 같은 글자 16개
+
+== 4. 한글 이름표를 Natural Earth 와 대조 ==
+한글       NE 이름        종류     자료에서 찾은 것
+서울       Seoul        city   (126.998, 37.568) 인구 9,796,000
+인천       Incheon      city   (126.640, 37.478) 인구 2,550,000
+부산       Busan        city   (129.008, 35.097) 인구 3,480,000
+대구       Daegu        city   (128.605, 35.869) 인구 2,460,000
+광주       Gwangju      city   (126.908, 35.173) 인구 1,440,000
+대전       Daejeon      city   (127.423, 36.337) 인구 1,468,000
+울산       Ulsan        city   (129.315, 35.549) 인구 1,061,000
+제주       Jeju         city   (126.522, 33.510) 인구 408,364
+평양       Pyongyang    city   (125.753, 39.021) 인구 3,300,000
+원산       Wonsan       city   (127.431, 39.160) 인구 329,207
+함흥       Hamhung      city   (127.543, 39.912) 인구 773,000
+청진       Chongjin     city   (129.790, 41.785) 인구 672,614
+연길       Yanji        city   (129.513, 42.882) 인구 488,740
+후쿠오카     Fukuoka      city   (130.408, 33.597) 인구 2,792,000
+한강       Han          river  선 1개, 범위 [126.8, 37.5, 127.2, 37.6]
+낙동강      Nakdong      river  선 1개, 범위 [128.2, 35.1, 129.1, 37.0]
+압록강      Yalu         river  선 2개, 범위 [124.4, 40.1, 128.3, 41.9]
+두만강      Tumen        river  선 1개, 범위 [128.2, 42.0, 130.7, 43.0]
+백두산      Paektu-san   peak   (128.090, 42.000) 2744 m
+한라산      Halla-san    peak   (126.520, 33.360) 1950 m
+설악산      Sorak-san    peak   (128.473, 38.142) 1708 m
+지리산      Chiri-san    peak   (127.730, 35.337) 1915 m
+이름표 22행 중 자료에서 찾은 것 22행
+(한글 글자 수 검사와 한자 없음 검사는 assert 로 통과했다)
+
+== 5. 바다 이름 위치가 정말 바다인가 ==
+황해     (124.0, 36.0) → 바다
+동해     (131.5, 39.5) → 바다
+동중국해   (126.0, 31.8) → 바다
+대한해협   (129.6, 34.3) → 바다

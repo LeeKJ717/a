@@ -1,0 +1,64 @@
+R: R version 4.3.3 (2024-02-29) 
+dplR: 1.8.1 
+
+=== 자료 co021 : 계열 35 개, 연도 1176 ~ 1963 
+rwi.stats(mne, ids=NULL, pearson):
+  n.cores n.trees  n n.tot n.wt n.bt rbar.tot rbar.wt  rbar.bt c.eff rbar.eff
+1      35      35 35   578    0  578 0.670576      NA 0.670576     1 0.670576
+       eps     snr
+1 0.986158 71.2461
+rwi.stats(sp67, ids=NULL, pearson):
+  n.cores n.trees  n n.tot n.wt n.bt rbar.tot rbar.wt  rbar.bt c.eff rbar.eff
+1      35      35 35   578    0  578 0.720225      NA 0.720225     1 0.720225
+       eps     snr
+1 0.989023 90.1006
+interseries.cor(nyrs=32, pearson): 계열별 r 중앙값 0.8808 , 최소 0.7795 
+Attempting to automatically detect format.
+Assuming a Tucson format file.
+
+=== 자료 synth : 계열 71 개, 연도 1600 ~ 2013 
+rwi.stats(mne, ids=있음, pearson):
+  n.cores n.trees  n n.tot n.wt n.bt rbar.tot  rbar.wt rbar.bt   c.eff rbar.eff
+1      71      41 41  2485   30 2455 0.219876 0.561632  0.2157 1.57692 0.256901
+       eps     snr
+1 0.934099 14.1744
+rwi.stats(sp67, ids=있음, pearson):
+  n.cores n.trees  n n.tot n.wt n.bt rbar.tot  rbar.wt  rbar.bt   c.eff
+1      71      41 41  2485   30 2455 0.208363 0.555172 0.204125 1.57692
+  rbar.eff     eps     snr
+1 0.243802 0.92967 13.2186
+sss(): dplR 기본값과 피어슨 rbar.eff로 직접 계산한 값의 최대 차이 0.0011 
+interseries.cor(nyrs=32, pearson): 계열별 r 중앙값 0.3128 , 최소 0.0954 
+Attempting to automatically detect format.
+Assuming a Tucson format file.
+
+corr.rwl.seg(seg.length=50, bin.floor=0, nyrs=32, pcrit=0.01, pearson, lag.max=10): 구간은 0, 25, 50...년에 맞춘 25년 간격이다.
+T01B 의 구간별 최고 상관 lag:
+1600.1649 1625.1674 1650.1699 1675.1724 1700.1749 1725.1774 1750.1799 1775.1824 
+       NA        NA         7         6        -8        -1        -7        -7 
+1800.1849 1825.1874 1850.1899 1875.1924 1900.1949 1925.1974 1950.1999 
+        8         0         0         0         0        -1         7 
+T02B 의 구간별 최고 상관 lag:
+1600.1649 1625.1674 1650.1699 1675.1724 1700.1749 1725.1774 1750.1799 1775.1824 
+       NA        NA         6        -3         5         4        -3        -3 
+1800.1849 1825.1874 1850.1899 1875.1924 1900.1949 1925.1974 1950.1999 
+       -3        -3        -6        -4        -2        -3        -3 
+T04A 의 구간별 최고 상관 lag:
+1600.1649 1625.1674 1650.1699 1675.1724 1700.1749 1725.1774 1750.1799 1775.1824 
+       NA        NA        NA        -3         4         2         3         2 
+1800.1849 1825.1874 1850.1899 1875.1924 1900.1949 1925.1974 1950.1999 
+        0         0         0         0         0         0         0 
+T10A 의 구간별 최고 상관 lag:
+1600.1649 1625.1674 1650.1699 1675.1724 1700.1749 1725.1774 1750.1799 1775.1824 
+       NA        NA        NA        NA        NA        NA        NA        NA 
+1800.1849 1825.1874 1850.1899 1875.1924 1900.1949 1925.1974 1950.1999 
+       NA        NA        NA         0         0         0         0 
+flags: 구간 상관이 pcrit 수준에서 유의하지 않아 표시된 구간. 표시된 계열 수 58 / 71 ; T10A는 표시된 구간 없음 
+Attempting to automatically detect format.
+Assuming a Tucson format file.
+참 날짜 자료에서 flags가 표시한 계열 수: 58 / 71 
+전체 소요 시간(초): 14.7 
+
+세션 정보 요약
+[1] "R version 4.3.3 (2024-02-29)"
+[1] '1.8.1'

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1240" viewBox="0 0 1300 1240">
+<rect x="0" y="0" width="1300" height="1240" fill="#FFFFFF" stroke="none" stroke-width="1.0" />
+<rect x="520" y="90" width="720" height="730" fill="none" stroke="#555555" stroke-width="2.4" />
+<line x1="600" y1="90" x2="600" y2="820" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="600" y1="820" x2="600" y2="830" stroke="#555555" stroke-width="2.0"/>
+<text x="600" y="864" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">-3</text>
+<line x1="760" y1="90" x2="760" y2="820" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="760" y1="820" x2="760" y2="830" stroke="#555555" stroke-width="2.0"/>
+<text x="760" y="864" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">-2</text>
+<line x1="920" y1="90" x2="920" y2="820" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="920" y1="820" x2="920" y2="830" stroke="#555555" stroke-width="2.0"/>
+<text x="920" y="864" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">-1</text>
+<line x1="1080" y1="90" x2="1080" y2="820" stroke="#111111" stroke-width="2.4"/>
+<line x1="1080" y1="820" x2="1080" y2="830" stroke="#555555" stroke-width="2.0"/>
+<text x="1080" y="864" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">0</text>
+<line x1="1240" y1="90" x2="1240" y2="820" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="1240" y1="820" x2="1240" y2="830" stroke="#555555" stroke-width="2.0"/>
+<text x="1240" y="864" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">1</text>
+<text x="880" y="912" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">검증 통계 값 (0보다 커야 통과)</text>
+<line x1="1112.4" y1="126.5" x2="1190.5" y2="126.5" stroke="#111111" stroke-width="6.0"/>
+<line x1="1112.4" y1="112.5" x2="1112.4" y2="140.5" stroke="#111111" stroke-width="4.0"/>
+<line x1="1190.5" y1="112.5" x2="1190.5" y2="140.5" stroke="#111111" stroke-width="4.0"/>
+<circle cx="1160.2" cy="126.5" r="12" fill="#111111" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="506" y="136.5" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">RE</text>
+<line x1="1104.7" y1="199.5" x2="1186.7" y2="199.5" stroke="#777777" stroke-width="6.0"/>
+<line x1="1104.7" y1="185.5" x2="1104.7" y2="213.5" stroke="#777777" stroke-width="4.0"/>
+<line x1="1186.7" y1="185.5" x2="1186.7" y2="213.5" stroke="#777777" stroke-width="4.0"/>
+<circle cx="1159.6" cy="199.5" r="12" fill="#777777" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="506" y="209.5" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">CE</text>
+<text x="430" y="173" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">추세 없음, 검증 연도 재표집</text>
+<line x1="1121.8" y1="272.5" x2="1182.2" y2="272.5" stroke="#111111" stroke-width="6.0"/>
+<line x1="1121.8" y1="258.5" x2="1121.8" y2="286.5" stroke="#111111" stroke-width="4.0"/>
+<line x1="1182.2" y1="258.5" x2="1182.2" y2="286.5" stroke="#111111" stroke-width="4.0"/>
+<circle cx="1160.2" cy="272.5" r="12" fill="#111111" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="506" y="282.5" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">RE</text>
+<line x1="1100.5" y1="345.5" x2="1174.7" y2="345.5" stroke="#777777" stroke-width="6.0"/>
+<line x1="1100.5" y1="331.5" x2="1100.5" y2="359.5" stroke="#777777" stroke-width="4.0"/>
+<line x1="1174.7" y1="331.5" x2="1174.7" y2="359.5" stroke="#777777" stroke-width="4.0"/>
+<circle cx="1159.6" cy="345.5" r="12" fill="#777777" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="506" y="355.5" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">CE</text>
+<text x="430" y="319" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">추세 없음, 이동 블록(5)</text>
+<line x1="40" y1="236" x2="1240" y2="236" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="4 8"/>
+<line x1="1136.1" y1="418.5" x2="1173.6" y2="418.5" stroke="#111111" stroke-width="6.0"/>
+<line x1="1136.1" y1="404.5" x2="1136.1" y2="432.5" stroke="#111111" stroke-width="4.0"/>
+<line x1="1173.6" y1="404.5" x2="1173.6" y2="432.5" stroke="#111111" stroke-width="4.0"/>
+<circle cx="1160.2" cy="418.5" r="12" fill="#111111" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="506" y="428.5" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">RE</text>
+<line x1="1132.6" y1="491.5" x2="1166.8" y2="491.5" stroke="#777777" stroke-width="6.0"/>
+<line x1="1132.6" y1="477.5" x2="1132.6" y2="505.5" stroke="#777777" stroke-width="4.0"/>
+<line x1="1166.8" y1="477.5" x2="1166.8" y2="505.5" stroke="#777777" stroke-width="4.0"/>
+<circle cx="1159.6" cy="491.5" r="12" fill="#777777" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="506" y="501.5" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">CE</text>
+<text x="430" y="465" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">추세 없음, 보정 연도 재표집</text>
+<line x1="40" y1="382" x2="1240" y2="382" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="4 8"/>
+<line x1="1100.7" y1="564.5" x2="1169.7" y2="564.5" stroke="#111111" stroke-width="6.0"/>
+<line x1="1100.7" y1="550.5" x2="1100.7" y2="578.5" stroke="#111111" stroke-width="4.0"/>
+<line x1="1169.7" y1="550.5" x2="1169.7" y2="578.5" stroke="#111111" stroke-width="4.0"/>
+<circle cx="1139.4" cy="564.5" r="12" fill="#111111" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="506" y="574.5" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">RE</text>
+<line x1="546" y1="637.5" x2="1047.8" y2="637.5" stroke="#777777" stroke-width="6.0"/>
+<line x1="546" y1="623.5" x2="546" y2="651.5" stroke="#777777" stroke-width="4.0"/>
+<line x1="1047.8" y1="623.5" x2="1047.8" y2="651.5" stroke="#777777" stroke-width="4.0"/>
+<circle cx="910.9" cy="637.5" r="12" fill="#777777" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="506" y="647.5" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">CE</text>
+<text x="430" y="611" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">추세 있음, 검증 연도 재표집</text>
+<line x1="40" y1="528" x2="1240" y2="528" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="4 8"/>
+<line x1="1114.3" y1="710.5" x2="1158.6" y2="710.5" stroke="#111111" stroke-width="6.0"/>
+<line x1="1114.3" y1="696.5" x2="1114.3" y2="724.5" stroke="#111111" stroke-width="4.0"/>
+<line x1="1158.6" y1="696.5" x2="1158.6" y2="724.5" stroke="#111111" stroke-width="4.0"/>
+<circle cx="1139.4" cy="710.5" r="12" fill="#111111" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="506" y="720.5" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">RE</text>
+<line x1="794.6" y1="783.5" x2="981.3" y2="783.5" stroke="#777777" stroke-width="6.0"/>
+<line x1="794.6" y1="769.5" x2="794.6" y2="797.5" stroke="#777777" stroke-width="4.0"/>
+<line x1="981.3" y1="769.5" x2="981.3" y2="797.5" stroke="#777777" stroke-width="4.0"/>
+<circle cx="910.9" cy="783.5" r="12" fill="#777777" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="506" y="793.5" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">CE</text>
+<text x="430" y="757" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">추세 있음, 보정 연도 재표집</text>
+<line x1="40" y1="674" x2="1240" y2="674" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="4 8"/>
+<circle cx="165" cy="962" r="10" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<text x="202" y="970" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">RE (점은 관측, 선은 95% 구간)</text>
+<circle cx="643.3" cy="962" r="10" fill="#777777" stroke="#FFFFFF" stroke-width="2.0"/>
+<text x="680.3" y="970" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">CE</text>
+<text x="150" y="1026" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">58년 시연 자료(가상 값)에서 앞 29년로 보정하고 뒤 29년로 검증. 추세 있음의 CE는 </text>
+<text x="150" y="1064" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">구간 전체가 0 아래다. 값은 re-ce-demo.json(실습 5-6).</text>
+</svg>

@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1180" viewBox="0 0 1300 1180">
+<rect x="0" y="0" width="1300" height="1180" fill="#FFFFFF" stroke="none" stroke-width="1.0" />
+<text x="325" y="126" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">우하량</text>
+<text x="475" y="126" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">합라해구</text>
+<text x="625" y="126" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">대전자</text>
+<text x="775" y="126" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">대산전</text>
+<text x="925" y="126" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">금구자</text>
+<text x="1075" y="126" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">묘자구</text>
+<text x="232" y="215" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">우하량</text>
+<rect x="250" y="150" width="150" height="110" fill="#F4F4F4" stroke="#555555" stroke-width="1.5" />
+<text x="325" y="215" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">-</text>
+<rect x="400" y="150" width="150" height="110" fill="#C1C1C1" stroke="#555555" stroke-width="1.5" />
+<text x="475" y="215" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0.242</text>
+<rect x="550" y="150" width="150" height="110" fill="#FFFFFF" stroke="#555555" stroke-width="1.5" stroke-dasharray="10 6"/>
+<text x="625" y="215" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">-0.125</text>
+<rect x="700" y="150" width="150" height="110" fill="#D5D5D5" stroke="#555555" stroke-width="1.5" />
+<text x="775" y="215" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0.148</text>
+<rect x="850" y="150" width="150" height="110" fill="#575757" stroke="#555555" stroke-width="1.5" />
+<text x="925" y="215" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">0.749</text>
+<rect x="1000" y="150" width="150" height="110" fill="#FFFFFF" stroke="#555555" stroke-width="1.5" stroke-dasharray="10 6"/>
+<text x="1075" y="215" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">-0.059</text>
+<text x="232" y="325" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">합라해구</text>
+<rect x="250" y="260" width="150" height="110" fill="#C1C1C1" stroke="#555555" stroke-width="1.5" />
+<text x="325" y="325" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0.242</text>
+<rect x="400" y="260" width="150" height="110" fill="#F4F4F4" stroke="#555555" stroke-width="1.5" />
+<text x="475" y="325" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">-</text>
+<rect x="550" y="260" width="150" height="110" fill="#939393" stroke="#555555" stroke-width="1.5" />
+<text x="625" y="325" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0.462</text>
+<rect x="700" y="260" width="150" height="110" fill="#7D7D7D" stroke="#555555" stroke-width="1.5" />
+<text x="775" y="325" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">0.565</text>
+<rect x="850" y="260" width="150" height="110" fill="#222222" stroke="#555555" stroke-width="1.5" />
+<text x="925" y="325" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">1.000</text>
+<rect x="1000" y="260" width="150" height="110" fill="#F4F4F4" stroke="#555555" stroke-width="1.5" />
+<text x="1075" y="325" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0.000</text>
+<text x="232" y="435" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">대전자</text>
+<rect x="250" y="370" width="150" height="110" fill="#FFFFFF" stroke="#555555" stroke-width="1.5" stroke-dasharray="10 6"/>
+<text x="325" y="435" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">-0.125</text>
+<rect x="400" y="370" width="150" height="110" fill="#939393" stroke="#555555" stroke-width="1.5" />
+<text x="475" y="435" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0.462</text>
+<rect x="550" y="370" width="150" height="110" fill="#F4F4F4" stroke="#555555" stroke-width="1.5" />
+<text x="625" y="435" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">-</text>
+<rect x="700" y="370" width="150" height="110" fill="#DCDCDC" stroke="#555555" stroke-width="1.5" />
+<text x="775" y="435" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0.116</text>
+<rect x="850" y="370" width="150" height="110" fill="#474747" stroke="#555555" stroke-width="1.5" />
+<text x="925" y="435" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">0.822</text>
+<rect x="1000" y="370" width="150" height="110" fill="#DBDBDB" stroke="#555555" stroke-width="1.5" />
+<text x="1075" y="435" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0.118</text>
+<text x="232" y="545" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">대산전</text>
+<rect x="250" y="480" width="150" height="110" fill="#D5D5D5" stroke="#555555" stroke-width="1.5" />
+<text x="325" y="545" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0.148</text>
+<rect x="400" y="480" width="150" height="110" fill="#7D7D7D" stroke="#555555" stroke-width="1.5" />
+<text x="475" y="545" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">0.565</text>
+<rect x="550" y="480" width="150" height="110" fill="#DCDCDC" stroke="#555555" stroke-width="1.5" />
+<text x="625" y="545" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0.116</text>
+<rect x="700" y="480" width="150" height="110" fill="#F4F4F4" stroke="#555555" stroke-width="1.5" />
+<text x="775" y="545" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">-</text>
+<rect x="850" y="480" width="150" height="110" fill="#7D7D7D" stroke="#555555" stroke-width="1.5" />
+<text x="925" y="545" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">0.565</text>
+<rect x="1000" y="480" width="150" height="110" fill="#ADADAD" stroke="#555555" stroke-width="1.5" />
+<text x="1075" y="545" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0.339</text>
+<text x="232" y="655" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">금구자</text>
+<rect x="250" y="590" width="150" height="110" fill="#575757" stroke="#555555" stroke-width="1.5" />
+<text x="325" y="655" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">0.749</text>
+<rect x="400" y="590" width="150" height="110" fill="#222222" stroke="#555555" stroke-width="1.5" />
+<text x="475" y="655" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">1.000</text>
+<rect x="550" y="590" width="150" height="110" fill="#474747" stroke="#555555" stroke-width="1.5" />
+<text x="625" y="655" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">0.822</text>
+<rect x="700" y="590" width="150" height="110" fill="#7D7D7D" stroke="#555555" stroke-width="1.5" />
+<text x="775" y="655" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">0.565</text>
+<rect x="850" y="590" width="150" height="110" fill="#F4F4F4" stroke="#555555" stroke-width="1.5" />
+<text x="925" y="655" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">-</text>
+<rect x="1000" y="590" width="150" height="110" fill="#222222" stroke="#555555" stroke-width="1.5" />
+<text x="1075" y="655" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">1.000</text>
+<text x="232" y="765" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">묘자구</text>
+<rect x="250" y="700" width="150" height="110" fill="#FFFFFF" stroke="#555555" stroke-width="1.5" stroke-dasharray="10 6"/>
+<text x="325" y="765" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">-0.059</text>
+<rect x="400" y="700" width="150" height="110" fill="#F4F4F4" stroke="#555555" stroke-width="1.5" />
+<text x="475" y="765" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0.000</text>
+<rect x="550" y="700" width="150" height="110" fill="#DBDBDB" stroke="#555555" stroke-width="1.5" />
+<text x="625" y="765" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0.118</text>
+<rect x="700" y="700" width="150" height="110" fill="#ADADAD" stroke="#555555" stroke-width="1.5" />
+<text x="775" y="765" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0.339</text>
+<rect x="850" y="700" width="150" height="110" fill="#222222" stroke="#555555" stroke-width="1.5" />
+<text x="925" y="765" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">1.000</text>
+<rect x="1000" y="700" width="150" height="110" fill="#F4F4F4" stroke="#555555" stroke-width="1.5" />
+<text x="1075" y="765" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">-</text>
+<rect x="250" y="860" width="90" height="36" fill="#F4F4F4" stroke="#555555" stroke-width="1.0" />
+<text x="295" y="936" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">0.00</text>
+<rect x="340" y="860" width="90" height="36" fill="#C0C0C0" stroke="#555555" stroke-width="1.0" />
+<text x="385" y="936" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">0.25</text>
+<rect x="430" y="860" width="90" height="36" fill="#8B8B8B" stroke="#555555" stroke-width="1.0" />
+<text x="475" y="936" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">0.50</text>
+<rect x="520" y="860" width="90" height="36" fill="#565656" stroke="#555555" stroke-width="1.0" />
+<text x="565" y="936" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">0.75</text>
+<rect x="610" y="860" width="90" height="36" fill="#222222" stroke="#555555" stroke-width="1.0" />
+<text x="655" y="936" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">1.00</text>
+<rect x="740" y="860" width="90" height="36" fill="#FFFFFF" stroke="#555555" stroke-width="1.5" stroke-dasharray="10 6"/>
+<text x="845" y="888" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">음수(그대로 둠)</text>
+<text x="150" y="990" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">쌍별 Phi_ST. 하플로그룹이 같으면 0, 다르면 1인 거리로 두 유적만 AMOVA(분자 분산 </text>
+<text x="150" y="1028" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">분석)에 넣은 값이다. 합라해구와 묘자구는 0/0이어서 0으로 두었다. 입력과 값은 dis</text>
+<text x="150" y="1066" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">tmat.log와 cui-phist-v1.tsv.</text>
+</svg>

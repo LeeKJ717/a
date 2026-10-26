@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1486" viewBox="0 0 1300 1486">
+<rect x="0" y="0" width="1300" height="1486" fill="#FFFFFF" stroke="none" stroke-width="1.0" />
+<rect x="380" y="130" width="860" height="956" fill="#FFFFFF" stroke="#555555" stroke-width="2.0" />
+<line x1="523.3" y1="130" x2="523.3" y2="1086" stroke="#CCCCCC" stroke-width="1.2" stroke-dasharray="6 8"/>
+<text x="523.3" y="110" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">-100</text>
+<line x1="666.7" y1="130" x2="666.7" y2="1086" stroke="#CCCCCC" stroke-width="1.2" stroke-dasharray="6 8"/>
+<text x="666.7" y="110" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">-50</text>
+<line x1="810" y1="130" x2="810" y2="1086" stroke="#555555" stroke-width="2.0"/>
+<text x="810" y="110" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">0</text>
+<line x1="953.3" y1="130" x2="953.3" y2="1086" stroke="#CCCCCC" stroke-width="1.2" stroke-dasharray="6 8"/>
+<text x="953.3" y="110" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">+50</text>
+<line x1="1096.7" y1="130" x2="1096.7" y2="1086" stroke="#CCCCCC" stroke-width="1.2" stroke-dasharray="6 8"/>
+<text x="1096.7" y="110" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">+100</text>
+<text x="364" y="176" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">GY-1 363 cm</text>
+<line x1="810" y1="166" x2="810" y2="166" stroke="#CCCCCC" stroke-width="2.0"/>
+<circle cx="810" cy="166" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="803.2" y="159.2" width="13.5" height="13.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="364" y="228" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">GY-1 739 cm</text>
+<line x1="706.8" y1="218" x2="812.9" y2="218" stroke="#CCCCCC" stroke-width="2.0"/>
+<circle cx="706.8" cy="218" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="806.1" y="211.2" width="13.5" height="13.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="364" y="280" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">GY-1 889 cm</text>
+<line x1="807.1" y1="270" x2="807.1" y2="270" stroke="#CCCCCC" stroke-width="2.0"/>
+<circle cx="807.1" cy="270" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="800.4" y="263.2" width="13.5" height="13.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="364" y="332" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">GY-1 917 cm</text>
+<line x1="804.3" y1="322" x2="807.1" y2="322" stroke="#CCCCCC" stroke-width="2.0"/>
+<circle cx="804.3" cy="322" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="800.4" y="315.2" width="13.5" height="13.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="364" y="384" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">GY-1 1416 cm</text>
+<line x1="807.1" y1="374" x2="807.1" y2="374" stroke="#CCCCCC" stroke-width="2.0"/>
+<circle cx="807.1" cy="374" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="800.4" y="367.2" width="13.5" height="13.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="364" y="436" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">GY-1 1839 cm</text>
+<line x1="807.1" y1="426" x2="810" y2="426" stroke="#CCCCCC" stroke-width="2.0"/>
+<circle cx="810" cy="426" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="800.4" y="419.2" width="13.5" height="13.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="364" y="488" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">GY-1 2060 cm</text>
+<line x1="807.1" y1="478" x2="812.9" y2="478" stroke="#CCCCCC" stroke-width="2.0"/>
+<circle cx="812.9" cy="478" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="800.4" y="471.2" width="13.5" height="13.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="364" y="540" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">GY-1 2351 cm</text>
+<line x1="709.7" y1="530" x2="807.1" y2="530" stroke="#CCCCCC" stroke-width="2.0"/>
+<circle cx="709.7" cy="530" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="800.4" y="523.2" width="13.5" height="13.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="364" y="592" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">GY-1 2892 cm</text>
+<line x1="807.1" y1="582" x2="807.1" y2="582" stroke="#CCCCCC" stroke-width="2.0"/>
+<circle cx="807.1" cy="582" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="800.4" y="575.2" width="13.5" height="13.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="364" y="644" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">4,940 BP</text>
+<line x1="810" y1="634" x2="812.9" y2="634" stroke="#CCCCCC" stroke-width="2.0"/>
+<circle cx="812.9" cy="634" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="803.2" y="627.2" width="13.5" height="13.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="364" y="696" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">9,785 BP</text>
+<line x1="956.2" y1="686" x2="1007.8" y2="686" stroke="#CCCCCC" stroke-width="2.0"/>
+<circle cx="956.2" cy="686" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="1001" y="679.2" width="13.5" height="13.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="364" y="748" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">호륜호 59 cm</text>
+<line x1="835.8" y1="738" x2="1090.9" y2="738" stroke="#CCCCCC" stroke-width="2.0"/>
+<circle cx="835.8" cy="738" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="1084.2" y="731.2" width="13.5" height="13.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="364" y="800" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">호륜호 69 cm</text>
+<line x1="830.1" y1="790" x2="855.9" y2="790" stroke="#CCCCCC" stroke-width="2.0"/>
+<circle cx="830.1" cy="790" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="849.1" y="783.2" width="13.5" height="13.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="364" y="852" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">호륜호 79 cm</text>
+<line x1="798.5" y1="842" x2="832.9" y2="842" stroke="#CCCCCC" stroke-width="2.0"/>
+<circle cx="832.9" cy="842" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="791.8" y="835.2" width="13.5" height="13.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="364" y="904" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">호륜호 89 cm</text>
+<line x1="615.1" y1="894" x2="784.2" y2="894" stroke="#CCCCCC" stroke-width="2.0"/>
+<circle cx="615.1" cy="894" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="777.5" y="887.2" width="13.5" height="13.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="364" y="956" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">호륜호 101 cm</text>
+<line x1="795.7" y1="946" x2="812.9" y2="946" stroke="#CCCCCC" stroke-width="2.0"/>
+<circle cx="812.9" cy="946" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="788.9" y="939.2" width="13.5" height="13.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="364" y="1008" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">비금도 1,340 cm</text>
+<line x1="801.4" y1="998" x2="801.4" y2="998" stroke="#CCCCCC" stroke-width="2.0"/>
+<circle cx="801.4" cy="998" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="794.6" y="991.2" width="13.5" height="13.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="364" y="1060" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">비금도 1,490 cm</text>
+<line x1="804.3" y1="1050" x2="821.5" y2="1050" stroke="#CCCCCC" stroke-width="2.0"/>
+<circle cx="821.5" cy="1050" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="797.5" y="1043.2" width="13.5" height="13.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="380" y="1146" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">차이 = 이 책 − 제1권 (단위: 년)</text>
+<circle cx="388" cy="1206" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<text x="410" y="1216" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">구간의 젊은 쪽 끝</text>
+<rect x="783.2" y="1199.2" width="13.5" height="13.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="812" y="1216" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">구간의 늙은 쪽 끝</text>
+<text x="130" y="1276" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">※ 95.4% 최고 밀도 구간들의 바깥 끝을 견줌. 곡선: IntCal13(GY-1, 비금도), IntCal04</text>
+<text x="130" y="1314" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">(그 밖).</text>
+<text x="130" y="1360" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">※ 9,785 BP: 이 책 구간(11,177~11,246)이 제1권 구간(11,126~11,177)보다 51~69년 </text>
+<text x="130" y="1398" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">늙다. 두 구간은 끝에서 맞닿는다.</text>
+</svg>

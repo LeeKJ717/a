@@ -1,0 +1,22 @@
+== https://www.ncei.noaa.gov/products/paleoclimatology/tree-ring
+curl: (56) CONNECT tunnel failed, response 403
+http=000 size=0 ip=127.0.0.1
+== https://www.ncei.noaa.gov/pub/data/paleo/treering/measurements/asia/
+curl: (56) CONNECT tunnel failed, response 403
+http=000 size=0 ip=127.0.0.1
+== https://www.ncei.noaa.gov/pub/data/paleo/treering/chronologies/asia/
+curl: (56) CONNECT tunnel failed, response 403
+http=000 size=0 ip=127.0.0.1
+== https://cran.r-project.org/web/packages/dplR/index.html
+curl: (56) CONNECT tunnel failed, response 403
+http=000 size=0 ip=127.0.0.1
+== https://www.ncei.noaa.gov/access/paleo-search/
+curl: (56) CONNECT tunnel failed, response 403
+http=000 size=0 ip=127.0.0.1
+== https://pypi.org/simple/dplr/
+http=404 size=13 ip=151.101.0.223
+== https://github.com/AndyBunn/dplR
+http=403 size=378 ip=127.0.0.1
+== https://cran.r-project.org/src/contrib/PACKAGES
+curl: (56) CONNECT tunnel failed, response 403
+http=000 size=0 ip=127.0.0.1

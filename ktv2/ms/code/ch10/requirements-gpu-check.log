@@ -1,0 +1,18 @@
+$ pip install "numpy>=2.0,<2.5" cupy-cuda12x   (CuPy 문서의 NumPy 범위 2.0~2.4 안에서 해석되는지)
+
+$ pip freeze
+cuda-pathfinder==1.8.4
+cupy-cuda12x==14.2.0
+numpy==2.4.6
+$ python cupy-probe-v1.py (앞 3줄)
+cupy 14.2.0 | numpy 2.4.6
+cupy.get_array_module   있음: True
+cupy.asarray            있음: True
+$ python xp-demo-v1.py --xp auto --B 200000
+[알림] cupy를 쓸 수 없어 numpy로 내려간다 (CUDARuntimeError)
+백엔드: numpy | numpy 2.4.6 | python 3.13.16
+(가) 대산전 H 부트스트랩 B=200000 chunk=200000: 2.5% 0.556 중앙 0.778 97.5% 0.889  (제1권 0.556 0.778 0.889)
+    H 평균 0.7656, 표본의 H(관측) = 0.8611
+(나) 노백산-돈화 기상대 거리 = 82.43 km  (제1권 82.43 km)
+제1권 값과 일치: 예
+총 걸린 시간 0.128 s

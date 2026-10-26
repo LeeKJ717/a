@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1198" viewBox="0 0 1300 1198">
+<rect x="0" y="0" width="1300" height="1198" fill="#FFFFFF" stroke="none" stroke-width="1.0" />
+<rect x="200" y="90" width="1040" height="610" fill="none" stroke="#555555" stroke-width="2.4" />
+<line x1="200" y1="700" x2="1240" y2="700" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="192" y1="700" x2="200" y2="700" stroke="#555555" stroke-width="2.0"/>
+<text x="186" y="710" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">1e-5</text>
+<line x1="200" y1="578" x2="1240" y2="578" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="192" y1="578" x2="200" y2="578" stroke="#555555" stroke-width="2.0"/>
+<text x="186" y="588" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">1e-4</text>
+<line x1="200" y1="456" x2="1240" y2="456" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="192" y1="456" x2="200" y2="456" stroke="#555555" stroke-width="2.0"/>
+<text x="186" y="466" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">1e-3</text>
+<line x1="200" y1="334" x2="1240" y2="334" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="192" y1="334" x2="200" y2="334" stroke="#555555" stroke-width="2.0"/>
+<text x="186" y="344" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">0.01</text>
+<line x1="200" y1="212" x2="1240" y2="212" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="192" y1="212" x2="200" y2="212" stroke="#555555" stroke-width="2.0"/>
+<text x="186" y="222" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">0.1</text>
+<line x1="200" y1="90" x2="1240" y2="90" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="192" y1="90" x2="200" y2="90" stroke="#555555" stroke-width="2.0"/>
+<text x="186" y="100" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">1</text>
+<text x="40" y="60" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">p 값 (로그 눈금)</text>
+<text x="370" y="752" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">신석기 대 청동기</text>
+<text x="370" y="790" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">[[16, 2], [4, 10]]</text>
+<text x="710" y="752" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">신석기 대 대전자</text>
+<text x="710" y="790" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">[[16, 2], [3, 2]]</text>
+<text x="1050" y="752" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">신석기 대 대산전</text>
+<text x="1050" y="790" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">[[16, 2], [1, 8]]</text>
+<line x1="200" y1="248.7" x2="1240" y2="248.7" stroke="#666666" stroke-width="3.0" stroke-dasharray="16 8"/>
+<text x="1228" y="236.7" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">0.05</text>
+<text x="1228" y="236.7" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#666666">0.05</text>
+<line x1="200" y1="456.1" x2="1240" y2="456.1" stroke="#999999" stroke-width="3.0" stroke-dasharray="6 8"/>
+<circle cx="310" cy="468.5" r="9.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="360.2" y="459.4" width="19.5" height="19.5" fill="#666666" stroke="#FFFFFF" stroke-width="2.0" />
+<polygon points="430,417.8 444,431.8 430,445.8 416,431.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<text x="310" y="526.5" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">7.90e-04</text>
+<text x="310" y="526.5" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">7.90e-04</text>
+<text x="370" y="435.2" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">7.80e-04</text>
+<text x="370" y="435.2" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">7.80e-04</text>
+<text x="430" y="397.8" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">1.58e-03</text>
+<text x="430" y="397.8" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">1.58e-03</text>
+<circle cx="650" cy="177" r="9.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="700.2" y="167.3" width="19.5" height="19.5" fill="#666666" stroke="#FFFFFF" stroke-width="2.0" />
+<polygon points="770,163 784,177 770,191 756,177" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<text x="650" y="235" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">1.94e-01</text>
+<text x="650" y="235" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">1.94e-01</text>
+<text x="710" y="143" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">1.93e-01</text>
+<text x="710" y="143" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">1.93e-01</text>
+<text x="770" y="235" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">1.94e-01</text>
+<text x="770" y="235" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">1.94e-01</text>
+<circle cx="990" cy="551.4" r="9.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<rect x="1040.2" y="534" width="19.5" height="19.5" fill="#666666" stroke="#FFFFFF" stroke-width="2.0" />
+<polygon points="1110,479.1 1124,493.1 1110,507.1 1096,493.1" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<text x="990" y="609.4" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">1.65e-04</text>
+<text x="990" y="609.4" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">1.65e-04</text>
+<text x="1050" y="509.7" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">1.91e-04</text>
+<text x="1050" y="509.7" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">1.91e-04</text>
+<text x="1110" y="459.1" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">4.96e-04</text>
+<text x="1110" y="459.1" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">4.96e-04</text>
+<circle cx="184" cy="840" r="7.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<text x="210" y="850" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">Fisher 정확검정(양쪽)</text>
+<rect x="626.5" y="832.5" width="15" height="15" fill="#666666" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="660" y="850" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">순열 검정 100만 번(양쪽)</text>
+<polygon points="184,876 194,886 184,896 174,886" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<text x="210" y="896" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">Fisher p에 Holm 보정(세 검정을 한 묶음으로)</text>
+<line x1="170" y1="934" x2="230" y2="934" stroke="#999999" stroke-width="3.0" stroke-dasharray="6 8"/>
+<text x="244" y="942" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">순열 1,000번으로 얻을 수 있는 가장 작은 p = 1/1001</text>
+<text x="150" y="1006" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">입력은 제1권 11장 표 4에서 만든 2x2 표 세 개이다(사례 1). 순열 100만 번은 가능한 </text>
+<text x="150" y="1044" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">가장 작은 값이 1/1,000,001이라 7.9e-4와 1.65e-4를 해상한다. 순열의 1.91e-4는 19</text>
+<text x="150" y="1082" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">0번 대 기대 165번으로 표준편차의 1.9배 떨어졌다(이항 양쪽 p = 0.065). 가운데 비</text>
+<text x="150" y="1120" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">교의 p는 0.05보다 훨씬 크다. NumPy 경로, CPU.</text>
+</svg>

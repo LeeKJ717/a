@@ -1,0 +1,10 @@
+Mon Oct 26 10:26:41 KST 2026
+https://volcano.si.edu/ -> curl: (56) CONNECT tunnel failed, response 403 http=000 받은바이트=0
+https://volcano.si.edu/database/list_volcano_holocene_excel.cfm -> curl: (56) CONNECT tunnel failed, response 403 http=000 받은바이트=0
+https://webservices.volcano.si.edu/geoserver/GVP-VOTW/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=GVP-VOTW:Smithsonian_VOTW_Holocene_Volcanoes&maxFeatures=5&outputFormat=csv -> curl: (56) CONNECT tunnel failed, response 403 http=000 받은바이트=0
+https://webservices.volcano.si.edu/geoserver/GVP-VOTW/wfs?request=GetCapabilities -> curl: (56) CONNECT tunnel failed, response 403 http=000 받은바이트=0
+https://doi.org/10.5479/si.GVP.VOTW5-2026.5.4 -> curl: (56) CONNECT tunnel failed, response 403 http=000 받은바이트=0
+https://www.ngdc.noaa.gov/hazel/view/about -> curl: (56) CONNECT tunnel failed, response 403 http=000 받은바이트=0
+https://www.earthchem.org/ -> curl: (56) CONNECT tunnel failed, response 403 http=000 받은바이트=0
+https://pypi.org/simple/scipy/ -> http=200 받은바이트=1345304
+https://api.github.com/ -> http=200 받은바이트=2

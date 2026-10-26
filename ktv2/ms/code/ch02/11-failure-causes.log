@@ -1,0 +1,5 @@
+{"rows": 394, "lay_fail": 24, "lay_fail_empty": 24, "lay_fail_space": 12, "txt_fail": 120, "txt_fail_empty": 7, "txt_fail_space": 107, "empty_rows": 24, "space_rows": 180, "lay_empty_dropped_ok": 24}
+정답 행 394줄: 빈 칸이 있는 행 24, 칸 안에 공백이 있는 행 180
+pdftotext -layout이 놓친 행 24줄 중 빈 칸이 있는 행 24, 칸 안에 공백이 있는 행 12
+빈 칸이 있는 행 가운데, 빈 칸을 건너뛴 글자 순서로는 맞은 행: 24
+pdfplumber 글자 위치 기준이 놓친 행 120줄 중 빈 칸이 있는 행 7, 칸 안에 공백이 있는 행 107

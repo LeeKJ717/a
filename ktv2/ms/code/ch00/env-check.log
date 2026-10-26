@@ -1,0 +1,33 @@
+$ date -u
+Mon Oct 26 00:41:27 UTC 2026
+$ cat /etc/os-release | head -4
+PRETTY_NAME="Ubuntu 24.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.5 LTS (Noble Numbat)"
+$ uname -srm
+Linux 6.18.44-fc-v153 x86_64
+$ python3 --version
+Python 3.13.16
+$ which python3
+/usr/bin/python3
+$ pip --version
+pip 24.0 from /usr/lib/python3/dist-packages/pip (python 3.13)
+$ git --version
+git version 2.43.0
+$ nproc
+2
+$ free -m
+               total        used        free      shared  buff/cache   available
+Mem:            8027         659        6817          14         782        7368
+Swap:              0           0           0
+$ df -h /home/claude | tail -1
+/dev/vda        252G   15G   29G  34% /
+$ nvidia-smi
+/bin/bash: line 3: nvidia-smi: command not found
+$ python3 -m pip list | grep -iE numpy|scipy|pandas|matplotlib|statsmodels
+matplotlib                 3.11.2
+numpy                      2.5.3
+pandas                     3.0.5
+scipy                      1.18.1
+statsmodels                0.15.0

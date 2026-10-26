@@ -1,0 +1,214 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1130" viewBox="0 0 1300 1130">
+<rect x="0" y="0" width="1300" height="1130" fill="#FFFFFF" stroke="none" stroke-width="1.0" />
+<rect x="200" y="90" width="1040" height="610" fill="none" stroke="#555555" stroke-width="2.4" />
+<line x1="200" y1="666.1" x2="1240" y2="666.1" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="192" y1="666.1" x2="200" y2="666.1" stroke="#555555" stroke-width="2.0"/>
+<text x="186" y="676.1" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">-40</text>
+<line x1="200" y1="530.6" x2="1240" y2="530.6" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="192" y1="530.6" x2="200" y2="530.6" stroke="#555555" stroke-width="2.0"/>
+<text x="186" y="540.6" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">0</text>
+<line x1="200" y1="395" x2="1240" y2="395" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="192" y1="395" x2="200" y2="395" stroke="#555555" stroke-width="2.0"/>
+<text x="186" y="405" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">40</text>
+<line x1="200" y1="259.4" x2="1240" y2="259.4" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="192" y1="259.4" x2="200" y2="259.4" stroke="#555555" stroke-width="2.0"/>
+<text x="186" y="269.4" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">80</text>
+<line x1="200" y1="123.9" x2="1240" y2="123.9" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="192" y1="123.9" x2="200" y2="123.9" stroke="#555555" stroke-width="2.0"/>
+<text x="186" y="133.9" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">120</text>
+<line x1="200" y1="700" x2="200" y2="710" stroke="#555555" stroke-width="2.0"/>
+<text x="200" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">-2</text>
+<line x1="373.3" y1="700" x2="373.3" y2="710" stroke="#555555" stroke-width="2.0"/>
+<text x="373.3" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">0</text>
+<line x1="546.7" y1="700" x2="546.7" y2="710" stroke="#555555" stroke-width="2.0"/>
+<text x="546.7" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">+2</text>
+<line x1="720" y1="700" x2="720" y2="710" stroke="#555555" stroke-width="2.0"/>
+<text x="720" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">+4</text>
+<line x1="893.3" y1="700" x2="893.3" y2="710" stroke="#555555" stroke-width="2.0"/>
+<text x="893.3" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">+6</text>
+<line x1="1066.7" y1="700" x2="1066.7" y2="710" stroke="#555555" stroke-width="2.0"/>
+<text x="1066.7" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">+8</text>
+<line x1="1240" y1="700" x2="1240" y2="710" stroke="#555555" stroke-width="2.0"/>
+<text x="1240" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">+10</text>
+<text x="40" y="60" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">9 ka에서 5 ka까지 해안선 후퇴 (km, 음수 = 전진)</text>
+<text x="720" y="792" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">땅 높이 변화율 u (mm/yr, 융기 +)</text>
+<line x1="200" y1="530.6" x2="1240" y2="530.6" stroke="#111111" stroke-width="2.5"/>
+<line x1="1008.2" y1="90" x2="1008.2" y2="700" stroke="#555555" stroke-width="2.5" stroke-dasharray="10 8"/>
+<text x="996.2" y="130" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">u = 7.325 이면 후퇴 0</text>
+<text x="996.2" y="130" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">u = 7.325 이면 후퇴 0</text>
+<line x1="200" y1="516" x2="221.7" y2="516.4" stroke="#999999" stroke-width="4.0"/>
+<line x1="221.7" y1="516.4" x2="243.3" y2="516.8" stroke="#999999" stroke-width="4.0"/>
+<line x1="243.3" y1="516.8" x2="265" y2="517.2" stroke="#999999" stroke-width="4.0"/>
+<line x1="265" y1="517.2" x2="286.7" y2="517.6" stroke="#999999" stroke-width="4.0"/>
+<line x1="286.7" y1="517.6" x2="308.3" y2="518" stroke="#999999" stroke-width="4.0"/>
+<line x1="308.3" y1="518" x2="330" y2="518.4" stroke="#999999" stroke-width="4.0"/>
+<line x1="330" y1="518.4" x2="351.7" y2="518.7" stroke="#999999" stroke-width="4.0"/>
+<line x1="351.7" y1="518.7" x2="373.3" y2="519.1" stroke="#999999" stroke-width="4.0"/>
+<line x1="373.3" y1="519.1" x2="395" y2="519.5" stroke="#999999" stroke-width="4.0"/>
+<line x1="395" y1="519.5" x2="416.7" y2="519.9" stroke="#999999" stroke-width="4.0"/>
+<line x1="416.7" y1="519.9" x2="438.3" y2="520.3" stroke="#999999" stroke-width="4.0"/>
+<line x1="438.3" y1="520.3" x2="460" y2="520.7" stroke="#999999" stroke-width="4.0"/>
+<line x1="460" y1="520.7" x2="481.7" y2="521.1" stroke="#999999" stroke-width="4.0"/>
+<line x1="481.7" y1="521.1" x2="503.3" y2="521.5" stroke="#999999" stroke-width="4.0"/>
+<line x1="503.3" y1="521.5" x2="525" y2="521.9" stroke="#999999" stroke-width="4.0"/>
+<line x1="525" y1="521.9" x2="546.7" y2="522.3" stroke="#999999" stroke-width="4.0"/>
+<line x1="546.7" y1="522.3" x2="568.3" y2="522.6" stroke="#999999" stroke-width="4.0"/>
+<line x1="568.3" y1="522.6" x2="590" y2="523" stroke="#999999" stroke-width="4.0"/>
+<line x1="590" y1="523" x2="611.7" y2="523.4" stroke="#999999" stroke-width="4.0"/>
+<line x1="611.7" y1="523.4" x2="633.3" y2="523.8" stroke="#999999" stroke-width="4.0"/>
+<line x1="633.3" y1="523.8" x2="655" y2="524.2" stroke="#999999" stroke-width="4.0"/>
+<line x1="655" y1="524.2" x2="676.7" y2="524.6" stroke="#999999" stroke-width="4.0"/>
+<line x1="676.7" y1="524.6" x2="698.3" y2="525" stroke="#999999" stroke-width="4.0"/>
+<line x1="698.3" y1="525" x2="720" y2="525.4" stroke="#999999" stroke-width="4.0"/>
+<line x1="720" y1="525.4" x2="741.7" y2="525.8" stroke="#999999" stroke-width="4.0"/>
+<line x1="741.7" y1="525.8" x2="763.3" y2="526.2" stroke="#999999" stroke-width="4.0"/>
+<line x1="763.3" y1="526.2" x2="785" y2="526.5" stroke="#999999" stroke-width="4.0"/>
+<line x1="785" y1="526.5" x2="806.7" y2="526.9" stroke="#999999" stroke-width="4.0"/>
+<line x1="806.7" y1="526.9" x2="828.3" y2="527.3" stroke="#999999" stroke-width="4.0"/>
+<line x1="828.3" y1="527.3" x2="850" y2="527.7" stroke="#999999" stroke-width="4.0"/>
+<line x1="850" y1="527.7" x2="871.7" y2="528.1" stroke="#999999" stroke-width="4.0"/>
+<line x1="871.7" y1="528.1" x2="893.3" y2="528.5" stroke="#999999" stroke-width="4.0"/>
+<line x1="893.3" y1="528.5" x2="915" y2="528.9" stroke="#999999" stroke-width="4.0"/>
+<line x1="915" y1="528.9" x2="936.7" y2="529.3" stroke="#999999" stroke-width="4.0"/>
+<line x1="936.7" y1="529.3" x2="958.3" y2="529.7" stroke="#999999" stroke-width="4.0"/>
+<line x1="958.3" y1="529.7" x2="980" y2="530" stroke="#999999" stroke-width="4.0"/>
+<line x1="980" y1="530" x2="1001.7" y2="530.4" stroke="#999999" stroke-width="4.0"/>
+<line x1="1001.7" y1="530.4" x2="1023.3" y2="530.8" stroke="#999999" stroke-width="4.0"/>
+<line x1="1023.3" y1="530.8" x2="1045" y2="531.2" stroke="#999999" stroke-width="4.0"/>
+<line x1="1045" y1="531.2" x2="1066.7" y2="531.6" stroke="#999999" stroke-width="4.0"/>
+<line x1="1066.7" y1="531.6" x2="1088.3" y2="532" stroke="#999999" stroke-width="4.0"/>
+<line x1="1088.3" y1="532" x2="1110" y2="532.4" stroke="#999999" stroke-width="4.0"/>
+<line x1="1110" y1="532.4" x2="1131.7" y2="532.8" stroke="#999999" stroke-width="4.0"/>
+<line x1="1131.7" y1="532.8" x2="1153.3" y2="533.2" stroke="#999999" stroke-width="4.0"/>
+<line x1="1153.3" y1="533.2" x2="1175" y2="533.6" stroke="#999999" stroke-width="4.0"/>
+<line x1="1175" y1="533.6" x2="1196.7" y2="533.9" stroke="#999999" stroke-width="4.0"/>
+<line x1="1196.7" y1="533.9" x2="1218.3" y2="534.3" stroke="#999999" stroke-width="4.0"/>
+<line x1="1218.3" y1="534.3" x2="1240" y2="534.7" stroke="#999999" stroke-width="4.0"/>
+<polygon points="200,505.2 210.3,523.6 189.7,523.6" fill="#999999" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="373.3,508.3 383.6,526.7 363.1,526.7" fill="#999999" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="546.7,511.5 556.9,529.8 536.4,529.8" fill="#999999" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="720,514.6 730.3,532.9 709.7,532.9" fill="#999999" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="893.3,517.7 903.6,536.1 883.1,536.1" fill="#999999" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="1066.7,520.8 1076.9,539.2 1056.4,539.2" fill="#999999" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="1240,523.9 1250.3,542.3 1229.7,542.3" fill="#999999" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<line x1="200" y1="487.1" x2="221.7" y2="488.2" stroke="#111111" stroke-width="4.0"/>
+<line x1="221.7" y1="488.2" x2="243.3" y2="489.4" stroke="#111111" stroke-width="4.0"/>
+<line x1="243.3" y1="489.4" x2="265" y2="490.6" stroke="#111111" stroke-width="4.0"/>
+<line x1="265" y1="490.6" x2="286.7" y2="491.7" stroke="#111111" stroke-width="4.0"/>
+<line x1="286.7" y1="491.7" x2="308.3" y2="492.9" stroke="#111111" stroke-width="4.0"/>
+<line x1="308.3" y1="492.9" x2="330" y2="494.1" stroke="#111111" stroke-width="4.0"/>
+<line x1="330" y1="494.1" x2="351.7" y2="495.2" stroke="#111111" stroke-width="4.0"/>
+<line x1="351.7" y1="495.2" x2="373.3" y2="496.4" stroke="#111111" stroke-width="4.0"/>
+<line x1="373.3" y1="496.4" x2="395" y2="497.6" stroke="#111111" stroke-width="4.0"/>
+<line x1="395" y1="497.6" x2="416.7" y2="498.7" stroke="#111111" stroke-width="4.0"/>
+<line x1="416.7" y1="498.7" x2="438.3" y2="499.9" stroke="#111111" stroke-width="4.0"/>
+<line x1="438.3" y1="499.9" x2="460" y2="501.1" stroke="#111111" stroke-width="4.0"/>
+<line x1="460" y1="501.1" x2="481.7" y2="502.2" stroke="#111111" stroke-width="4.0"/>
+<line x1="481.7" y1="502.2" x2="503.3" y2="503.4" stroke="#111111" stroke-width="4.0"/>
+<line x1="503.3" y1="503.4" x2="525" y2="504.6" stroke="#111111" stroke-width="4.0"/>
+<line x1="525" y1="504.6" x2="546.7" y2="505.7" stroke="#111111" stroke-width="4.0"/>
+<line x1="546.7" y1="505.7" x2="568.3" y2="506.9" stroke="#111111" stroke-width="4.0"/>
+<line x1="568.3" y1="506.9" x2="590" y2="508.1" stroke="#111111" stroke-width="4.0"/>
+<line x1="590" y1="508.1" x2="611.7" y2="509.2" stroke="#111111" stroke-width="4.0"/>
+<line x1="611.7" y1="509.2" x2="633.3" y2="510.4" stroke="#111111" stroke-width="4.0"/>
+<line x1="633.3" y1="510.4" x2="655" y2="511.6" stroke="#111111" stroke-width="4.0"/>
+<line x1="655" y1="511.6" x2="676.7" y2="512.7" stroke="#111111" stroke-width="4.0"/>
+<line x1="676.7" y1="512.7" x2="698.3" y2="513.9" stroke="#111111" stroke-width="4.0"/>
+<line x1="698.3" y1="513.9" x2="720" y2="515.1" stroke="#111111" stroke-width="4.0"/>
+<line x1="720" y1="515.1" x2="741.7" y2="516.2" stroke="#111111" stroke-width="4.0"/>
+<line x1="741.7" y1="516.2" x2="763.3" y2="517.4" stroke="#111111" stroke-width="4.0"/>
+<line x1="763.3" y1="517.4" x2="785" y2="518.5" stroke="#111111" stroke-width="4.0"/>
+<line x1="785" y1="518.5" x2="806.7" y2="519.7" stroke="#111111" stroke-width="4.0"/>
+<line x1="806.7" y1="519.7" x2="828.3" y2="520.9" stroke="#111111" stroke-width="4.0"/>
+<line x1="828.3" y1="520.9" x2="850" y2="522" stroke="#111111" stroke-width="4.0"/>
+<line x1="850" y1="522" x2="871.7" y2="523.2" stroke="#111111" stroke-width="4.0"/>
+<line x1="871.7" y1="523.2" x2="893.3" y2="524.4" stroke="#111111" stroke-width="4.0"/>
+<line x1="893.3" y1="524.4" x2="915" y2="525.5" stroke="#111111" stroke-width="4.0"/>
+<line x1="915" y1="525.5" x2="936.7" y2="526.7" stroke="#111111" stroke-width="4.0"/>
+<line x1="936.7" y1="526.7" x2="958.3" y2="527.9" stroke="#111111" stroke-width="4.0"/>
+<line x1="958.3" y1="527.9" x2="980" y2="529" stroke="#111111" stroke-width="4.0"/>
+<line x1="980" y1="529" x2="1001.7" y2="530.2" stroke="#111111" stroke-width="4.0"/>
+<line x1="1001.7" y1="530.2" x2="1023.3" y2="531.4" stroke="#111111" stroke-width="4.0"/>
+<line x1="1023.3" y1="531.4" x2="1045" y2="532.5" stroke="#111111" stroke-width="4.0"/>
+<line x1="1045" y1="532.5" x2="1066.7" y2="533.7" stroke="#111111" stroke-width="4.0"/>
+<line x1="1066.7" y1="533.7" x2="1088.3" y2="534.9" stroke="#111111" stroke-width="4.0"/>
+<line x1="1088.3" y1="534.9" x2="1110" y2="536" stroke="#111111" stroke-width="4.0"/>
+<line x1="1110" y1="536" x2="1131.7" y2="537.2" stroke="#111111" stroke-width="4.0"/>
+<line x1="1131.7" y1="537.2" x2="1153.3" y2="538.4" stroke="#111111" stroke-width="4.0"/>
+<line x1="1153.3" y1="538.4" x2="1175" y2="539.5" stroke="#111111" stroke-width="4.0"/>
+<line x1="1175" y1="539.5" x2="1196.7" y2="540.7" stroke="#111111" stroke-width="4.0"/>
+<line x1="1196.7" y1="540.7" x2="1218.3" y2="541.9" stroke="#111111" stroke-width="4.0"/>
+<line x1="1218.3" y1="541.9" x2="1240" y2="543" stroke="#111111" stroke-width="4.0"/>
+<circle cx="200" cy="487.1" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="373.3" cy="496.4" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="546.7" cy="505.7" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="720" cy="515.1" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="893.3" cy="524.4" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="1066.7" cy="533.7" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="1240" cy="543" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<line x1="200" y1="88.1" x2="221.7" y2="100" stroke="#666666" stroke-width="4.0"/>
+<line x1="221.7" y1="100" x2="243.3" y2="111.9" stroke="#666666" stroke-width="4.0"/>
+<line x1="243.3" y1="111.9" x2="265" y2="123.7" stroke="#666666" stroke-width="4.0"/>
+<line x1="265" y1="123.7" x2="286.7" y2="135.6" stroke="#666666" stroke-width="4.0"/>
+<line x1="286.7" y1="135.6" x2="308.3" y2="147.4" stroke="#666666" stroke-width="4.0"/>
+<line x1="308.3" y1="147.4" x2="330" y2="159.3" stroke="#666666" stroke-width="4.0"/>
+<line x1="330" y1="159.3" x2="351.7" y2="171.2" stroke="#666666" stroke-width="4.0"/>
+<line x1="351.7" y1="171.2" x2="373.3" y2="183" stroke="#666666" stroke-width="4.0"/>
+<line x1="373.3" y1="183" x2="395" y2="194.9" stroke="#666666" stroke-width="4.0"/>
+<line x1="395" y1="194.9" x2="416.7" y2="206.7" stroke="#666666" stroke-width="4.0"/>
+<line x1="416.7" y1="206.7" x2="438.3" y2="218.6" stroke="#666666" stroke-width="4.0"/>
+<line x1="438.3" y1="218.6" x2="460" y2="230.5" stroke="#666666" stroke-width="4.0"/>
+<line x1="460" y1="230.5" x2="481.7" y2="242.3" stroke="#666666" stroke-width="4.0"/>
+<line x1="481.7" y1="242.3" x2="503.3" y2="254.2" stroke="#666666" stroke-width="4.0"/>
+<line x1="503.3" y1="254.2" x2="525" y2="266.1" stroke="#666666" stroke-width="4.0"/>
+<line x1="525" y1="266.1" x2="546.7" y2="277.9" stroke="#666666" stroke-width="4.0"/>
+<line x1="546.7" y1="277.9" x2="568.3" y2="289.8" stroke="#666666" stroke-width="4.0"/>
+<line x1="568.3" y1="289.8" x2="590" y2="301.6" stroke="#666666" stroke-width="4.0"/>
+<line x1="590" y1="301.6" x2="611.7" y2="313.5" stroke="#666666" stroke-width="4.0"/>
+<line x1="611.7" y1="313.5" x2="633.3" y2="325.4" stroke="#666666" stroke-width="4.0"/>
+<line x1="633.3" y1="325.4" x2="655" y2="337.2" stroke="#666666" stroke-width="4.0"/>
+<line x1="655" y1="337.2" x2="676.7" y2="349.1" stroke="#666666" stroke-width="4.0"/>
+<line x1="676.7" y1="349.1" x2="698.3" y2="360.9" stroke="#666666" stroke-width="4.0"/>
+<line x1="698.3" y1="360.9" x2="720" y2="372.8" stroke="#666666" stroke-width="4.0"/>
+<line x1="720" y1="372.8" x2="741.7" y2="384.7" stroke="#666666" stroke-width="4.0"/>
+<line x1="741.7" y1="384.7" x2="763.3" y2="396.5" stroke="#666666" stroke-width="4.0"/>
+<line x1="763.3" y1="396.5" x2="785" y2="408.4" stroke="#666666" stroke-width="4.0"/>
+<line x1="785" y1="408.4" x2="806.7" y2="420.2" stroke="#666666" stroke-width="4.0"/>
+<line x1="806.7" y1="420.2" x2="828.3" y2="432.1" stroke="#666666" stroke-width="4.0"/>
+<line x1="828.3" y1="432.1" x2="850" y2="444" stroke="#666666" stroke-width="4.0"/>
+<line x1="850" y1="444" x2="871.7" y2="455.8" stroke="#666666" stroke-width="4.0"/>
+<line x1="871.7" y1="455.8" x2="893.3" y2="467.7" stroke="#666666" stroke-width="4.0"/>
+<line x1="893.3" y1="467.7" x2="915" y2="479.6" stroke="#666666" stroke-width="4.0"/>
+<line x1="915" y1="479.6" x2="936.7" y2="491.4" stroke="#666666" stroke-width="4.0"/>
+<line x1="936.7" y1="491.4" x2="958.3" y2="503.3" stroke="#666666" stroke-width="4.0"/>
+<line x1="958.3" y1="503.3" x2="980" y2="515.1" stroke="#666666" stroke-width="4.0"/>
+<line x1="980" y1="515.1" x2="1001.7" y2="527" stroke="#666666" stroke-width="4.0"/>
+<line x1="1001.7" y1="527" x2="1023.3" y2="538.9" stroke="#666666" stroke-width="4.0"/>
+<line x1="1023.3" y1="538.9" x2="1045" y2="550.7" stroke="#666666" stroke-width="4.0"/>
+<line x1="1045" y1="550.7" x2="1066.7" y2="562.6" stroke="#666666" stroke-width="4.0"/>
+<line x1="1066.7" y1="562.6" x2="1088.3" y2="574.4" stroke="#666666" stroke-width="4.0"/>
+<line x1="1088.3" y1="574.4" x2="1110" y2="586.3" stroke="#666666" stroke-width="4.0"/>
+<line x1="1110" y1="586.3" x2="1131.7" y2="598.2" stroke="#666666" stroke-width="4.0"/>
+<line x1="1131.7" y1="598.2" x2="1153.3" y2="610" stroke="#666666" stroke-width="4.0"/>
+<line x1="1153.3" y1="610" x2="1175" y2="621.9" stroke="#666666" stroke-width="4.0"/>
+<line x1="1175" y1="621.9" x2="1196.7" y2="633.7" stroke="#666666" stroke-width="4.0"/>
+<line x1="1196.7" y1="633.7" x2="1218.3" y2="645.6" stroke="#666666" stroke-width="4.0"/>
+<line x1="1218.3" y1="645.6" x2="1240" y2="657.5" stroke="#666666" stroke-width="4.0"/>
+<rect x="193.2" y="81.4" width="13.5" height="13.5" fill="#666666" stroke="#FFFFFF" stroke-width="2.0" />
+<rect x="366.6" y="176.3" width="13.5" height="13.5" fill="#666666" stroke="#FFFFFF" stroke-width="2.0" />
+<rect x="539.9" y="271.2" width="13.5" height="13.5" fill="#666666" stroke="#FFFFFF" stroke-width="2.0" />
+<rect x="713.2" y="366.1" width="13.5" height="13.5" fill="#666666" stroke="#FFFFFF" stroke-width="2.0" />
+<rect x="886.6" y="460.9" width="13.5" height="13.5" fill="#666666" stroke="#FFFFFF" stroke-width="2.0" />
+<rect x="1059.9" y="555.8" width="13.5" height="13.5" fill="#666666" stroke="#FFFFFF" stroke-width="2.0" />
+<rect x="1233.2" y="650.7" width="13.5" height="13.5" fill="#666666" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="286.7" y="606.6" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">경사 1/115: u = 0 에서 3.4 km</text>
+<text x="286.7" y="606.6" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#999999">경사 1/115: u = 0 에서 3.4 km</text>
+<text x="387.3" y="456.4" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">경사 1/344: u = 0 에서 10.1 km</text>
+<text x="387.3" y="456.4" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">경사 1/344: u = 0 에서 10.1 km</text>
+<text x="387.3" y="161" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">경사 1/3500: u = 0 에서 102.5 km</text>
+<text x="387.3" y="161" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#666666">경사 1/3500: u = 0 에서 102.5 km</text>
+<text x="150" y="850" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">수위는 그림 12-1(9 ka -31.7 m, 5 ka -2.4 m), 시작 높이 x = 0 에서 -100 m인 직선 지</text>
+<text x="150" y="888" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">형. 땅이 u로 오르내리면 상대 수위가 u x 4 m 달라져 후퇴 = (29.3 - 4u) / (1000 s) km</text>
+<text x="150" y="926" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">가 된다(실습 12-1, 격자 60 x 49). 같은 u라도 경사가 완만할수록 km로 환산한 영향이</text>
+<text x="150" y="964" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">크다. 시연 모형이다.</text>
+</svg>

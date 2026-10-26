@@ -1,0 +1,22 @@
+python       3.13.16 Linux-6.18.44-fc-v153-x86_64-with-glibc2.39
+numpy        2.5.3
+pandas       3.0.5
+scipy        1.18.1
+shapely      2.2.0
+pyproj       3.8.0
+geopandas    1.2.0
+pyogrio      0.13.0
+matplotlib   3.11.2
+GEOS         3.14.1
+PROJ         9.8.1
+GDAL(pyogrio) 3.12.4
+PROJ 자료 폴더 /usr/local/lib/python3.13/dist-packages/pyproj/proj_dir/share/proj
+GPU(nvidia-smi) 없음
+Noto Sans CJK KR 파일 7 개
+   /usr/share/fonts/opentype/noto/NotoSansCJK-Black.ttc
+   /usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc
+   /usr/share/fonts/opentype/noto/NotoSansCJK-DemiLight.ttc
+   /usr/share/fonts/opentype/noto/NotoSansCJK-Light.ttc
+   /usr/share/fonts/opentype/noto/NotoSansCJK-Medium.ttc
+   /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc
+   /usr/share/fonts/opentype/noto/NotoSansCJK-Thin.ttc

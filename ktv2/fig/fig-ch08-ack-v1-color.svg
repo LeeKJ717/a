@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1180" viewBox="0 0 1300 1180">
+<rect x="0" y="0" width="1300" height="1180" fill="#FFFFFF" stroke="none" stroke-width="1.0" />
+<polygon points="700,100.6 250,880 1150,880" fill="none" stroke="#6B7A82" stroke-width="2.4" stroke-linejoin="round"/>
+<line x1="475" y1="490.3" x2="925" y2="490.3" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<text x="461" y="500.3" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">50</text>
+<line x1="520" y1="412.3" x2="880" y2="412.3" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<text x="506" y="422.3" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">60</text>
+<line x1="565" y1="334.4" x2="835" y2="334.4" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<text x="551" y="344.4" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">70</text>
+<line x1="610" y1="256.5" x2="790" y2="256.5" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<text x="596" y="266.5" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">80</text>
+<line x1="655" y1="178.5" x2="745" y2="178.5" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<text x="641" y="188.5" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">90</text>
+<text x="700" y="80.6" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">A (Al2O3)</text>
+<text x="250" y="928" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">CN (CaO* + Na2O)</text>
+<text x="1150" y="928" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">K (K2O)</text>
+<circle cx="643.3" cy="407.3" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="634.2" cy="383.1" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="593.9" cy="437.6" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="625" cy="397.4" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="623.9" cy="381.1" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="632.6" cy="372.1" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="662.3" cy="384.2" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="612.2" cy="440" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="632.6" cy="401.7" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="670" cy="379.3" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="630.8" cy="389.5" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="649.4" cy="382.4" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="631.2" cy="409.4" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="663.6" cy="373.9" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="734" cy="276.1" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="640.3" cy="391.5" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="710.6" cy="283.7" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="672.7" cy="366.6" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="629.1" cy="406.9" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<polygon points="706.4,316.4 719.4,329.4 706.4,342.4 693.4,329.4" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="743.5,212.2 756.5,225.2 743.5,238.2 730.5,225.2" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<circle cx="655.8" cy="377.2" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="678" cy="337.1" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="634.2" cy="389" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="670.6" cy="347.6" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="653.1" cy="373.1" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<polygon points="739,287.8 752,300.8 739,313.8 726,300.8" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<circle cx="634.8" cy="394.1" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="617.3" cy="409.3" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="616.8" cy="422.9" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<text x="728.4" y="339.4" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">원강</text>
+<text x="728.4" y="339.4" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">원강</text>
+<text x="765.5" y="235.2" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">상강</text>
+<text x="765.5" y="235.2" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">상강</text>
+<text x="761" y="310.8" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">감강</text>
+<text x="761" y="310.8" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">감강</text>
+<text x="700" y="932" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">가로선 = CIA (A의 몫, %)</text>
+<circle cx="170" cy="997" r="6" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<text x="196" y="1005" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">표와 0.1 이내로 맞는 27개</text>
+<polygon points="700,984 713,997 700,1010 687,997" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<text x="726" y="1005" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">맞지 않는 3개(원강, 상강, 감강)</text>
+<text x="150" y="1061" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">세 좌표는 몰 비를 합 100으로 맞춘 값(규칙 A). A 좌표가 곧 CIA이다. 같은 시료 30개.</text>
+</svg>

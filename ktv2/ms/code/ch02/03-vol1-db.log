@@ -1,0 +1,25 @@
+제1권 DB: /home/claude/book/db/ktv1bookdb-v14.sqlite
+  papers    74줄
+  refs      109줄
+  chapters  10줄
+papers 열: ['id', 'doi', 'title', 'authors', 'year', 'journal', 'status', 'chapters', 'sha256', 'fulltext']
+refs 열  : ['id', 'chapter_id', 'apa', 'doi']
+
+== papers
+상태: Counter({'pdf': 65, 'nopdf': 5, 'meta': 4})
+상태별 (sha256 있음, 전문 있음): {'meta': (0, 0), 'pdf': (65, 65), 'nopdf': (0, 0)}
+DOI 있는 줄: 74 / 전체 74
+정규화로 바뀐 DOI: 1 [('openalex:W3187374414', None)]
+이미 소문자·접두어 없음: 73
+정규화 후 같은 DOI가 겹치는 papers 줄: []
+DOI 칸에 DOI가 아닌 값이 든 papers 줄: [(2259, 'openalex:W3187374414')] ('The spread of rice agriculture during the Yayoi pe', 'pdf')
+
+== refs
+refs 줄 109 / DOI 칸이 빈 줄 51
+정규화 못 한 DOI: 0
+refs의 서로 다른 DOI(정규화 후): 52  (정규화 전: 52 )
+refs DOI 표기 모양: {'10.': 58}
+refs DOI 중 papers에도 있는 것: 46  refs에만 있는 것: 6  papers에만 있는 것: 28
+
+== 새 상태 규칙으로 옮기면
+새 works 줄 수(서로 다른 식별자): 80 (그중 DOI 없는 것 1)  상태: {'pdf': 65, 'cited': 15}

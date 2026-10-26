@@ -1,0 +1,8 @@
+p00-env            0.65초
+p01-schema         0.82초
+p02-demo-load      0.85초
+p03-vol1-quotes    0.80초
+p04-grade          0.81초
+p05-topo-demo      0.85초
+p06-vol1-checks    1.45초
+p07-exchange       0.90초

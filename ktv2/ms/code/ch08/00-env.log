@@ -1,0 +1,6 @@
+python   3.13.16 Linux-6.18.44-fc-v153-x86_64-with-glibc2.39
+numpy      2.5.3
+scipy      1.18.1
+CPU 코어 2
+GPU(nvidia-smi) 없음
+sedkit.py 크기(바이트) 7963

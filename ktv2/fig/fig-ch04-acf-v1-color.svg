@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="800" viewBox="0 0 1300 800">
+<rect x="0" y="0" width="1300" height="800" fill="#FFFFFF" stroke="none" stroke-width="1.0" />
+<text x="170" y="60" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">AR(1) 시연 계열(n = 414)의 표본 자기상관</text>
+<rect x="170" y="110" width="1070" height="450" fill="none" stroke="#6B7A82" stroke-width="2.4" />
+<line x1="170" y1="485" x2="1240" y2="485" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="162" y1="485" x2="170" y2="485" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="156" y="495" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">0.00</text>
+<line x1="170" y1="391.2" x2="1240" y2="391.2" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="162" y1="391.2" x2="170" y2="391.2" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="156" y="401.2" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">0.25</text>
+<line x1="170" y1="297.5" x2="1240" y2="297.5" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="162" y1="297.5" x2="170" y2="297.5" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="156" y="307.5" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">0.50</text>
+<line x1="170" y1="203.8" x2="1240" y2="203.8" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="162" y1="203.8" x2="170" y2="203.8" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="156" y="213.8" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">0.75</text>
+<line x1="170" y1="110" x2="1240" y2="110" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="162" y1="110" x2="170" y2="110" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="156" y="120" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">1.00</text>
+<line x1="196.1" y1="560" x2="196.1" y2="570" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="196.1" y="604" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">0</text>
+<line x1="457.1" y1="560" x2="457.1" y2="570" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="457.1" y="604" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">5</text>
+<line x1="718" y1="560" x2="718" y2="570" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="718" y="604" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">10</text>
+<line x1="979" y1="560" x2="979" y2="570" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="979" y="604" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">15</text>
+<line x1="1240" y1="560" x2="1240" y2="570" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="1240" y="604" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">20</text>
+<text x="705" y="652" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">시차 (년)</text>
+<rect x="170" y="448.9" width="1070" height="72.2" fill="#DCE6EC" stroke="none" stroke-width="0" />
+<line x1="170" y1="485" x2="1240" y2="485" stroke="#6B7A82" stroke-width="2.0"/>
+<line x1="196.1" y1="485" x2="196.1" y2="110" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="248.3" y1="485" x2="248.3" y2="211.5" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="300.5" y1="485" x2="300.5" y2="283.2" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="352.7" y1="485" x2="352.7" y2="321.9" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="404.9" y1="485" x2="404.9" y2="363.5" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="457.1" y1="485" x2="457.1" y2="384.1" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="509.3" y1="485" x2="509.3" y2="413.8" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="561.5" y1="485" x2="561.5" y2="437.9" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="613.7" y1="485" x2="613.7" y2="446.8" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="665.9" y1="485" x2="665.9" y2="449" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="718" y1="485" x2="718" y2="464.8" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="770.2" y1="485" x2="770.2" y2="480.4" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="822.4" y1="485" x2="822.4" y2="493.6" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="874.6" y1="485" x2="874.6" y2="505" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="926.8" y1="485" x2="926.8" y2="508.4" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="979" y1="485" x2="979" y2="502.3" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="1031.2" y1="485" x2="1031.2" y2="507.2" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="1083.4" y1="485" x2="1083.4" y2="506" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="1135.6" y1="485" x2="1135.6" y2="505.8" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="1187.8" y1="485" x2="1187.8" y2="501.8" stroke="#3A7CA5" stroke-width="6.0"/>
+<line x1="1240" y1="485" x2="1240" y2="502.4" stroke="#3A7CA5" stroke-width="6.0"/>
+<polyline points="196.1,110 248.3,215 300.5,290.6 352.7,345 404.9,384.2 457.1,412.4 509.3,432.8 561.5,447.4 613.7,457.9 665.9,465.5 718,471 770.2,474.9 822.4,477.7 874.6,479.8 926.8,481.2 979,482.3 1031.2,483 1083.4,483.6 1135.6,484 1187.8,484.3 1240,484.5" fill="none" stroke="#9C4F2E" stroke-width="3.0" stroke-linejoin="round" stroke-opacity="1.0" stroke-dasharray="12 8"/>
+<circle cx="196.1" cy="110" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="248.3" cy="215" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="300.5" cy="290.6" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="352.7" cy="345" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="404.9" cy="384.2" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="457.1" cy="412.4" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="509.3" cy="432.8" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="561.5" cy="447.4" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="613.7" cy="457.9" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="665.9" cy="465.5" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="718" cy="471" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="770.2" cy="474.9" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="822.4" cy="477.7" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="874.6" cy="479.8" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="926.8" cy="481.2" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="979" cy="482.3" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="1031.2" cy="483" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="1083.4" cy="483.6" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="1135.6" cy="484" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="1187.8" cy="484.3" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<circle cx="1240" cy="484.5" r="6" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="1.5"/>
+<line x1="500" y1="152" x2="550" y2="152" stroke="#3A7CA5" stroke-width="6.0"/>
+<text x="564" y="160" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">표본 자기상관</text>
+<line x1="500" y1="202" x2="550" y2="202" stroke="#9C4F2E" stroke-width="4.0" stroke-dasharray="12 8"/>
+<text x="564" y="210" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">이론값 0.72의 거듭제곱</text>
+<rect x="500" y="238" width="50" height="22" fill="#DCE6EC" stroke="#6B7A82" stroke-width="1.2" />
+<text x="564" y="258" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">백색 잡음의 95% 한계 +-0.096</text>
+<text x="60" y="700" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">시연값(실습 4-4). 시차 1의 값은 0.729. 띠의 폭 0.096은 제1권 n=414의 5% 임계 상관과 같</text>
+<text x="60" y="738" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">다.</text>
+</svg>

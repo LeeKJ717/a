@@ -1,0 +1,54 @@
+# R에서 dplR 설치 시도(라이브러리 폴더를 만든 뒤) 2026-10-26T01:04:56Z
+R: R version 4.3.3 (2024-02-29) -- "Angel Food Cake"
+[1] "URL 'https://cloud.r-project.org/src/contrib/PACKAGES.rds': status was 'HTTP response code said error'"
+dplR 로드 가능: FALSE 
+--- apt 후보
+# GitHub와 apt로 dplR 설치 시도 2026-10-26T01:05:05Z
+Cloning into '/tmp/claude-0/dplr-src/dplR'...
+00_CRAN-release
+00_README-developer
+ChangeLog
+DESCRIPTION
+NAMESPACE
+NEWS.md
+R
+README.md
+TODO
+data
+--- apt-get update(요약)
+  Invalid response from proxy: HTTP/1.1 403 Forbidden  Content-Type: text/plain; charset=utf-8  X-Content-Type-Options: nosniff  Content-Length: 77  Connection: close     [IP: 127.0.0.1 38443]
+Reading package lists...
+W: Failed to fetch https://download.docker.com/linux/ubuntu/dists/noble/InRelease  Invalid response from proxy: HTTP/1.1 403 Forbidden  Content-Type: text/plain; charset=utf-8  X-Content-Type-Options: nosniff  Content-Length: 77  Connection: close     [IP: 127.0.0.1 38443]
+W: Some index files failed to download. They have been ignored, or old ones used instead.
+--- signal 패키지(CRAN 미러 GitHub cran/signal)
+Cloning into '/tmp/claude-0/dplr-src/signal'...
+Version: 1.8-1
+Depends: R (>= 3.5.0)
+Imports: MASS, graphics, grDevices, stats, utils
+License: GPL-2
+--- R CMD INSTALL signal
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (signal)
+--- R CMD INSTALL dplR (GitHub OpenDendro/dplR, 기본 가지)
+commit 205caac 2026-10-23 14:30:24 -0700
+gcc -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -Wl,-z,relro -o dplR.so adsc.o adsf.o capsc.o capsf.o dplR.o exactmean.o exactsum.o gini.o init.o rcompact.o readloop.o redfit.o sens.o tbrm.o -lgfortran -lm -lquadmath -L/usr/lib/R/lib -lR
+installing to /tmp/claude-0/rlib/00LOCK-dplR/00new/dplR/libs
+** R
+** data
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (dplR)
+New users can start with vignette("intro-dplR") or visit
+https://opendendro.github.io/learningToLoveDplR/
+dplR 1.8.1 로드 성공

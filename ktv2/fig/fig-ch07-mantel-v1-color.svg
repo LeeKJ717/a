@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1130" viewBox="0 0 1300 1130">
+<rect x="0" y="0" width="1300" height="1130" fill="#FFFFFF" stroke="none" stroke-width="1.0" />
+<rect x="210" y="100" width="1030" height="600" fill="none" stroke="#6B7A82" stroke-width="2.4" />
+<line x1="210" y1="700" x2="1240" y2="700" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<text x="196" y="710" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">0</text>
+<line x1="210" y1="633.3" x2="1240" y2="633.3" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<text x="196" y="643.3" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">20</text>
+<line x1="210" y1="566.7" x2="1240" y2="566.7" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<text x="196" y="576.7" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">40</text>
+<line x1="210" y1="500" x2="1240" y2="500" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<text x="196" y="510" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">60</text>
+<line x1="210" y1="433.3" x2="1240" y2="433.3" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<text x="196" y="443.3" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">80</text>
+<line x1="210" y1="366.7" x2="1240" y2="366.7" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<text x="196" y="376.7" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">100</text>
+<line x1="210" y1="300" x2="1240" y2="300" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<text x="196" y="310" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">120</text>
+<line x1="210" y1="233.3" x2="1240" y2="233.3" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<text x="196" y="243.3" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">140</text>
+<line x1="210" y1="166.7" x2="1240" y2="166.7" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<text x="196" y="176.7" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">160</text>
+<line x1="210" y1="100" x2="1240" y2="100" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<text x="196" y="110" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">180</text>
+<text x="50" y="64" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">순열의 수 (전체 720)</text>
+<rect x="212" y="700" width="47.5" height="0" fill="#C9D5DB" stroke="#6B7A82" stroke-width="1.2" />
+<rect x="263.5" y="700" width="47.5" height="0" fill="#C9D5DB" stroke="#6B7A82" stroke-width="1.2" />
+<rect x="315" y="700" width="47.5" height="0" fill="#C9D5DB" stroke="#6B7A82" stroke-width="1.2" />
+<rect x="366.5" y="700" width="47.5" height="0" fill="#C9D5DB" stroke="#6B7A82" stroke-width="1.2" />
+<rect x="418" y="700" width="47.5" height="0" fill="#C9D5DB" stroke="#6B7A82" stroke-width="1.2" />
+<rect x="469.5" y="700" width="47.5" height="0" fill="#C9D5DB" stroke="#6B7A82" stroke-width="1.2" />
+<rect x="521" y="486.7" width="47.5" height="213.3" fill="#C9D5DB" stroke="#6B7A82" stroke-width="1.2" />
+<rect x="572.5" y="413.3" width="47.5" height="286.7" fill="#C9D5DB" stroke="#6B7A82" stroke-width="1.2" />
+<rect x="624" y="453.3" width="47.5" height="246.7" fill="#C9D5DB" stroke="#6B7A82" stroke-width="1.2" />
+<rect x="675.5" y="146.7" width="47.5" height="553.3" fill="#C9D5DB" stroke="#6B7A82" stroke-width="1.2" />
+<rect x="727" y="273.3" width="47.5" height="426.7" fill="#C9D5DB" stroke="#6B7A82" stroke-width="1.2" />
+<rect x="778.5" y="466.7" width="47.5" height="233.3" fill="#C9D5DB" stroke="#6B7A82" stroke-width="1.2" />
+<rect x="830" y="540" width="47.5" height="160" fill="#C9D5DB" stroke="#6B7A82" stroke-width="1.2" />
+<rect x="881.5" y="540" width="47.5" height="160" fill="#C9D5DB" stroke="#6B7A82" stroke-width="1.2" />
+<rect x="933" y="633.3" width="47.5" height="66.7" fill="#C9D5DB" stroke="#6B7A82" stroke-width="1.2" />
+<rect x="984.5" y="680" width="47.5" height="20" fill="#9C4F2E" stroke="#6B7A82" stroke-width="1.2" />
+<rect x="1036" y="666.7" width="47.5" height="33.3" fill="#9C4F2E" stroke="#6B7A82" stroke-width="1.2" />
+<rect x="1087.5" y="700" width="47.5" height="0" fill="#9C4F2E" stroke="#6B7A82" stroke-width="1.2" />
+<rect x="1139" y="700" width="47.5" height="0" fill="#9C4F2E" stroke="#6B7A82" stroke-width="1.2" />
+<rect x="1190.5" y="700" width="47.5" height="0" fill="#9C4F2E" stroke="#6B7A82" stroke-width="1.2" />
+<line x1="210" y1="700" x2="210" y2="710" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="210" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">-1</text>
+<line x1="467.5" y1="700" x2="467.5" y2="710" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="467.5" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">-0.5</text>
+<line x1="725" y1="700" x2="725" y2="710" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="725" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">0</text>
+<line x1="982.5" y1="700" x2="982.5" y2="710" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="982.5" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">0.5</text>
+<line x1="1240" y1="700" x2="1240" y2="710" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="1240" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">1</text>
+<text x="725" y="792" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">순열한 뒤의 Mantel r (구간 폭 0.1)</text>
+<line x1="936.4" y1="100" x2="936.4" y2="700" stroke="#9C4F2E" stroke-width="3.0" stroke-dasharray="18 8"/>
+<text x="950.4" y="140" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#9C4F2E">관측 r = 0.4105</text>
+<text x="950.4" y="180" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#9C4F2E">34/720 = 0.0472 이상</text>
+<text x="150" y="850" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">여섯 유적의 빈도 벡터 유클리드 거리 대 표의 시기 구간 가운데 BP의 차(mantel.log </text>
+<text x="150" y="888" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">4번). 집단 이름표를 바꾸는 6! = 720가지를 모두 계산했다. 점선은 관측 r이다. 짙은 </text>
+<text x="150" y="926" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">막대는 0.5 이상 구간이며, 0.4~0.5 구간에는 관측 r보다 큰 순열과 작은 순열이 섞여 </text>
+<text x="150" y="964" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">있다(합 34가지가 관측 r 이상).</text>
+</svg>

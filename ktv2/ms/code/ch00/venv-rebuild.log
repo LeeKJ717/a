@@ -1,0 +1,9 @@
+$ sha256sum 원본 사본
+5f7062c705fce92647f62275d93c5ced431978023a6e1901d720cc72f2c79c54  /home/claude/book/ms/ch11-calc-v1.py
+5f7062c705fce92647f62275d93c5ced431978023a6e1901d720cc72f2c79c54  vol1-ch11-calc-v1.py
+$ python3 -m venv venv-b; pip install -r requirements.txt
+
+numpy==2.5.4
+scipy==1.18.1
+$ diff requirements.txt <(pip freeze)
+동일

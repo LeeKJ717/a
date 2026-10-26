@@ -1,0 +1,52 @@
+== 1. 참고문헌 목록을 읽어 DOI를 정규화하고 적재(status = cited)
+  10.9999/demo.001       -> works.id 1 새 줄
+  10.9999/demo.002       -> works.id 2 새 줄
+  10.9999/demo.002       -> works.id 2 이미 있음(같은 DOI)
+  10.9999/demo.003       -> works.id 3 새 줄
+  10.9999/demo.006       -> works.id 4 새 줄
+  DOI 없음 -> works에 넣지 않음: Woe, J. (2015). DEMO 007 A made up book without 
+  refs 6줄 -> works 4줄 (DOI 없는 1줄 제외, 중복 1줄 합침)
+
+== 2. 검색으로 찾았다고 가정한 DOI 둘을 더한다(검색 호출 openalex_list는 가짜 서버에 없어 실행하지 않음)
+   10.9999/demo.004 새 줄
+   10.9999/demo.005 새 줄
+
+== 3. 각 DOI의 메타데이터 받기(OpenAlex 먼저, 이어서 Crossref)
+  10.9999/demo.001     openalex=O crossref=O
+  10.9999/demo.002     openalex=O crossref=-
+  10.9999/demo.003     openalex=- crossref=O
+  10.9999/demo.006     openalex=- crossref=-
+  10.9999/demo.004     openalex=O crossref=-
+  10.9999/demo.005     openalex=O crossref=-
+
+== 4. 오픈 액세스 PDF 받기
+  10.9999/demo.001     /pdf/demo001.pdf                         -> ok
+      sha256 3856bbc7c140... 글자 194
+  10.9999/demo.004     /landing/demo004                         -> PDF가 아님(첫 바이트 b'<html><b', 형식 text/html)
+  10.9999/demo.005     /pdf/demo005.pdf                         -> ok
+      sha256 0580cf64b47c... 글자 171
+
+== 5. 결과
+works 상태별: [('abstract', 2), ('cited', 2), ('pdf', 2)]
+   (1, '10.9999/demo.001', 2022, 'pdf', 'gold', 'DEMO 001 Ring widths and temperature in ', '3')
+   (2, '10.9999/demo.002', 2020, 'abstract', 'closed', 'DEMO 002 Luminescence ages of a made up ', '4,6')
+   (3, '10.9999/demo.003', 2017, 'cited', None, 'DEMO 003 A made up note on map projectio', '1')
+   (4, '10.9999/demo.006', None, 'cited', None, None, '9')
+   (5, '10.9999/demo.004', 2019, 'abstract', 'green', 'DEMO 004 A made up lake core', None)
+   (6, '10.9999/demo.005', 2018, 'pdf', 'gold', 'DEMO 005 Haplogroup counts in made up bu', None)
+conflicts: [('10.9999/demo.001', 'year', '2022', '2021', 'crossref')]
+sources 줄 수: [('crossref', 2), ('openalex', 4)]
+fetch_log: 요청 15회, 상태 [(200, 9), (404, 6)]
+
+== 6. 되풀이해도 줄이 늘지 않는가(저장한 원문 raw에서 다시 해석해 적재)
+  전: (전체, pdf, abstract, cited) = (6, 2, 2, 2)  후: (6, 2, 2, 2)  같은가: True
+
+== 7. 상태는 내려가지 않는가
+  pdf인 10.9999/demo.001에 cited를 다시 넣은 뒤 상태: pdf
+
+== 8. 시연 PDF에서 표 뽑아 DB에 넣기(선 있는 표와 선 없는 표)
+  demo001 lines 표 1개 첫 표 4행 x 4열, 첫 행 ['Site', 'Cores', 'Trees', 'Span']
+  demo001 text  표 1개 첫 표 7행 x 4열, 첫 행 ['Site', 'Cores', 'Trees', 'Span']
+  demo005 lines 표 0개 
+  demo005 text  표 1개 첫 표 7행 x 5열, 첫 행 ['Group', 'n', 'O', 'C', 'N']
+extracted_tables: [('pdfplumber-lines', 1), ('pdfplumber-text', 2)]

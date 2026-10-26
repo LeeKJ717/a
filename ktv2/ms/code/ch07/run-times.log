@@ -1,0 +1,25 @@
+py_compile gentools.py 통과
+py_compile hgtab-v1.py 통과
+py_compile fisher-v1.py 통과
+py_compile distmat-v1.py 통과
+py_compile amova-v1.py 통과
+py_compile mantel-v1.py 통과
+py_compile network-v1.py 통과
+py_compile fstats-v1.py 통과
+py_compile hand-v1.py 통과
+py_compile mytable-v1.py 통과
+py_compile recon-v1.py 통과
+py_compile sens-v1.py 통과
+py_compile pypopart-run-v1.py 통과
+hgtab-v1.py      종료코드 0  0.3 s
+fisher-v1.py     종료코드 0  3.9 s
+distmat-v1.py    종료코드 0  0.4 s
+amova-v1.py      종료코드 0  11.6 s
+mantel-v1.py     종료코드 0  16.4 s
+network-v1.py    종료코드 0  67.0 s
+fstats-v1.py     종료코드 0  10.3 s
+hand-v1.py       종료코드 0  0.1 s
+recon-v1.py      종료코드 0  0.0 s
+sens-v1.py       종료코드 0  0.7 s
+mytable-v1.py    종료코드 0  3.2 s
+mytable-v1.py    종료코드 2  0.1 s

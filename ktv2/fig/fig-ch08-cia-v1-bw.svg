@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1150" viewBox="0 0 1300 1150">
+<rect x="0" y="0" width="1300" height="1150" fill="#FFFFFF" stroke="none" stroke-width="1.0" />
+<rect x="190" y="90" width="1010" height="700" fill="none" stroke="#555555" stroke-width="2.4" />
+<line x1="182" y1="790" x2="190" y2="790" stroke="#555555" stroke-width="2.0"/>
+<text x="176" y="800" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">50</text>
+<line x1="190" y1="615" x2="1200" y2="615" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="182" y1="615" x2="190" y2="615" stroke="#555555" stroke-width="2.0"/>
+<text x="176" y="625" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">60</text>
+<line x1="190" y1="440" x2="1200" y2="440" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="182" y1="440" x2="190" y2="440" stroke="#555555" stroke-width="2.0"/>
+<text x="176" y="450" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">70</text>
+<line x1="190" y1="265" x2="1200" y2="265" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="182" y1="265" x2="190" y2="265" stroke="#555555" stroke-width="2.0"/>
+<text x="176" y="275" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">80</text>
+<line x1="182" y1="90" x2="190" y2="90" stroke="#555555" stroke-width="2.0"/>
+<text x="176" y="100" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">90</text>
+<line x1="190" y1="790" x2="190" y2="800" stroke="#555555" stroke-width="2.0"/>
+<text x="190" y="834" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">50</text>
+<line x1="442.5" y1="90" x2="442.5" y2="790" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="442.5" y1="790" x2="442.5" y2="800" stroke="#555555" stroke-width="2.0"/>
+<text x="442.5" y="834" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">60</text>
+<line x1="695" y1="90" x2="695" y2="790" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="695" y1="790" x2="695" y2="800" stroke="#555555" stroke-width="2.0"/>
+<text x="695" y="834" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">70</text>
+<line x1="947.5" y1="90" x2="947.5" y2="790" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="947.5" y1="790" x2="947.5" y2="800" stroke="#555555" stroke-width="2.0"/>
+<text x="947.5" y="834" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">80</text>
+<line x1="1200" y1="790" x2="1200" y2="800" stroke="#555555" stroke-width="2.0"/>
+<text x="1200" y="834" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">90</text>
+<line x1="190" y1="790" x2="1200" y2="90" stroke="#555555" stroke-width="2.5" stroke-dasharray="14 8"/>
+<text x="265.8" y="667.5" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">1:1 선</text>
+<circle cx="459.2" cy="603.6" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="535.7" cy="549.3" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="358.9" cy="671.8" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="491" cy="581.4" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="542.2" cy="544.8" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="572.5" cy="524.7" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="533.1" cy="551.9" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="352.9" cy="677.1" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="477.1" cy="591.1" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="548.8" cy="540.8" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="517.2" cy="563.8" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="537.7" cy="547.7" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="452.1" cy="608.3" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="568" cy="528.7" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="884.4" cy="309.2" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="508.9" cy="568.3" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="858.1" cy="326.2" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="589.2" cy="512.4" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="460.2" cy="602.7" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="555.6" cy="536.2" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="684.9" cy="446.1" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="517.5" cy="562.6" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="650.6" cy="469.6" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="569" cy="526.8" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="500.8" cy="574" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="451.3" cy="608.2" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="407.2" cy="638.8" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<polygon points="673.3,415.7 686.3,428.7 673.3,441.7 660.3,428.7" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="951,181.9 964,194.9 951,207.9 938,194.9" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="732.9,351.5 745.9,364.5 732.9,377.5 719.9,364.5" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<text x="653.3" y="424.7" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">원강 표 69.14 / 계산 70.65</text>
+<text x="653.3" y="424.7" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">원강 표 69.14 / 계산 70.65</text>
+<text x="931" y="200.9" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">상강 표 80.14 / 계산 84.01</text>
+<text x="931" y="200.9" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">상강 표 80.14 / 계산 84.01</text>
+<text x="712.9" y="370.5" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">감강 표 71.50 / 계산 74.32</text>
+<text x="712.9" y="370.5" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">감강 표 71.50 / 계산 74.32</text>
+<text x="40" y="60" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">이 책이 다시 계산한 CIA</text>
+<text x="695" y="882" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">논문 표 2의 CIA</text>
+<circle cx="170" cy="932" r="6.8" fill="#666666" stroke="#FFFFFF" stroke-width="2.0"/>
+<text x="196" y="940" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">표와 0.1 이내로 맞는 27개</text>
+<polygon points="700,919 713,932 700,945 687,932" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<text x="726" y="940" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">맞지 않는 3개</text>
+<text x="150" y="1000" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">계산은 sedkit의 CIA 규칙 A(몰, CaO* = min(CaO - 10/3 P2O5, Na2O)). 입력은 제1권 </text>
+<text x="150" y="1038" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">10장이 He 등(2015) 표 2에서 옮긴 값이다.</text>
+</svg>

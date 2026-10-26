@@ -1,0 +1,23 @@
+ko,ne_name,kind,note
+서울,Seoul,city,
+인천,Incheon,city,
+부산,Busan,city,
+대구,Daegu,city,
+광주,Gwangju,city,
+대전,Daejeon,city,
+울산,Ulsan,city,
+제주,Jeju,city,
+평양,Pyongyang,city,
+원산,Wonsan,city,
+함흥,Hamhung,city,
+청진,Chongjin,city,
+연길,Yanji,city,
+후쿠오카,Fukuoka,city,일본 지명은 일본어 읽기(제1권 관례)
+한강,Han,river,Natural Earth에 Han 과 Namhan 이 따로 있다
+낙동강,Nakdong,river,
+압록강,Yalu,river,
+두만강,Tumen,river,
+백두산,Paektu-san,peak,
+한라산,Halla-san,peak,
+설악산,Sorak-san,peak,
+지리산,Chiri-san,peak,

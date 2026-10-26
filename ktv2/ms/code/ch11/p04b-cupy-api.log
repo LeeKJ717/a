@@ -1,0 +1,25 @@
+python 3.13.16 | cupy 14.2.0
+Generator의 공개 메서드: ['beta', 'binomial', 'chisquare', 'dirichlet', 'exponential', 'f', 'gamma', 'geometric', 'hypergeometric', 'integers', 'logseries', 'poisson', 'power', 'random', 'standard_exponential', 'standard_gamma', 'standard_normal', 'uniform']
+  Generator.integers         있음
+  Generator.random           있음
+  Generator.standard_normal  있음
+  Generator.uniform          있음
+  Generator.hypergeometric   있음
+  Generator.normal           없음
+  Generator.permutation      없음
+  Generator.shuffle          없음
+  Generator.choice           없음
+비트 생성기 클래스: ['BitGenerator', 'Generator', 'MRG32k3a', 'Philox4x3210', 'XORWOW'] (+ BitGenerator의 하위 클래스)
+default_rng 설명 첫 줄: Construct a new Generator with the default BitGenerator (XORWOW).
+Generator 설명 중 호환성 문구: ['**No Compatibility Guarantee**', '``Generator`` does not provide a version compatibility guarantee. In', 'particular, as better algorithms evolve the bit stream may change.']
+  cupy.argsort          있음
+  cupy.sort             있음
+  cupy.take_along_axis  있음
+  cupy.searchsorted     있음
+  cupy.histogram        있음
+  cupy.percentile       있음
+  cupy.cumsum           있음
+  cupy.sqrt             있음
+  cupy.arcsin           있음
+  cupy.radians          있음
+default_rng(11) 생성 실패(GPU 없음): CUDARuntimeError cudaErrorInsufficientDriver: CUDA driver version is insufficient for CUDA runtime version

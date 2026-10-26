@@ -1,0 +1,12 @@
+$ pip install cupy-cuda12x numpy  (GPU 없는 컨테이너, 설치와 import 가능 여부 시험)
+
+
+real	0m11.079s
+user	0m4.191s
+sys	0m0.879s
+cuda-pathfinder==1.8.4
+cupy-cuda12x==14.2.0
+numpy==2.5.4
+$ python -c "import cupy"
+14.2.0
+exit 0

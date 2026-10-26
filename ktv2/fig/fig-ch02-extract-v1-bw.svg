@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1560" viewBox="0 0 1300 1560">
+<rect x="0" y="0" width="1300" height="1560" fill="#FFFFFF" stroke="none" stroke-width="1.0" />
+<text x="60" y="70" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">(가) 제1권 조판 PDF의 표 36개(정답 행 394줄)</text>
+<text x="450" y="170" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">선 기준</text>
+<rect x="470" y="140" width="770" height="52" fill="#666666" stroke="#555555" stroke-width="1.5" />
+<text x="1226" y="178" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">100.0%</text>
+<text x="450" y="248" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">글자 위치 기준</text>
+<rect x="470" y="218" width="2" height="52" fill="#666666" stroke="#555555" stroke-width="1.5" />
+<text x="486" y="256" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0.3%</text>
+<text x="450" y="326" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">pdftotext -layout</text>
+<rect x="470" y="296" width="633.2" height="52" fill="#666666" stroke="#555555" stroke-width="1.5" />
+<text x="1117.2" y="334" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">82.2%</text>
+<line x1="470" y1="120" x2="470" y2="380" stroke="#555555" stroke-width="2.0"/>
+<text x="60" y="470" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">(나) 같은 36개 표를 다시 조판한 시연 PDF(정답 행 394줄)</text>
+<text x="450" y="610" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">pdfplumber 선 기준</text>
+<rect x="470" y="540" width="770" height="36" fill="#666666" stroke="#555555" stroke-width="1.5" />
+<text x="1226" y="568" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">100%</text>
+<rect x="470" y="584" width="1" height="36" fill="#999999" stroke="#555555" stroke-width="1.5" />
+<text x="484" y="612" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0%</text>
+<rect x="470" y="628" width="1" height="36" fill="#111111" stroke="#555555" stroke-width="1.5" />
+<text x="484" y="656" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0%</text>
+<text x="450" y="760" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">pdfplumber 글자 위치</text>
+<rect x="470" y="690" width="535.5" height="36" fill="#666666" stroke="#555555" stroke-width="1.5" />
+<text x="1019.5" y="718" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">70%</text>
+<rect x="470" y="734" width="535.5" height="36" fill="#999999" stroke="#555555" stroke-width="1.5" />
+<text x="1019.5" y="762" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">70%</text>
+<rect x="470" y="778" width="535.5" height="36" fill="#111111" stroke="#555555" stroke-width="1.5" />
+<text x="1019.5" y="806" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">70%</text>
+<text x="450" y="910" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">pdftotext -layout</text>
+<rect x="470" y="840" width="723.1" height="36" fill="#666666" stroke="#555555" stroke-width="1.5" />
+<text x="1179.1" y="868" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">94%</text>
+<rect x="470" y="884" width="723.1" height="36" fill="#999999" stroke="#555555" stroke-width="1.5" />
+<text x="1179.1" y="912" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">94%</text>
+<rect x="470" y="928" width="723.1" height="36" fill="#111111" stroke="#555555" stroke-width="1.5" />
+<text x="1179.1" y="956" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">94%</text>
+<text x="450" y="1060" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">pdftotext -raw</text>
+<rect x="470" y="990" width="394.8" height="36" fill="#666666" stroke="#555555" stroke-width="1.5" />
+<text x="878.8" y="1018" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">51%</text>
+<rect x="470" y="1034" width="394.8" height="36" fill="#999999" stroke="#555555" stroke-width="1.5" />
+<text x="878.8" y="1062" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">51%</text>
+<rect x="470" y="1078" width="1" height="36" fill="#111111" stroke="#555555" stroke-width="1.5" />
+<text x="484" y="1106" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0%</text>
+<text x="450" y="1210" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">pdfplumber 글자 흐름</text>
+<rect x="470" y="1140" width="394.8" height="36" fill="#666666" stroke="#555555" stroke-width="1.5" />
+<text x="878.8" y="1168" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">51%</text>
+<rect x="470" y="1184" width="394.8" height="36" fill="#999999" stroke="#555555" stroke-width="1.5" />
+<text x="878.8" y="1212" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">51%</text>
+<rect x="470" y="1228" width="1" height="36" fill="#111111" stroke="#555555" stroke-width="1.5" />
+<text x="484" y="1256" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0%</text>
+<line x1="470" y1="520" x2="470" y2="1270" stroke="#555555" stroke-width="2.0"/>
+<line x1="470" y1="1270" x2="470" y2="1280" stroke="#555555" stroke-width="2.0"/>
+<text x="470" y="1314" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">0</text>
+<line x1="624" y1="1270" x2="624" y2="1280" stroke="#555555" stroke-width="2.0"/>
+<text x="624" y="1314" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">20</text>
+<line x1="778" y1="1270" x2="778" y2="1280" stroke="#555555" stroke-width="2.0"/>
+<text x="778" y="1314" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">40</text>
+<line x1="932" y1="1270" x2="932" y2="1280" stroke="#555555" stroke-width="2.0"/>
+<text x="932" y="1314" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">60</text>
+<line x1="1086" y1="1270" x2="1086" y2="1280" stroke="#555555" stroke-width="2.0"/>
+<text x="1086" y="1314" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">80</text>
+<line x1="1240" y1="1270" x2="1240" y2="1280" stroke="#555555" stroke-width="2.0"/>
+<text x="1240" y="1314" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">100</text>
+<text x="855" y="1354" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">온전한 행의 비율 (%)</text>
+<rect x="60" y="1412" width="44" height="32" fill="#666666" stroke="#555555" stroke-width="1.5" />
+<text x="116" y="1440" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">선 있음, 행 순서</text>
+<rect x="470" y="1412" width="44" height="32" fill="#999999" stroke="#555555" stroke-width="1.5" />
+<text x="526" y="1440" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">선 없음, 행 순서</text>
+<rect x="880" y="1412" width="44" height="32" fill="#111111" stroke="#555555" stroke-width="1.5" />
+<text x="936" y="1440" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">선 없음, 열 순서</text>
+</svg>

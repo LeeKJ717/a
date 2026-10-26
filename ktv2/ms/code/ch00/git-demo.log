@@ -1,0 +1,39 @@
+$ git log --oneline
+0fb5c8a 결과 로그 기록
+9c42f96 계산 스크립트와 requirements 처음 기록
+
+--- 시도 A: 시드만 11 -> 12
+diff 줄 수:
+0
+
+--- 시도 B: 재표집 횟수 20000 -> 200 (시드 11)
+$ git diff --stat
+ code/calc.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+$ diff results/calc.log results/tryB11.log
+56,57c56,57
+<   신석기 합    부트스트랩 H: 2.5% 0.000 중앙 0.209 97.5% 0.464
+<   대산전      부트스트랩 H: 2.5% 0.556 중앙 0.778 97.5% 0.889
+---
+>   신석기 합    부트스트랩 H: 2.5% 0.000 중앙 0.209 97.5% 0.394
+>   대산전      부트스트랩 H: 2.5% 0.583 중앙 0.806 97.5% 0.862
+
+--- 시도 C: 재표집 200회, 시드 12
+$ diff results/tryB11.log results/tryC12.log
+56,57c56,57
+<   신석기 합    부트스트랩 H: 2.5% 0.000 중앙 0.209 97.5% 0.394
+<   대산전      부트스트랩 H: 2.5% 0.583 중앙 0.806 97.5% 0.862
+---
+>   신석기 합    부트스트랩 H: 2.5% 0.000 중앙 0.209 97.5% 0.464
+>   대산전      부트스트랩 H: 2.5% 0.556 중앙 0.806 97.5% 0.889
+
+--- 되돌리기
+?? results/tryA.log
+?? results/tryB11.log
+?? results/tryC12.log
+4934a81284109d9085aa375f43ed91d9c405ca5c270561bf164b40c540b9362a  -
+4934a81284109d9085aa375f43ed91d9c405ca5c270561bf164b40c540b9362a  results/calc.log
+$ git tag
+ch00-demo
+$ git rev-parse --short HEAD
+0fb5c8a

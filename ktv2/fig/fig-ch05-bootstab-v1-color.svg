@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1130" viewBox="0 0 1300 1130">
+<rect x="0" y="0" width="1300" height="1130" fill="#FFFFFF" stroke="none" stroke-width="1.0" />
+<rect x="190" y="90" width="1050" height="610" fill="none" stroke="#6B7A82" stroke-width="2.4" />
+<line x1="190" y1="700" x2="1240" y2="700" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="182" y1="700" x2="190" y2="700" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="176" y="710" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">1e-4</text>
+<line x1="190" y1="525.7" x2="1240" y2="525.7" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="182" y1="525.7" x2="190" y2="525.7" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="176" y="535.7" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">1e-3</text>
+<line x1="190" y1="351.4" x2="1240" y2="351.4" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="182" y1="351.4" x2="190" y2="351.4" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="176" y="361.4" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">1e-2</text>
+<line x1="190" y1="177.1" x2="1240" y2="177.1" stroke="#B3C3CB" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="182" y1="177.1" x2="190" y2="177.1" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="176" y="187.1" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">1e-1</text>
+<text x="40" y="60" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">구간 끝의 표준편차 (시드 20개 또는 5개, 로그 눈금)</text>
+<line x1="295" y1="700" x2="295" y2="710" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="295" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">100</text>
+<line x1="505" y1="700" x2="505" y2="710" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="505" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">1,000</text>
+<line x1="715" y1="700" x2="715" y2="710" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="715" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">10,000</text>
+<line x1="925" y1="700" x2="925" y2="710" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="925" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">100,000</text>
+<line x1="1135" y1="700" x2="1135" y2="710" stroke="#6B7A82" stroke-width="2.0"/>
+<text x="1135" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">1,000,000</text>
+<line x1="295" y1="180.9" x2="1135" y2="529.5" stroke="#5F7F93" stroke-width="3.0" stroke-dasharray="14 8"/>
+<line x1="281" y1="180.9" x2="491" y2="274.7" stroke="#9C4F2E" stroke-width="3.0"/>
+<line x1="491" y1="274.7" x2="701" y2="326.2" stroke="#9C4F2E" stroke-width="3.0"/>
+<line x1="701" y1="326.2" x2="911" y2="450.1" stroke="#9C4F2E" stroke-width="3.0"/>
+<line x1="911" y1="450.1" x2="1121" y2="548.9" stroke="#9C4F2E" stroke-width="3.0"/>
+<circle cx="281" cy="180.9" r="11" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="491" cy="274.7" r="11" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="701" cy="326.2" r="11" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="911" cy="450.1" r="11" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="1121" cy="548.9" r="11" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="2.0"/>
+<line x1="309" y1="202.5" x2="519" y2="248.8" stroke="#3A7CA5" stroke-width="3.0"/>
+<line x1="519" y1="248.8" x2="729" y2="354.7" stroke="#3A7CA5" stroke-width="3.0"/>
+<line x1="729" y1="354.7" x2="939" y2="417.9" stroke="#3A7CA5" stroke-width="3.0"/>
+<line x1="939" y1="417.9" x2="1149" y2="624.7" stroke="#3A7CA5" stroke-width="3.0"/>
+<circle cx="309" cy="202.5" r="11" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="519" cy="248.8" r="11" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="729" cy="354.7" r="11" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="939" cy="417.9" r="11" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="1149" cy="624.7" r="11" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<text x="715" y="792" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">재표집 횟수 B</text>
+<circle cx="165" cy="842" r="10" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="2.0"/>
+<text x="202" y="850" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">2.5% 끝</text>
+<circle cx="351" cy="842" r="10" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0"/>
+<text x="388" y="850" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">97.5% 끝</text>
+<line x1="538.9" y1="842" x2="578.9" y2="842" stroke="#5F7F93" stroke-width="3.0" stroke-dasharray="12 8"/>
+<text x="590.9" y="850" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">기울기 -1/2(B가 100배이면 10분의 1)</text>
+<text x="150" y="906" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">시연값 표본(로그정규에서 뽑은 n=18)의 평균에 대한 퍼센타일 구간. 같은 B에서 시드</text>
+<text x="150" y="944" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">를 바꾸어 구한 구간 끝의 표준편차. 값은 bootstrap-basic.json(실습 5-4).</text>
+</svg>

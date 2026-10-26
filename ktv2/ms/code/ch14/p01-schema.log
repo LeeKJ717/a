@@ -1,0 +1,49 @@
+sqlite 라이브러리 버전 3.45.1
+외래 키 검사 PRAGMA foreign_keys = 1
+
+[표와 뷰]
+  view  v_cand_grade     열 6개
+  view  v_geonames       열 11개
+  view  v_grade_inflated 열 3개
+  view  v_mappable       열 8개
+  table attestation      열 4개
+  table candidate        열 15개
+  table check_result     열 6개
+  table check_run        열 4개
+  table edition          열 7개
+  table era              열 5개
+  table evidence         열 8개
+  table meta             열 2개
+  table name             열 5개
+  table name_era         열 3개
+  table passage          열 15개
+  table relation         열 12개
+  table section          열 4개
+  table variant          열 5개
+  table work             열 6개
+  트리거 ['passage_text_frozen']
+  인덱스 ['ix_cand_ne', 'ix_ev_cand', 'ix_att_ne', 'ix_ne_name']
+
+[제약 시험] 14건
+   1. 재인용인데 어느 문헌을 통해 보았는지 없음 -> 거부: CHECK constraint failed: status <> '재인용' OR secondary_source IS NOT NULL
+   2. 시연 상태인데 시연 표시(is_demo)가 0 -> 거부: CHECK constraint failed: status <> '시연' OR is_demo = 1
+   3. 시연 표시인데 상태가 원문대조(가짜 구절이 진짜처럼) -> 거부: CHECK constraint failed: is_demo = 0 OR status = '시연'
+   4. 원문도 서술도 없음 -> 거부: CHECK constraint failed: text IS NOT NULL OR paraphrase IS NOT NULL
+   5. 원문은 있는데 해시가 없음 -> 거부: CHECK constraint failed: text IS NULL OR text_sha256 IS NOT NULL
+   6. 없는 판본을 가리킴(외래 키) -> 거부: FOREIGN KEY constraint failed
+   7. 이미 적재한 원문 고치기(트리거) -> 거부: 원문은 수정하지 않는다: variant 에 다른 읽기를 넣어라
+   8. 시대 창의 시작이 끝보다 뒤 -> 거부: CHECK constraint failed: t0 <= t1
+   9. 위도만 있고 경도가 없음 -> 거부: CHECK constraint failed: (lon IS NULL) = (lat IS NULL)
+  10. 좌표가 있는데 출처가 "없음" -> 거부: CHECK constraint failed: (coord_origin = '없음') = (lon IS NULL)
+  11. 좌표가 있는데 반경이 없음 -> 거부: CHECK constraint failed: lon IS NULL OR radius_km IS NOT NULL
+  12. 위도 범위를 벗어남(95도) -> 거부: CHECK constraint failed: lon IS NULL OR (lon BETWEEN -180 AND 180 AND lat BETWEEN -90 AND 90)
+  13. 등급 이름이 목록에 없음("D") -> 거부: CHECK constraint failed: grade_claimed IN ('A','B','C','가설')
+  14. 같은 (이름, 시대)를 두 번 등록 -> 거부: UNIQUE constraint failed: name_era.name_id, name_era.era_id
+  거부된 것 14건 / 시험 14건
+
+[외래 키를 끈 연결에서 같은 6번 입력] PRAGMA foreign_keys 를 켜지 않은 새 연결(SQLite 기본값)
+  이 연결의 PRAGMA foreign_keys = 0
+  없는 판본 999 를 가리키는 구절이 들어감 (제약이 막지 못함)
+  고아 구절 수: 1
+
+걸린 시간 0.05초

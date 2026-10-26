@@ -1,0 +1,8 @@
+$ 가상환경 c: numpy==2.2.6 scipy==1.15.3
+
+numpy==2.2.6
+scipy==1.15.3
+$ 가상환경 d: numpy==2.3.5 scipy==1.16.3
+
+numpy==2.3.5
+scipy==1.16.3

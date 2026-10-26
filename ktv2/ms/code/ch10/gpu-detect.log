@@ -1,0 +1,15 @@
+$ nvidia-smi
+bash: line 1: nvidia-smi: command not found
+종료 코드 127
+$ lspci
+bash: line 1: lspci: command not found
+종료 코드 127
+$ ls /dev/nvidia*
+ls: cannot access '/dev/nvidia*': No such file or directory
+종료 코드 2
+$ ls /proc/driver/nvidia
+ls: cannot access '/proc/driver/nvidia': No such file or directory
+종료 코드 2
+$ nvcc --version
+bash: line 1: nvcc: command not found
+종료 코드 127

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1134" viewBox="0 0 1300 1134">
+<rect x="0" y="0" width="1300" height="1134" fill="#FFFFFF" stroke="none" stroke-width="1.0" />
+<rect x="420" y="90" width="820" height="580" fill="none" stroke="#555555" stroke-width="2.4" />
+<line x1="420" y1="90" x2="420" y2="670" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="420" y1="670" x2="420" y2="680" stroke="#555555" stroke-width="2.0"/>
+<text x="420" y="720" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">0</text>
+<line x1="584" y1="90" x2="584" y2="670" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="584" y1="670" x2="584" y2="680" stroke="#555555" stroke-width="2.0"/>
+<text x="584" y="720" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">0.2</text>
+<line x1="748" y1="90" x2="748" y2="670" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="748" y1="670" x2="748" y2="680" stroke="#555555" stroke-width="2.0"/>
+<text x="748" y="720" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">0.4</text>
+<line x1="912" y1="90" x2="912" y2="670" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="912" y1="670" x2="912" y2="680" stroke="#555555" stroke-width="2.0"/>
+<text x="912" y="720" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">0.6</text>
+<line x1="1076" y1="90" x2="1076" y2="670" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="1076" y1="670" x2="1076" y2="680" stroke="#555555" stroke-width="2.0"/>
+<text x="1076" y="720" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">0.8</text>
+<line x1="1240" y1="90" x2="1240" y2="670" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="1240" y1="670" x2="1240" y2="680" stroke="#555555" stroke-width="2.0"/>
+<text x="1240" y="720" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">1</text>
+<text x="830" y="770" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">유전자 다양도 H (Nei 보정 포함, 하플로그룹 수준)</text>
+<text x="396" y="240" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">신석기 합 (n = 18)</text>
+<rect x="420" y="200" width="380.5" height="60" fill="#CFCFCF" stroke="#555555" stroke-width="2.0" />
+<circle cx="591.5" cy="230" r="8.2" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<polygon points="596.9,214.4 611.7,240.9 582,240.9" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<line x1="420" y1="274" x2="800.5" y2="274" stroke="#666666" stroke-width="4.0"/>
+<text x="814.5" y="190" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">0.000 ~ 0.464</text>
+<text x="814.5" y="190" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0.000 ~ 0.464</text>
+<text x="396" y="410" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">대전자 (n = 5)</text>
+<rect x="420" y="370" width="492" height="60" fill="#CFCFCF" stroke="#555555" stroke-width="2.0" />
+<circle cx="912" cy="400" r="8.2" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<polygon points="912,384.4 926.8,410.9 897.2,410.9" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<line x1="420" y1="444" x2="912" y2="444" stroke="#666666" stroke-width="4.0"/>
+<text x="926" y="360" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">0.000 ~ 0.600</text>
+<text x="926" y="360" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0.000 ~ 0.600</text>
+<text x="396" y="580" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">대산전 (n = 9)</text>
+<rect x="875.6" y="540" width="273.3" height="60" fill="#CFCFCF" stroke="#555555" stroke-width="2.0" />
+<circle cx="1057.8" cy="570" r="8.2" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<polygon points="1126.1,554.4 1140.9,580.9 1111.3,580.9" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<line x1="875.6" y1="614" x2="1148.9" y2="614" stroke="#666666" stroke-width="4.0"/>
+<text x="1162.9" y="530" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">0.556 ~ 0.889</text>
+<text x="1162.9" y="530" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">0.556 ~ 0.889</text>
+<polygon points="184,808 195.4,828.4 172.6,828.4" fill="#111111" stroke="#FFFFFF" stroke-width="2.0" stroke-linejoin="round"/>
+<text x="210" y="830" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">관측 H (제1권 계산 11-4)</text>
+<rect x="170" y="850" width="28" height="28" fill="#CFCFCF" stroke="#555555" stroke-width="1.5" />
+<text x="210" y="876" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">부트스트랩 2.5~97.5% (2만 번, 시드 11, 점은 중앙값)</text>
+<line x1="170" y1="914" x2="230" y2="914" stroke="#666666" stroke-width="4.0"/>
+<text x="244" y="922" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">같은 구간, 100만 번(시드 12). 끝이 3자리까지 같다</text>
+<text x="150" y="980" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">신석기 합의 구간(0.000~0.464)은 대산전의 구간(0.556~0.889)과 겹치지 않고 대전자</text>
+<text x="150" y="1018" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">의 구간(0.000~0.600)과 겹친다. 신석기 합은 재표집의 12.0%가 H = 0이다(모두 같은 </text>
+<text x="150" y="1056" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">형, 이론값 12.0%). 재표집은 관측에 없는 형을 만들 수 없다.</text>
+</svg>

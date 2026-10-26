@@ -1,0 +1,11 @@
+pdfplumber   0.11.10  License=''  분류=['MIT License']
+pdfminer.six 20260107 License='MIT'  분류=[]
+pypdf        5.9.0    License='BSD-3-Clause'  분류=[]
+camelot-py   1.0.9    License='MIT'  분류=[]
+reportlab    5.0.1    License='BSD license (see license.txt for details), Copyright (c) 200'  분류=['BSD License']
+weasyprint   70.0     License=''  분류=['BSD License']
+requests     2.34.2   License='Apache-2.0'  분류=['Apache Software License']
+numpy        2.5.3    License='BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0'  분류=[]
+poppler-utils ['Version: 24.02.0-1ubuntu9.11']
+poppler-utils copyright 파일: True
+  앞 줄들에서 GPL 언급: ['License: GPL-2 or GPL-3', 'of the poppler core library (libpoppler.so.X) is GPL v2 or GPL v3.', 'All the Poppler contributions are licensed as GPL v2+.']

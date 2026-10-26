@@ -1,0 +1,11 @@
+python       3.13.16 Linux-6.18.44-fc-v153-x86_64-with-glibc2.39
+sqlite3      3.45.1 (파이썬 표준 라이브러리 sqlite3)
+numpy        2.5.3
+pandas       3.0.5
+shapely      2.2.0
+pyproj       3.8.0
+geopandas    1.2.0
+matplotlib   3.11.2
+GPU(nvidia-smi) 없음
+JSON1 함수 True  FTS5 True
+외래 키 기본값(PRAGMA foreign_keys) 0 -> 연결할 때마다 켜야 한다

@@ -1,0 +1,17 @@
+# PyPopART 설치 로그 (2026-10-26T01:28:42Z)
+$ git clone --depth 1 https://github.com/Adamtaranto/pypopart (새 빈 폴더에)
+Cloning into 'pypopart'...
+복제 1.460880618 s
+커밋 4562cba8034981a600f2d97afb85c2962cfe81d4 Mon Sep 14 11:03:38 2026 +1000
+라이선스 파일 첫 줄:                     GNU GENERAL PUBLIC LICENSE                        Version 3, 29 June 2007 
+$ python3 -m venv venv-pp
+$ venv-pp/bin/pip install ./pypopart   # PyPI가 아니라 GitHub에서 복제한 소스
+Successfully built pypopart
+Successfully installed biopython-1.88 click-8.5.0 networkx-3.7 numpy-2.5.4 pypopart-0.1.dev1+g4562cba80 scipy-1.18.1
+설치 16.341786709 s
+biopython==1.88
+click==8.5.0
+networkx==3.7
+numpy==2.5.4
+scipy==1.18.1
+pypopart  0.1.dev1+g4562cba80

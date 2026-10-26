@@ -1,0 +1,16 @@
+{
+ "설명": "제1권 11장이 '미결' 또는 어긋남으로 적은 항목(11.10절 목록과 장부 11.15절)에 대해, 점검기를 실행하기 전에 쓴 예측. loc 은 그 항목이 적힌 줄을 찾는 정규식(본문 입력과 장부 입력에서 각각 찾는다). pred_body, pred_ledger 는 '그 줄에 점검기의 지적이 붙을 것인가'의 예측.",
+ "targets": [
+  {"id": "11-3", "what": "본문의 23명 = 21 + 5 (26이어서 맞지 않음)", "loc_body": "본문의 23 = 21 \\+ 5", "loc_ledger": "^\\| 11-3 ", "pred_body": true, "pred_ledger": true, "why": "식이 글자 그대로 적혀 있다"},
+  {"id": "11-5", "what": "우하량 13.7% 대 1/6 = 16.7%", "loc_body": "13\\.7%를 적었다", "loc_ledger": "^\\| 11-5 ", "pred_body": false, "pred_ledger": false, "why": "13.7 과 1/6 을 잇는 식이나 n 이 없다"},
+  {"id": "11-7", "what": "71%의 짝이 확인되지 않음", "loc_body": "71%\\)", "loc_ledger": "^\\| 11-7 ", "pred_body": false, "pred_ledger": false, "why": "어느 짝인지는 뜻의 문제"},
+  {"id": "11-8", "what": "본문(홍산과 소하연에서 O3a 한 번씩)과 표(소하연 12명 전원 N1(x))의 불일치", "loc_body": "^\\*\\*점검\\.\\*\\* 본문은 O3a", "loc_ledger": "^\\| 11-8 ", "pred_body": false, "pred_ledger": false, "why": "글과 표를 뜻으로 견주어야 한다"},
+  {"id": "11-25", "what": "Mantel r = 0.46, P = 0.11 의 짝(표 글자가 흩어짐)", "loc_body": "^\\| .*\\| 0\\.46", "loc_ledger": "^\\| 11-25 ", "pred_body": false, "pred_ledger": false, "why": "표 열 짝을 알 수 없다"},
+  {"id": "11-32", "what": "에벤키 C3c1 56.6% 는 n = 127 에서 도달하지 못함", "loc_body": "에벤키 56\\.6%: 72/127", "loc_ledger": "^\\| 11-32 ", "pred_body": false, "pred_ledger": true, "why": "장부 줄에는 56.6% 와 n = 127 이 붙어 있으나 본문에서는 다른 문장에 있다"},
+  {"id": "11-36", "what": "std 11그루가 r̄ = 0.22 로는 EPS 0.756 이어서 논문의 0.85 를 재현하지 못함", "loc_body": "0\\.756", "loc_ledger": "^\\| 11-36 ", "pred_body": false, "pred_ledger": false, "why": "EPS 공식을 점검기가 모른다"},
+  {"id": "11-39", "what": "2.987 × 0.20 = 0.597 이 논문의 복원 표준편차 0.53 과 다름", "loc_body": "2\\.987 × 0\\.20 = 0\\.597", "loc_ledger": "^\\| 11-39 ", "pred_body": false, "pred_ledger": false, "why": "곱셈 자체는 맞다. 0.597 과 0.53 을 잇는 식이 없다"},
+  {"id": "11-41", "what": "부호 검정 (20, 9) 양쪽 p = 0.0614 (표는 5% 수준)", "loc_body": "0\\.0614", "loc_ledger": "^\\| 11-41 ", "pred_body": false, "pred_ledger": false, "why": "유의 수준의 해석"},
+  {"id": "11-43", "what": "1605~1616 평균 7.41 이 냉기 기준 7.395 보다 높음", "loc_body": "7\\.41", "loc_ledger": "^\\| 11-43 ", "pred_body": false, "pred_ledger": false, "why": "비교 서술의 모순"},
+  {"id": "11-46", "what": "27/30 사건 일치, 표에는 27개 사건", "loc_body": "30건 중 27건", "loc_ledger": "^\\| 11-46 ", "pred_body": false, "pred_ledger": false, "why": "30 의 정체는 본문에 없다. 점검기는 모른다"}
+ ]
+}

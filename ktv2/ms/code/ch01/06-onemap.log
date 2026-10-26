@@ -1,0 +1,7 @@
+[color] 통계 {"land": 8, "islands": 290, "lakes": 9, "rivers": 6, "places": 162, "peaks": 10, "made_valid": 4, "depth_levels_in_view": [200, 1000, 2000, 3000], "grid_convergence_deg": {"왼쪽 아래": -2.33, "오른쪽 아래": 3.75, "왼쪽 위": -2.94, "오른쪽 위": 4.72}, "texts": 46, "axes_mm": [130.0, 167.9]}
+[color] 글자 검사 경고 0개
+[color] 저장: /home/claude/book2/ms/code/ch01/out/onemap-color.svg (865,538 B), /home/claude/book2/ms/code/ch01/out/onemap-color.png (264,819 B)
+[bw] 통계 {"land": 8, "islands": 290, "lakes": 9, "rivers": 6, "places": 162, "peaks": 10, "made_valid": 4, "depth_levels_in_view": [200, 1000, 2000, 3000], "grid_convergence_deg": {"왼쪽 아래": -2.33, "오른쪽 아래": 3.75, "왼쪽 위": -2.94, "오른쪽 위": 4.72}, "texts": 46, "axes_mm": [130.0, 167.9]}
+[bw] 글자 검사 경고 0개
+[bw] 저장: /home/claude/book2/ms/code/ch01/out/onemap-bw.svg (865,538 B), /home/claude/book2/ms/code/ch01/out/onemap-bw.png (242,262 B)
+전체 23.4초

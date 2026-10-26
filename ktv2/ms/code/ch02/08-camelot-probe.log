@@ -1,0 +1,13 @@
+표 2-10 (쪽 87): 정답 5행 x 5열
+   lattice  표 1개 [(7, 7)], 정답 행 0/5 온전, 18.5초
+   stream   표 1개 [(7, 5)], 정답 행 5/5 온전, 18.6초
+표 3-2 (쪽 110): 정답 5행 x 4열
+   lattice  표 1개 [(5, 4)], 정답 행 5/5 온전, 19.2초
+/usr/local/lib/python3.13/dist-packages/camelot/parsers/base.py:238: UserWarning: No tables found in table area (106.519685, 396.4656324129999, 480.55060986693917, 616.1940189608291)
+  cols, rows, v_s, h_s = self._generate_columns_and_rows(bbox, user_cols)
+   stream   표 2개 [(12, 1), (7, 4)], 정답 행 5/5 온전, 18.3초
+표 3-6 (쪽 124): 정답 11행 x 5열
+   lattice  표 2개 [(11, 5), (13, 7)], 정답 행 11/11 온전, 19.8초
+/usr/local/lib/python3.13/dist-packages/camelot/parsers/base.py:238: UserWarning: No tables found in table area (103.70236249999996, 532.56790825, 470.01342850000026, 702.4066600852143)
+  cols, rows, v_s, h_s = self._generate_columns_and_rows(bbox, user_cols)
+   stream   표 2개 [(7, 1), (13, 5)], 정답 행 11/11 온전, 19.1초

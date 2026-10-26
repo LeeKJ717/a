@@ -1,0 +1,16 @@
+fig-ch06-lag-v1 color 높이 1618 경고: []
+fig-ch06-detrend-v1 color 높이 1310 경고: []
+fig-ch06-chron-v1 color 높이 1404 경고: []
+fig-ch06-eps-v1 color 높이 1154 경고: []
+fig-ch06-recon-v1 color 높이 1464 경고: []
+  b=0.085: 통과 982, 앞 세기 음수 736, 통과이면서 음수 723 (로그와 일치)
+  b=0.06: 통과 946, 앞 세기 음수 987, 통과이면서 음수 933 (로그와 일치)
+fig-ch06-mc-v1 color 높이 1900 경고: []
+fig-ch06-lag-v1 bw 높이 1618 경고: []
+fig-ch06-detrend-v1 bw 높이 1310 경고: []
+fig-ch06-chron-v1 bw 높이 1404 경고: []
+fig-ch06-eps-v1 bw 높이 1154 경고: []
+fig-ch06-recon-v1 bw 높이 1464 경고: []
+  b=0.085: 통과 982, 앞 세기 음수 736, 통과이면서 음수 723 (로그와 일치)
+  b=0.06: 통과 946, 앞 세기 음수 987, 통과이면서 음수 933 (로그와 일치)
+fig-ch06-mc-v1 bw 높이 1900 경고: []

@@ -1,0 +1,7 @@
+{"kind": "env", "python": "3.13.16", "platform": "Linux-6.18.44-fc-v153-x86_64-with-glibc2.39", "numpy": "2.5.3", "backend": "numpy", "cpu_count": 2, "ram_total_kib": 8220244, "nvidia_smi": "없음(명령을 찾지 못함)"}
+{"kind": "shore", "name": "shore P=2460", "P": 2460, "nx": 1001, "warmup_s": 0.041405558999940695, "median_s": 0.016302908999932697, "min_s": 0.013874502999897231, "result": 162.259, "peak_rss_mib": 73.6}
+{"kind": "shore", "name": "shore P=24600", "P": 24600, "nx": 1001, "warmup_s": 0.31662277600025845, "median_s": 0.2062638320003316, "min_s": 0.19448211700000684, "result": 165.739, "peak_rss_mib": 438.0}
+{"kind": "shore", "name": "shore P=246000", "P": 246000, "nx": 1001, "warmup_s": 3.8138955200001874, "median_s": 2.651558672000192, "min_s": 2.339602227999876, "result": 166.144, "peak_rss_mib": 3820.3}
+{"kind": "diff", "name": "diff P=500", "P": 500, "nx": 600, "steps": 1000, "warmup_s": 2.8482028710000122, "median_s": 3.1083572679999634, "min_s": 2.49747425500027, "result": [1.0, 25.6542], "peak_rss_mib": 3820.3}
+{"kind": "diff", "name": "diff P=2091", "P": 2091, "nx": 600, "steps": 1000, "warmup_s": 11.240727521999816, "median_s": 13.407822749999923, "min_s": 11.045538932, "result": [1.0, 25.4563], "peak_rss_mib": 3820.3}
+{"kind": "diff", "name": "diff P=8000", "P": 8000, "nx": 600, "steps": 1000, "warmup_s": 114.98636092600009, "median_s": 118.76100337599973, "min_s": 87.25311910200026, "result": [1.0, 25.487], "peak_rss_mib": 3820.3}

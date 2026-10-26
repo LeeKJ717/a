@@ -1,0 +1,9 @@
+ch10-calc-v1.py  sha256 958fcad4b1439378  27180바이트
+ch08-calc-v1.py  sha256 15620ee9b0f4af00  6655바이트
+  -> hu2009-table4.csv 8 행
+  -> hu2009-table3.csv 8 행
+  -> hu2009-table1.csv 7 행
+  -> he2015-table2.csv 30 행
+  -> he2015-table6.csv 27 행
+  -> dou2021-endmembers.csv 2 행
+Dou 코어 값은 계산 8-11, 8-12 의 입력으로 소스에 직접 쓰인 숫자들이다(CSV로 옮기지 않고 03-mixing 스크립트에 적었다)

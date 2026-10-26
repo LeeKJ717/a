@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1130" viewBox="0 0 1300 1130">
+<rect x="0" y="0" width="1300" height="1130" fill="#FFFFFF" stroke="none" stroke-width="1.0" />
+<rect x="200" y="90" width="1040" height="610" fill="none" stroke="#555555" stroke-width="2.4" />
+<line x1="200" y1="700" x2="1240" y2="700" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="192" y1="700" x2="200" y2="700" stroke="#555555" stroke-width="2.0"/>
+<text x="186" y="710" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">1e-7</text>
+<line x1="200" y1="612.9" x2="1240" y2="612.9" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="192" y1="612.9" x2="200" y2="612.9" stroke="#555555" stroke-width="2.0"/>
+<text x="186" y="622.9" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">1e-6</text>
+<line x1="200" y1="525.7" x2="1240" y2="525.7" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="192" y1="525.7" x2="200" y2="525.7" stroke="#555555" stroke-width="2.0"/>
+<text x="186" y="535.7" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">1e-5</text>
+<line x1="200" y1="438.6" x2="1240" y2="438.6" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="192" y1="438.6" x2="200" y2="438.6" stroke="#555555" stroke-width="2.0"/>
+<text x="186" y="448.6" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">1e-4</text>
+<line x1="200" y1="351.4" x2="1240" y2="351.4" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="192" y1="351.4" x2="200" y2="351.4" stroke="#555555" stroke-width="2.0"/>
+<text x="186" y="361.4" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">1e-3</text>
+<line x1="200" y1="264.3" x2="1240" y2="264.3" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="192" y1="264.3" x2="200" y2="264.3" stroke="#555555" stroke-width="2.0"/>
+<text x="186" y="274.3" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">0.01</text>
+<line x1="200" y1="177.1" x2="1240" y2="177.1" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="192" y1="177.1" x2="200" y2="177.1" stroke="#555555" stroke-width="2.0"/>
+<text x="186" y="187.1" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">0.1</text>
+<line x1="200" y1="90" x2="1240" y2="90" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="192" y1="90" x2="200" y2="90" stroke="#555555" stroke-width="2.0"/>
+<text x="186" y="100" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">1</text>
+<line x1="274.3" y1="700" x2="274.3" y2="710" stroke="#555555" stroke-width="2.0"/>
+<text x="274.3" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">6</text>
+<line x1="422.9" y1="700" x2="422.9" y2="710" stroke="#555555" stroke-width="2.0"/>
+<text x="422.9" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">8</text>
+<line x1="571.4" y1="700" x2="571.4" y2="710" stroke="#555555" stroke-width="2.0"/>
+<text x="571.4" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">10</text>
+<line x1="720" y1="700" x2="720" y2="710" stroke="#555555" stroke-width="2.0"/>
+<text x="720" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">12</text>
+<line x1="868.6" y1="700" x2="868.6" y2="710" stroke="#555555" stroke-width="2.0"/>
+<text x="868.6" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">14</text>
+<line x1="1017.1" y1="700" x2="1017.1" y2="710" stroke="#555555" stroke-width="2.0"/>
+<text x="1017.1" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">16</text>
+<line x1="1165.7" y1="700" x2="1165.7" y2="710" stroke="#555555" stroke-width="2.0"/>
+<text x="1165.7" y="744" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">18</text>
+<text x="40" y="60" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">확률 (로그 눈금)</text>
+<text x="720" y="792" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">신석기 집단 18명 가운데 N1(x)를 가진 사람 수</text>
+<rect x="251.3" y="446" width="46.1" height="254" fill="#111111" stroke="#555555" stroke-width="1.5" />
+<rect x="325.5" y="325.7" width="46.1" height="374.3" fill="#CFCFCF" stroke="#555555" stroke-width="1.5" />
+<rect x="399.8" y="242.8" width="46.1" height="457.2" fill="#CFCFCF" stroke="#555555" stroke-width="1.5" />
+<rect x="474.1" y="186.4" width="46.1" height="513.6" fill="#CFCFCF" stroke="#555555" stroke-width="1.5" />
+<rect x="548.4" y="152.1" width="46.1" height="547.9" fill="#CFCFCF" stroke="#555555" stroke-width="1.5" />
+<rect x="622.7" y="137.9" width="46.1" height="562.1" fill="#CFCFCF" stroke="#555555" stroke-width="1.5" />
+<rect x="697" y="142.9" width="46.1" height="557.1" fill="#CFCFCF" stroke="#555555" stroke-width="1.5" />
+<rect x="771.3" y="167.1" width="46.1" height="532.9" fill="#CFCFCF" stroke="#555555" stroke-width="1.5" />
+<rect x="845.5" y="211.2" width="46.1" height="488.8" fill="#CFCFCF" stroke="#555555" stroke-width="1.5" />
+<rect x="919.8" y="276.5" width="46.1" height="423.5" fill="#CFCFCF" stroke="#555555" stroke-width="1.5" />
+<rect x="994.1" y="366.1" width="46.1" height="333.9" fill="#111111" stroke="#555555" stroke-width="1.5" />
+<rect x="1068.4" y="485.4" width="46.1" height="214.6" fill="#111111" stroke="#555555" stroke-width="1.5" />
+<rect x="1142.7" y="647.2" width="46.1" height="52.8" fill="#111111" stroke="#555555" stroke-width="1.5" />
+<circle cx="274.3" cy="438.6" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="348.6" cy="325.5" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="422.9" cy="242.9" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="497.1" cy="186.6" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="571.4" cy="152.1" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="645.7" cy="137.8" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="720" cy="142.9" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="794.3" cy="167.2" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="868.6" cy="211.1" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="942.9" cy="276.8" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="1017.1" cy="365.4" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="1091.4" cy="494.2" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<circle cx="1165.7" cy="612.9" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<text x="1047.1" y="270.1" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">관측 16명</text>
+<text x="1047.1" y="270.1" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">관측 16명</text>
+<line x1="1017.1" y1="284.1" x2="1017.1" y2="352.1" stroke="#111111" stroke-width="2.5"/>
+<rect x="170" y="824" width="28" height="28" fill="#111111" stroke="#555555" stroke-width="1.5" />
+<text x="210" y="850" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">양쪽 p에 들어가는 표(확률이 관측 표 이하)</text>
+<rect x="170" y="868" width="28" height="28" fill="#CFCFCF" stroke="#555555" stroke-width="1.5" />
+<text x="210" y="894" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">들어가지 않는 표</text>
+<circle cx="184" cy="926" r="6.8" fill="#111111" stroke="#FFFFFF" stroke-width="2.0"/>
+<text x="210" y="938" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">순열 검정 N = 100만의 상대 빈도 (0이면 점 없음)</text>
+<text x="150" y="994" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">막대는 초기하분포의 정확한 확률이다. 색을 칠한 막대(6, 16, 17, 18명)의 합이 Fishe</text>
+<text x="150" y="1032" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">r 양쪽 p = 0.00079 이고, 순열 100만 번은 0.00081 를 얻었다(실습 11-2). 18명의 정</text>
+<text x="150" y="1070" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">확한 확률은 4.0e-07 이고 100만 번 가운데 1번 나왔다.</text>
+</svg>

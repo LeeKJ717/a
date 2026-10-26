@@ -1,0 +1,44 @@
+== 1. 층 10개 훑어보기 ==
+파일                                                   개수 좌표계       도형                            깨짐
+ne_10m_bathymetry_K_200.geojson                     520 EPSG:4326 Polygon 518,MultiPolygon 2    10  (읽기 0.96초)
+ne_10m_geography_regions_elevation_points.geojson    711 EPSG:4326 Point 711                      0  (읽기 0.21초)
+ne_10m_geography_regions_points.geojson             235 EPSG:4326 Point 235                      0  (읽기 0.07초)
+ne_10m_geography_regions_polys.geojson             1047 EPSG:4326 Polygon 885,MultiPolygon 162     5  (읽기 0.89초)
+ne_10m_lakes.geojson                               1355 EPSG:4326 Polygon 1346,MultiPolygon 9     2  (읽기 0.74초)
+ne_10m_land.geojson                                  11 EPSG:4326 MultiPolygon 10,Polygon 1      0  (읽기 2.15초)
+ne_10m_minor_islands.geojson                       2795 EPSG:4326 Polygon 2795                   0  (읽기 0.19초)
+ne_10m_populated_places_simple.geojson             7342 EPSG:4326 Point 7342                     0  (읽기 0.84초)
+ne_10m_rivers_lake_centerlines.geojson             1455 EPSG:4326 MultiLineString 1455           0  (읽기 0.84초)
+ne_50m_land.geojson                                1420 EPSG:4326 Polygon 1419,MultiPolygon 1     0  (읽기 0.21초)
+
+== 2. 한반도 상자(122.5~133.5E, 31.5~44N)만 읽기: bbox 인자 ==
+ne_10m_land                                  상자 안     8 개  (읽기 2.02초)
+ne_10m_minor_islands                         상자 안   242 개  (읽기 0.13초)
+ne_10m_lakes                                 상자 안     2 개  (읽기 0.62초)
+ne_10m_rivers_lake_centerlines               상자 안    12 개  (읽기 0.87초)
+ne_10m_populated_places_simple               상자 안    97 개  (읽기 0.67초)
+ne_10m_geography_regions_elevation_points    상자 안    10 개  (읽기 0.14초)
+
+== 3. 속성표 들여다보기 ==
+     name     sov0name  pop_max  longitude  latitude
+    Seoul Korea, South  9796000 126.997785 37.568295
+    Busan Korea, South  3480000 129.008102 35.096999
+Pyongyang Korea, North  3300000 125.752745 39.021385
+  Incheon Korea, South  2550000 126.640288 37.478094
+    Daegu Korea, South  2460000 128.605026 35.868735
+  Daejeon Korea, South  1468000 127.423082 36.337492
+  Gwangju Korea, South  1440000 126.908488 35.172912
+    Nampo Korea, North  1127000 125.450488 38.768867
+geometry 열의 첫 점: POINT (126.997785 37.568295)  (x=경도, y=위도 순서)
+
+== 4. 수심 층(제1권 geodata의 200 m 층) ==
+열: ['scalerank', 'featurecla', 'depth', 'geometry']  depth 값: [200]  도형 520개, 깨진 도형 10개
+깨진 도형의 이유(shapely.validation.explain_validity) 처음 3개:
+   Ring Self-intersection[144.701549 13.207038]
+   Ring Self-intersection[163.105479 -18.5888]
+   Self-intersection[-171.484549 -3.489679]
+
+== 5. GeoJSON 은 글자 파일이다: 거주지 파일의 처음 330자 ==
+{"type":"FeatureCollection","name":"ne_10m_populated_places_simple","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"scalerank":10,"natscale":1,"labelrank":8,"featurecla":"Admin-1 capital","name":"Colonia del Sacramento","namepar":null,"namealt":null,"nameas
+
+전체 실행 13.91초

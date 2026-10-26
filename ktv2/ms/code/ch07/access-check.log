@@ -1,0 +1,30 @@
+# 공개 자료 입수처 접속 확인 (2026-10-26T01:36:50Z) - 셸에서 헤더만 요청(curl -sS -I). 우회하지 않음
+$ curl -sS -I --max-time 30 https://reichdata.hms.harvard.edu/pub/datasets/amh_repo/curated_releases/
+curl: (56) CONNECT tunnel failed, response 403
+HTTP/1.1 403 Forbidden
+Content-Type: text/plain; charset=utf-8
+
+$ curl -sS -I --max-time 30 https://doi.org/10.7910/DVN/FFIDCW
+curl: (56) CONNECT tunnel failed, response 403
+HTTP/1.1 403 Forbidden
+Content-Type: text/plain; charset=utf-8
+
+$ curl -sS -I --max-time 30 https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/FFIDCW
+curl: (56) CONNECT tunnel failed, response 403
+HTTP/1.1 403 Forbidden
+Content-Type: text/plain; charset=utf-8
+
+$ curl -sS -I --max-time 30 https://www.cog-genomics.org/plink/2.0/
+curl: (56) CONNECT tunnel failed, response 403
+HTTP/1.1 403 Forbidden
+Content-Type: text/plain; charset=utf-8
+
+$ curl -sS -I --max-time 30 https://github.com/DReichLab/AdmixTools
+HTTP/1.1 200 Connection Established
+
+HTTP/1.1 403 Forbidden
+
+$ curl -sS -I --max-time 30 https://pypi.org/project/scikit-bio/
+HTTP/2 200 
+content-type: text/html; charset=utf-8
+

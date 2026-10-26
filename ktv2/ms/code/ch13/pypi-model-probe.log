@@ -1,0 +1,26 @@
+PyPI JSON API로 각 이름의 최신 릴리스 파일 크기(MB) 확인. 모델 가중치를 담은 패키지가 있는지 보는 시도.
+gpt4all              있음 version=2.8.2        최대파일=  121.61 MB  요약=Python bindings for GPT4All
+ctransformers        있음 version=0.2.27       최대파일=    9.85 MB  요약=Python bindings for the Transformer models implemented in C/C++ using 
+llamafile            없음/오류 HTTPError HTTP Error 404: Not Found
+tinystories          없음/오류 HTTPError HTTP Error 404: Not Found
+stories15m           없음/오류 HTTPError HTTP Error 404: Not Found
+smollm               있음 version=0.0.1        최대파일=    0.00 MB  요약=None
+llama2-c             없음/오류 HTTPError HTTP Error 404: Not Found
+onnxruntime-genai    있음 version=0.18.0       최대파일=   11.25 MB  요약=ONNX Runtime GenAI
+tinyllama            있음 version=0.0.2b0      최대파일=    0.03 MB  요약=Model classes and pre-training utilities for a tiny version of Llama i
+gguf                 있음 version=0.19.0       최대파일=    0.12 MB  요약=Read and write ML models in GGUF for GGML
+llm-gguf             있음 version=0.2          최대파일=    0.01 MB  요약=Run models distributed as GGUF files
+pygpt4all            있음 version=1.1.0        최대파일=    0.00 MB  요약=Official Python CPU inference for GPT4All language models based on lla
+rwkv                 있음 version=0.8.32       최대파일=    0.41 MB  요약=The RWKV Language Model
+llama-cpp-python     있음 version=0.3.36       최대파일=   76.59 MB  요약=Python bindings for the llama.cpp library
+mlc-llm              없음/오류 HTTPError HTTP Error 404: Not Found
+bitnet               있음 version=0.2.5        최대파일=    0.03 MB  요약=bitnet - Pytorch
+tiny-llm             없음/오류 HTTPError HTTP Error 404: Not Found
+nanogpt              없음/오류 HTTPError HTTP Error 404: Not Found
+minillm              있음 version=2.1          최대파일=    0.02 MB  요약=Simple inference for large language models
+gpt2                 있음 version=0.0.4        최대파일=    0.00 MB  요약=API client for GPT-2 text generator cloud hosted by Open Medical IO
+gpt-2                없음/오류 HTTPError HTTP Error 404: Not Found
+distilgpt2           없음/오류 HTTPError HTTP Error 404: Not Found
+llm-tiny             없음/오류 HTTPError HTTP Error 404: Not Found
+tinygrad             있음 version=0.14.0       최대파일=    2.76 MB  요약=You like pytorch? You like micrograd? You love tinygrad! <3
+ollama               있음 version=0.6.3        최대파일=    0.06 MB  요약=The official Python client for Ollama.

@@ -1,0 +1,11 @@
+cupy 경로를 쓸 수 없다: CUDARuntimeError: cudaErrorInsufficientDriver: CUDA driver version is insufficient for CUDA runtime version
+종료 코드 1
+[알림] cupy를 쓸 수 없어 numpy로 내려간다 (CUDARuntimeError)
+환경: {"python": "3.13.16", "platform": "Linux-6.18.44-fc-v153-x86_64-with-glibc2.39", "numpy": "2.5.4", "backend": "numpy", "cpu_count": 2, "ram_total_kib": 8220244, "nvidia_smi": "없음(명령을 찾지 못함)", "bit_generator": "PCG64"}
+항목                   warmup s 중앙값 s      최솟값 s      결과                     메모리
+boot B=100000        0.127    0.1294     0.1294     [0.7653, 0.5556, 0.888 {'peak_rss_mib': 90.3}
+perm N=100000        0.167    0.1552     0.1552     0.00086                {'peak_rss_mib': 127.3}
+prop N=1000000       0.088    0.0854     0.0854     [39.9918, 0.000145]    {'peak_rss_mib': 127.3}
+arnull M=20000       0.964    0.7672     0.7672     0.08645                {'peak_rss_mib': 127.3}
+로그 파일: /home/claude/book2/ms/code/ch11/mc-bench-autotest.jsonl
+종료 코드 0

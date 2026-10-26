@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="760" viewBox="0 0 1300 760">
+<rect x="0" y="0" width="1300" height="760" fill="#FFFFFF" stroke="none" stroke-width="1.0" />
+<text x="60" y="60" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">미지 층의 파편을 기준 집단 A, B, C에 배정한 결과 (파편 수)</text>
+<text x="60" y="164" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">X층</text>
+<text x="60" y="204" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">원천 A 24개</text>
+<rect x="560" y="130" width="475" height="64" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="797.5" y="174" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">20</text>
+<rect x="1035" y="130" width="23.8" height="64" fill="#9DB7C6" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="1046.9" y="174" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">1</text>
+<text x="1140" y="174" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">n=21</text>
+<text x="60" y="264" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">Y층</text>
+<text x="60" y="304" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">원천 C 24개</text>
+<rect x="560" y="230" width="522.5" height="64" fill="#8A6A2C" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="821.2" y="274" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">22</text>
+<rect x="1082.5" y="230" width="23.8" height="64" fill="#9DB7C6" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="1094.4" y="274" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">1</text>
+<text x="1140" y="274" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">n=23</text>
+<text x="60" y="364" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">Z층</text>
+<text x="60" y="404" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">원천 A 12개+원천 B 12개</text>
+<rect x="560" y="330" width="237.5" height="64" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="678.8" y="374" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">10</text>
+<rect x="797.5" y="330" width="285" height="64" fill="#9C4F2E" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="940" y="374" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">12</text>
+<text x="1140" y="374" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">n=22</text>
+<text x="60" y="464" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">W층</text>
+<text x="60" y="504" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">원천 D 24개</text>
+<rect x="560" y="430" width="23.8" height="64" fill="#3A7CA5" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="571.9" y="474" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">1</text>
+<rect x="583.8" y="430" width="475" height="64" fill="#9DB7C6" stroke="#FFFFFF" stroke-width="2.0" />
+<text x="821.2" y="474" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">20</text>
+<text x="1140" y="474" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">n=21</text>
+<rect x="60" y="526" width="34" height="28" fill="#3A7CA5" stroke="#6B7A82" stroke-width="1.5" />
+<text x="106" y="550" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">A로</text>
+<rect x="191.8" y="526" width="34" height="28" fill="#9C4F2E" stroke="#6B7A82" stroke-width="1.5" />
+<text x="237.8" y="550" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">B로</text>
+<rect x="323.6" y="526" width="34" height="28" fill="#8A6A2C" stroke="#6B7A82" stroke-width="1.5" />
+<text x="369.6" y="550" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">C로</text>
+<rect x="455.5" y="526" width="34" height="28" fill="#9DB7C6" stroke="#6B7A82" stroke-width="1.5" />
+<text x="501.5" y="550" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">어느 집단에도 안 맞음</text>
+<text x="60" y="620" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">시연값(실습 9-4b). 선형 판별로 가장 가까운 집단을 고르고, 그 집단 자신의 평균과 공분산으</text>
+<text x="60" y="658" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">로 잰 거리가 99% 한계를 넘으면 "안 맞음"으로 뺐다. Z층은 두 원천이 섞인 층이고, W층은 기</text>
+<text x="60" y="696" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">준 집단에 없는 원천이다. n은 분석 합계 93% 이상으로 남은 파편 수이다(24개씩 분석).</text>
+</svg>

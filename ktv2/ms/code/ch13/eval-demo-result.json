@@ -1,0 +1,300 @@
+{
+ "rows": [
+  {
+   "id": "D01",
+   "kind": "심은 오류",
+   "line": 5,
+   "codes": [
+    "A1",
+    "N1"
+   ],
+   "hit": true,
+   "pred": true
+  },
+  {
+   "id": "D02",
+   "kind": "심은 오류",
+   "line": 11,
+   "codes": [
+    "U1"
+   ],
+   "hit": true,
+   "pred": true
+  },
+  {
+   "id": "D03",
+   "kind": "심은 오류",
+   "line": 20,
+   "codes": [
+    "T1"
+   ],
+   "hit": true,
+   "pred": true
+  },
+  {
+   "id": "D04",
+   "kind": "심은 오류",
+   "line": 23,
+   "codes": [
+    "T2"
+   ],
+   "hit": true,
+   "pred": true
+  },
+  {
+   "id": "D05",
+   "kind": "심은 오류",
+   "line": 26,
+   "codes": [
+    "N1"
+   ],
+   "hit": true,
+   "pred": true
+  },
+  {
+   "id": "D06",
+   "kind": "심은 오류",
+   "line": 27,
+   "codes": [
+    "N1",
+    "R1"
+   ],
+   "hit": true,
+   "pred": true
+  },
+  {
+   "id": "D07",
+   "kind": "심은 오류",
+   "line": 28,
+   "codes": [
+    "R2"
+   ],
+   "hit": true,
+   "pred": true
+  },
+  {
+   "id": "D08",
+   "kind": "심은 오류",
+   "line": 29,
+   "codes": [
+    "N1"
+   ],
+   "hit": true,
+   "pred": true
+  },
+  {
+   "id": "D09",
+   "kind": "심은 오류",
+   "line": 41,
+   "codes": [
+    "Q1"
+   ],
+   "hit": true,
+   "pred": true
+  },
+  {
+   "id": "D10",
+   "kind": "심은 오류",
+   "line": 42,
+   "codes": [
+    "Q1"
+   ],
+   "hit": true,
+   "pred": true
+  },
+  {
+   "id": "C16",
+   "kind": "정상",
+   "line": 40,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  },
+  {
+   "id": "X01",
+   "kind": "심은 오류(설계상 못 찾음)",
+   "line": 31,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  },
+  {
+   "id": "X02",
+   "kind": "심은 오류(설계상 못 찾음)",
+   "line": 32,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  },
+  {
+   "id": "X03",
+   "kind": "심은 오류(설계상 못 찾음)",
+   "line": 33,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  },
+  {
+   "id": "X04",
+   "kind": "심은 오류(설계상 못 찾음)",
+   "line": 34,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  },
+  {
+   "id": "S01",
+   "kind": "원문 결함의 충실한 옮김",
+   "line": 12,
+   "codes": [
+    "A1"
+   ],
+   "hit": true,
+   "pred": true
+  },
+  {
+   "id": "S02",
+   "kind": "원문 결함 후보의 충실한 옮김",
+   "line": 35,
+   "codes": [
+    "G1"
+   ],
+   "hit": true,
+   "pred": true
+  },
+  {
+   "id": "C01",
+   "kind": "정상",
+   "line": 4,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  },
+  {
+   "id": "C02",
+   "kind": "정상",
+   "line": 6,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  },
+  {
+   "id": "C03",
+   "kind": "정상",
+   "line": 7,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  },
+  {
+   "id": "C04",
+   "kind": "정상",
+   "line": 8,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  },
+  {
+   "id": "C05",
+   "kind": "정상",
+   "line": 9,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  },
+  {
+   "id": "C06",
+   "kind": "정상",
+   "line": 10,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  },
+  {
+   "id": "C07",
+   "kind": "정상",
+   "line": 17,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  },
+  {
+   "id": "C08",
+   "kind": "정상",
+   "line": 18,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  },
+  {
+   "id": "C09",
+   "kind": "정상",
+   "line": 19,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  },
+  {
+   "id": "C10",
+   "kind": "정상",
+   "line": 21,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  },
+  {
+   "id": "C11",
+   "kind": "정상",
+   "line": 22,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  },
+  {
+   "id": "C12",
+   "kind": "정상",
+   "line": 30,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  },
+  {
+   "id": "C13",
+   "kind": "정상",
+   "line": 38,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  },
+  {
+   "id": "C14",
+   "kind": "정상",
+   "line": 39,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  },
+  {
+   "id": "C15",
+   "kind": "정상",
+   "line": 43,
+   "codes": [],
+   "hit": false,
+   "pred": false
+  }
+ ],
+ "stats": {
+  "arith_checked": 4,
+  "grim_checked": 1,
+  "table_rowsum_cols": 1,
+  "table_rows_checked": 6,
+  "table_cols_checked": 6,
+  "range_checked": 1,
+  "p_checked": 1,
+  "quotes_checked": 6,
+  "quotes_exact": 4,
+  "num_checked": 57,
+  "num_exempt_calc": 15
+ },
+ "n_findings": 15
+}

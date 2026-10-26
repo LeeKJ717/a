@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1194" viewBox="0 0 1300 1194">
+<rect x="0" y="0" width="1300" height="1194" fill="#FFFFFF" stroke="none" stroke-width="1.0" />
+<rect x="560" y="90" width="680" height="640" fill="none" stroke="#555555" stroke-width="2.4" />
+<line x1="610.2" y1="90" x2="610.2" y2="730" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="610.2" y1="730" x2="610.2" y2="740" stroke="#555555" stroke-width="2.0"/>
+<text x="610.2" y="780" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">1</text>
+<line x1="776.9" y1="90" x2="776.9" y2="730" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="776.9" y1="730" x2="776.9" y2="740" stroke="#555555" stroke-width="2.0"/>
+<text x="776.9" y="780" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">10</text>
+<line x1="943.6" y1="90" x2="943.6" y2="730" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="943.6" y1="730" x2="943.6" y2="740" stroke="#555555" stroke-width="2.0"/>
+<text x="943.6" y="780" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">100</text>
+<line x1="1110.3" y1="90" x2="1110.3" y2="730" stroke="#B5B5B5" stroke-width="1.0" stroke-dasharray="8 8"/>
+<line x1="1110.3" y1="730" x2="1110.3" y2="740" stroke="#555555" stroke-width="2.0"/>
+<text x="1110.3" y="780" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">1,000</text>
+<text x="900" y="830" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">합치 통계 T' (로그 눈금)</text>
+<text x="540" y="170" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">U-2 네 날짜</text>
+<rect x="560" y="132" width="67.2" height="56" fill="#BBBBBB" stroke="#555555" stroke-width="1.5" />
+<text x="773" y="170" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">1.27 (n = 4)</text>
+<text x="773" y="170" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">1.27 (n = 4)</text>
+<line x1="759" y1="120" x2="759" y2="200" stroke="#111111" stroke-width="4.0"/>
+<text x="540" y="270" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">U-2 다섯 날짜(4710 포함)</text>
+<rect x="560" y="232" width="326" height="56" fill="#444444" stroke="#555555" stroke-width="1.5" />
+<text x="900" y="270" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">45.12 (n = 5)</text>
+<text x="900" y="270" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">45.12 (n = 5)</text>
+<line x1="773.1" y1="220" x2="773.1" y2="300" stroke="#111111" stroke-width="4.0"/>
+<text x="540" y="370" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">U-3 두 날짜</text>
+<rect x="560" y="332" width="386.5" height="56" fill="#444444" stroke="#555555" stroke-width="1.5" />
+<text x="960.5" y="370" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">104.09 (n = 2)</text>
+<text x="960.5" y="370" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">104.09 (n = 2)</text>
+<line x1="707.6" y1="320" x2="707.6" y2="400" stroke="#111111" stroke-width="4.0"/>
+<text x="540" y="470" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">U-4 다섯 날짜(12,000 BP대)</text>
+<rect x="560" y="432" width="302.3" height="56" fill="#444444" stroke="#555555" stroke-width="1.5" />
+<text x="876.3" y="470" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">32.53 (n = 5)</text>
+<text x="876.3" y="470" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">32.53 (n = 5)</text>
+<line x1="773.1" y1="420" x2="773.1" y2="500" stroke="#111111" stroke-width="4.0"/>
+<text x="540" y="570" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">U-4 네 날짜(11,840 뺌)</text>
+<rect x="560" y="532" width="176.4" height="56" fill="#BBBBBB" stroke="#555555" stroke-width="1.5" />
+<text x="773" y="570" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="none" stroke="#FFFFFF" stroke-width="8.1" stroke-linejoin="round" opacity="0.9">5.72 (n = 4)</text>
+<text x="773" y="570" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">5.72 (n = 4)</text>
+<line x1="759" y1="520" x2="759" y2="600" stroke="#111111" stroke-width="4.0"/>
+<text x="540" y="670" font-size="29" font-weight="400" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">U-4 여섯 날짜(9785 포함)</text>
+<rect x="560" y="632" width="637.4" height="56" fill="#444444" stroke="#555555" stroke-width="1.5" />
+<text x="1183.4" y="670" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">3332 (n = 6)</text>
+<line x1="784.2" y1="620" x2="784.2" y2="700" stroke="#111111" stroke-width="4.0"/>
+<rect x="170" y="864" width="28" height="28" fill="#BBBBBB" stroke="#555555" stroke-width="1.5" />
+<text x="210" y="890" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">합치(T'가 한계보다 작음)</text>
+<rect x="170" y="910" width="28" height="28" fill="#444444" stroke="#555555" stroke-width="1.5" />
+<text x="210" y="936" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">불일치</text>
+<line x1="184" y1="946" x2="184" y2="984" stroke="#111111" stroke-width="4.0"/>
+<text x="210" y="982" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">5% 한계(카이제곱, 자유도 n - 1)</text>
+<text x="150" y="1040" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">날짜는 제1권 4장 계산 4-6의 값이다. 한계는 자유도에 따라 달라 막대마다 다르다(3.</text>
+<text x="150" y="1078" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">84~11.07). 합치한 두 묶음(U-2 네 날짜, U-4 네 날짜)만 평균을 쓸 수 있다. 맨 아래 막</text>
+<text x="150" y="1116" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">대는 이 장에서 새로 계산한 값으로 제1권에 없다.</text>
+</svg>

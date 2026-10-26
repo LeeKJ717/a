@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1130" viewBox="0 0 1300 1130">
+<rect x="0" y="0" width="1300" height="1130" fill="#FFFFFF" stroke="none" stroke-width="1.0" />
+<rect x="430" y="60" width="440" height="416" fill="#FFFFFF" stroke="#555555" stroke-width="3.0" />
+<rect x="430" y="60" width="440" height="52" fill="#DDDDDD" stroke="#555555" stroke-width="3.0" />
+<text x="444" y="98" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">works</text>
+<text x="444" y="152" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">id</text>
+<text x="444" y="190" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">doi (고유, 소문자)</text>
+<text x="444" y="228" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">ext_id (DOI 없을 때)</text>
+<text x="444" y="266" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">title, authors, year</text>
+<text x="444" y="304" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">journal, abstract</text>
+<text x="444" y="342" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">status cited|abstract|pdf</text>
+<text x="444" y="380" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">oa_status, pdf_url</text>
+<text x="444" y="418" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">pdf_path, sha256</text>
+<text x="444" y="456" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">fulltext, chapters</text>
+<rect x="60" y="60" width="330" height="340" fill="#FFFFFF" stroke="#555555" stroke-width="3.0" />
+<rect x="60" y="60" width="330" height="52" fill="#DDDDDD" stroke="#555555" stroke-width="3.0" />
+<text x="74" y="98" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">sources</text>
+<text x="74" y="152" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">id</text>
+<text x="74" y="190" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">work_id</text>
+<text x="74" y="228" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">source (openalex..)</text>
+<text x="74" y="266" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">url, http_status</text>
+<text x="74" y="304" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">fetched</text>
+<text x="74" y="342" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">raw (응답 원문)</text>
+<text x="74" y="380" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">raw_sha256</text>
+<rect x="910" y="60" width="330" height="264" fill="#FFFFFF" stroke="#555555" stroke-width="3.0" />
+<rect x="910" y="60" width="330" height="52" fill="#DDDDDD" stroke="#555555" stroke-width="3.0" />
+<text x="924" y="98" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">refs</text>
+<text x="924" y="152" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">id</text>
+<text x="924" y="190" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">chapter_id</text>
+<text x="924" y="228" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">apa (서지 한 줄)</text>
+<text x="924" y="266" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">doi_raw</text>
+<text x="924" y="304" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">work_id</text>
+<rect x="60" y="560" width="330" height="264" fill="#FFFFFF" stroke="#555555" stroke-width="3.0" />
+<rect x="60" y="560" width="330" height="52" fill="#DDDDDD" stroke="#555555" stroke-width="3.0" />
+<text x="74" y="598" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">conflicts</text>
+<text x="74" y="652" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">id</text>
+<text x="74" y="690" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">work_id</text>
+<text x="74" y="728" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">field</text>
+<text x="74" y="766" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">v_old, v_new</text>
+<text x="74" y="804" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">src_new</text>
+<rect x="450" y="600" width="400" height="302" fill="#FFFFFF" stroke="#555555" stroke-width="3.0" />
+<rect x="450" y="600" width="400" height="52" fill="#DDDDDD" stroke="#555555" stroke-width="3.0" />
+<text x="464" y="638" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">extracted_tables</text>
+<text x="464" y="692" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">id</text>
+<text x="464" y="730" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">work_id, page</text>
+<text x="464" y="768" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">method</text>
+<text x="464" y="806" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">n_rows, n_cols</text>
+<text x="464" y="844" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">cells (JSON)</text>
+<text x="464" y="882" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">checks, verdict</text>
+<rect x="910" y="460" width="330" height="264" fill="#FFFFFF" stroke="#555555" stroke-width="3.0" />
+<rect x="910" y="460" width="330" height="52" fill="#DDDDDD" stroke="#555555" stroke-width="3.0" />
+<text x="924" y="498" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">fetch_log</text>
+<text x="924" y="552" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">id</text>
+<text x="924" y="590" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">t</text>
+<text x="924" y="628" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">url</text>
+<text x="924" y="666" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">http_status, nbytes</text>
+<text x="924" y="704" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">note</text>
+<line x1="390" y1="190" x2="430" y2="190" stroke="#555555" stroke-width="3.0"/>
+<line x1="870" y1="302" x2="910" y2="302" stroke="#555555" stroke-width="3.0"/>
+<line x1="550" y1="476" x2="550" y2="540" stroke="#555555" stroke-width="3.0"/>
+<line x1="225" y1="540" x2="550" y2="540" stroke="#555555" stroke-width="3.0"/>
+<line x1="225" y1="540" x2="225" y2="560" stroke="#555555" stroke-width="3.0"/>
+<line x1="650" y1="476" x2="650" y2="600" stroke="#555555" stroke-width="3.0"/>
+<text x="910" y="980" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">외래 키 없는 독립 표</text>
+<text x="60" y="1100" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">선은 work_id(외래 키)로 works에 이어짐</text>
+</svg>

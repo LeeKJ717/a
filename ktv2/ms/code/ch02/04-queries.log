@@ -1,0 +1,20 @@
+-- 상태별 줄 수
+    SELECT status, COUNT(*) FROM works GROUP BY status ORDER BY status
+   -> ('abstract', 2)
+   -> ('cited', 2)
+   -> ('pdf', 2)
+-- 오픈 액세스라고 하는데 PDF가 아직 없는 것(다시 시도할 목록)
+    SELECT doi, oa_status FROM works WHERE status<>'pdf' AND oa_status IN ('gold','green','hybrid','bronze')
+   -> ('10.9999/demo.004', 'green')
+-- 인용되었지만 초록도 없는 것(서지부터 채울 목록)
+    SELECT w.doi, GROUP_CONCAT(DISTINCT r.chapter_id) FROM works w JOIN refs r ON r.work_id=w.id WHERE w.status='cited' GROUP BY w.id
+   -> ('10.9999/demo.003', '1')
+   -> ('10.9999/demo.006', '9')
+-- 출처끼리 값이 다른 것
+    SELECT w.doi, x.field, x.v_old, x.v_new, x.src_new FROM conflicts x JOIN works w ON w.id=x.work_id
+   -> ('10.9999/demo.001', 'year', '2022', '2021', 'crossref')
+-- DOI로 찾을 때 색인을 쓰는가
+   -> SEARCH works USING COVERING INDEX sqlite_autoindex_works_1 (doi=?)
+-- 큰따옴표의 함정: status="abstract"는 abstract 열과 견주어 진다
+   -> (0,) (올바른 값은 아래)
+   -> (2,)

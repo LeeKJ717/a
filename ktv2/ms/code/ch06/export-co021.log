@@ -1,0 +1,15 @@
+R: R version 4.3.3 (2024-02-29) 
+dplR: 1.8.1 
+co021: 계열 35 개, 연도 1176 ~ 1963 ( 788 년 )
+출처 기록(dplR.provenance$file): https://www.ncei.noaa.gov/pub/data/paleo/treering/measurements/northamerica/usa/co021.rwl 
+정밀도 기록(precision):
+  series precision
+1 641114      0.01
+2 641121      0.01
+3 641132      0.01
+4 641143      0.01
+5 642114      0.01
+6 642121      0.01
+안쪽 결측 기록(gaps): 없음 
+[1] "work/co021.rwl"
+저장: work/co021.rwl, 크기 146982 바이트

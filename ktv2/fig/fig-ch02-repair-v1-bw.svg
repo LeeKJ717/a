@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="760" viewBox="0 0 1300 760">
+<rect x="0" y="0" width="1300" height="760" fill="#FFFFFF" stroke="none" stroke-width="1.0" />
+<text x="60" y="80" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">(AC, NC) 방향의 남는 경우의 수(로그 눈금)</text>
+<text x="60" y="180" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">합 점검만으로 남는 방향의 경우의 수</text>
+<rect x="130" y="200" width="1071.6" height="50" fill="#666666" stroke="#555555" stroke-width="1.5" />
+<text x="1187.6" y="238" font-size="29" font-weight="700" text-anchor="end" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#FFFFFF">131,072</text>
+<text x="60" y="330" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">변화 강도의 사슬을 더한 뒤</text>
+<rect x="130" y="350" width="63" height="50" fill="#999999" stroke="#555555" stroke-width="1.5" />
+<text x="207" y="388" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">2, 전체를 뒤집은 두 가지만 남음</text>
+<text x="60" y="480" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">본문의 기준값(80.19, 320.06 km)을 더한 뒤</text>
+<rect x="130" y="500" width="12" height="50" fill="#111111" stroke="#555555" stroke-width="1.5" />
+<text x="156" y="538" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">1, 17행 중 17행이 제1권 표와 같음</text>
+<line x1="130" y1="620" x2="130" y2="630" stroke="#555555" stroke-width="2.0"/>
+<text x="130" y="664" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">1</text>
+<line x1="339.4" y1="620" x2="339.4" y2="630" stroke="#555555" stroke-width="2.0"/>
+<text x="339.4" y="664" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">10</text>
+<line x1="548.8" y1="620" x2="548.8" y2="630" stroke="#555555" stroke-width="2.0"/>
+<text x="548.8" y="664" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">100</text>
+<line x1="758.2" y1="620" x2="758.2" y2="630" stroke="#555555" stroke-width="2.0"/>
+<text x="758.2" y="664" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">1천</text>
+<line x1="967.6" y1="620" x2="967.6" y2="630" stroke="#555555" stroke-width="2.0"/>
+<text x="967.6" y="664" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">1만</text>
+<line x1="1177" y1="620" x2="1177" y2="630" stroke="#555555" stroke-width="2.0"/>
+<text x="1177" y="664" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#555555">10만</text>
+<text x="685" y="712" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#111111">경우의 수</text>
+</svg>

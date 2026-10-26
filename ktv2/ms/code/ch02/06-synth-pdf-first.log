@@ -1,0 +1,20 @@
+표 36개 x 조판 3가지 x 방법 5가지, 걸린 시간 377.0초
+
+각 칸: 온전한 행 수(칸 배열까지 같음) / 행 글자가 순서대로 이어서 같은 행 수 / 정답 행 수
+방법                                       L 선 있음(행 순서)               R 선 없음(행 순서)               C 선 없음(열 순서)              
+pdfplumber 선 기준                           394 /  394 / 394        0 /    0 / 394        0 /    0 / 394    
+pdfplumber 글자 위치 기준                       274 /  367 / 394      274 /  367 / 394      274 /  367 / 394    
+pdftotext -layout(두 칸 공백)                 370 /  394 / 394      370 /  394 / 394      370 /  394 / 394    
+pdftotext -raw(줄 그대로)                     202 /  394 / 394      202 /  394 / 394        0 /    0 / 394    
+pdfplumber 글자 흐름(use_text_flow)           202 /  394 / 394      202 /  394 / 394        0 /    0 / 394    
+
+표 9-2(17행 x 8열)를 C로 조판한 PDF에서 pdftotext -raw의 앞 12줄:
+Traceback (most recent call last):
+  File "/home/claude/book2/ms/code/ch02/06-synth-pdf.py", line 101, in <module>
+    for l in sample['raw'][:12]:
+             ~~~~~~^^^^^^^
+KeyError: 'raw'
+
+real	6m19.893s
+user	6m13.158s
+sys	0m1.728s

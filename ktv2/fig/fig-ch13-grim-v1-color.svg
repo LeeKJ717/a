@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1130" viewBox="0 0 1300 1130">
+<rect x="0" y="0" width="1300" height="1190" fill="#FFFFFF" stroke="none" stroke-width="1.0" />
+<text x="120" y="70" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">58.8%, n = 176</text>
+<line x1="120" y1="220" x2="1200" y2="220" stroke="#6B7A82" stroke-width="2.4"/>
+<rect x="638.4" y="150" width="43.2" height="70" fill="#3A7CA5" stroke="none" stroke-width="1.0" opacity="0.55"/>
+<line x1="660" y1="140" x2="660" y2="220" stroke="#3A7CA5" stroke-width="3.0"/>
+<text x="660" y="128" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">적힌 값 58.8</text>
+<line x1="294.8" y1="198" x2="294.8" y2="242" stroke="#9C4F2E" stroke-width="3.0"/>
+<text x="294.8" y="284" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">57.95</text>
+<line x1="540.2" y1="198" x2="540.2" y2="242" stroke="#9C4F2E" stroke-width="3.0"/>
+<text x="540.2" y="284" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">58.52</text>
+<line x1="785.7" y1="198" x2="785.7" y2="242" stroke="#9C4F2E" stroke-width="3.0"/>
+<text x="785.7" y="284" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">59.09</text>
+<line x1="1031.1" y1="198" x2="1031.1" y2="242" stroke="#9C4F2E" stroke-width="3.0"/>
+<text x="1031.1" y="284" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">59.66</text>
+<text x="120" y="340" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">가장 가까운 두 값 58.52, 59.09 사이에 적힌 값의 반올림 구간(±0.05)이 들어 있지 않다.</text>
+<text x="120" y="430" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">50.7%, n = 285</text>
+<line x1="120" y1="580" x2="1200" y2="580" stroke="#6B7A82" stroke-width="2.4"/>
+<rect x="638.4" y="510" width="43.2" height="70" fill="#3A7CA5" stroke="none" stroke-width="1.0" opacity="0.55"/>
+<line x1="660" y1="500" x2="660" y2="580" stroke="#3A7CA5" stroke-width="3.0"/>
+<text x="660" y="488" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">적힌 값 50.7</text>
+<line x1="130.2" y1="558" x2="130.2" y2="602" stroke="#9C4F2E" stroke-width="3.0"/>
+<text x="130.2" y="644" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">49.47</text>
+<line x1="281.8" y1="558" x2="281.8" y2="602" stroke="#9C4F2E" stroke-width="3.0"/>
+<text x="281.8" y="644" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">49.82</text>
+<line x1="433.4" y1="558" x2="433.4" y2="602" stroke="#9C4F2E" stroke-width="3.0"/>
+<text x="433.4" y="644" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">50.18</text>
+<line x1="585" y1="558" x2="585" y2="602" stroke="#9C4F2E" stroke-width="3.0"/>
+<text x="585" y="644" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">50.53</text>
+<line x1="736.5" y1="558" x2="736.5" y2="602" stroke="#9C4F2E" stroke-width="3.0"/>
+<text x="736.5" y="644" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">50.88</text>
+<line x1="888.1" y1="558" x2="888.1" y2="602" stroke="#9C4F2E" stroke-width="3.0"/>
+<text x="888.1" y="644" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">51.23</text>
+<line x1="1039.7" y1="558" x2="1039.7" y2="602" stroke="#9C4F2E" stroke-width="3.0"/>
+<text x="1039.7" y="644" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">51.58</text>
+<line x1="1191.3" y1="558" x2="1191.3" y2="602" stroke="#9C4F2E" stroke-width="3.0"/>
+<text x="1191.3" y="644" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">51.93</text>
+<text x="120" y="700" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">가장 가까운 두 값 50.53, 50.88 사이에 적힌 값의 반올림 구간(±0.05)이 들어 있지 않다.</text>
+<text x="120" y="790" font-size="29" font-weight="700" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">56.6%, n = 127</text>
+<line x1="120" y1="940" x2="1200" y2="940" stroke="#6B7A82" stroke-width="2.4"/>
+<rect x="638.4" y="870" width="43.2" height="70" fill="#3A7CA5" stroke="none" stroke-width="1.0" opacity="0.55"/>
+<line x1="660" y1="860" x2="660" y2="940" stroke="#3A7CA5" stroke-width="3.0"/>
+<text x="660" y="848" font-size="29" font-weight="700" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">적힌 값 56.6</text>
+<line x1="360" y1="918" x2="360" y2="962" stroke="#9C4F2E" stroke-width="3.0"/>
+<text x="360" y="1004" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">55.91</text>
+<line x1="700.1" y1="918" x2="700.1" y2="962" stroke="#9C4F2E" stroke-width="3.0"/>
+<text x="700.1" y="1004" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">56.69</text>
+<line x1="1040.3" y1="918" x2="1040.3" y2="962" stroke="#9C4F2E" stroke-width="3.0"/>
+<text x="1040.3" y="1004" font-size="29" font-weight="400" text-anchor="middle" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#1B2A33">57.48</text>
+<text x="120" y="1060" font-size="29" font-weight="400" text-anchor="start" font-family="'Noto Sans CJK KR','Malgun Gothic',sans-serif" fill="#5F7F93">가장 가까운 두 값 55.91, 56.69 사이에 적힌 값의 반올림 구간(±0.05)이 들어 있지 않다.</text>
+</svg>

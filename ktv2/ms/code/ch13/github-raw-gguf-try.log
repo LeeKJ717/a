@@ -1,0 +1,10 @@
+## A. raw.githubusercontent.com 의 llama.cpp 저장소 안 gguf (어휘 파일뿐인지 확인)
+ggml-vocab-llama-spm.gguf http=200 bytes=723869
+ggml-vocab-gpt-2.gguf http=200 bytes=1766807
+total 2436
+-rw-r--r-- 1 root root 1766807 Oct 26 11:11 ggml-vocab-gpt-2.gguf
+-rw-r--r-- 1 root root  723869 Oct 26 11:11 ggml-vocab-llama-spm.gguf
+## B. llama-cpp-python 으로 불러오기(vocab_only)
+llama_context: n_ctx_seq (512) > n_ctx_train (0) -- possible training context overflow
+vocab_only 로드 성공; n_vocab = 32000
+생성 시도 실패: AssertionError Memory is not initialized

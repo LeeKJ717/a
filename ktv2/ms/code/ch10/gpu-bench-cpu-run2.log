@@ -1,0 +1,15 @@
+환경: {"python": "3.13.16", "platform": "Linux-6.18.44-fc-v153-x86_64-with-glibc2.39", "numpy": "2.5.3", "backend": "numpy", "cpu_count": 2, "ram_total_kib": 8220244, "nvidia_smi": "없음(명령을 찾지 못함)"}
+항목                     dtype     warmup s 중앙값 s      최솟값 s      결과         메모리
+boot B=100000          float64   0.131    0.0869     0.0806     0.556/0.778/0.889 {'peak_rss_mib': 63.3}
+boot B=1000000         float64   0.936    0.6324     0.5953     0.556/0.778/0.889 {'peak_rss_mib': 113.3}
+boot B=4000000         float64   2.282    2.0886     1.9881     0.556/0.778/0.889 {'peak_rss_mib': 183.0}
+hav N=1000             float64   0.035    0.0324     0.0216     3220.1     {'one_matrix_mib': 7.6, 'peak_rss_mib': 183.0}
+hav N=2000             float64   0.133    0.1936     0.1555     3223.0     {'one_matrix_mib': 30.5, 'peak_rss_mib': 221.0}
+hav N=4000             float64   0.894    0.7830     0.6812     3284.2     {'one_matrix_mib': 122.1, 'peak_rss_mib': 770.5}
+hav N=8000             float64   3.676    3.4847     3.0972     3293.6     {'one_matrix_mib': 488.3, 'peak_rss_mib': 2967.7}
+hav N=1000             float32   0.025    0.0070     0.0069     3220.1     {'one_matrix_mib': 3.8, 'peak_rss_mib': 2967.7}
+hav N=2000             float32   0.053    0.0387     0.0384     3223.0     {'one_matrix_mib': 15.3, 'peak_rss_mib': 2967.7}
+hav N=4000             float32   0.263    0.3286     0.2570     3284.2     {'one_matrix_mib': 61.0, 'peak_rss_mib': 2967.7}
+hav N=8000             float32   1.362    1.3450     1.3047     3293.6     {'one_matrix_mib': 244.1, 'peak_rss_mib': 2967.7}
+제1권 값 점검: 노백산-돈화 거리 82.43 km (제1권 82.43 km) -> 일치
+로그 파일: /home/claude/book2/ms/code/ch10/gpu-bench-cpu2.jsonl

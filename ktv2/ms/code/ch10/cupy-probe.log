@@ -1,0 +1,36 @@
+cupy 14.2.0 | numpy 2.5.4
+cupy.get_array_module   있음: True
+cupy.asarray            있음: True
+cupy.asnumpy            있음: True
+cupy.percentile         있음: True
+cupy.searchsorted       있음: True
+cupy.arange             있음: True
+cupy.repeat             있음: True
+cupy.sin                있음: True
+cupy.cos                있음: True
+cupy.arcsin             있음: True
+cupy.radians            있음: True
+cupy.sqrt               있음: True
+cupy.concatenate        있음: True
+cupy.random.default_rng 있음: True
+cupy.random.Generator.integers 있음: True
+cupy.cuda.Device                        있음: True
+cupy.cuda.runtime.memGetInfo            있음: True
+cupy.cuda.runtime.getDeviceProperties   있음: True
+cupy.cuda.runtime.runtimeGetVersion     있음: True
+cupy.cuda.runtime.driverGetVersion      있음: True
+cupy.cuda.runtime.getDeviceCount        있음: True
+cupy.get_default_memory_pool            있음: True
+cupy.cuda.memory.OutOfMemoryError       있음: True
+cupy.cuda.MemoryPool                    있음: True
+cupy.cuda.set_allocator                 있음: True
+MemoryPool.used_bytes       있음: True
+MemoryPool.total_bytes      있음: True
+MemoryPool.free_all_blocks  있음: True
+MemoryPool.set_limit        있음: True
+MemoryPool.get_limit        있음: True
+Device.synchronize 있음: True
+cupy.get_array_module(numpy 배열) -> numpy
+cupy.cuda.runtime.getDeviceCount()               -> 예외 CUDARuntimeError: cudaErrorInsufficientDriver: CUDA driver version is insufficient for CUDA runtime version
+cupy.arange(3)                                   -> 예외 CUDARuntimeError: cudaErrorInsufficientDriver: CUDA driver version is insufficient for CUDA runtime version
+cupy.random.default_rng(1).integers(0, 5, 3)     -> 예외 CUDARuntimeError: cudaErrorInsufficientDriver: CUDA driver version is insufficient for CUDA runtime version

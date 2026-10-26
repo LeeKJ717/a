@@ -1,0 +1,7 @@
+PANGAEA 첫 화면                                                 종료코드 56  상태/바이트 [000 0]  curl: (56) CONNECT tunnel failed, response 403  (0.2초)
+PANGAEA DOI 해석 서버 첫 화면                                       종료코드 56  상태/바이트 [000 0]  curl: (56) CONNECT tunnel failed, response 403  (0.3초)
+NOAA NCEI 고기후 첫 화면                                           종료코드 56  상태/바이트 [000 0]  curl: (56) CONNECT tunnel failed, response 403  (0.3초)
+NOAA NCEI 고기후 검색                                             종료코드 56  상태/바이트 [000 0]  curl: (56) CONNECT tunnel failed, response 403  (0.2초)
+NOAA NCEI 자료 폴더(Temperature 12k)                             종료코드 56  상태/바이트 [000 0]  curl: (56) CONNECT tunnel failed, response 403  (0.2초)
+GEOROC                                                       종료코드 56  상태/바이트 [000 0]  curl: (56) CONNECT tunnel failed, response 403  (0.3초)
+(대조) PyPI numpy 목록                                           종료코드 0  상태/바이트 [200 2353428]    (0.2초)

@@ -1,0 +1,8 @@
+---- OOM 경로 시험
+환경: {"python": "3.13.16", "platform": "Linux-6.18.44-fc-v153-x86_64-with-glibc2.39", "numpy": "2.5.3", "backend": "numpy", "cpu_count": 2, "ram_total_kib": 8220244, "nvidia_smi": "없음(명령을 찾지 못함)"}
+항목                     dtype     warmup s 중앙값 s      최솟값 s      결과         메모리
+boot B=100000          float64   0.070    0.0418     0.0418     0.556/0.778/0.889 {'peak_rss_mib': 63.3}
+hav N=1000             float64   0.040    0.0350     0.0350     3220.1     {'one_matrix_mib': 7.6, 'peak_rss_mib': 83.8}
+hav N=16000            float64   OOM (행렬 하나 1953.1 MiB)
+제1권 값 점검: 노백산-돈화 거리 82.43 km (제1권 82.43 km) -> 일치
+로그 파일: /home/claude/book2/ms/code/ch10/gpu-bench-oomtest.jsonl

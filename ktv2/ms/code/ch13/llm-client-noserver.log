@@ -1,0 +1,4 @@
+$ python3 -I llm-client-v1.py --model MODEL-NAME --source input/vol1-ch11-sec3-v1.md --out /tmp/claude-0/-home-claude/ed3cac1b-b1c0-5712-817a-3e7a8e2c17a2/scratchpad/x13 --timeout 10
+서버에 연결하지 못했다: http://127.0.0.1:11434 (URLError)
+Ollama 서버가 떠 있고 모델 "MODEL-NAME" 이 내려받아져 있는지 확인한다.
+종료 코드 2
