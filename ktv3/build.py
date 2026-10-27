@@ -136,7 +136,8 @@ for p in sorted(v[1] for v in _lat.values()):
         global tb;tb+=1
         return f'\n<p class="tcap"><b>표 {ci}-{tb}.</b> {html.escape(m.group(1))}</p>\n'
     t=re.sub(r'\{\{T:(.*?)\}\}',g,t)
-    main,_,refs=t.partition('## 참고문헌')
+    _rm=re.search(r'^## (?:\d+\.\d+ )?참고문헌[^\n]*\n',t,re.M)
+    main,refs=(t[:_rm.start()],t[_rm.end():]) if _rm else (t,'')
     h=markdown.markdown(main,extensions=['md_in_html','tables'])
     def _wide(m):
         n=len(re.findall(r'<th',m.group(0).split('</tr>')[0]))
