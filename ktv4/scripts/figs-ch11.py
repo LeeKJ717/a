@@ -53,6 +53,46 @@ def fig_okmok(mode):
     return F.save(f, 'ch11-okmok', mode)
 
 
+def fig_glacier(mode):
+    """빙하 전진 시간창: Menounos 등(2009) 대 Solomina 등(2015)(계산 11-4)."""
+    P = F.C[mode]
+    M = [(8.59, 8.18), (7.36, 6.45), (4.40, 3.97), (3.54, 2.77), (1.71, 1.30), (1.0, 0.0)]
+    S = [(4.4, 4.2), (3.8, 3.4), (3.3, 2.8), (2.3, 2.1), (1.5, 1.4), (1.2, 1.0), (0.7, 0.5)]
+    f = F.fig(130, 62); ax = f.add_axes([0.22, 0.26, 0.74, 0.68])
+    for a, b in M:
+        ax.barh(1, a - b, left=b, height=0.5, color=P['a'], edgecolor=P['ink'], lw=0.5, zorder=3)
+    for a, b in S:
+        ax.barh(0, a - b, left=b, height=0.5, color=P['b'], edgecolor=P['ink'], lw=0.5, zorder=3)
+    ax.plot([2.6], [0], marker='D', ms=4, color=P['b'], mec=P['ink'], mew=0.5, zorder=4)
+    ax.axvspan(8.4, 8.0, color=P['grid'], zorder=1)
+    ax.set_yticks([1, 0]); ax.set_yticklabels(['캐나다 코르디예라\n(Menounos 등 2009)', '전지구 189 시계열\n(Solomina 등 2015)'], fontsize=8)
+    ax.set_xlim(9, 0); ax.set_ylim(-0.6, 1.6)
+    ax.set_xlabel('나이(ka; 왼쪽이 오래된 때). 회색 띠는 8.4~8.0 ka', fontsize=8)
+    F.style_ax(ax, mode, grid='x')
+    return F.save(f, 'ch11-glacier', mode)
+
+
+def fig_moist(mode):
+    """수분 시간창(계산 11-5): 티티카카, 로키산맥, 노스다코타."""
+    P = F.C[mode]
+    rows = [('티티카카 가장 건조\n8.0~5.5 ka(Baker 등 2001)', [(8.0, 5.5)], 'dry'),
+            ('로키산맥 가장 심한 저수위\n7.0~4.5 ka(Shuman 등 2009)', [(7.0, 4.5)], 'dry'),
+            ('콜로라도 습한 시기\n4.4~3.7 ka(Shuman 등 2009)', [(4.4, 3.7)], 'wet'),
+            ('노스다코타 케틀 호수 습한 시기\n(Hobbs 등 2011)', [(8.351, 8.088), (4.364, 1.406), (0.872, 0.620)], 'wet')]
+    f = F.fig(130, 78); ax = f.add_axes([0.34, 0.20, 0.62, 0.76])
+    n = len(rows)
+    for i, (nm, wins, k) in enumerate(rows):
+        y = n - 1 - i
+        for a, b in wins:
+            ax.barh(y, a - b, left=b, height=0.5, color=P[k], edgecolor=P['ink'], lw=0.5, zorder=3)
+    ax.set_yticks(range(n - 1, -1, -1)); ax.set_yticklabels([r[0] for r in rows], fontsize=8)
+    ax.axvspan(8.4, 8.0, color=P['grid'], zorder=1)
+    ax.set_xlim(9, 0); ax.set_ylim(-0.6, n - 0.4)
+    ax.set_xlabel('나이(ka; 왼쪽이 오래된 때). 회색 띠는 8.4~8.0 ka. 갈색은 건조, 파랑은 습함', fontsize=8)
+    F.style_ax(ax, mode, grid='x')
+    return F.save(f, 'ch11-moist', mode)
+
+
 if __name__ == '__main__':
     for m in ('color', 'bw'):
-        fig_mazama(m); fig_okmok(m)
+        fig_mazama(m); fig_okmok(m); fig_glacier(m); fig_moist(m)

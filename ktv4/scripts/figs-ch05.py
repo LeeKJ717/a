@@ -83,8 +83,37 @@ def fig_sill(mode):
     ax.legend(loc='upper center', frameon=False, fontsize=8, handletextpad=0.4, labelspacing=0.25, bbox_to_anchor=(0.45, -0.20), ncol=1)
     WARN.extend(K.save(f, 'ch05-sill', mode))
 
+# ---------------------------------------------------------------- 그림 3: 논문이 적은 시간창(계산 5-5)
+WIN = [
+    ('AMOC', 'AMOC 약화 9.2~8 ka (Gerber 등 2025)', 9.2, 8.0, 'p'),
+    ('AMOC', '방류 8.47 ka, 한랭 사건 8.4~8.0 ka (Barber 등 1999)', 8.4, 8.0, 'b'),
+    ('AMOC', 'AMOC 안정 6.5 ka 이후 (Gerber 등 2025)', 6.5, 0.0, 'p'),
+    ('AMOC', '깊은 물 유속 감소 6.5 ka 이후 (Hoogakker 등 2011)', 6.5, 0.0, 'b'),
+    ('ENSO', '페루 서늘 편향 7.5~6.7 ka (Carré 등 2014)', 7.5, 6.7, 'p'),
+    ('ENSO', 'ENSO 분산 감소 5~3 ka (Emile-Geay 등)', 5.0, 3.0, 'b'),
+    ('ENSO', 'ENSO 억제 5~4 ka (Carré 등 2014)', 5.0, 4.0, 'p'),
+    ('ENSO', '강수 강도 증가 4.2 ka 이후 (Conroy 등 2008)', 4.2, 0.0, 'b'),
+    ('ENSO', '강수 정점 2.0~1.5 ka (Conroy 등 2008)', 2.0, 1.5, 'p'),
+]
+
+
+def fig_windows(mode):
+    P = K.C[mode]; Q = pal(mode)
+    f = K.fig(130, 100)
+    ax = f.add_axes([0.05, 0.13, 0.92, 0.84])
+    n = len(WIN)
+    for i, (grp, nm, a, b, kind) in enumerate(WIN):
+        y = n - 1 - i
+        ax.barh(y, a - b, left=b, height=0.5, color=Q[kind], edgecolor=P['ink'], linewidth=0.5, zorder=3)
+        ax.text(9.95, y + 0.3, nm, fontsize=8, va='bottom', ha='left', color=P['ink'])
+    ax.axvspan(8.4, 8.0, color=Q['hl'], zorder=1)
+    ax.set_xlim(10, 0); ax.set_ylim(-0.7, n + 0.2); ax.set_yticks([])
+    ax.set_xlabel('나이(ka; 왼쪽이 오래된 때). 논문 초록이 적은 시간창이며 불확실성 막대는 그리지 않음')
+    K.style_ax(ax, mode, grid='x')
+    WARN.extend(K.save(f, 'ch05-windows', mode))
+
 
 if __name__ == '__main__':
     for m in MODES:
-        fig_flux(m); fig_sill(m)
+        fig_flux(m); fig_sill(m); fig_windows(m)
     print('경고 합계', len(WARN))

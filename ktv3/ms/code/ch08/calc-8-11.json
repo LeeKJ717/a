@@ -1,0 +1,20 @@
+{
+ "wilkin": {
+  "span": 5699,
+  "pos": 3600,
+  "frac": 0.6316897701351114,
+  "calbp": 2749,
+  "yr_per_ind": 41.5985401459854
+ },
+ "zhang": {
+  "drought_vs_mixed": 0,
+  "drought_in_win": 200,
+  "mixed_in_win": 100,
+  "d15n_diff": 1.5
+ },
+ "bao": {
+  "span": 1000,
+  "win_share": 0.3
+ },
+ "mongolia_gap": 799
+}
