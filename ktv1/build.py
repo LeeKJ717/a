@@ -3,7 +3,7 @@
 import sys,re,glob,html,os,markdown
 from weasyprint import HTML
 mode=sys.argv[1] if len(sys.argv)>1 else 'color'
-VER='v21'
+VER='v23'
 CSS='''
 @page{size:182mm 257mm;margin:20mm 16mm 22mm 36.4mm;
  @bottom-center{content:counter(page);font:9pt "Noto Serif CJK KR",serif}}
