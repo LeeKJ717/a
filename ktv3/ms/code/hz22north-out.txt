@@ -1,0 +1,33 @@
+rows 538 sites 363 age NaN 7 lat range 32.25 44.3
+rows with mil>0 538 rows with any crop>0 538
+max lat any crop 44.3 max lat millet 44.3
+bin lo hi rows sites maxlat site age n41
+2000 2499 6 6 42.85 Guangdegongnanshan 2411 1
+2500 2999 57 50 43.24 Guandongche 2700 16
+3000 3499 53 47 42.94 Sanjiazi 3300 4
+3500 3999 128 100 44.3 Erdaojingzi 3546 17
+4000 4499 116 107 40.87 Dashuigou 4100 0
+4500 4999 47 46 38.63 Xinhua 4584 0
+5000 5499 48 47 44.12 Haminmangha 5400 1
+5500 5999 23 23 42.83 Dawopu 5825 1
+6000 6499 27 24 42.13 Weijiawopu 6000 1
+6500 6999 8 8 42.59 Aodong II 6700 2
+7000 7499 4 4 42.68 Nanwanzibei 7400 2
+7500 7999 10 10 42.37 Xinglonggou I 7537 2
+8000 8499 2 2 33.6 Jiahu2013 8250 0
+8500 8999 1 1 36.7 Zhangmatun 8810 0
+9500 9999 1 1 39.97 Donghulin 9908 0
+rows >=41N 47 sites 34
+older>=41N: ages 5400.0 7825.0 n 9
+younger>=41N: ages 2411.0 3731.0 n 38
+gap years 1669.0 between 5400.0 ( Haminmangha ) and 3731.0 ( Baoguluxi )
+Liaoxi rows 47 ages 2411.0 7825.0
+Liaoxi rows strictly between 3731 and 5400 0
+Empty DataFrame
+Columns: [site, lat, age, culture, mil]
+Index: []
+window 3900 4200 rows 107 sites 101 max 40.872223 Dashuigou 4100
+ all rows in window 107 by region {'Central Plains': 53, 'Haidai region': 20, 'Ganqing region': 18, 'Yanbei region': 12, 'Guanzhong region': 4}
+5000-5400 43 {'Central Plains': 24, 'Guanzhong region': 7, 'Haidai region': 6, 'Ganqing region': 4, 'Yanbei region': 1, 'Liaoxi region': 1}
+4000-4999 163 {'Central Plains': 71, 'Haidai region': 29, 'Yanbei region': 25, 'Ganqing region': 24, 'Guanzhong region': 14}
+3731-3999 60 {'Central Plains': 30, 'Ganqing region': 16, 'Yanbei region': 6, 'Guanzhong region': 5, 'Haidai region': 2, 'Liaoxi region': 1}
