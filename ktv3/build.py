@@ -36,6 +36,11 @@ tr{break-inside:avoid}
 .guide h2{break-before:page;font:700 15pt/1.5 'Noto Sans CJK KR',sans-serif;margin:0 0 6mm;padding:3mm 0;border-top:2pt solid #444;border-bottom:0.6pt solid #444}
 .guide ul{margin:0 0 3mm 0;padding-left:5mm}
 .guide li{margin-bottom:1.5mm}
+.guide p{margin:0 0 2mm;line-height:1.55;orphans:2;widows:2}
+.guide li{line-height:1.5;margin-bottom:0.8mm}
+.guide h2{margin-bottom:4mm}
+.guide{font-size:9.6pt}
+.guide p,.guide li{line-height:1.45}
 .toc a.sub{padding-left:8mm;font-size:9pt;line-height:1.8}
 .opener{break-before:right;height:213mm;display:flex;flex-direction:column}
 .oband{background:%BAND%;color:#fff;padding:5mm 6mm 5mm;font-family:"Noto Sans CJK KR",sans-serif}

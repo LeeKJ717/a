@@ -38,7 +38,7 @@ def fig_intervals(mode):
     rows = [('지중해', 'Roberts', '동지중해 종합'), ('서아시아', 'GOman', '오만만 코어'), ('서아시아', 'Gol', '골에자르드(둘째)'), ('서아시아', 'GolP1', '골에자르드(첫째)'),
             ('남아시아', 'Kotla', '코틀라다하르'),
             ('중앙아시아', 'Bosten1', '보스텐호 (건조)'), ('중앙아시아', 'Bosten2', '보스텐호 (건조)'), ('중앙아시아', 'Karakul', '카라쿨'), ('중앙아시아', 'LopNur', '롭노르'), ('중앙아시아', 'Altai', '하르 노르'),
-            ('동아시아', 'Dali', '달리호'), ('동아시아', 'Hulun', '호륜호'), ('동아시아', 'Hunsh', '훈산다크'), ('동아시아', 'Daihai', '다이하이호'), ('동아시아', 'Dongge', '동거동굴'),
+            ('동아시아', 'Dali', '달리호'), ('동아시아', 'Hulun', '호륜호'), ('동아시아', 'Hunsh', '훈산다크'), ('동아시아', 'Daihai', '대해호'), ('동아시아', 'Dongge', '동거동굴'),
             ('동아시아', 'KoreaAP', '한국 남해안'), ('동아시아', 'Shennong', '신농동굴'), ('동아시아', 'Xianglong', '상룡동굴')]
     n = len(rows)
     fig = mm_fig(130, 160)
@@ -83,7 +83,7 @@ def fig_overlap(mode):
     C = SER[mode]
     d = json.load(open(os.path.join(CODE, 'ch06-calc-overlap.json'), encoding='utf-8'))['6-4-matrix']
     ids = d['ids']; M = np.array(d['m'], float)
-    labs = {'Hulun': '호륜호', 'Dali': '달리호', 'Daihai': '다이하이', 'Hunsh': '훈산다크', 'Dongge': '동거', 'Gol': '골에자르드', 'GOman': '오만만', 'Roberts': '동지중해', 'Kotla': '코틀라', 'Altai': '하르 노르'}
+    labs = {'Hulun': '호륜호', 'Dali': '달리호', 'Daihai': '대해호', 'Hunsh': '훈산다크', 'Dongge': '동거', 'Gol': '골에자르드', 'GOman': '오만만', 'Roberts': '동지중해', 'Kotla': '코틀라', 'Altai': '하르 노르'}
     fig = mm_fig(130, 112)
     ax = fig.add_axes([0.20, 0.03, 0.78, 0.74])
     cmap = plt.get_cmap('YlOrBr') if mode == 'color' else plt.get_cmap('Greys')

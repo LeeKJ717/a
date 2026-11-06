@@ -121,7 +121,7 @@ def fig_belukha(mode):
     a1.legend(frameon=False, fontsize=8, loc='upper right')
     a1.text(70, 6, '삼중수소 1958, 1963', fontsize=8, color=P['ink'], ha='left', va='center')
     a1.text(215, 44, '1842 먼지, 탐보라 1815', fontsize=8, color=P['ink'], ha='left', va='center')
-    a1.text(1090, 112, '창바이산\n약 1000 AD', fontsize=8, color=P['ink'], ha='right', va='bottom')
+    a1.text(1090, 112, '장백산\n약 1000 AD', fontsize=8, color=P['ink'], ha='right', va='bottom')
     # 오른쪽: 방사성탄소 점
     for n, zk, y in d['marks']:
         a2.scatter([DR - y], [zk], s=24, marker='o', facecolor=P['ink'], edgecolor='#FFFFFF', zorder=5)

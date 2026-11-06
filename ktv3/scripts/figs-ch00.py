@@ -39,7 +39,7 @@ HATCH = {'mtn': '////', 'plat': '', 'desert': '....', 'lowl': ''}
 # 근거 A: 한국어 위키백과 항목 제목(2026-10-26 WebSearch 결과 제목) / 근거 B: Natural Earth NAME_KO 속성
 NAMES = {
     # 지형
-    '몽골고원': 'A', '알타이산맥': 'A', '항가이산맥': 'A', '헹티산맥': 'A', '사얀산맥': 'A', '톈산산맥': 'A', '파미르고원': 'A',
+    '몽골고원': 'A', '알타이산맥': 'A', '항가이산맥': 'A', '헹티산맥': 'A', '사얀산맥': 'A', '천산산맥': 'A', '파미르고원': 'A',
     '우랄산맥': 'A', '캅카스산맥': 'A', '중앙시베리아고원': 'A', '서시베리아 평원': 'A', '타림 분지': 'A', '중가르 분지': 'A', '페르가나 분지': 'A',
     '고비 사막': 'A', '타클라마칸 사막': 'A', '키질쿰 사막': 'A', '카라쿰 사막': 'A',
     # 물
@@ -57,7 +57,7 @@ CITYKEY = {'울란바타르': 'Ulaanbaatar', '노보시비르스크': 'Novosibir
            '바르나울': 'Barnaul', '알마티': 'Almaty', '비슈케크': 'Bishkek', '타슈켄트': 'Tashkent', '사마르칸트': 'Samarkand', '두샨베': 'Dushanbe',
            '우루무치': 'Ürümqi', '카슈가르': 'Kashgar', '투루판': 'Turpan', '아스트라한': 'Astrakhan', '트빌리시': 'Tbilisi', '오데사': 'Odessa', '키이우': 'Kyiv'}
 POLYKEY = {'몽골고원': 'MONGOLIAN PLATEAU', '알타이산맥': 'ALTAY MOUNTAINS', '항가이산맥': 'Hangayn Mts.', '헹티산맥': 'Hentiyn Mts.', '사얀산맥': ('Western Sayan Mts.', 'EASTERN SAYAN MTS.'),
-           '톈산산맥': 'TIAN SHAN', '파미르고원': 'PAMIRS', '우랄산맥': 'URAL MOUNTAINS', '캅카스산맥': 'CAUCASUS MTS.', '중앙시베리아고원': 'CENTRAL SIBERIAN PLATEAU',
+           '천산산맥': 'TIAN SHAN', '파미르고원': 'PAMIRS', '우랄산맥': 'URAL MOUNTAINS', '캅카스산맥': 'CAUCASUS MTS.', '중앙시베리아고원': 'CENTRAL SIBERIAN PLATEAU',
            '서시베리아 평원': 'WESTERN SIBERIAN PLAIN', '타림 분지': 'TARIM BASIN', '중가르 분지': 'Junggar Basin', '페르가나 분지': 'Fergana Valley',
            '고비 사막': 'GOBI DESERT', '타클라마칸 사막': 'TAKLIMAKAN DESERT', '키질쿰 사막': 'QIZILQUM DESERT', '카라쿰 사막': 'GARAGUM DESERT', '크림반도': 'CRIMEA'}
 LAKEKEY = {'바이칼호': ('Lake Baikal',), '발하시호': ('Lake Balkhash',), '이식쿨호': ('Issyk-Kul',), '아랄해': ('North Aral Sea', 'South Aral Sea'),
@@ -296,7 +296,7 @@ SPECS = {
         regions={
             '몽골고원': dict(lonlat=(110, 47.0), dx=6, dy=-6), '중앙시베리아고원': dict(lonlat=(104, 65.0)), '서시베리아 평원': dict(lonlat=(77, 58.5)),
             '타림 분지': dict(lonlat=(83, 38.5)), '고비 사막': dict(lonlat=(105, 41.6), dy=-3), '키질쿰 사막': dict(lonlat=(63.5, 42.0), dy=2),
-            '알타이산맥': dict(lonlat=(90, 49.0), rot=-20), '톈산산맥': dict(lonlat=(87, 42.6), rot=10, dy=-3),
+            '알타이산맥': dict(lonlat=(90, 49.0), rot=-20), '천산산맥': dict(lonlat=(87, 42.6), rot=10, dy=-3),
             '우랄산맥': dict(lat=57.0, rot=70),
         },
         waters={'바이칼호': dict(lonlat=(108, 53.5), dx=8, ha='left'), '발하시호': dict(dy=3), '아랄해': dict(dy=-8), '카스피해': dict(), '흑해': dict(lonlat=(33, 43.3))},
@@ -323,7 +323,7 @@ SPECS = {
     ),
     'central': dict(
         title='중앙아시아', bbox=(54, 36, 90, 49), proj=AEA % (37, 49, 43, 68), grid=4, scale_km=500, pad=8, sb=(0.04, 0.05), na=(0.05, 0.82), leg_mm=13.0,
-        regions={'톈산산맥': dict(lonlat=(80, 42.2), rot=15), '파미르고원': dict(), '키질쿰 사막': dict(lonlat=(63.5, 42.0)), '카라쿰 사막': dict(lonlat=(58.5, 39.5)),
+        regions={'천산산맥': dict(lonlat=(80, 42.2), rot=15), '파미르고원': dict(), '키질쿰 사막': dict(lonlat=(63.5, 42.0)), '카라쿰 사막': dict(lonlat=(58.5, 39.5)),
                  '타클라마칸 사막': dict(lonlat=(83, 38.8)), '중가르 분지': dict()},
         waters={'아랄해': dict(dy=-9), '발하시호': dict(dy=3), '이식쿨호': dict(dy=-9)},
         rivers={'아무다리야강': dict(hint=(62, 40.5), dx=3, dy=-4, ha='left'), '시르다리야강': dict(hint=(66, 44.5), dx=3, ha='left'), '이르티시강': dict(hint=(85, 47.5), dx=3, ha='left')},

@@ -161,7 +161,7 @@ def fig4(mode):
     pt(*tlt, '텔레츠코예호', -1.2, 1.7, ha='right')
     pt(86 + 34 / 60, 49 + 48 / 60, '벨루하 빙핵', -1.4, -2.3, ha='right', m='^')
     ax.add_patch(Rectangle((79, 42), 5, 3, fill=False, ec=C['box'], lw=1.3, zorder=5))
-    ax.text(84.8, 41.0, '톈산 나이테 지점 범위', fontsize=8.5, color=C['ink'], ha='left', va='center', zorder=6)
+    ax.text(84.8, 41.0, '천산 나이테 지점 범위', fontsize=8.5, color=C['ink'], ha='left', va='center', zorder=6)
     pt(19.08, 47.50, '부다페스트', 1.2, 1.6)
     ax.text(50.5, 40.6, '카스피해', fontsize=8.5, color=C['ink'], ha='center', va='center', path_effects=[__import__('matplotlib.patheffects', fromlist=['x']).withStroke(linewidth=2, foreground=C['sea'])])
     bud = (19.08, 47.50)

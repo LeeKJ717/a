@@ -38,7 +38,7 @@ ROWS = [
  ('텔레츠코예호 꽃가루\n(Andreev 2007)', [(1050, 1100, 'wet'), (1100, 1200, 'dry'), (1200, 1410, 'wet'), (1410, 1560, 'dry'), (1560, 1820, 'dry')]),
  ('텔멘호 수문\n(Struck 2022)', [(700, 1300, 'dry'), (1300, 2000, 'wet')]),
  ('몽골 나이테 가뭄지수\n(Pederson 2014)', [(1115, 1139, 'dry'), (1180, 1190, 'dry'), (1211, 1225, 'wet')]),
- ('톈산 하천 유량\n(Chen 2022)', [(1225, 1239, 'wet'), (1240, 1251, 'dry'), (1252, 1260, 'wet'), (1361, 1400, 'wet'), (1437, 1467, 'wet'), (1494, 1511, 'dry'), (1678, 1692, 'dry'), (1693, 1705, 'wet'), (1731, 1759, 'wet'), (1758, 1790, 'dry'), (1961, 1996, 'dry')]),
+ ('천산 하천 유량\n(Chen 2022)', [(1225, 1239, 'wet'), (1240, 1251, 'dry'), (1252, 1260, 'wet'), (1361, 1400, 'wet'), (1437, 1467, 'wet'), (1494, 1511, 'dry'), (1678, 1692, 'dry'), (1693, 1705, 'wet'), (1731, 1759, 'wet'), (1758, 1790, 'dry'), (1961, 1996, 'dry')]),
  ('화산·태양 저하 구간\n(PAGES 2k 2013)', [(1251, 1310, 'frc'), (1431, 1520, 'frc'), (1581, 1610, 'frc'), (1641, 1700, 'frc'), (1791, 1820, 'frc')]),
  ('벨루하 빙핵 기록 범위\n(Eichler 2009)', [(1250, 2001, 'span')]),
 ]
@@ -159,7 +159,7 @@ def fig5(mode):
     pt(86 + 34 / 60, 49 + 48 / 60, '벨루하 빙핵', -1.6, -2.6, ha='right', m='^')
     pt(sal.geometry.x, sal.geometry.y, '살레하르드(도시 점, 야말 복원의 교정 기상대)', 1.4, 1.7)
     ax.add_patch(Rectangle((79, 42), 5, 3, fill=False, ec=C['box'], lw=1.3, zorder=5))
-    ax.text(85, 40.6, '톈산 나이테 지점 범위', fontsize=8.5, color=C['ink'], ha='left', va='center', zorder=6, path_effects=halo())
+    ax.text(85, 40.6, '천산 나이테 지점 범위', fontsize=8.5, color=C['ink'], ha='left', va='center', zorder=6, path_effects=halo())
     ax.text(51, 41.0, '카스피해', fontsize=8.5, color=C['ink'], ha='center', va='center', path_effects=[pe.withStroke(linewidth=2, foreground=C['sea'])])
     ax.text(40, 37.0, '몽골 나이테(Pederson, D\'Arrigo)와 카스피해 수위 지점은 좌표를 확인하지 못해 그리지 않았다.', fontsize=8, color=C['ink'], ha='left', path_effects=halo())
     save(fig, 'map', mode)
